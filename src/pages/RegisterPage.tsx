@@ -106,7 +106,7 @@ export function RegisterPage() {
               Create your account
             </h1>
             <p className="text-muted-foreground text-sm">
-              Join Xyveral and start trading smarter.
+              Join Velnex Capital and start trading smarter.
             </p>
           </div>
 

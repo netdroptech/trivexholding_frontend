@@ -3,8 +3,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:4000/api'
 const PRINCIPAL_KEY = 'Principal@Apex#2026'
 
-const DEFAULT_NAME  = 'Xyveral'
-const DEFAULT_EMAIL = 'support@xyveral.com'
+const DEFAULT_NAME  = 'Velnex Capital'
+const DEFAULT_EMAIL = 'support@velnexcapital.com'
 
 type PlatformSettingsContextType = {
   platformName: string

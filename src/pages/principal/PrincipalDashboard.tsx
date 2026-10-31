@@ -752,7 +752,7 @@ function PrincipalDashboardInner() {
                             value={nameInput}
                             onChange={e => setNameInput(e.target.value)}
                             onKeyDown={e => { if (e.key === 'Enter') applyName() }}
-                            placeholder="e.g. Xyveral"
+                            placeholder="e.g. Velnex Capital"
                             maxLength={40}
                             style={{
                               flex: 1, height: 46, padding: '0 14px',

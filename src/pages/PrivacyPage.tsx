@@ -10,7 +10,7 @@ export function PrivacyPage() {
   const sections = [
     {
       title: '1. Introduction',
-      body: `Xyveral ("we", "our", or "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and related services ("Service"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Service.`,
+      body: `Velnex Capital ("we", "our", or "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and related services ("Service"). Please read this policy carefully. If you disagree with its terms, please discontinue use of the Service.`,
     },
     {
       title: '2. Information We Collect',
@@ -42,7 +42,7 @@ export function PrivacyPage() {
     },
     {
       title: '9. International Data Transfers',
-      body: `Xyveral is based in the United States. If you access the Service from outside the United States, your information may be transferred to, stored, and processed in the United States or other countries where data protection laws may differ from those in your country. By using the Service, you consent to this transfer. We take appropriate steps to ensure your data is protected in accordance with this Privacy Policy.`,
+      body: `Velnex Capital is based in the United States. If you access the Service from outside the United States, your information may be transferred to, stored, and processed in the United States or other countries where data protection laws may differ from those in your country. By using the Service, you consent to this transfer. We take appropriate steps to ensure your data is protected in accordance with this Privacy Policy.`,
     },
     {
       title: '10. Children\'s Privacy',
