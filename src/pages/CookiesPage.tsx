@@ -70,11 +70,11 @@ export function CookiesPage() {
   ]
   
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <div className="relative">
         <div className="pointer-events-none fixed inset-0 z-0"
-          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -10%, hsl(262 95% 76% / 0.05) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -10%, hsl(222 95% 76% / 0.05) 0%, transparent 70%)' }} />
 
         <Navbar />
 

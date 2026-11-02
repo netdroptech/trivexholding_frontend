@@ -99,8 +99,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const location = useLocation()
 
   if (isLoading) return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(260 87% 3%)' }}>
-      <div className="w-8 h-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'hsl(222 87% 3%)' }}>
+      <div className="w-8 h-8 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />
     </div>
   )
 
@@ -118,7 +118,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function HomePage() {
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <HeroSection />

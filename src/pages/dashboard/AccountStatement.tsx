@@ -27,7 +27,7 @@ const TYPE_LABEL: Record<string, string> = {
 }
 
 const STATUS_COLORS: Record<string, { color: string; bg: string }> = {
-  COMPLETED:  { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)'  },
+  COMPLETED:  { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)'  },
   PENDING:    { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)'  },
   FAILED:     { color: '#f87171', bg: 'rgba(248,113,113,0.12)' },
   CANCELLED:  { color: '#94a3b8', bg: 'rgba(148,163,184,0.12)' },
@@ -39,7 +39,7 @@ function isCredit(type: string) {
 
 function amountColor(type: string, amount: number) {
   if (type === 'WITHDRAWAL') return '#f87171'
-  return amount >= 0 ? '#a78bfa' : '#f87171'
+  return amount >= 0 ? '#60a5fa' : '#f87171'
 }
 
 function formatAmount(type: string, amount: number, currency = 'USD') {
@@ -115,7 +115,7 @@ function BalanceChart({ transactions }: { transactions: Transaction[] }) {
             <div style={{
               width: '100%', height: `${pct}%`, minHeight: 4,
               borderRadius: '4px 4px 0 0',
-              background: isLast ? 'linear-gradient(180deg,#a78bfa,#22d3ee)' : 'rgba(167,139,250,0.3)',
+              background: isLast ? 'linear-gradient(180deg,#60a5fa,#22d3ee)' : 'rgba(96,165,250,0.3)',
               transition: 'height 0.4s ease',
             }} />
             <span style={{ fontSize: 10, color: 'hsl(240 5% 50%)' }}>{d.month}</span>
@@ -129,7 +129,7 @@ function BalanceChart({ transactions }: { transactions: Transaction[] }) {
 // ─── Card wrapper ─────────────────────────────────────────────────────────────
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
       {children}
     </div>
   )
@@ -280,9 +280,9 @@ export function AccountStatement() {
               </Card>
             ))
           : [
-              { label: 'Total Deposited', value: `$${totalIn.toLocaleString('en-US', { minimumFractionDigits: 2 })}`,              icon: ArrowDownLeft, color: '#a78bfa', bg: 'rgba(167,139,250,0.1)'  },
+              { label: 'Total Deposited', value: `$${totalIn.toLocaleString('en-US', { minimumFractionDigits: 2 })}`,              icon: ArrowDownLeft, color: '#60a5fa', bg: 'rgba(96,165,250,0.1)'  },
               { label: 'Total Withdrawn', value: `$${totalOut.toLocaleString('en-US', { minimumFractionDigits: 2 })}`,             icon: ArrowUpRight,  color: '#f87171', bg: 'rgba(248,113,113,0.1)' },
-              { label: 'Net Balance',     value: `$${(totalIn - totalOut).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, icon: TrendingUp,    color: '#a78bfa', bg: 'rgba(167,139,250,0.1)'  },
+              { label: 'Net Balance',     value: `$${(totalIn - totalOut).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, icon: TrendingUp,    color: '#60a5fa', bg: 'rgba(96,165,250,0.1)'  },
             ].map(s => (
               <Card key={s.label} style={{ padding: '1.125rem 1.375rem' }}>
                 <div className="flex items-center justify-between mb-2">
@@ -314,7 +314,7 @@ export function AccountStatement() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                style={{ padding: '0.3rem 0.75rem', borderRadius: 999, fontSize: 12, fontWeight: 500, cursor: 'pointer', border: 'none', background: filter === f ? 'rgba(167,139,250,0.2)' : 'transparent', color: filter === f ? '#c4b5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}
+                style={{ padding: '0.3rem 0.75rem', borderRadius: 999, fontSize: 12, fontWeight: 500, cursor: 'pointer', border: 'none', background: filter === f ? 'rgba(96,165,250,0.2)' : 'transparent', color: filter === f ? '#93c5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}
               >
                 {f}
               </button>

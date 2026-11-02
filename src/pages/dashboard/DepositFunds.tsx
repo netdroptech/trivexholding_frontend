@@ -36,7 +36,7 @@ function fmtDate(d: string) {
   return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 function statusColor(s: string) {
-  if (s === 'COMPLETED') return '#a78bfa'
+  if (s === 'COMPLETED') return '#60a5fa'
   if (s === 'REJECTED' || s === 'CANCELLED') return '#f87171'
   return '#f59e0b'
 }
@@ -46,7 +46,7 @@ function statusLabel(s: string) { return s.charAt(0) + s.slice(1).toLowerCase() 
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
       {children}
     </div>
   )
@@ -181,7 +181,7 @@ export function DepositFunds() {
       {/* Summary strip */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {[
-          { label: 'Account Balance', value: fmt(balance),      icon: ArrowDownLeft, color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
+          { label: 'Account Balance', value: fmt(balance),      icon: ArrowDownLeft, color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
           { label: 'Total Deposited', value: fmt(totalDeposit), icon: CheckCircle,   color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
           { label: 'Pending',         value: fmt(pendingAmt),   icon: Clock,         color: '#f59e0b', bg: 'rgba(245,158,11,0.1)'  },
         ].map(s => (
@@ -251,7 +251,7 @@ export function DepositFunds() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0.75rem 1rem', borderRadius: '0.625rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '0.75rem' }}>
                   <p style={{ flex: 1, fontSize: 11, fontFamily: 'monospace', color: 'hsl(40 6% 75%)', wordBreak: 'break-all', lineHeight: 1.5 }}>{selectedWallet.address}</p>
                   <button onClick={copyAddress}
-                    style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '0.4rem 0.75rem', borderRadius: '0.5rem', background: copied ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.06)', border: copied ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(255,255,255,0.1)', color: copied ? '#a78bfa' : 'hsl(40 6% 80%)', fontSize: 12, cursor: 'pointer', flexShrink: 0, transition: 'all 0.15s' }}>
+                    style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '0.4rem 0.75rem', borderRadius: '0.5rem', background: copied ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.06)', border: copied ? '1px solid rgba(96,165,250,0.3)' : '1px solid rgba(255,255,255,0.1)', color: copied ? '#60a5fa' : 'hsl(40 6% 80%)', fontSize: 12, cursor: 'pointer', flexShrink: 0, transition: 'all 0.15s' }}>
                     {copied ? <CheckCircle size={12} /> : <Copy size={12} />}
                     {copied ? 'Copied' : 'Copy'}
                   </button>
@@ -309,10 +309,10 @@ export function DepositFunds() {
 
                 {/* Success banner */}
                 {submitSuccess && (
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '0.875rem 1rem', borderRadius: '0.625rem', background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.25)', marginBottom: '1rem' }}>
-                    <CheckCircle size={16} style={{ color: '#a78bfa', flexShrink: 0, marginTop: 1 }} />
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '0.875rem 1rem', borderRadius: '0.625rem', background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.25)', marginBottom: '1rem' }}>
+                    <CheckCircle size={16} style={{ color: '#60a5fa', flexShrink: 0, marginTop: 1 }} />
                     <div>
-                      <p style={{ fontSize: 13, fontWeight: 600, color: '#a78bfa', marginBottom: 2 }}>Deposit Submitted!</p>
+                      <p style={{ fontSize: 13, fontWeight: 600, color: '#60a5fa', marginBottom: 2 }}>Deposit Submitted!</p>
                       <p style={{ fontSize: 12, color: 'hsl(40 6% 70%)', lineHeight: 1.5 }}>Your payment proof has been uploaded and is pending admin review. You'll see it as <strong style={{ color: '#f59e0b' }}>Pending</strong> in your transaction history.</p>
                     </div>
                   </div>
@@ -343,7 +343,7 @@ export function DepositFunds() {
                     {!proofFile ? (
                       <button type="button" onClick={() => fileInputRef.current?.click()}
                         style={{ width: '100%', padding: '1.5rem 1rem', borderRadius: '0.75rem', border: '2px dashed rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.02)', color: 'hsl(240 5% 50%)', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, transition: 'all 0.15s', boxSizing: 'border-box' }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(167,139,250,0.35)'; (e.currentTarget as HTMLElement).style.background = 'rgba(167,139,250,0.04)' }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(96,165,250,0.35)'; (e.currentTarget as HTMLElement).style.background = 'rgba(96,165,250,0.04)' }}
                         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.12)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.02)' }}
                       >
                         <Upload size={22} style={{ color: 'hsl(240 5% 45%)' }} />
@@ -351,12 +351,12 @@ export function DepositFunds() {
                         <span style={{ fontSize: 11, color: 'hsl(240 5% 40%)' }}>PNG, JPG, WEBP or PDF · max 10 MB</span>
                       </button>
                     ) : (
-                      <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid rgba(167,139,250,0.25)', background: 'rgba(167,139,250,0.04)' }}>
+                      <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid rgba(96,165,250,0.25)', background: 'rgba(96,165,250,0.04)' }}>
                         {proofPreview && proofFile.type.startsWith('image/') ? (
                           <img src={proofPreview} alt="proof" style={{ width: '100%', maxHeight: 200, objectFit: 'contain', display: 'block', background: 'rgba(0,0,0,0.2)' }} />
                         ) : (
                           <div style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <ImageIcon size={20} style={{ color: '#a78bfa' }} />
+                            <ImageIcon size={20} style={{ color: '#60a5fa' }} />
                             <span style={{ fontSize: 12, color: 'hsl(40 6% 75%)' }}>{proofFile.name}</span>
                           </div>
                         )}
@@ -365,8 +365,8 @@ export function DepositFunds() {
                           <X size={13} />
                         </button>
                         <div style={{ padding: '0.5rem 0.75rem', display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <CheckCircle size={12} style={{ color: '#a78bfa' }} />
-                          <span style={{ fontSize: 11, color: '#a78bfa', fontWeight: 600 }}>Proof selected</span>
+                          <CheckCircle size={12} style={{ color: '#60a5fa' }} />
+                          <span style={{ fontSize: 11, color: '#60a5fa', fontWeight: 600 }}>Proof selected</span>
                           <button type="button" onClick={() => fileInputRef.current?.click()} style={{ marginLeft: 'auto', fontSize: 11, color: 'hsl(240 5% 50%)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Change</button>
                         </div>
                       </div>
@@ -385,7 +385,7 @@ export function DepositFunds() {
 
                   {/* Submit */}
                   <button type="submit" disabled={submitting}
-                    style={{ width: '100%', padding: '0.875rem', borderRadius: '0.75rem', background: submitting ? 'rgba(167,139,250,0.3)' : 'rgba(167,139,250,0.9)', border: 'none', color: '#050505', fontSize: 14, fontWeight: 700, cursor: submitting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.15s' }}>
+                    style={{ width: '100%', padding: '0.875rem', borderRadius: '0.75rem', background: submitting ? 'rgba(96,165,250,0.3)' : 'rgba(96,165,250,0.9)', border: 'none', color: '#050505', fontSize: 14, fontWeight: 700, cursor: submitting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.15s' }}>
                     {submitting ? <><Loader2 size={15} style={{ animation: 'spin 1s linear infinite' }} /> Submitting…</> : <><Upload size={15} /> Submit Deposit Proof</>}
                   </button>
                 </form>
@@ -406,7 +406,7 @@ export function DepositFunds() {
                 { n: '4', label: 'Admin approval', desc: 'We verify and credit your account, usually within 1–24h.' },
               ].map(step => (
                 <div key={step.n} style={{ display: 'flex', gap: 10, marginBottom: '0.75rem' }}>
-                  <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 10, fontWeight: 800, color: '#a78bfa' }}>{step.n}</div>
+                  <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 10, fontWeight: 800, color: '#60a5fa' }}>{step.n}</div>
                   <div>
                     <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(40 6% 82%)', marginBottom: 1 }}>{step.label}</p>
                     <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', lineHeight: 1.5 }}>{step.desc}</p>
@@ -440,13 +440,13 @@ export function DepositFunds() {
             {/* Security notice */}
             <Card style={{ padding: '1.25rem' }}>
               <div className="flex items-center gap-2 mb-3">
-                <Shield size={14} style={{ color: '#a78bfa' }} />
+                <Shield size={14} style={{ color: '#60a5fa' }} />
                 <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(40 6% 88%)' }}>Secure & Protected</p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {['256-bit SSL encryption', 'Cold wallet storage (95% of funds)', 'Multi-sig authorization required', 'Real-time fraud monitoring'].map(item => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <CheckCircle size={11} style={{ color: '#a78bfa', flexShrink: 0 }} />
+                    <CheckCircle size={11} style={{ color: '#60a5fa', flexShrink: 0 }} />
                     <span style={{ fontSize: 12, color: 'hsl(240 5% 60%)' }}>{item}</span>
                   </div>
                 ))}
@@ -461,7 +461,7 @@ export function DepositFunds() {
               {!txLoading && deposits.map(d => (
                 <div key={d.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.5rem 0.625rem', borderRadius: '0.5rem', background: 'rgba(255,255,255,0.03)', marginBottom: 6 }}>
                   <div>
-                    <p style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa' }}>+{fmt(d.amount)}</p>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: '#60a5fa' }}>+{fmt(d.amount)}</p>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)' }}>{d.network ? `${d.network}` : 'Deposit'} · {fmtDate(d.createdAt)}</p>
                   </div>
                   <span style={{ fontSize: 10, padding: '1px 7px', borderRadius: 999, background: `${statusColor(d.status)}18`, color: statusColor(d.status), fontWeight: 600 }}>

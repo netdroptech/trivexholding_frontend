@@ -41,30 +41,30 @@ function planVisuals(name: string, badge: string | null) {
   if (n.includes('elite') || badge === 'Elite')
     return { Icon: Crown,          iconColor: '#f59e0b', iconBg: 'rgba(245,158,11,0.12)' }
   if (n.includes('pro') || badge === 'Pro')
-    return { Icon: Zap,            iconColor: '#a78bfa', iconBg: 'rgba(167,139,250,0.12)' }
+    return { Icon: Zap,            iconColor: '#60a5fa', iconBg: 'rgba(96,165,250,0.12)' }
   if (n.includes('growth') || n.includes('popular') || badge === 'Popular')
-    return { Icon: TrendingUpSvg,  iconColor: '#a78bfa', iconBg: 'rgba(167,139,250,0.12)' }
+    return { Icon: TrendingUpSvg,  iconColor: '#60a5fa', iconBg: 'rgba(96,165,250,0.12)' }
   return   { Icon: Shield,         iconColor: '#60a5fa', iconBg: 'rgba(96,165,250,0.12)' }
 }
 
 function planCtaStyle(badge: string | null) {
   if (badge === 'Popular')
-    return { background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', border: 'none', color: '#050505', fontWeight: 600, boxShadow: '0 4px 20px rgba(167,139,250,0.2)' }
+    return { background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', border: 'none', color: '#050505', fontWeight: 600, boxShadow: '0 4px 20px rgba(96,165,250,0.2)' }
   if (badge === 'Elite')
     return { background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', color: '#fcd34d' }
   if (badge === 'Pro')
-    return { background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)', color: '#c4b5fd' }
+    return { background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', color: '#93c5fd' }
   return { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: 'hsl(40 6% 88%)' }
 }
 
 const BADGE_STYLES: Record<string, { bg: string; color: string }> = {
-  Popular: { bg: 'rgba(167,139,250,0.15)',  color: '#a78bfa' },
-  Pro:     { bg: 'rgba(167,139,250,0.12)',  color: '#c4b5fd' },
+  Popular: { bg: 'rgba(96,165,250,0.15)',  color: '#60a5fa' },
+  Pro:     { bg: 'rgba(96,165,250,0.12)',  color: '#93c5fd' },
   Elite:   { bg: 'rgba(245,158,11,0.15)', color: '#fcd34d' },
 }
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
+  return <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -103,9 +103,9 @@ export function InvestmentPlans() {
       </div>
 
       {/* Active plan banner */}
-      <Card style={{ padding: '1rem 1.5rem', marginBottom: '1.5rem', background: 'hsl(260 40% 7%)', border: '1px solid rgba(167,139,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+      <Card style={{ padding: '1rem 1.5rem', marginBottom: '1.5rem', background: 'hsl(222 40% 7%)', border: '1px solid rgba(96,165,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
         <div className="flex items-center gap-3">
-          <TrendingUpIcon size={18} style={{ color: '#a78bfa' }} />
+          <TrendingUpIcon size={18} style={{ color: '#60a5fa' }} />
           <div>
             <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 92%)' }}>
               {user?.kycStatus === 'APPROVED'
@@ -120,7 +120,7 @@ export function InvestmentPlans() {
           </div>
         </div>
         {user?.kycStatus !== 'APPROVED' && (
-          <button style={{ padding: '0.45rem 1rem', borderRadius: '0.6rem', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 600, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
+          <button style={{ padding: '0.45rem 1rem', borderRadius: '0.6rem', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 600, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
             Verify Now
           </button>
         )}
@@ -175,15 +175,15 @@ export function InvestmentPlans() {
 
               return (
                 <div key={plan.id} style={{
-                  background: 'hsl(260 60% 5%)',
-                  border: isPopular ? '1px solid rgba(167,139,250,0.25)' : '1px solid rgba(255,255,255,0.07)',
+                  background: 'hsl(222 60% 5%)',
+                  border: isPopular ? '1px solid rgba(96,165,250,0.25)' : '1px solid rgba(255,255,255,0.07)',
                   borderRadius: '0.875rem', padding: '1.5rem',
                   display: 'flex', flexDirection: 'column', gap: 0,
                   position: 'relative', overflow: 'hidden',
                 }}>
                   {/* Popular top line */}
                   {isPopular && (
-                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #a78bfa, #22d3ee)' }} />
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #60a5fa, #22d3ee)' }} />
                   )}
 
                   {/* Badge */}

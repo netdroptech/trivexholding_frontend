@@ -28,14 +28,14 @@ interface Transaction {
 // ─── Style maps ───────────────────────────────────────────────────────────────
 
 const TYPE_META: Record<string, { c: string; bg: string; label: string }> = {
-  DEPOSIT:    { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  label: 'Deposit'    },
+  DEPOSIT:    { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Deposit'    },
   WITHDRAWAL: { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Withdrawal' },
   PROFIT:     { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Profit'     },
   BONUS:      { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  label: 'Bonus'      },
 }
 
 const STATUS_META: Record<string, { c: string; bg: string; label: string; icon: React.ElementType }> = {
-  COMPLETED:  { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  label: 'Completed',  icon: CheckCircle2 },
+  COMPLETED:  { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Completed',  icon: CheckCircle2 },
   PENDING:    { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  label: 'Pending',    icon: Clock        },
   PROCESSING: { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Processing', icon: Clock        },
   REJECTED:   { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Rejected',   icon: X            },
@@ -44,14 +44,14 @@ const STATUS_META: Record<string, { c: string; bg: string; label: string; icon: 
 function filterBtn(active: boolean): React.CSSProperties {
   return {
     padding: '6px 12px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer',
-    border:  active ? '1px solid rgba(167,139,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
-    background: active ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)',
-    color:   active ? '#c4b5fd' : 'hsl(240 5% 55%)',
+    border:  active ? '1px solid rgba(96,165,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
+    background: active ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.03)',
+    color:   active ? '#93c5fd' : 'hsl(240 5% 55%)',
   }
 }
 
 function avatarColor(email: string) {
-  const cols = ['#a78bfa','#60a5fa','#a78bfa','#f59e0b','#f87171','#a78bfa']
+  const cols = ['#60a5fa','#60a5fa','#60a5fa','#f59e0b','#f87171','#60a5fa']
   let h = 0; for (const c of email) h = (h * 31 + c.charCodeAt(0)) & 0xffff
   return cols[h % cols.length]
 }
@@ -65,7 +65,7 @@ function ProofModal({ url, onClose }: { url: string; onClose: () => void }) {
       onClick={onClose}
       style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}
     >
-      <div onClick={e => e.stopPropagation()} style={{ position: 'relative', maxWidth: 680, width: '100%', background: 'hsl(260 60% 5%)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
+      <div onClick={e => e.stopPropagation()} style={{ position: 'relative', maxWidth: 680, width: '100%', background: 'hsl(222 60% 5%)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 92%)' }}>Payment Proof</p>
@@ -182,8 +182,8 @@ export function AdminTransactions() {
 
       {/* Action message */}
       {actionMsg && (
-        <div style={{ marginBottom: 16, padding: '11px 16px', borderRadius: 10, background: actionMsg.type === 'success' ? 'rgba(167,139,250,0.08)' : 'rgba(248,113,113,0.08)', border: `1px solid ${actionMsg.type === 'success' ? 'rgba(167,139,250,0.2)' : 'rgba(248,113,113,0.2)'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ color: actionMsg.type === 'success' ? '#a78bfa' : '#f87171', fontSize: 13 }}>{actionMsg.text}</p>
+        <div style={{ marginBottom: 16, padding: '11px 16px', borderRadius: 10, background: actionMsg.type === 'success' ? 'rgba(96,165,250,0.08)' : 'rgba(248,113,113,0.08)', border: `1px solid ${actionMsg.type === 'success' ? 'rgba(96,165,250,0.2)' : 'rgba(248,113,113,0.2)'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p style={{ color: actionMsg.type === 'success' ? '#60a5fa' : '#f87171', fontSize: 13 }}>{actionMsg.text}</p>
           <button onClick={() => setActionMsg(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 50%)', fontSize: 18, lineHeight: 1 }}>×</button>
         </div>
       )}
@@ -191,12 +191,12 @@ export function AdminTransactions() {
       {/* Summary stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: 20 }}>
         {[
-          { label: 'Total Transactions', value: String(total),                           c: '#a78bfa' },
-          { label: 'Deposits (Done)',    value: `$${totalDeposits.toLocaleString()}`,    c: '#a78bfa' },
+          { label: 'Total Transactions', value: String(total),                           c: '#60a5fa' },
+          { label: 'Deposits (Done)',    value: `$${totalDeposits.toLocaleString()}`,    c: '#60a5fa' },
           { label: 'Withdrawals (Done)', value: `$${totalWithdrawals.toLocaleString()}`, c: '#f87171' },
           { label: 'Pending Actions',    value: String(pendingCount),                    c: '#f59e0b' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '15px 18px' }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '15px 18px' }}>
             <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', marginBottom: 6 }}>{s.label}</p>
             <p style={{ fontSize: 20, fontWeight: 800, color: s.c }}>{s.value}</p>
           </div>
@@ -215,7 +215,7 @@ export function AdminTransactions() {
       )}
 
       {/* Filters */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '12px 14px', marginBottom: 14 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '12px 14px', marginBottom: 14 }}>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ position: 'relative', flex: 1, minWidth: 180 }}>
             <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none' }} />
@@ -243,10 +243,10 @@ export function AdminTransactions() {
       )}
 
       {/* Table */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
         {loading ? (
           <div style={{ padding: '60px 20px', textAlign: 'center' }}>
-            <div style={{ width: 28, height: 28, border: '3px solid rgba(167,139,250,0.3)', borderTopColor: '#a78bfa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 12px' }} />
+            <div style={{ width: 28, height: 28, border: '3px solid rgba(96,165,250,0.3)', borderTopColor: '#60a5fa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 12px' }} />
             <p style={{ color: 'hsl(240 5% 50%)', fontSize: 13 }}>Loading transactions…</p>
           </div>
         ) : (
@@ -291,7 +291,7 @@ export function AdminTransactions() {
                         <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: tm.bg, color: tm.c }}>{tm.label}</span>
                       </td>
 
-                      <td style={{ padding: '11px 14px', fontSize: 12.5, fontWeight: 700, color: isOut ? '#f87171' : '#a78bfa', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '11px 14px', fontSize: 12.5, fontWeight: 700, color: isOut ? '#f87171' : '#60a5fa', whiteSpace: 'nowrap' }}>
                         {isOut ? '−' : '+'} ${Number(tx.amount).toLocaleString()}
                       </td>
 
@@ -325,7 +325,7 @@ export function AdminTransactions() {
                           {(tx.status === 'PENDING' || tx.status === 'PROCESSING') && (
                             <>
                               <button onClick={() => approve(tx.id)} disabled={busy}
-                                style={{ padding: '4px 9px', borderRadius: 6, background: busy ? 'rgba(255,255,255,0.04)' : 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: busy ? 'hsl(240 5% 40%)' : '#a78bfa', fontSize: 11, fontWeight: 700, cursor: busy ? 'not-allowed' : 'pointer' }}>
+                                style={{ padding: '4px 9px', borderRadius: 6, background: busy ? 'rgba(255,255,255,0.04)' : 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.25)', color: busy ? 'hsl(240 5% 40%)' : '#60a5fa', fontSize: 11, fontWeight: 700, cursor: busy ? 'not-allowed' : 'pointer' }}>
                                 {busy ? '…' : '✓ Approve'}
                               </button>
                               <button onClick={() => reject(tx.id)} disabled={busy}
@@ -360,7 +360,7 @@ export function AdminTransactions() {
             <div style={{ display: 'flex', gap: 5 }}>
               {Array.from({ length: Math.min(totalPages, 8) }, (_, i) => i + 1).map(p => (
                 <button key={p} onClick={() => setPage(p)}
-                  style={{ width: 28, height: 28, borderRadius: 6, border: page === p ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: page === p ? 'rgba(167,139,250,0.18)' : 'rgba(255,255,255,0.03)', color: page === p ? '#c4b5fd' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>{p}</button>
+                  style={{ width: 28, height: 28, borderRadius: 6, border: page === p ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: page === p ? 'rgba(96,165,250,0.18)' : 'rgba(255,255,255,0.03)', color: page === p ? '#93c5fd' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>{p}</button>
               ))}
             </div>
           </div>

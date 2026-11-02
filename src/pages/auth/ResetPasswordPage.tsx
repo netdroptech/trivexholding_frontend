@@ -34,7 +34,7 @@ export default function ResetPasswordPage() {
       { label: 'Weak',   color: '#ef4444' },
       { label: 'Fair',   color: '#f97316' },
       { label: 'Good',   color: '#eab308' },
-      { label: 'Strong', color: '#8b5cf6' },
+      { label: 'Strong', color: '#3b82f6' },
     ]
     return { score, ...map[score] }
   }
@@ -87,7 +87,7 @@ export default function ResetPasswordPage() {
         <Link
           to="/forgot-password"
           className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}
         >
           Request New Link
         </Link>
@@ -102,13 +102,13 @@ export default function ResetPasswordPage() {
         <div className="relative w-20 h-20 mx-auto mb-6">
           <div
             className="absolute inset-0 rounded-full"
-            style={{ background: 'rgba(139,92,246,0.1)', animation: 'ringPulse 2s ease-in-out infinite' }}
+            style={{ background: 'rgba(59,130,246,0.1)', animation: 'ringPulse 2s ease-in-out infinite' }}
           />
           <div
             className="absolute inset-2 rounded-full flex items-center justify-center"
-            style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)' }}
+            style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}
           >
-            <CheckCircle size={28} style={{ color: '#a78bfa' }} />
+            <CheckCircle size={28} style={{ color: '#60a5fa' }} />
           </div>
         </div>
         <h2 className="text-xl font-semibold mb-2" style={{ color: 'hsl(40 6% 95%)' }}>
@@ -120,7 +120,7 @@ export default function ResetPasswordPage() {
         <button
           onClick={() => navigate('/login')}
           className="w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}
         >
           Sign In Now
         </button>
@@ -135,9 +135,9 @@ export default function ResetPasswordPage() {
       <div className="flex items-center gap-3 mb-6">
         <div
           className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)' }}
+          style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}
         >
-          <ShieldCheck size={20} style={{ color: '#a78bfa' }} />
+          <ShieldCheck size={20} style={{ color: '#60a5fa' }} />
         </div>
         <div>
           <h1 className="text-lg font-semibold" style={{ color: 'hsl(40 6% 95%)' }}>Set new password</h1>
@@ -175,7 +175,7 @@ export default function ResetPasswordPage() {
                 border: '1px solid rgba(255,255,255,0.1)',
                 color: 'hsl(40 6% 90%)',
               }}
-              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(139,92,246,0.45)')}
+              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(59,130,246,0.45)')}
               onBlur={e  => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
             />
             <button
@@ -220,15 +220,15 @@ export default function ResetPasswordPage() {
               className="w-full pl-9 pr-10 py-3 rounded-xl text-sm outline-none placeholder:opacity-40 transition-all"
               style={{
                 background: 'rgba(255,255,255,0.05)',
-                border: `1px solid ${confirmPw && confirmPw !== password ? 'rgba(239,68,68,0.4)' : confirmPw && confirmPw === password ? 'rgba(139,92,246,0.4)' : 'rgba(255,255,255,0.1)'}`,
+                border: `1px solid ${confirmPw && confirmPw !== password ? 'rgba(239,68,68,0.4)' : confirmPw && confirmPw === password ? 'rgba(59,130,246,0.4)' : 'rgba(255,255,255,0.1)'}`,
                 color: 'hsl(40 6% 90%)',
               }}
-              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(139,92,246,0.45)')}
+              onFocus={e => (e.currentTarget.style.borderColor = 'rgba(59,130,246,0.45)')}
               onBlur={e  => {
                 if (confirmPw && confirmPw !== password) {
                   e.currentTarget.style.borderColor = 'rgba(239,68,68,0.4)'
                 } else if (confirmPw && confirmPw === password) {
-                  e.currentTarget.style.borderColor = 'rgba(139,92,246,0.4)'
+                  e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)'
                 } else {
                   e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
                 }
@@ -255,17 +255,17 @@ export default function ResetPasswordPage() {
               <div
                 className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 transition-all"
                 style={{
-                  background: r.ok ? 'rgba(139,92,246,0.2)' : 'rgba(255,255,255,0.05)',
-                  border: `1px solid ${r.ok ? 'rgba(139,92,246,0.5)' : 'rgba(255,255,255,0.1)'}`,
+                  background: r.ok ? 'rgba(59,130,246,0.2)' : 'rgba(255,255,255,0.05)',
+                  border: `1px solid ${r.ok ? 'rgba(59,130,246,0.5)' : 'rgba(255,255,255,0.1)'}`,
                 }}
               >
                 {r.ok && (
                   <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                    <path d="M1.5 4L3 5.5L6.5 2" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.5 4L3 5.5L6.5 2" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
               </div>
-              <span className="text-xs transition-colors" style={{ color: r.ok ? '#c4b5fd' : 'hsl(240 5% 48%)' }}>
+              <span className="text-xs transition-colors" style={{ color: r.ok ? '#93c5fd' : 'hsl(240 5% 48%)' }}>
                 {r.label}
               </span>
             </div>
@@ -276,7 +276,7 @@ export default function ResetPasswordPage() {
           type="submit"
           disabled={loading}
           className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold mt-1 transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}
         >
           {loading
             ? <><Loader2 size={15} className="animate-spin"/> Updating password…</>
@@ -305,15 +305,15 @@ function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4"
-      style={{ background: 'hsl(260 87% 2%)', position: 'relative', overflow: 'hidden', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif" }}
+      style={{ background: 'hsl(222 87% 2%)', position: 'relative', overflow: 'hidden', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif" }}
     >
       <PageBackground />
       {/* Glow blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-15%] left-[-5%] w-[500px] h-[500px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle,#7c3aed,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#2563eb,transparent 70%)', filter: 'blur(60px)' }} />
         <div className="absolute bottom-[-20%] right-[-10%] w-[450px] h-[450px] rounded-full opacity-15"
-          style={{ background: 'radial-gradient(circle,#6d28d9,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#1d4ed8,transparent 70%)', filter: 'blur(60px)' }} />
       </div>
 
       <div className="relative w-full max-w-sm">

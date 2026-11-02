@@ -44,15 +44,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(260 87% 2%)', position: 'relative', overflow: 'hidden' }}>
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(222 87% 2%)', position: 'relative', overflow: 'hidden' }}>
       <PageBackground />
 
       {/* Glow blobs — green */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-15%] left-[-5%] w-[500px] h-[500px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle,#7c3aed,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#2563eb,transparent 70%)', filter: 'blur(60px)' }} />
         <div className="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] rounded-full opacity-15"
-          style={{ background: 'radial-gradient(circle,#6d28d9,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#1d4ed8,transparent 70%)', filter: 'blur(60px)' }} />
       </div>
 
       <div className="relative w-full max-w-sm">
@@ -76,8 +76,8 @@ export default function LoginPage() {
         >
           <div className="flex items-center gap-3 mb-7">
             <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)' }}>
-              <ShieldCheck size={18} style={{ color: '#a78bfa' }} />
+              style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}>
+              <ShieldCheck size={18} style={{ color: '#60a5fa' }} />
             </div>
             <div>
               <h1 className="text-lg font-semibold" style={{ color: 'hsl(40 6% 95%)' }}>Welcome back</h1>
@@ -125,7 +125,7 @@ export default function LoginPage() {
               <div className="flex items-center justify-between mb-1.5">
                 <label className="text-xs font-medium" style={{ color: 'hsl(240 5% 65%)' }}>Password</label>
                 <Link to="/forgot-password" className="text-xs transition-colors hover:opacity-80"
-                  style={{ color: '#a78bfa' }}>
+                  style={{ color: '#60a5fa' }}>
                   Forgot password?
                 </Link>
               </div>
@@ -157,7 +157,7 @@ export default function LoginPage() {
               type="submit"
               disabled={loading || attempts >= 5}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold mt-2 transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
-              style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}>
+              style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}>
               {loading
                 ? <><Loader2 size={15} className="animate-spin"/> Signing in…</>
                 : 'Sign In'}
@@ -166,7 +166,7 @@ export default function LoginPage() {
 
           <p className="text-center text-xs mt-6" style={{ color: 'hsl(240 5% 50%)' }}>
             Don't have an account?{' '}
-            <Link to="/register" className="font-medium" style={{ color: '#a78bfa' }}>Create one</Link>
+            <Link to="/register" className="font-medium" style={{ color: '#60a5fa' }}>Create one</Link>
           </p>
 
         </div>

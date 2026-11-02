@@ -36,12 +36,12 @@ export function KYCPendingPage() {
   ]
 
   return (
-    <div style={{ minHeight: '100vh', background: 'hsl(260 87% 3%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'clamp(0px, 3vw, 24px) clamp(0px, 4vw, 16px)', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif", position: 'relative', overflow: 'hidden' }}>
+    <div style={{ minHeight: '100vh', background: 'hsl(222 87% 3%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'clamp(0px, 3vw, 24px) clamp(0px, 4vw, 16px)', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif", position: 'relative', overflow: 'hidden' }}>
 
       {/* Background glows */}
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none' }}>
         <div style={{ position: 'absolute', top: '-10%', left: '50%', transform: 'translateX(-50%)', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 65%)', filter: 'blur(40px)' }} />
-        <div style={{ position: 'absolute', bottom: '-15%', right: '-5%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+        <div style={{ position: 'absolute', bottom: '-15%', right: '-5%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(96,165,250,0.05) 0%, transparent 70%)', filter: 'blur(60px)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
@@ -99,9 +99,9 @@ export function KYCPendingPage() {
                   <div style={{
                     width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: s.done ? 'rgba(167,139,250,0.15)' : s.active ? 'rgba(245,158,11,0.15)' : 'rgba(255,255,255,0.04)',
-                    border: `1px solid ${s.done ? 'rgba(167,139,250,0.35)' : s.active ? 'rgba(245,158,11,0.35)' : 'rgba(255,255,255,0.08)'}`,
-                    color: s.done ? '#a78bfa' : s.active ? '#fbbf24' : 'hsl(240 5% 40%)',
+                    background: s.done ? 'rgba(96,165,250,0.15)' : s.active ? 'rgba(245,158,11,0.15)' : 'rgba(255,255,255,0.04)',
+                    border: `1px solid ${s.done ? 'rgba(96,165,250,0.35)' : s.active ? 'rgba(245,158,11,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                    color: s.done ? '#60a5fa' : s.active ? '#fbbf24' : 'hsl(240 5% 40%)',
                     boxShadow: s.active ? '0 0 12px rgba(245,158,11,0.25)' : 'none',
                     transition: 'all 0.3s',
                   }}>
@@ -112,7 +112,7 @@ export function KYCPendingPage() {
                       : <ShieldCheck size={13} />}
                   </div>
                   {i < steps.length - 1 && (
-                    <div style={{ width: 1, flex: 1, margin: '4px 0', background: s.done ? 'rgba(167,139,250,0.25)' : 'rgba(255,255,255,0.06)' }} />
+                    <div style={{ width: 1, flex: 1, margin: '4px 0', background: s.done ? 'rgba(96,165,250,0.25)' : 'rgba(255,255,255,0.06)' }} />
                   )}
                 </div>
 
@@ -128,7 +128,7 @@ export function KYCPendingPage() {
                       </span>
                     )}
                     {s.done && (
-                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 999, background: 'rgba(167,139,250,0.1)', color: '#a78bfa', border: '1px solid rgba(167,139,250,0.2)', letterSpacing: '0.04em' }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 999, background: 'rgba(96,165,250,0.1)', color: '#60a5fa', border: '1px solid rgba(96,165,250,0.2)', letterSpacing: '0.04em' }}>
                         DONE
                       </span>
                     )}
@@ -236,12 +236,12 @@ export default function KYCPage() {
   }
 
   if (step === 'done') return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(260 87% 3%)' }}>
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(222 87% 3%)' }}>
       <div className="max-w-md w-full text-center rounded-3xl p-10"
         style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-          style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)' }}>
-          <Check size={28} style={{ color: '#a78bfa' }} />
+          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>
+          <Check size={28} style={{ color: '#60a5fa' }} />
         </div>
         <h2 className="text-2xl font-semibold mb-2" style={{ color: 'hsl(40 6% 95%)' }}>Documents Submitted!</h2>
         <p className="text-sm mb-6" style={{ color: 'hsl(240 5% 65%)' }}>
@@ -253,18 +253,18 @@ export default function KYCPage() {
   )
 
   return (
-    <div className="min-h-screen py-10 px-4" style={{ background: 'hsl(260 87% 3%)', color: 'hsl(40 6% 95%)' }}>
+    <div className="min-h-screen py-10 px-4" style={{ background: 'hsl(222 87% 3%)', color: 'hsl(40 6% 95%)' }}>
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-[450px] h-[450px] rounded-full opacity-15"
-          style={{ background: 'radial-gradient(circle,#6366f1,transparent 70%)', filter: 'blur(70px)' }} />
+          style={{ background: 'radial-gradient(circle,#3b82f6,transparent 70%)', filter: 'blur(70px)' }} />
       </div>
 
       <div className="relative max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
-            style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)' }}>
-            <ShieldCheck size={24} style={{ color: '#818cf8' }} />
+            style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>
+            <ShieldCheck size={24} style={{ color: '#60a5fa' }} />
           </div>
           <h1 className="text-3xl font-semibold mb-2">Identity Verification</h1>
           <p className="text-sm" style={{ color: 'hsl(240 5% 60%)' }}>
@@ -274,8 +274,8 @@ export default function KYCPage() {
 
         {/* Why KYC banner */}
         <div className="flex items-start gap-3 mb-8 px-5 py-4 rounded-2xl"
-          style={{ background: 'rgba(99,102,241,0.07)', border: '1px solid rgba(99,102,241,0.2)' }}>
-          <ShieldCheck size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#818cf8' }} />
+          style={{ background: 'rgba(59,130,246,0.07)', border: '1px solid rgba(59,130,246,0.2)' }}>
+          <ShieldCheck size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#60a5fa' }} />
           <p className="text-sm" style={{ color: 'hsl(240 5% 70%)' }}>
             We verify identities to protect your account and comply with financial regulations.
             Your data is encrypted and never shared with third parties.
@@ -306,7 +306,7 @@ export default function KYCPage() {
                 <button key={d.value} type="button" onClick={() => setDocType(d.value)}
                   className="px-3 py-3 rounded-xl text-sm font-medium text-center transition-all"
                   style={docType === d.value
-                    ? { background: 'rgba(99,102,241,0.2)', border: '1.5px solid #818cf8', color: '#c7d2fe' }
+                    ? { background: 'rgba(59,130,246,0.2)', border: '1.5px solid #60a5fa', color: '#bfdbfe' }
                     : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(240 5% 65%)' }}>
                   {d.label}
                 </button>
@@ -364,7 +364,7 @@ export default function KYCPage() {
             onClick={handleSubmit}
             disabled={loading}
             className="w-full max-w-md flex items-center justify-center gap-2 py-4 rounded-2xl text-sm font-medium transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
-            style={{ background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', color: '#fff', boxShadow: '0 4px 24px rgba(99,102,241,0.35)' }}>
+            style={{ background: 'linear-gradient(135deg,#3b82f6,#3b82f6)', color: '#fff', boxShadow: '0 4px 24px rgba(59,130,246,0.35)' }}>
             {loading
               ? <><Loader2 size={16} className="animate-spin"/> Submitting…</>
               : <><ShieldCheck size={16}/> Submit for Verification</>}
@@ -385,7 +385,7 @@ function Section({ title, icon, children }: { title: string; icon: React.ReactNo
     <div className="rounded-3xl p-6 space-y-4"
       style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="flex items-center gap-2 mb-1">
-        <span style={{ color: '#818cf8' }}>{icon}</span>
+        <span style={{ color: '#60a5fa' }}>{icon}</span>
         <h3 className="text-sm font-semibold" style={{ color: 'hsl(40 6% 90%)' }}>{title}</h3>
       </div>
       {children}
@@ -421,9 +421,9 @@ function UploadBox({ label, file, preview, inputRef, onChange, tall }: UploadBox
       <label className="block text-xs font-medium mb-1.5" style={{ color: 'hsl(240 5% 65%)' }}>{label}</label>
       <div
         onClick={() => inputRef.current?.click()}
-        className={`relative cursor-pointer rounded-2xl flex flex-col items-center justify-center transition-all hover:border-indigo-500/50 ${tall ? 'h-48' : 'h-36'}`}
+        className={`relative cursor-pointer rounded-2xl flex flex-col items-center justify-center transition-all hover:border-blue-500/50 ${tall ? 'h-48' : 'h-36'}`}
         style={preview
-          ? { border: '1.5px solid rgba(99,102,241,0.5)', overflow: 'hidden', background: '#000' }
+          ? { border: '1.5px solid rgba(59,130,246,0.5)', overflow: 'hidden', background: '#000' }
           : { border: '1.5px dashed rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.03)' }}>
         {preview ? (
           <>

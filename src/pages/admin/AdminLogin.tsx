@@ -74,7 +74,7 @@ function AdminLoginInner() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'hsl(260 87% 2%)',
+      background: 'hsl(222 87% 2%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -91,7 +91,7 @@ function AdminLoginInner() {
           left: `${p.x}%`, top: `${p.y}%`,
           width: p.size, height: p.size,
           borderRadius: '50%',
-          background: i % 3 === 0 ? '#7c3aed' : i % 3 === 1 ? '#6d28d9' : '#a78bfa',
+          background: i % 3 === 0 ? '#2563eb' : i % 3 === 1 ? '#1d4ed8' : '#60a5fa',
           opacity: p.opacity,
           animation: `floatUp ${p.speed}s linear infinite`,
           animationDelay: `${-Math.random() * p.speed}s`,
@@ -100,8 +100,8 @@ function AdminLoginInner() {
       ))}
 
       {/* Glow blobs */}
-      <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       {/* Grid texture */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
@@ -114,16 +114,16 @@ function AdminLoginInner() {
 
         {/* Top badge */}
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '8px 18px', borderRadius: 999, background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', backdropFilter: 'blur(10px)' }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#a78bfa', animation: 'pulse 1.8s ease-in-out infinite' }} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: '#c4b5fd', letterSpacing: '0.08em' }}>{platformName.toUpperCase()} SECURE ACCESS</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '8px 18px', borderRadius: 999, background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', backdropFilter: 'blur(10px)' }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#60a5fa', animation: 'pulse 1.8s ease-in-out infinite' }} />
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.08em' }}>{platformName.toUpperCase()} SECURE ACCESS</span>
           </div>
         </div>
 
         {/* Main card */}
         <div style={{
-          background: 'rgba(15, 10, 30, 0.88)',
-          border: '1px solid rgba(167,139,250,0.18)',
+          background: 'rgba(8,14,30, 0.88)',
+          border: '1px solid rgba(96,165,250,0.18)',
           borderRadius: 24,
           backdropFilter: 'blur(24px)',
           boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset, 0 1px 0 rgba(255,255,255,0.08) inset',
@@ -131,15 +131,15 @@ function AdminLoginInner() {
         }}>
 
           {/* Header */}
-          <div style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.25), rgba(124,58,237,0.2))', padding: '28px 32px 24px', borderBottom: '1px solid rgba(167,139,250,0.12)', position: 'relative' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.6), transparent)' }} />
+          <div style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.25), rgba(37,99,235,0.2))', padding: '28px 32px 24px', borderBottom: '1px solid rgba(96,165,250,0.12)', position: 'relative' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, rgba(96,165,250,0.6), transparent)' }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: 'linear-gradient(135deg, #7c3aed, #6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(124,58,237,0.45)', flexShrink: 0 }}>
+              <div style={{ width: 52, height: 52, borderRadius: 14, background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 24px rgba(37,99,235,0.45)', flexShrink: 0 }}>
                 <ShieldCheck size={24} style={{ color: '#fff' }} />
               </div>
               <div>
                 <p style={{ fontSize: 20, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>Admin Portal</p>
-                <p style={{ fontSize: 12, color: 'rgba(196,181,253,0.75)', marginTop: 2 }}>Restricted access — authorized personnel only</p>
+                <p style={{ fontSize: 12, color: 'rgba(147,197,253,0.75)', marginTop: 2 }}>Restricted access — authorized personnel only</p>
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@ function AdminLoginInner() {
                       onChange={e => { setEmail(e.target.value); setError('') }}
                       placeholder="admin@apex.com" autoComplete="email"
                       style={{ width: '100%', height: 46, paddingLeft: 38, paddingRight: 14, borderRadius: 11, fontSize: 13, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', color: 'hsl(40 6% 92%)', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.15s' }}
-                      onFocus={e => (e.target.style.borderColor = 'rgba(167,139,250,0.5)')}
+                      onFocus={e => (e.target.style.borderColor = 'rgba(96,165,250,0.5)')}
                       onBlur={e  => (e.target.style.borderColor = 'rgba(255,255,255,0.09)')}
                     />
                   </div>
@@ -176,7 +176,7 @@ function AdminLoginInner() {
                 <div style={{ marginBottom: 22 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 7 }}>
                     <label style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 50%)', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Password</label>
-                    <button type="button" style={{ fontSize: 11, color: '#a78bfa', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Forgot?</button>
+                    <button type="button" style={{ fontSize: 11, color: '#60a5fa', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>Forgot?</button>
                   </div>
                   <div style={{ position: 'relative' }}>
                     <Lock size={14} style={{ position: 'absolute', left: 13, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none' }} />
@@ -185,7 +185,7 @@ function AdminLoginInner() {
                       onChange={e => { setPassword(e.target.value); setError('') }}
                       placeholder="••••••••••••" autoComplete="current-password"
                       style={{ width: '100%', height: 46, paddingLeft: 38, paddingRight: 44, borderRadius: 11, fontSize: 13, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', color: 'hsl(40 6% 92%)', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.15s' }}
-                      onFocus={e => (e.target.style.borderColor = 'rgba(167,139,250,0.5)')}
+                      onFocus={e => (e.target.style.borderColor = 'rgba(96,165,250,0.5)')}
                       onBlur={e  => (e.target.style.borderColor = 'rgba(255,255,255,0.09)')}
                     />
                     <button type="button" onClick={() => setShowPw(v => !v)} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 44%)', padding: 4, display: 'flex', alignItems: 'center' }}>
@@ -195,22 +195,22 @@ function AdminLoginInner() {
                 </div>
 
                 {/* Demo hint */}
-                <div style={{ padding: '10px 13px', borderRadius: 9, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.14)', marginBottom: 20 }}>
-                  <p style={{ fontSize: 11, color: 'rgba(196,181,253,0.7)', lineHeight: 1.6 }}>
-                    <span style={{ fontWeight: 700, color: '#c4b5fd' }}>Demo credentials: </span>
+                <div style={{ padding: '10px 13px', borderRadius: 9, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.14)', marginBottom: 20 }}>
+                  <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.7)', lineHeight: 1.6 }}>
+                    <span style={{ fontWeight: 700, color: '#93c5fd' }}>Demo credentials: </span>
                     admin@apex.com / Admin@1234
                   </p>
                 </div>
 
                 <button type="submit" disabled={attempts >= 3} style={{
                   width: '100%', height: 48, borderRadius: 12,
-                  background: attempts >= 3 ? 'rgba(255,255,255,0.05)' : 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
+                  background: attempts >= 3 ? 'rgba(255,255,255,0.05)' : 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
                   border: 'none',
                   color: attempts >= 3 ? 'hsl(240 5% 38%)' : '#fff',
                   fontSize: 14, fontWeight: 700,
                   cursor: attempts >= 3 ? 'not-allowed' : 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  boxShadow: attempts >= 3 ? 'none' : '0 8px 24px rgba(124,58,237,0.4)',
+                  boxShadow: attempts >= 3 ? 'none' : '0 8px 24px rgba(37,99,235,0.4)',
                   transition: 'all 0.2s',
                 }}>
                   {attempts >= 3 ? 'Account Locked' : <><span>Sign In to Admin</span><ChevronRight size={16} /></>}
@@ -218,13 +218,13 @@ function AdminLoginInner() {
               </form>
             ) : (
               <div style={{ textAlign: 'center', padding: '24px 0 8px' }}>
-                <div style={{ width: 60, height: 60, borderRadius: '50%', background: 'linear-gradient(135deg, #7c3aed, #6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', boxShadow: '0 0 40px rgba(124,58,237,0.5)', animation: 'spinGlow 1s linear infinite' }}>
+                <div style={{ width: 60, height: 60, borderRadius: '50%', background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', boxShadow: '0 0 40px rgba(37,99,235,0.5)', animation: 'spinGlow 1s linear infinite' }}>
                   <ShieldCheck size={26} style={{ color: '#fff' }} />
                 </div>
                 <p style={{ fontSize: 15, fontWeight: 800, color: 'hsl(40 10% 94%)', marginBottom: 5 }}>Signing in…</p>
                 <p style={{ fontSize: 12, color: 'hsl(240 5% 50%)', marginBottom: 22 }}>Loading admin panel</p>
                 <div style={{ height: 3, borderRadius: 999, background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}>
-                  <div style={{ height: '100%', background: 'linear-gradient(90deg, #7c3aed, #a78bfa)', borderRadius: 999, animation: 'progressFill 1.3s ease forwards' }} />
+                  <div style={{ height: '100%', background: 'linear-gradient(90deg, #2563eb, #60a5fa)', borderRadius: 999, animation: 'progressFill 1.3s ease forwards' }} />
                 </div>
               </div>
             )}
@@ -235,7 +235,7 @@ function AdminLoginInner() {
         <div style={{ textAlign: 'center', marginTop: 20 }}>
           <p style={{ fontSize: 11, color: 'hsl(240 5% 35%)' }}>
             Not an admin?{' '}
-            <button onClick={() => navigate('/dashboard')} style={{ background: 'none', border: 'none', color: '#a78bfa', cursor: 'pointer', fontSize: 11, fontWeight: 600, padding: 0 }}>
+            <button onClick={() => navigate('/dashboard')} style={{ background: 'none', border: 'none', color: '#60a5fa', cursor: 'pointer', fontSize: 11, fontWeight: 600, padding: 0 }}>
               Go to dashboard
             </button>
           </p>
@@ -253,7 +253,7 @@ function AdminLoginInner() {
           100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
         }
         @keyframes pulse {
-          0%, 100% { opacity: 1; box-shadow: 0 0 6px #a78bfa; }
+          0%, 100% { opacity: 1; box-shadow: 0 0 6px #60a5fa; }
           50%       { opacity: 0.3; box-shadow: none; }
         }
         @keyframes shake {

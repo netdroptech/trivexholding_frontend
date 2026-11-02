@@ -24,10 +24,10 @@ function StepBadge({ n, active, done }: { n: number; active: boolean; done: bool
     <div style={{
       width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      background: done ? 'rgba(167,139,250,0.15)' : active ? 'rgba(167,139,250,0.25)' : 'rgba(255,255,255,0.05)',
-      border: done ? '2px solid rgba(167,139,250,0.4)' : active ? '2px solid rgba(167,139,250,0.5)' : '2px solid rgba(255,255,255,0.08)',
+      background: done ? 'rgba(96,165,250,0.15)' : active ? 'rgba(96,165,250,0.25)' : 'rgba(255,255,255,0.05)',
+      border: done ? '2px solid rgba(96,165,250,0.4)' : active ? '2px solid rgba(96,165,250,0.5)' : '2px solid rgba(255,255,255,0.08)',
       fontSize: 12, fontWeight: 800,
-      color: done ? '#a78bfa' : active ? '#c4b5fd' : 'hsl(240 5% 45%)',
+      color: done ? '#60a5fa' : active ? '#93c5fd' : 'hsl(240 5% 45%)',
     }}>
       {done ? <CheckCircle2 size={14} /> : n}
     </div>
@@ -55,17 +55,17 @@ function UploadZone({ label, hint, accept, file, onFile }: {
       onDrop={e => { e.preventDefault(); setDragging(false); pick(e.dataTransfer.files?.[0]) }}
       onClick={() => ref.current?.click()}
       style={{
-        border: `2px dashed ${file ? 'rgba(167,139,250,0.4)' : dragging ? 'rgba(167,139,250,0.5)' : 'rgba(255,255,255,0.1)'}`,
+        border: `2px dashed ${file ? 'rgba(96,165,250,0.4)' : dragging ? 'rgba(96,165,250,0.5)' : 'rgba(255,255,255,0.1)'}`,
         borderRadius: 14, padding: '24px 20px', textAlign: 'center',
-        background: file ? 'rgba(167,139,250,0.04)' : dragging ? 'rgba(167,139,250,0.05)' : 'rgba(255,255,255,0.02)',
+        background: file ? 'rgba(96,165,250,0.04)' : dragging ? 'rgba(96,165,250,0.05)' : 'rgba(255,255,255,0.02)',
         cursor: 'pointer', transition: 'all 0.2s', marginBottom: 16,
       }}
     >
       <input ref={ref} type="file" accept={accept} hidden onChange={e => { pick(e.target.files?.[0]); e.target.value = '' }} />
       {file ? (
         <>
-          <CheckCircle2 size={26} style={{ color: '#a78bfa', margin: '0 auto 8px' }} />
-          <p style={{ fontSize: 13, fontWeight: 600, color: '#a78bfa' }}>{label} — added</p>
+          <CheckCircle2 size={26} style={{ color: '#60a5fa', margin: '0 auto 8px' }} />
+          <p style={{ fontSize: 13, fontWeight: 600, color: '#60a5fa' }}>{label} — added</p>
           <p style={{ fontSize: 11, color: 'hsl(240 5% 55%)', marginTop: 3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{file.name}</p>
           <p style={{ fontSize: 11, color: 'hsl(240 5% 45%)', marginTop: 2 }}>Tap to replace</p>
         </>
@@ -74,7 +74,7 @@ function UploadZone({ label, hint, accept, file, onFile }: {
           <Upload size={26} style={{ color: 'hsl(240 5% 42%)', margin: '0 auto 10px' }} />
           <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 85%)' }}>{label}</p>
           <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', marginTop: 4 }}>{hint}</p>
-          <span style={{ display: 'inline-block', marginTop: 12, fontSize: 12, fontWeight: 600, padding: '7px 18px', borderRadius: 8, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)', color: '#c4b5fd' }}>
+          <span style={{ display: 'inline-block', marginTop: 12, fontSize: 12, fontWeight: 600, padding: '7px 18px', borderRadius: 8, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', color: '#93c5fd' }}>
             Browse files
           </span>
         </>
@@ -90,7 +90,7 @@ const inputStyle: React.CSSProperties = {
   outline: 'none', boxSizing: 'border-box', colorScheme: 'dark',
 }
 const labelStyle: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 600, color: 'hsl(240 5% 50%)', marginBottom: 6, letterSpacing: '0.05em', textTransform: 'uppercase' }
-const cardStyle: React.CSSProperties = { background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }
+const cardStyle: React.CSSProperties = { background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }
 
 const fmtDate = (d?: string | null) => d ? new Date(d).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : ''
 
@@ -212,7 +212,7 @@ export function KYCVerification() {
 
   // ── Verification levels (real status) ───────────────────────────────────────
   const kycBadge: Record<string, { label: string; color: string; bg: string; icon: React.ElementType }> = {
-    APPROVED:      { label: 'Verified',      color: '#a78bfa', bg: 'rgba(167,139,250,0.1)', icon: CheckCircle2 },
+    APPROVED:      { label: 'Verified',      color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', icon: CheckCircle2 },
     PENDING:       { label: 'Under Review',  color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  icon: Clock },
     REJECTED:      { label: 'Rejected',      color: '#f87171', bg: 'rgba(248,113,113,0.1)', icon: XCircle },
     NOT_SUBMITTED: { label: 'Not Submitted', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', icon: AlertCircle },
@@ -220,7 +220,7 @@ export function KYCVerification() {
   const k = kycBadge[status] ?? kycBadge.NOT_SUBMITTED
   const LEVEL_STATUS = [
     user?.emailVerified
-      ? { level: 'Level 1 — Email Verified', status: 'Verified',     color: '#a78bfa', bg: 'rgba(167,139,250,0.1)', icon: CheckCircle2 }
+      ? { level: 'Level 1 — Email Verified', status: 'Verified',     color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', icon: CheckCircle2 }
       : { level: 'Level 1 — Email Verified', status: 'Not Verified', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', icon: AlertCircle },
     { level: 'Level 2 — Identity (KYC)', status: k.label, color: k.color, bg: k.bg, icon: k.icon },
     { level: 'Level 3 — Enhanced Due Diligence', status: 'Locked', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)', icon: Shield },
@@ -259,7 +259,7 @@ export function KYCVerification() {
       {/* ── Approved ── */}
       {status === 'APPROVED' && (
         <div style={{ ...cardStyle, textAlign: 'center' }}>
-          <CheckCircle2 size={40} style={{ color: '#a78bfa', margin: '0 auto 12px' }} />
+          <CheckCircle2 size={40} style={{ color: '#60a5fa', margin: '0 auto 12px' }} />
           <p style={{ fontSize: 16, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>Your identity is verified</p>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', marginTop: 6 }}>
             You have full access to your account{myKyc?.reviewedAt ? ` · Approved ${fmtDate(myKyc.reviewedAt)}` : ''}.
@@ -286,7 +286,7 @@ export function KYCVerification() {
           {!kycLoading && myKyc?.rejectionReason && (
             <p style={{ fontSize: 13, color: '#fca5a5', marginTop: 8, lineHeight: 1.6 }}>Reason: {myKyc.rejectionReason}</p>
           )}
-          <button onClick={() => { setResubmitting(true); setStep(0) }} style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 10, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+          <button onClick={() => { setResubmitting(true); setStep(0) }} style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 10, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
             Resubmit documents <ChevronRight size={14} />
           </button>
         </div>
@@ -301,10 +301,10 @@ export function KYCVerification() {
               <div key={i} style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
                 <button onClick={() => i < step && setStep(i)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: i < step ? 'pointer' : 'default' }}>
                   <StepBadge n={i + 1} active={i === step} done={i < step} />
-                  <span style={{ fontSize: 10, fontWeight: 600, color: i === step ? '#c4b5fd' : i < step ? '#a78bfa' : 'hsl(240 5% 45%)', whiteSpace: 'nowrap' }}>{s}</span>
+                  <span style={{ fontSize: 10, fontWeight: 600, color: i === step ? '#93c5fd' : i < step ? '#60a5fa' : 'hsl(240 5% 45%)', whiteSpace: 'nowrap' }}>{s}</span>
                 </button>
                 {i < STEPS.length - 1 && (
-                  <div style={{ width: 36, height: 2, background: i < step ? 'rgba(167,139,250,0.4)' : 'rgba(255,255,255,0.07)', margin: '0 6px', marginBottom: 18, flexShrink: 0 }} />
+                  <div style={{ width: 36, height: 2, background: i < step ? 'rgba(96,165,250,0.4)' : 'rgba(255,255,255,0.07)', margin: '0 6px', marginBottom: 18, flexShrink: 0 }} />
                 )}
               </div>
             ))}
@@ -339,7 +339,7 @@ export function KYCVerification() {
                 <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 20 }}>Select document type and upload a clear, unobstructed photo.</p>
                 <div style={{ display: 'flex', gap: 10, marginBottom: 20, flexWrap: 'wrap' }}>
                   {DOC_TYPES.map(d => (
-                    <button key={d.id} onClick={() => { setDocType(d.id); setError('') }} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, cursor: 'pointer', border: docType === d.id ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: docType === d.id ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.03)', color: docType === d.id ? '#c4b5fd' : 'hsl(240 5% 60%)', fontSize: 12, fontWeight: 600, transition: 'all 0.15s' }}>
+                    <button key={d.id} onClick={() => { setDocType(d.id); setError('') }} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 16px', borderRadius: 10, cursor: 'pointer', border: docType === d.id ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: docType === d.id ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.03)', color: docType === d.id ? '#93c5fd' : 'hsl(240 5% 60%)', fontSize: 12, fontWeight: 600, transition: 'all 0.15s' }}>
                       <span>{d.icon}</span> {d.label}
                     </button>
                   ))}
@@ -362,7 +362,7 @@ export function KYCVerification() {
                 <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 20 }}>Take a clear photo of your face to verify it matches your document.</p>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
                   {['✅ Good lighting', '✅ Face fully visible', '❌ No sunglasses', '❌ No hat or cap'].map(tip => (
-                    <div key={tip} style={{ padding: '10px 14px', borderRadius: 10, background: tip.startsWith('✅') ? 'rgba(167,139,250,0.06)' : 'rgba(248,113,113,0.06)', border: `1px solid ${tip.startsWith('✅') ? 'rgba(167,139,250,0.15)' : 'rgba(248,113,113,0.15)'}`, fontSize: 12, color: tip.startsWith('✅') ? '#a78bfa' : '#f87171' }}>
+                    <div key={tip} style={{ padding: '10px 14px', borderRadius: 10, background: tip.startsWith('✅') ? 'rgba(96,165,250,0.06)' : 'rgba(248,113,113,0.06)', border: `1px solid ${tip.startsWith('✅') ? 'rgba(96,165,250,0.15)' : 'rgba(248,113,113,0.15)'}`, fontSize: 12, color: tip.startsWith('✅') ? '#60a5fa' : '#f87171' }}>
                       {tip}
                     </div>
                   ))}
@@ -384,8 +384,8 @@ export function KYCVerification() {
                   { label: 'Selfie',          value: '1 photo uploaded', icon: Camera },
                 ].map(row => (
                   <div key={row.label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(167,139,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <row.icon size={14} style={{ color: '#a78bfa' }} />
+                    <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(96,165,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <row.icon size={14} style={{ color: '#60a5fa' }} />
                     </div>
                     <div style={{ minWidth: 0 }}>
                       <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>{row.label}</p>
@@ -408,7 +408,7 @@ export function KYCVerification() {
               style={{ padding: '10px 22px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 55%)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
               {step === 0 ? 'Cancel' : '← Back'}
             </button>
-            <button onClick={handleNext} disabled={saving || submitting} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: step === STEPS.length - 1 ? 'linear-gradient(135deg,#8b5cf6,#7c3aed)' : 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving || submitting ? 'default' : 'pointer', opacity: saving || submitting ? 0.7 : 1 }}>
+            <button onClick={handleNext} disabled={saving || submitting} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: step === STEPS.length - 1 ? 'linear-gradient(135deg,#3b82f6,#2563eb)' : 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving || submitting ? 'default' : 'pointer', opacity: saving || submitting ? 0.7 : 1 }}>
               {saving       ? <><Loader2 size={14} className="animate-spin" /> Saving…</>
                : submitting ? <><Loader2 size={14} className="animate-spin" /> Submitting…</>
                : step === STEPS.length - 1 ? '🚀 Submit Verification'

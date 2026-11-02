@@ -31,7 +31,7 @@ function shortMonthKey(iso: string) {
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
       {children}
     </div>
   )
@@ -68,13 +68,13 @@ function EquityCurve({ points }: { points: { label: string; value: number }[] })
       <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 150 }} preserveAspectRatio="none">
         <defs>
           <linearGradient id="eqGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#a78bfa" stopOpacity={0.22} />
-            <stop offset="100%" stopColor="#a78bfa" stopOpacity={0} />
+            <stop offset="0%"   stopColor="#60a5fa" stopOpacity={0.22} />
+            <stop offset="100%" stopColor="#60a5fa" stopOpacity={0} />
           </linearGradient>
         </defs>
         <polygon points={area} fill="url(#eqGrad)" />
-        <polyline points={line} fill="none" stroke="#a78bfa" strokeWidth="2.5" strokeLinejoin="round" />
-        <circle cx={pts[pts.length - 1].x} cy={pts[pts.length - 1].y} r="4" fill="#a78bfa" />
+        <polyline points={line} fill="none" stroke="#60a5fa" strokeWidth="2.5" strokeLinejoin="round" />
+        <circle cx={pts[pts.length - 1].x} cy={pts[pts.length - 1].y} r="4" fill="#60a5fa" />
       </svg>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
         {points.filter((_, i) => i % Math.ceil(points.length / 7) === 0 || i === points.length - 1).map((p, i) => (
@@ -102,11 +102,11 @@ function MonthlyPnL({ months }: { months: { label: string; pnl: number }[] }) {
         const isPos = d.pnl >= 0
         return (
           <div key={d.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', gap: 4, height: '100%' }}>
-            <span style={{ fontSize: 9, color: isPos ? '#a78bfa' : '#f87171', fontWeight: 600 }}>
+            <span style={{ fontSize: 9, color: isPos ? '#60a5fa' : '#f87171', fontWeight: 600 }}>
               {isPos ? '+' : ''}
               {Math.abs(d.pnl) >= 1000 ? `$${(d.pnl / 1000).toFixed(1)}k` : `$${d.pnl.toFixed(0)}`}
             </span>
-            <div style={{ height: `${Math.max(pct, 4)}%`, width: '100%', borderRadius: '3px 3px 0 0', background: isPos ? 'rgba(167,139,250,0.7)' : 'rgba(248,113,113,0.7)' }} />
+            <div style={{ height: `${Math.max(pct, 4)}%`, width: '100%', borderRadius: '3px 3px 0 0', background: isPos ? 'rgba(96,165,250,0.7)' : 'rgba(248,113,113,0.7)' }} />
             <span style={{ fontSize: 10, color: 'hsl(240 5% 50%)' }}>{d.label}</span>
           </div>
         )
@@ -245,15 +245,15 @@ export function PerformanceHistory() {
                 value: `${returnPct >= 0 ? '+' : ''}${returnPct.toFixed(1)}%`,
                 sub:   `$${fmt(totalProfit)} net profit`,
                 icon:  TrendingUp,
-                color: totalProfit >= 0 ? '#a78bfa' : '#f87171',
-                bg:    totalProfit >= 0 ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)',
+                color: totalProfit >= 0 ? '#60a5fa' : '#f87171',
+                bg:    totalProfit >= 0 ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)',
               },
               {
                 label: 'Win Rate',
                 value: totalCount > 0 ? `${winRate.toFixed(0)}%` : '—',
                 sub:   totalCount > 0 ? `${winCount}W / ${lossCount}L of ${totalCount}` : 'No profit entries yet',
                 icon:  Target,
-                color: '#a78bfa', bg: 'rgba(167,139,250,0.1)',
+                color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',
               },
               {
                 label: 'Best Month',
@@ -289,7 +289,7 @@ export function PerformanceHistory() {
         <div className="flex items-center justify-between mb-4">
           <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 88%)' }}>Equity Curve</p>
           <div className="flex items-center gap-1.5">
-            <div style={{ width: 8, height: 2, background: '#a78bfa', borderRadius: 1 }} />
+            <div style={{ width: 8, height: 2, background: '#60a5fa', borderRadius: 1 }} />
             <span style={{ fontSize: 11, color: 'hsl(240 5% 55%)' }}>Running Balance</span>
           </div>
         </div>
@@ -314,7 +314,7 @@ export function PerformanceHistory() {
           <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 92%)' }}>Earnings Log</p>
           {!loading && recentEntries.length > 0 && (
             <div className="flex items-center gap-3 text-xs" style={{ color: 'hsl(240 5% 50%)' }}>
-              <span style={{ color: '#a78bfa' }}>● {winCount} positive</span>
+              <span style={{ color: '#60a5fa' }}>● {winCount} positive</span>
               <span style={{ color: '#f87171' }}>● {lossCount} negative</span>
             </div>
           )}
@@ -343,8 +343,8 @@ export function PerformanceHistory() {
                 <tr>
                   <td colSpan={5} style={{ padding: '52px 20px', textAlign: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
-                      <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(167,139,250,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <TrendingUp size={18} style={{ color: 'rgba(167,139,250,0.3)' }} />
+                      <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(96,165,250,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <TrendingUp size={18} style={{ color: 'rgba(96,165,250,0.3)' }} />
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No earnings recorded yet</p>
                       <p style={{ fontSize: 12, color: 'hsl(240 5% 32%)' }}>
@@ -359,7 +359,7 @@ export function PerformanceHistory() {
               {!loading && recentEntries.map((t, i) => {
                 const isPos = t.amount >= 0
                 const statusColor =
-                  t.status === 'COMPLETED' ? { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)' }
+                  t.status === 'COMPLETED' ? { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)' }
                   : t.status === 'PENDING'  ? { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)'  }
                   : { color: '#f87171', bg: 'rgba(248,113,113,0.12)' }
                 const desc = t.note || t.adminNote || (t.type === 'PROFIT' ? 'APEX Return' : 'Bonus Credit')
@@ -377,11 +377,11 @@ export function PerformanceHistory() {
                       {desc}
                     </td>
                     <td style={{ padding: '0.875rem 1.25rem' }}>
-                      <span style={{ fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 999, background: t.type === 'BONUS' ? 'rgba(245,158,11,0.12)' : 'rgba(167,139,250,0.12)', color: t.type === 'BONUS' ? '#f59e0b' : '#a78bfa' }}>
+                      <span style={{ fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 999, background: t.type === 'BONUS' ? 'rgba(245,158,11,0.12)' : 'rgba(96,165,250,0.12)', color: t.type === 'BONUS' ? '#f59e0b' : '#60a5fa' }}>
                         {t.type === 'PROFIT' ? 'Profit' : 'Bonus'}
                       </span>
                     </td>
-                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 600, color: isPos ? '#a78bfa' : '#f87171', whiteSpace: 'nowrap' }}>
+                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 600, color: isPos ? '#60a5fa' : '#f87171', whiteSpace: 'nowrap' }}>
                       {isPos ? '+' : '-'}${fmt(Math.abs(t.amount))}
                     </td>
                     <td style={{ padding: '0.875rem 1.25rem' }}>

@@ -228,7 +228,7 @@ export function AdminCopyHistory() {
       <div className="flex flex-wrap items-start justify-between gap-3 mb-5">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <History size={20} style={{ color: '#a78bfa' }} />
+            <History size={20} style={{ color: '#60a5fa' }} />
             <h1 style={{ fontSize: '1.375rem', fontWeight: 700, color: 'hsl(40 6% 95%)' }}>Copy Trading History</h1>
           </div>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)' }}>Manage copy relationships, trade logs, and history records for users</p>
@@ -244,11 +244,11 @@ export function AdminCopyHistory() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
         {[
-          { label: 'Active Relationships', value: loading ? '...' : String(activeRels), icon: Activity, color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-          { label: 'Total P&L',            value: loading ? '...' : `$${fmtMoney(totalPnl)}`, icon: TrendingUp, color: totalPnl >= 0 ? '#a78bfa' : '#f87171', bg: totalPnl >= 0 ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)' },
-          { label: 'Total Trades',         value: loading ? '...' : String(totalTrades), icon: BarChart2, color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
+          { label: 'Active Relationships', value: loading ? '...' : String(activeRels), icon: Activity, color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+          { label: 'Total P&L',            value: loading ? '...' : `$${fmtMoney(totalPnl)}`, icon: TrendingUp, color: totalPnl >= 0 ? '#60a5fa' : '#f87171', bg: totalPnl >= 0 ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)' },
+          { label: 'Total Trades',         value: loading ? '...' : String(totalTrades), icon: BarChart2, color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
             <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <s.icon size={16} style={{ color: s.color }} />
             </div>
@@ -266,8 +266,8 @@ export function AdminCopyHistory() {
           <button key={t.id} onClick={() => setTab(t.id)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem',
               borderRadius: '0.5rem 0.5rem 0 0', fontSize: 13, fontWeight: 500, cursor: 'pointer',
-              border: 'none', borderBottom: tab === t.id ? '2px solid #a78bfa' : '2px solid transparent',
-              background: 'none', color: tab === t.id ? '#a78bfa' : 'hsl(240 5% 55%)', marginBottom: -1 }}>
+              border: 'none', borderBottom: tab === t.id ? '2px solid #60a5fa' : '2px solid transparent',
+              background: 'none', color: tab === t.id ? '#60a5fa' : 'hsl(240 5% 55%)', marginBottom: -1 }}>
             <t.icon size={14} /> {t.label}
             <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', color: 'hsl(240 5% 60%)' }}>{t.count}</span>
           </button>
@@ -287,18 +287,18 @@ export function AdminCopyHistory() {
             <button onClick={openAddRel}
               style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem',
                 borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer',
-                background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
-                color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(167,139,250,0.18)' }}>
+                background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
+                color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(96,165,250,0.18)' }}>
               <Plus size={14} /> Add Relationship
             </button>
           </div>
 
           {loading ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[0,1,2].map(i => <div key={i} style={{ height: 60, borderRadius: '0.75rem', background: 'hsl(260 60% 5%)' }}><Skeleton w="100%" h="100%" /></div>)}
+              {[0,1,2].map(i => <div key={i} style={{ height: 60, borderRadius: '0.75rem', background: 'hsl(222 60% 5%)' }}><Skeleton w="100%" h="100%" /></div>)}
             </div>
           ) : relationships.length === 0 ? (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <Users size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No copy relationships yet</p>
             </div>
@@ -326,14 +326,14 @@ export function AdminCopyHistory() {
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(40 6% 85%)', fontWeight: 600 }}>{r.traderName || '—'}</td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(40 6% 80%)' }}>${fmtMoney(r.allocatedAmount)}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
-                          <span style={{ fontWeight: 700, color: pnlPos ? '#a78bfa' : '#f87171' }}>
+                          <span style={{ fontWeight: 700, color: pnlPos ? '#60a5fa' : '#f87171' }}>
                             {pnlPos ? '+' : ''}${fmtMoney(r.profitLoss)}
                           </span>
                         </td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 999,
-                            color: r.status === 'active' ? '#a78bfa' : 'hsl(240 5% 55%)',
-                            background: r.status === 'active' ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.06)',
+                            color: r.status === 'active' ? '#60a5fa' : 'hsl(240 5% 55%)',
+                            background: r.status === 'active' ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.06)',
                             textTransform: 'capitalize' }}>
                             {r.status}
                           </span>
@@ -343,7 +343,7 @@ export function AdminCopyHistory() {
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <div style={{ display: 'flex', gap: 4 }}>
                             <button onClick={() => openEditRel(r)}
-                              style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', cursor: 'pointer', color: '#c4b5fd' }}>
+                              style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', cursor: 'pointer', color: '#93c5fd' }}>
                               <Pencil size={12} />
                             </button>
                             <button onClick={() => openDelRel(r)}
@@ -369,18 +369,18 @@ export function AdminCopyHistory() {
             <button onClick={openAddTrade}
               style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem',
                 borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer',
-                background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
-                color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(167,139,250,0.18)' }}>
+                background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
+                color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(96,165,250,0.18)' }}>
               <Plus size={14} /> Add Trade
             </button>
           </div>
 
           {loading ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[0,1,2,3].map(i => <div key={i} style={{ height: 52, borderRadius: '0.75rem', background: 'hsl(260 60% 5%)' }}><Skeleton w="100%" h="100%" /></div>)}
+              {[0,1,2,3].map(i => <div key={i} style={{ height: 52, borderRadius: '0.75rem', background: 'hsl(222 60% 5%)' }}><Skeleton w="100%" h="100%" /></div>)}
             </div>
           ) : trades.length === 0 ? (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <BarChart2 size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No copy trades yet</p>
             </div>
@@ -406,29 +406,29 @@ export function AdminCopyHistory() {
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(40 6% 90%)', fontWeight: 700 }}>{t.asset || '—'}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 999,
-                            color: t.tradeType === 'buy' ? '#a78bfa' : '#f87171',
-                            background: t.tradeType === 'buy' ? 'rgba(167,139,250,0.12)' : 'rgba(248,113,113,0.12)',
+                            color: t.tradeType === 'buy' ? '#60a5fa' : '#f87171',
+                            background: t.tradeType === 'buy' ? 'rgba(96,165,250,0.12)' : 'rgba(248,113,113,0.12)',
                             textTransform: 'uppercase' }}>{t.tradeType}</span>
                         </td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(40 6% 80%)' }}>${parseFloat(String(t.entryPrice)).toFixed(2)}</td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(240 5% 55%)' }}>{t.exitPrice != null ? `$${parseFloat(String(t.exitPrice)).toFixed(2)}` : '—'}</td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(240 5% 65%)' }}>{t.lotSize}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
-                          <span style={{ fontWeight: 700, color: pnlPos ? '#a78bfa' : '#f87171' }}>
+                          <span style={{ fontWeight: 700, color: pnlPos ? '#60a5fa' : '#f87171' }}>
                             {pnlPos ? '+' : ''}${fmtMoney(t.profitLoss)}
                           </span>
                         </td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 999,
-                            color: t.status === 'open' ? '#f59e0b' : '#a78bfa',
-                            background: t.status === 'open' ? 'rgba(245,158,11,0.12)' : 'rgba(167,139,250,0.12)',
+                            color: t.status === 'open' ? '#f59e0b' : '#60a5fa',
+                            background: t.status === 'open' ? 'rgba(245,158,11,0.12)' : 'rgba(96,165,250,0.12)',
                             textTransform: 'capitalize' }}>{t.status}</span>
                         </td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(240 5% 50%)', whiteSpace: 'nowrap', fontSize: 11 }}>{fmtDate(t.createdAt)}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <div style={{ display: 'flex', gap: 4 }}>
                             <button onClick={() => openEditTrade(t)}
-                              style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', cursor: 'pointer', color: '#c4b5fd' }}>
+                              style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', cursor: 'pointer', color: '#93c5fd' }}>
                               <Pencil size={12} />
                             </button>
                             <button onClick={() => openDelTrade(t)}
@@ -453,7 +453,7 @@ export function AdminCopyHistory() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 520, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 520, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
             <button onClick={() => setModal(null)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 50%)', padding: 4 }}><X size={16} /></button>
 
             <h3 style={{ fontSize: 16, fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: '1.5rem' }}>
@@ -520,7 +520,7 @@ export function AdminCopyHistory() {
               <button onClick={() => setModal(null)}
                 style={{ flex: 1, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(240 5% 65%)' }}>Cancel</button>
               <button onClick={submitRelationship} disabled={saving}
-                style={{ flex: 2, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
+                style={{ flex: 2, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
                 {saving ? 'Saving...' : modal === 'add-rel' ? 'Create Relationship' : 'Update Relationship'}
               </button>
             </div>
@@ -533,7 +533,7 @@ export function AdminCopyHistory() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: 8 }}>Delete Relationship?</h3>
             <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
               This will permanently delete this copy relationship and all associated trades. This action cannot be undone.
@@ -556,7 +556,7 @@ export function AdminCopyHistory() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 560, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 560, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
             <button onClick={() => setModal(null)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 50%)', padding: 4 }}><X size={16} /></button>
 
             <h3 style={{ fontSize: 16, fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: '1.5rem' }}>
@@ -641,7 +641,7 @@ export function AdminCopyHistory() {
               <button onClick={() => setModal(null)}
                 style={{ flex: 1, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(240 5% 65%)' }}>Cancel</button>
               <button onClick={submitTrade} disabled={saving}
-                style={{ flex: 2, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
+                style={{ flex: 2, padding: '0.6rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
                 {saving ? 'Saving...' : modal === 'add-trade' ? 'Create Trade' : 'Update Trade'}
               </button>
             </div>
@@ -654,7 +654,7 @@ export function AdminCopyHistory() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: 8 }}>Delete Trade?</h3>
             <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', marginBottom: '1.5rem' }}>This trade record will be permanently removed.</p>
             {formError && <p style={{ fontSize: 12, color: '#f87171', marginBottom: 12 }}>{formError}</p>}

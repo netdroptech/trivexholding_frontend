@@ -79,11 +79,11 @@ type Tab = 'find' | 'active' | 'history' | 'trades'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const RISK_COLORS: Record<string, { color: string; bg: string }> = {
-  Low:    { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)'  },
+  Low:    { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)'  },
   Medium: { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)'  },
   High:   { color: '#f87171', bg: 'rgba(248,113,113,0.12)' },
 }
-const AVATAR_COLORS = ['#8b5cf6','#ec4899','#f59e0b','#8b5cf6','#3b82f6','#f97316','#06b6d4','#a3e635']
+const AVATAR_COLORS = ['#3b82f6','#ec4899','#f59e0b','#3b82f6','#3b82f6','#f97316','#06b6d4','#a3e635']
 
 function avatarColor(name: string) {
   let h = 0
@@ -159,8 +159,8 @@ function PnlBadge({ value }: { value: number }) {
   const pos = value >= 0
   return (
     <span style={{ fontSize: 12, fontWeight: 700, padding: '2px 8px', borderRadius: 999,
-      color: pos ? '#a78bfa' : '#f87171',
-      background: pos ? 'rgba(167,139,250,0.12)' : 'rgba(248,113,113,0.12)' }}>
+      color: pos ? '#60a5fa' : '#f87171',
+      background: pos ? 'rgba(96,165,250,0.12)' : 'rgba(248,113,113,0.12)' }}>
       {pos ? '+' : ''}{fmtMoney(value)}
     </span>
   )
@@ -195,7 +195,7 @@ function StartCopyModal({ trader, balance, onClose, onConfirm, submitting }: Sta
       style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.65)',
         backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(167,139,250,0.18)',
+        style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(96,165,250,0.18)',
           borderRadius: '1.125rem', padding: '2rem', maxWidth: 440, width: '100%',
           animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative' }}>
 
@@ -215,8 +215,8 @@ function StartCopyModal({ trader, balance, onClose, onConfirm, submitting }: Sta
           </div>
           {/* 0% fees badge */}
           <span style={{ marginLeft: 'auto', fontSize: 11, fontWeight: 700, padding: '3px 10px',
-            borderRadius: 999, background: 'rgba(167,139,250,0.12)', color: '#c4b5fd',
-            border: '1px solid rgba(167,139,250,0.2)' }}>
+            borderRadius: 999, background: 'rgba(96,165,250,0.12)', color: '#93c5fd',
+            border: '1px solid rgba(96,165,250,0.2)' }}>
             <Zap size={9} style={{ display: 'inline', marginRight: 3, verticalAlign: 'middle' }} />
             0% fees
           </span>
@@ -225,8 +225,8 @@ function StartCopyModal({ trader, balance, onClose, onConfirm, submitting }: Sta
         {/* Stats row */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, marginBottom: '1.5rem' }}>
           {[
-            { label: 'All-time Return', value: `+${trader.totalReturn.toFixed(1)}%`, color: '#a78bfa' },
-            { label: 'Win Rate', value: `${trader.winRate}%`, color: '#a78bfa' },
+            { label: 'All-time Return', value: `+${trader.totalReturn.toFixed(1)}%`, color: '#60a5fa' },
+            { label: 'Win Rate', value: `${trader.winRate}%`, color: '#60a5fa' },
             { label: 'Risk', value: trader.riskLevel, color: RISK_COLORS[trader.riskLevel]?.color ?? '#f59e0b' },
           ].map(s => (
             <div key={s.label} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '0.5rem', padding: '0.625rem', textAlign: 'center' }}>
@@ -251,7 +251,7 @@ function StartCopyModal({ trader, balance, onClose, onConfirm, submitting }: Sta
                 fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 5, fontSize: 11 }}>
-            <span style={{ color: 'hsl(240 5% 48%)' }}>Min: <span style={{ color: '#a78bfa' }}>${trader.minAmount.toLocaleString()}</span></span>
+            <span style={{ color: 'hsl(240 5% 48%)' }}>Min: <span style={{ color: '#60a5fa' }}>${trader.minAmount.toLocaleString()}</span></span>
             <span style={{ color: 'hsl(240 5% 48%)' }}>Balance: <span style={{ color: 'hsl(40 6% 80%)' }}>${fmtMoney(balance)}</span></span>
           </div>
         </label>
@@ -289,10 +289,10 @@ function StartCopyModal({ trader, balance, onClose, onConfirm, submitting }: Sta
           <button onClick={handleSubmit} disabled={submitting}
             style={{ flex: 2, padding: '0.65rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700,
               cursor: submitting ? 'not-allowed' : 'pointer',
-              background: submitting ? 'rgba(167,139,250,0.2)' : 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
-              color: submitting ? '#a78bfa' : '#050505', border: 'none',
+              background: submitting ? 'rgba(96,165,250,0.2)' : 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
+              color: submitting ? '#60a5fa' : '#050505', border: 'none',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-              boxShadow: submitting ? 'none' : '0 4px 16px rgba(167,139,250,0.2)' }}>
+              boxShadow: submitting ? 'none' : '0 4px 16px rgba(96,165,250,0.2)' }}>
             {submitting ? 'Starting…' : (<><Copy size={13} /> Start Copying</>)}
           </button>
         </div>
@@ -327,7 +327,7 @@ function AdjustAllocModal({ copy, balance, onClose, onConfirm, submitting }: Adj
       style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.65)',
         backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(255,255,255,0.12)',
+        style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(255,255,255,0.12)',
           borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%',
           animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative' }}>
 
@@ -338,9 +338,9 @@ function AdjustAllocModal({ copy, balance, onClose, onConfirm, submitting }: Adj
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.5rem' }}>
-          <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: 'rgba(167,139,250,0.1)',
+          <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: 'rgba(96,165,250,0.1)',
             display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Sliders size={16} style={{ color: '#a78bfa' }} />
+            <Sliders size={16} style={{ color: '#60a5fa' }} />
           </div>
           <div>
             <p style={{ fontWeight: 700, color: 'hsl(40 6% 93%)', fontSize: 14 }}>Adjust Allocation</p>
@@ -359,7 +359,7 @@ function AdjustAllocModal({ copy, balance, onClose, onConfirm, submitting }: Adj
                 fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 5, fontSize: 11 }}>
-            <span style={{ color: 'hsl(240 5% 48%)' }}>Current: <span style={{ color: '#a78bfa' }}>${fmtMoney(copy.allocatedAmount)}</span></span>
+            <span style={{ color: 'hsl(240 5% 48%)' }}>Current: <span style={{ color: '#60a5fa' }}>${fmtMoney(copy.allocatedAmount)}</span></span>
             <span style={{ color: 'hsl(240 5% 48%)' }}>Avail balance: <span style={{ color: 'hsl(40 6% 80%)' }}>${fmtMoney(balance)}</span></span>
           </div>
         </label>
@@ -375,10 +375,10 @@ function AdjustAllocModal({ copy, balance, onClose, onConfirm, submitting }: Adj
           <button onClick={handleSubmit} disabled={submitting}
             style={{ flex: 2, padding: '0.65rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700,
               cursor: submitting ? 'not-allowed' : 'pointer',
-              background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+              background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
               color: '#050505', border: 'none',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-              boxShadow: '0 4px 16px rgba(167,139,250,0.2)' }}>
+              boxShadow: '0 4px 16px rgba(96,165,250,0.2)' }}>
             {submitting ? 'Updating…' : 'Update Allocation'}
           </button>
         </div>
@@ -399,7 +399,7 @@ function InsufficientModal({ trader, balance, onClose }: InsufficientModalProps)
       style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(0,0,0,0.65)',
         backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
       <div onClick={e => e.stopPropagation()}
-        style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(248,113,113,0.25)',
+        style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(248,113,113,0.25)',
           borderRadius: '1.125rem', padding: '2rem', maxWidth: 420, width: '100%',
           animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative' }}>
         <button onClick={onClose}
@@ -415,7 +415,7 @@ function InsufficientModal({ trader, balance, onClose }: InsufficientModalProps)
         <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'hsl(40 6% 94%)', marginBottom: 8 }}>Insufficient Balance</h3>
         <p style={{ fontSize: 13.5, color: 'hsl(240 5% 58%)', lineHeight: 1.6, marginBottom: '0.5rem' }}>
           To copy <span style={{ color: 'hsl(40 6% 88%)', fontWeight: 600 }}>{trader.name}</span>, you need a minimum of{' '}
-          <span style={{ color: '#a78bfa', fontWeight: 700 }}>${trader.minAmount.toLocaleString()}</span>.
+          <span style={{ color: '#60a5fa', fontWeight: 700 }}>${trader.minAmount.toLocaleString()}</span>.
         </p>
         <p style={{ fontSize: 13, color: 'hsl(240 5% 48%)', marginBottom: '1.5rem' }}>
           Your current balance is{' '}
@@ -442,9 +442,9 @@ function InsufficientModal({ trader, balance, onClose }: InsufficientModalProps)
           </button>
           <button onClick={() => { onClose(); navigate('/dashboard/deposit') }}
             style={{ flex: 2, padding: '0.65rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700,
-              cursor: 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+              cursor: 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
               color: '#050505', border: 'none', display: 'flex', alignItems: 'center',
-              justifyContent: 'center', gap: 6, boxShadow: '0 4px 16px rgba(167,139,250,0.2)' }}>
+              justifyContent: 'center', gap: 6, boxShadow: '0 4px 16px rgba(96,165,250,0.2)' }}>
             <ArrowDownLeft size={14} /> Deposit Funds
           </button>
         </div>
@@ -640,11 +640,11 @@ export function CopyTrading() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <h1 style={{ fontSize: '1.375rem', fontWeight: 700, color: 'hsl(40 6% 95%)' }}>Copy Trading</h1>
-            <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 999, background: 'rgba(167,139,250,0.15)', color: '#c4b5fd' }}>Pro</span>
+            <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 999, background: 'rgba(96,165,250,0.15)', color: '#93c5fd' }}>Pro</span>
             {/* 0% fees */}
             <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 9px', borderRadius: 999,
-              background: 'rgba(167,139,250,0.08)', color: '#c4b5fd',
-              border: '1px solid rgba(167,139,250,0.15)', display: 'flex', alignItems: 'center', gap: 3 }}>
+              background: 'rgba(96,165,250,0.08)', color: '#93c5fd',
+              border: '1px solid rgba(96,165,250,0.15)', display: 'flex', alignItems: 'center', gap: 3 }}>
               <Zap size={9} /> 0% Fees
             </span>
           </div>
@@ -658,14 +658,14 @@ export function CopyTrading() {
           <button key={t.id} onClick={() => setTab(t.id)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem',
               borderRadius: '0.5rem 0.5rem 0 0', fontSize: 13, fontWeight: 500, cursor: 'pointer',
-              border: 'none', borderBottom: tab === t.id ? '2px solid #a78bfa' : '2px solid transparent',
-              background: 'none', color: tab === t.id ? '#a78bfa' : 'hsl(240 5% 55%)',
+              border: 'none', borderBottom: tab === t.id ? '2px solid #60a5fa' : '2px solid transparent',
+              background: 'none', color: tab === t.id ? '#60a5fa' : 'hsl(240 5% 55%)',
               marginBottom: -1, transition: 'color 0.15s' }}>
             <t.icon size={14} />
             {t.label}
             {t.badge != null && t.badge > 0 && (
               <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999,
-                background: 'rgba(167,139,250,0.2)', color: '#c4b5fd' }}>{t.badge}</span>
+                background: 'rgba(96,165,250,0.2)', color: '#93c5fd' }}>{t.badge}</span>
             )}
           </button>
         ))}
@@ -685,13 +685,13 @@ export function CopyTrading() {
           {/* Stats strip */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
             {[
-              { label: 'Available Traders', value: tradersLoading ? '…' : String(traders.length), icon: Users,      color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-              { label: 'Avg. Win Rate',     value: tradersLoading ? '…' : `${avgWin}%`,           icon: TrendingUp, color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
+              { label: 'Available Traders', value: tradersLoading ? '…' : String(traders.length), icon: Users,      color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+              { label: 'Avg. Win Rate',     value: tradersLoading ? '…' : `${avgWin}%`,           icon: TrendingUp, color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
               { label: 'Avg. Risk Level',   value: tradersLoading ? '…' : avgRiskLabel,           icon: Shield,
-                color: avgRiskLabel === 'High' ? '#f87171' : '#a78bfa',
-                bg: avgRiskLabel === 'High' ? 'rgba(248,113,113,0.1)' : 'rgba(167,139,250,0.1)' },
+                color: avgRiskLabel === 'High' ? '#f87171' : '#60a5fa',
+                bg: avgRiskLabel === 'High' ? 'rgba(248,113,113,0.1)' : 'rgba(96,165,250,0.1)' },
             ].map(s => (
-              <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
+              <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
                 <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <s.icon size={16} style={{ color: s.color }} />
                 </div>
@@ -709,8 +709,8 @@ export function CopyTrading() {
               <button key={r} onClick={() => setRiskFilter(r)}
                 style={{ padding: '0.375rem 0.875rem', borderRadius: 999, fontSize: 12, fontWeight: 500,
                   cursor: 'pointer', border: 'none',
-                  background: riskFilter === r ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.04)',
-                  color: riskFilter === r ? '#c4b5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
+                  background: riskFilter === r ? 'rgba(96,165,250,0.2)' : 'rgba(255,255,255,0.04)',
+                  color: riskFilter === r ? '#93c5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
                 {r === 'All' ? 'All Traders' : `${r} Risk`}
               </button>
             ))}
@@ -734,7 +734,7 @@ export function CopyTrading() {
           {tradersLoading && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[0,1,2,3,4,5].map(i => (
-                <div key={i} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem' }}>
+                <div key={i} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                     <Skeleton w={52} h={52} />
                     <div style={{ flex: 1 }}><Skeleton w="65%" h={14} /><div style={{ marginTop: 7 }}><Skeleton w="40%" h={11} /></div></div>
@@ -750,14 +750,14 @@ export function CopyTrading() {
           )}
 
           {!tradersLoading && traders.length === 0 && (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <Users size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No traders available yet</p>
             </div>
           )}
 
           {!tradersLoading && filtered.length === 0 && traders.length > 0 && (
-            <div style={{ padding: '40px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '40px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <p style={{ fontSize: 13, color: 'hsl(240 5% 45%)' }}>No {riskFilter.toLowerCase()} risk traders found.</p>
             </div>
           )}
@@ -770,11 +770,11 @@ export function CopyTrading() {
                 const color = avatarColor(tr.name)
                 return (
                   <div key={tr.id}
-                    style={{ background: 'hsl(260 60% 5%)',
-                      border: `1px solid ${isCopying ? 'rgba(167,139,250,0.25)' : 'rgba(255,255,255,0.07)'}`,
+                    style={{ background: 'hsl(222 60% 5%)',
+                      border: `1px solid ${isCopying ? 'rgba(96,165,250,0.25)' : 'rgba(255,255,255,0.07)'}`,
                       borderRadius: '0.875rem', padding: '1.25rem',
                       display: 'flex', flexDirection: 'column', transition: 'border-color 0.2s',
-                      boxShadow: isCopying ? '0 0 0 1px rgba(167,139,250,0.1)' : 'none' }}>
+                      boxShadow: isCopying ? '0 0 0 1px rgba(96,165,250,0.1)' : 'none' }}>
 
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 12 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -793,10 +793,10 @@ export function CopyTrading() {
                     </div>
 
                     <div style={{ margin: '0 -0.25rem 0.625rem', height: 48 }}>
-                      <Sparkline totalReturn={tr.totalReturn} color={tr.totalReturn >= 0 ? '#a78bfa' : '#f87171'} />
+                      <Sparkline totalReturn={tr.totalReturn} color={tr.totalReturn >= 0 ? '#60a5fa' : '#f87171'} />
                     </div>
 
-                    <p style={{ fontSize: '1.75rem', fontWeight: 800, color: '#a78bfa', letterSpacing: '-0.02em', marginBottom: 2 }}>
+                    <p style={{ fontSize: '1.75rem', fontWeight: 800, color: '#60a5fa', letterSpacing: '-0.02em', marginBottom: 2 }}>
                       +{tr.totalReturn.toFixed(1)}%
                     </p>
                     <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', marginBottom: '0.875rem' }}>All-time return</p>
@@ -830,7 +830,7 @@ export function CopyTrading() {
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'hsl(240 5% 50%)', marginBottom: '0.875rem', marginTop: 'auto' }}>
                       <span>Min copy: <span style={{ color: 'hsl(40 6% 80%)' }}>${tr.minAmount.toLocaleString()}</span></span>
-                      <span style={{ color: '#c4b5fd', fontWeight: 600 }}>0% fees</span>
+                      <span style={{ color: '#93c5fd', fontWeight: 600 }}>0% fees</span>
                     </div>
 
                     <button onClick={() => isCopying ? setTab('active') : onClickCopy(tr)}
@@ -839,8 +839,8 @@ export function CopyTrading() {
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                         transition: 'all 0.15s',
                         ...(isCopying
-                          ? { background: 'rgba(167,139,250,0.12)', color: '#a78bfa', border: '1px solid rgba(167,139,250,0.25)' }
-                          : { background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(167,139,250,0.18)' }
+                          ? { background: 'rgba(96,165,250,0.12)', color: '#60a5fa', border: '1px solid rgba(96,165,250,0.25)' }
+                          : { background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(96,165,250,0.18)' }
                         ) }}>
                       {isCopying ? (<><CheckCircle size={13} /> Currently Copying <ChevronRight size={13} /></>) : (<><Copy size={13} /> Copy Trader</>)}
                     </button>
@@ -859,11 +859,11 @@ export function CopyTrading() {
           {activeCopies.length > 0 && (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px,1fr))', gap: 12, marginBottom: '1.5rem' }}>
               {[
-                { label: 'Active Positions', value: String(activeCopies.length),      icon: Activity,    color: '#a78bfa' },
-                { label: 'Total Allocated',  value: `$${fmtMoney(totalAlloc)}`,        icon: DollarSign,  color: '#a78bfa' },
-                { label: 'Total P&L',        value: `${activePnl >= 0 ? '+' : ''}$${fmtMoney(activePnl)}`, icon: TrendingUp, color: activePnl >= 0 ? '#a78bfa' : '#f87171' },
+                { label: 'Active Positions', value: String(activeCopies.length),      icon: Activity,    color: '#60a5fa' },
+                { label: 'Total Allocated',  value: `$${fmtMoney(totalAlloc)}`,        icon: DollarSign,  color: '#60a5fa' },
+                { label: 'Total P&L',        value: `${activePnl >= 0 ? '+' : ''}$${fmtMoney(activePnl)}`, icon: TrendingUp, color: activePnl >= 0 ? '#60a5fa' : '#f87171' },
               ].map(s => (
-                <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '0.875rem 1rem', display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '0.875rem 1rem', display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{ width: 32, height: 32, borderRadius: '0.5rem', background: `${s.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <s.icon size={14} style={{ color: s.color }} />
                   </div>
@@ -893,18 +893,18 @@ export function CopyTrading() {
 
           {activeLoading && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {[0,1,2].map(i => <div key={i} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem', height: 96 }}><Skeleton w="100%" h="100%" /></div>)}
+              {[0,1,2].map(i => <div key={i} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem', height: 96 }}><Skeleton w="100%" h="100%" /></div>)}
             </div>
           )}
 
           {!activeLoading && activeCopies.length === 0 && (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <Copy size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No active copy positions</p>
               <p style={{ fontSize: 13, color: 'hsl(240 5% 32%)', marginTop: 4 }}>Go to "Find Traders" to start copying a trader.</p>
               <button onClick={() => setTab('find')}
                 style={{ marginTop: 16, padding: '0.5rem 1.25rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 600,
-                  cursor: 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                  cursor: 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                   color: '#050505', border: 'none' }}>
                 Find Traders
               </button>
@@ -917,7 +917,7 @@ export function CopyTrading() {
                 const roiPos = copy.roiPct >= 0
                 return (
                   <div key={copy.id}
-                    style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.08)',
+                    style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.08)',
                       borderRadius: '0.875rem', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: 12 }}>
 
                     {/* Top row */}
@@ -931,7 +931,7 @@ export function CopyTrading() {
                       {/* P&L */}
                       <div style={{ textAlign: 'right', flexShrink: 0 }}>
                         <PnlBadge value={copy.profitLoss} />
-                        <p style={{ fontSize: 10, color: roiPos ? '#a78bfa' : '#f87171', marginTop: 3, fontWeight: 600 }}>
+                        <p style={{ fontSize: 10, color: roiPos ? '#60a5fa' : '#f87171', marginTop: 3, fontWeight: 600 }}>
                           {roiPos ? '+' : ''}{copy.roiPct}% ROI
                         </p>
                       </div>
@@ -942,8 +942,8 @@ export function CopyTrading() {
                       {[
                         { label: 'Allocated',     value: `$${fmtMoney(copy.allocatedAmount)}`, color: 'hsl(40 6% 85%)' },
                         { label: 'Max Drawdown',  value: copy.maxDrawdown != null ? `${copy.maxDrawdown}%` : 'None', color: copy.maxDrawdown ? '#f59e0b' : 'hsl(240 5% 55%)' },
-                        { label: "Trader's W/R",  value: `${copy.traderWinRate}%`, color: '#a78bfa' },
-                        { label: "Trader Return", value: `+${copy.traderReturnPct}%`, color: '#a78bfa' },
+                        { label: "Trader's W/R",  value: `${copy.traderWinRate}%`, color: '#60a5fa' },
+                        { label: "Trader Return", value: `+${copy.traderReturnPct}%`, color: '#60a5fa' },
                       ].map(s => (
                         <div key={s.label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '0.5rem', padding: '0.5rem 0.75rem' }}>
                           <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 2 }}>{s.label}</p>
@@ -957,8 +957,8 @@ export function CopyTrading() {
                       <button onClick={() => setAdjustModal(copy)}
                         style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '0.45rem 0.875rem',
                           borderRadius: '0.5rem', fontSize: 12, fontWeight: 600, cursor: 'pointer',
-                          background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)',
-                          color: '#c4b5fd' }}>
+                          background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)',
+                          color: '#93c5fd' }}>
                         <Sliders size={12} /> Adjust Allocation
                       </button>
                       <button onClick={() => handleStopCopy(copy.id)}
@@ -993,12 +993,12 @@ export function CopyTrading() {
 
           {historyLoading && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[0,1,2].map(i => <div key={i} style={{ height: 72, borderRadius: '0.875rem', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
+              {[0,1,2].map(i => <div key={i} style={{ height: 72, borderRadius: '0.875rem', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
             </div>
           )}
 
           {!historyLoading && history.length === 0 && (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <Clock size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No copy history yet</p>
             </div>
@@ -1008,10 +1008,10 @@ export function CopyTrading() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {history.map(row => {
                 const pnlPos = row.profitLoss >= 0
-                const statusColor = row.status === 'active' ? '#a78bfa' : 'hsl(240 5% 50%)'
+                const statusColor = row.status === 'active' ? '#60a5fa' : 'hsl(240 5% 50%)'
                 return (
                   <div key={row.id}
-                    style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)',
+                    style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)',
                       borderRadius: '0.75rem', padding: '1rem 1.25rem',
                       display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                     <TraderAvatar name={row.traderName} imageUrl={row.profilePic} size={40} />
@@ -1033,7 +1033,7 @@ export function CopyTrading() {
                       </div>
                       <div style={{ textAlign: 'right' }}>
                         <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>ROI</p>
-                        <p style={{ fontSize: 12, fontWeight: 700, color: pnlPos ? '#a78bfa' : '#f87171' }}>
+                        <p style={{ fontSize: 12, fontWeight: 700, color: pnlPos ? '#60a5fa' : '#f87171' }}>
                           {pnlPos ? '+' : ''}{row.roiPct}%
                         </p>
                       </div>
@@ -1067,12 +1067,12 @@ export function CopyTrading() {
 
           {tradesLoading && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-              {[0,1,2,3].map(i => <div key={i} style={{ height: 60, borderRadius: '0.75rem', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
+              {[0,1,2,3].map(i => <div key={i} style={{ height: 60, borderRadius: '0.75rem', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
             </div>
           )}
 
           {!tradesLoading && trades.length === 0 && (
-            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+            <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
               <BarChart2 size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No copy trades yet</p>
               <p style={{ fontSize: 13, color: 'hsl(240 5% 32%)', marginTop: 4 }}>Trades from your copy positions will appear here.</p>
@@ -1101,8 +1101,8 @@ export function CopyTrading() {
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(40 6% 85%)', fontWeight: 600 }}>{tr.asset || '—'}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
                           <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 999,
-                            color: tr.tradeType === 'buy' ? '#a78bfa' : '#f87171',
-                            background: tr.tradeType === 'buy' ? 'rgba(167,139,250,0.12)' : 'rgba(248,113,113,0.12)',
+                            color: tr.tradeType === 'buy' ? '#60a5fa' : '#f87171',
+                            background: tr.tradeType === 'buy' ? 'rgba(96,165,250,0.12)' : 'rgba(248,113,113,0.12)',
                             textTransform: 'uppercase' }}>
                             {tr.tradeType}
                           </span>
@@ -1111,7 +1111,7 @@ export function CopyTrading() {
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(240 5% 55%)' }}>{tr.exitPrice ? `$${tr.exitPrice.toFixed(4)}` : '—'}</td>
                         <td style={{ padding: '0.625rem 0.75rem', color: 'hsl(240 5% 65%)' }}>{tr.lotSize}</td>
                         <td style={{ padding: '0.625rem 0.75rem' }}>
-                          <span style={{ color: pnlPos ? '#a78bfa' : '#f87171', fontWeight: 700 }}>
+                          <span style={{ color: pnlPos ? '#60a5fa' : '#f87171', fontWeight: 700 }}>
                             {pnlPos ? '+' : ''}${fmtMoney(tr.profitLoss)}
                           </span>
                         </td>

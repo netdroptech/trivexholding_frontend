@@ -10,7 +10,7 @@ const SIGNALS = [
     confidence: 92, riskReward: '1:3.2', status: 'active',
     time: '2h ago', analyst: 'Apex AI', category: 'Crypto',
     note: 'Strong support at $82,400 confluence with 200 EMA. RSI divergence on 4H with volume spike suggests bullish continuation.',
-    pnl: '+4.8%', color: '#a78bfa',
+    pnl: '+4.8%', color: '#60a5fa',
   },
   {
     id: 2, pair: 'ETH/USDT', direction: 'BUY', timeframe: '1D',
@@ -18,7 +18,7 @@ const SIGNALS = [
     confidence: 87, riskReward: '1:2.8', status: 'active',
     time: '5h ago', analyst: 'Apex AI', category: 'Crypto',
     note: 'Bullish flag pattern forming on daily chart. Ethereum ETF inflows increasing. Key level breakout imminent.',
-    pnl: '+2.3%', color: '#a78bfa',
+    pnl: '+2.3%', color: '#60a5fa',
   },
   {
     id: 3, pair: 'SOL/USDT', direction: 'SELL', timeframe: '1H',
@@ -34,7 +34,7 @@ const SIGNALS = [
     confidence: 83, riskReward: '1:2.5', status: 'pending',
     time: '30m ago', analyst: 'Apex AI', category: 'Crypto',
     note: 'Accumulation pattern visible on OBV. BNB ecosystem activity surging. Entry pending confirmation candle close.',
-    pnl: null, color: '#a78bfa',
+    pnl: null, color: '#60a5fa',
   },
   {
     id: 5, pair: 'XRP/USDT', direction: 'BUY', timeframe: '1D',
@@ -42,7 +42,7 @@ const SIGNALS = [
     confidence: 81, riskReward: '1:2.2', status: 'closed',
     time: '1d ago', analyst: 'Apex AI', category: 'Crypto',
     note: 'Legal clarity catalyst. Cup-and-handle pattern completed. Target 1 hit.',
-    pnl: '+11.4%', color: '#a78bfa',
+    pnl: '+11.4%', color: '#60a5fa',
   },
   {
     id: 6, pair: 'AVAX/USDT', direction: 'SELL', timeframe: '4H',
@@ -55,8 +55,8 @@ const SIGNALS = [
 ]
 
 const STATS = [
-  { label: 'Win Rate',        value: '78.4%',  sub: 'Last 30 days',     color: '#a78bfa', bg: 'rgba(167,139,250,0.1)'   },
-  { label: 'Active Signals',  value: '4',      sub: 'Right now',         color: '#a78bfa', bg: 'rgba(167,139,250,0.1)'  },
+  { label: 'Win Rate',        value: '78.4%',  sub: 'Last 30 days',     color: '#60a5fa', bg: 'rgba(96,165,250,0.1)'   },
+  { label: 'Active Signals',  value: '4',      sub: 'Right now',         color: '#60a5fa', bg: 'rgba(96,165,250,0.1)'  },
   { label: 'Avg. R:R',        value: '1:2.6',  sub: 'Risk/Reward ratio', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)'   },
   { label: 'Avg. Confidence', value: '82%',    sub: 'Signal accuracy',   color: '#f59e0b', bg: 'rgba(245,158,11,0.1)'   },
 ]
@@ -64,7 +64,7 @@ const STATS = [
 const TABS = ['All', 'Active', 'Pending', 'Closed']
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
+  return <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
 }
 
 function ConfidenceBar({ pct, color }: { pct: number; color: string }) {
@@ -132,9 +132,9 @@ export function PremiumSignals() {
       {/* Tabs */}
       <div className="flex gap-1 mb-4">
         {TABS.map(t => (
-          <button key={t} onClick={() => setTab(t)} style={{ padding: '0.375rem 0.875rem', borderRadius: 999, fontSize: 12, fontWeight: 500, cursor: 'pointer', border: 'none', background: tab === t ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.04)', color: tab === t ? '#c4b5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
+          <button key={t} onClick={() => setTab(t)} style={{ padding: '0.375rem 0.875rem', borderRadius: 999, fontSize: 12, fontWeight: 500, cursor: 'pointer', border: 'none', background: tab === t ? 'rgba(96,165,250,0.2)' : 'rgba(255,255,255,0.04)', color: tab === t ? '#93c5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
             {t}
-            {t === 'Active' && <span style={{ marginLeft: 6, fontSize: 10, padding: '1px 5px', borderRadius: 999, background: 'rgba(167,139,250,0.2)', color: '#a78bfa' }}>4</span>}
+            {t === 'Active' && <span style={{ marginLeft: 6, fontSize: 10, padding: '1px 5px', borderRadius: 999, background: 'rgba(96,165,250,0.2)', color: '#60a5fa' }}>4</span>}
           </button>
         ))}
       </div>
@@ -144,8 +144,8 @@ export function PremiumSignals() {
         {filtered.map(sig => {
           const isBuy = sig.direction === 'BUY'
           const isExpanded = expanded === sig.id
-          const statusColor = sig.status === 'active' ? '#a78bfa' : sig.status === 'pending' ? '#f59e0b' : 'hsl(240 5% 50%)'
-          const statusBg   = sig.status === 'active' ? 'rgba(167,139,250,0.1)' : sig.status === 'pending' ? 'rgba(245,158,11,0.1)' : 'rgba(255,255,255,0.05)'
+          const statusColor = sig.status === 'active' ? '#60a5fa' : sig.status === 'pending' ? '#f59e0b' : 'hsl(240 5% 50%)'
+          const statusBg   = sig.status === 'active' ? 'rgba(96,165,250,0.1)' : sig.status === 'pending' ? 'rgba(245,158,11,0.1)' : 'rgba(255,255,255,0.05)'
 
           return (
             <Card key={sig.id} style={{ overflow: 'hidden', cursor: 'pointer' }} >
@@ -153,9 +153,9 @@ export function PremiumSignals() {
               <div className="flex items-center gap-4 p-4" onClick={() => setExpanded(isExpanded ? null : sig.id)}>
 
                 {/* Direction badge */}
-                <div style={{ width: 52, height: 52, borderRadius: '0.75rem', background: isBuy ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)', border: `1px solid ${isBuy ? 'rgba(167,139,250,0.25)' : 'rgba(248,113,113,0.25)'}`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flexShrink: 0, gap: 2 }}>
-                  {isBuy ? <TrendingUp size={16} style={{ color: '#a78bfa' }} /> : <TrendingDown size={16} style={{ color: '#f87171' }} />}
-                  <span style={{ fontSize: 10, fontWeight: 800, color: isBuy ? '#a78bfa' : '#f87171', letterSpacing: '0.04em' }}>{sig.direction}</span>
+                <div style={{ width: 52, height: 52, borderRadius: '0.75rem', background: isBuy ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)', border: `1px solid ${isBuy ? 'rgba(96,165,250,0.25)' : 'rgba(248,113,113,0.25)'}`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flexShrink: 0, gap: 2 }}>
+                  {isBuy ? <TrendingUp size={16} style={{ color: '#60a5fa' }} /> : <TrendingDown size={16} style={{ color: '#f87171' }} />}
+                  <span style={{ fontSize: 10, fontWeight: 800, color: isBuy ? '#60a5fa' : '#f87171', letterSpacing: '0.04em' }}>{sig.direction}</span>
                 </div>
 
                 {/* Pair + timeframe */}
@@ -175,7 +175,7 @@ export function PremiumSignals() {
                   </div>
                   <div>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 2 }}>Targets</p>
-                    <p style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa' }}>{sig.target1} · {sig.target2}</p>
+                    <p style={{ fontSize: 12, fontWeight: 600, color: '#60a5fa' }}>{sig.target1} · {sig.target2}</p>
                   </div>
                   <div>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 2 }}>Stop Loss</p>
@@ -188,7 +188,7 @@ export function PremiumSignals() {
                   {/* Confidence */}
                   <div style={{ textAlign: 'right', minWidth: 72 }}>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 4 }}>Confidence</p>
-                    <ConfidenceBar pct={sig.confidence} color={sig.confidence >= 85 ? '#a78bfa' : sig.confidence >= 75 ? '#f59e0b' : '#f87171'} />
+                    <ConfidenceBar pct={sig.confidence} color={sig.confidence >= 85 ? '#60a5fa' : sig.confidence >= 75 ? '#f59e0b' : '#f87171'} />
                     <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(40 6% 88%)', marginTop: 3 }}>{sig.confidence}%</p>
                   </div>
 
@@ -196,7 +196,7 @@ export function PremiumSignals() {
                   {sig.pnl && (
                     <div style={{ minWidth: 56, textAlign: 'right' }}>
                       <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 2 }}>P&amp;L</p>
-                      <p style={{ fontSize: 14, fontWeight: 700, color: sig.pnl.startsWith('+') ? '#a78bfa' : '#f87171' }}>{sig.pnl}</p>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: sig.pnl.startsWith('+') ? '#60a5fa' : '#f87171' }}>{sig.pnl}</p>
                     </div>
                   )}
 
@@ -233,7 +233,7 @@ export function PremiumSignals() {
                     </div>
                   </div>
                   <div className="flex gap-2 mt-4">
-                    <button style={{ padding: '0.5rem 1.125rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 700, border: 'none', cursor: 'pointer' }}>
+                    <button style={{ padding: '0.5rem 1.125rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 700, border: 'none', cursor: 'pointer' }}>
                       Copy Trade
                     </button>
                     <button style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(40 6% 80%)', fontSize: 12, cursor: 'pointer' }}>

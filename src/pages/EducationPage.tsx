@@ -46,7 +46,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden pt-6 pb-24 sm:pb-32">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.07) 0%, transparent 70%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.07) 0%, transparent 70%)' }} />
       <Navbar />
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-20 sm:pt-24">
         <Reveal>
@@ -87,13 +87,13 @@ function LearningPathsSection() {
             <Reveal key={title} delay={i * 100}>
               <div className="liquid-glass rounded-3xl p-7 sm:p-8 flex flex-col gap-5 sm:gap-6">
                 <div className="flex items-start justify-between">
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)' }}>
-                    <Icon className="w-6 h-6" style={{ color: '#a78bfa' }} strokeWidth={1.5} />
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
+                    <Icon className="w-6 h-6" style={{ color: '#60a5fa' }} strokeWidth={1.5} />
                   </div>
                   <span className="text-xs text-muted-foreground liquid-glass rounded-full px-3 py-1">{tag}</span>
                 </div>
                 <div>
-                  <p className="text-sm font-medium mb-1" style={{ color: '#a78bfa' }}>{level}</p>
+                  <p className="text-sm font-medium mb-1" style={{ color: '#60a5fa' }}>{level}</p>
                   <h3 className="text-hero-heading text-lg sm:text-xl font-semibold">{title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mt-2">{desc}</p>
                 </div>
@@ -136,7 +136,7 @@ function GuidesSection() {
             <Reveal key={title} delay={i * 80}>
               <div className="liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col gap-4 hover:bg-white/[0.03] transition-colors cursor-pointer">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: 'rgba(167,139,250,0.1)', color: '#a78bfa' }}>{category}</span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ background: 'rgba(96,165,250,0.1)', color: '#60a5fa' }}>{category}</span>
                   <span className="text-xs text-muted-foreground">{readTime}</span>
                 </div>
                 <h3 className="text-hero-heading text-sm sm:text-base font-semibold leading-snug">{title}</h3>
@@ -165,8 +165,8 @@ function VideoCoursesSection() {
           {VIDEO_COURSES.map(({ icon: Icon, title, lessons, duration, desc }, i) => (
             <Reveal key={title} delay={i * 100}>
               <div className="liquid-glass rounded-3xl p-7 sm:p-8 flex flex-col gap-5 hover:bg-white/[0.03] transition-colors">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)' }}>
-                  <Icon className="w-6 h-6" style={{ color: '#a78bfa' }} strokeWidth={1.5} />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
+                  <Icon className="w-6 h-6" style={{ color: '#60a5fa' }} strokeWidth={1.5} />
                 </div>
                 <div>
                   <h3 className="text-hero-heading text-base sm:text-lg font-semibold">{title}</h3>
@@ -237,7 +237,7 @@ function CTASection() {
 export function EducationPage() {
   const { platformName } = usePlatformName()
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <HeroSection />
       <LearningPathsSection />

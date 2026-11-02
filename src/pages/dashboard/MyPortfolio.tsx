@@ -24,7 +24,7 @@ function fmt(n: number, decimals = 2) {
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>
       {children}
     </div>
   )
@@ -61,13 +61,13 @@ function TrendChart({ points }: { points: { label: string; value: number }[] }) 
       <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 150 }} preserveAspectRatio="none">
         <defs>
           <linearGradient id="ptGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#a78bfa" stopOpacity={0.25} />
-            <stop offset="100%" stopColor="#a78bfa" stopOpacity={0} />
+            <stop offset="0%"   stopColor="#60a5fa" stopOpacity={0.25} />
+            <stop offset="100%" stopColor="#60a5fa" stopOpacity={0} />
           </linearGradient>
         </defs>
         <polygon points={area} fill="url(#ptGrad)" />
-        <polyline points={line} fill="none" stroke="#a78bfa" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-        <circle cx={pts[pts.length - 1].x} cy={pts[pts.length - 1].y} r="4" fill="#a78bfa" />
+        <polyline points={line} fill="none" stroke="#60a5fa" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
+        <circle cx={pts[pts.length - 1].x} cy={pts[pts.length - 1].y} r="4" fill="#60a5fa" />
       </svg>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
         {points.map((p, i) => (
@@ -82,7 +82,7 @@ function TrendChart({ points }: { points: { label: string; value: number }[] }) 
 }
 
 // ─── Donut chart (composition: deposits vs profit vs bonus) ───────────────────
-const SLICE_COLORS = ['#a78bfa', '#60a5fa', '#f59e0b', '#f87171']
+const SLICE_COLORS = ['#60a5fa', '#60a5fa', '#f59e0b', '#f87171']
 const SLICE_LABELS = ['Deposited', 'Profit', 'Bonus', 'Withdrawn']
 
 function DonutChart({ slices }: { slices: number[] }) {
@@ -111,7 +111,7 @@ function DonutChart({ slices }: { slices: number[] }) {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
       <div style={{ position: 'relative', width: 160, height: 160 }}>
         <div style={{ width: 160, height: 160, borderRadius: '50%', background: `conic-gradient(${gradient})` }} />
-        <div style={{ position: 'absolute', inset: 28, borderRadius: '50%', background: 'hsl(260 60% 5%)' }} />
+        <div style={{ position: 'absolute', inset: 28, borderRadius: '50%', background: 'hsl(222 60% 5%)' }} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontSize: 13, fontWeight: 700, color: 'hsl(40 6% 92%)' }}>{activeCount}</span>
           <span style={{ fontSize: 10, color: 'hsl(240 5% 50%)' }}>sources</span>
@@ -235,7 +235,7 @@ export function MyPortfolio() {
                 value: `$${fmt(balance)}`,
                 sub: 'Available to withdraw',
                 icon: Wallet,
-                color: '#a78bfa', bg: 'rgba(167,139,250,0.1)',
+                color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',
               },
               {
                 label: 'Total Deposited',
@@ -249,8 +249,8 @@ export function MyPortfolio() {
                 value: `$${fmt(totalProfit)}`,
                 sub: returnPct !== 0 ? `${returnPct >= 0 ? '+' : ''}${returnPct.toFixed(1)}% return` : `From ${platformName} returns`,
                 icon: TrendingUp,
-                color: totalProfit >= 0 ? '#a78bfa' : '#f87171',
-                bg:    totalProfit >= 0 ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)',
+                color: totalProfit >= 0 ? '#60a5fa' : '#f87171',
+                bg:    totalProfit >= 0 ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)',
               },
               {
                 label: 'Total Withdrawn',
@@ -325,8 +325,8 @@ export function MyPortfolio() {
                 <tr>
                   <td colSpan={5} style={{ padding: '52px 20px', textAlign: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
-                      <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(167,139,250,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <TrendingUp size={18} style={{ color: 'rgba(167,139,250,0.3)' }} />
+                      <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(96,165,250,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <TrendingUp size={18} style={{ color: 'rgba(96,165,250,0.3)' }} />
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No earnings yet</p>
                       <p style={{ fontSize: 12, color: 'hsl(240 5% 32%)' }}>Profit credits from {platformName} will appear here.</p>
@@ -338,7 +338,7 @@ export function MyPortfolio() {
               {/* Real rows */}
               {!loading && profitTx.map((t, i) => {
                 const isPos = t.amount >= 0
-                const statusColor = t.status === 'COMPLETED' ? { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)' }
+                const statusColor = t.status === 'COMPLETED' ? { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)' }
                   : t.status === 'PENDING' ? { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)' }
                   : { color: '#f87171', bg: 'rgba(248,113,113,0.12)' }
                 const desc = `${t.note || platformName + " Return"}`
@@ -360,7 +360,7 @@ export function MyPortfolio() {
                         {t.type === 'PROFIT' ? 'Profit' : t.type === 'BONUS' ? 'Bonus' : t.type}
                       </span>
                     </td>
-                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 600, color: isPos ? '#a78bfa' : '#f87171', whiteSpace: 'nowrap' }}>
+                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 600, color: isPos ? '#60a5fa' : '#f87171', whiteSpace: 'nowrap' }}>
                       {isPos ? '+' : ''}${fmt(Math.abs(t.amount))}
                     </td>
                     <td style={{ padding: '0.875rem 1.25rem' }}>

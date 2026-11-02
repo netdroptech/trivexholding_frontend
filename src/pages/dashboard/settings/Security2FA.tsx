@@ -22,7 +22,7 @@ const BACKUP_CODES = [
 
 function Section({ title, sub, children }: { title: string; sub?: string; children: React.ReactNode }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
       <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: sub ? 2 : 16 }}>{title}</p>
       {sub && <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 16 }}>{sub}</p>}
       <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 20 }} />
@@ -62,22 +62,22 @@ export function Security2FA() {
       </div>
 
       {/* Security Score */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 48, height: 48, borderRadius: 12, background: twoFAEnabled ? 'rgba(167,139,250,0.12)' : 'rgba(245,158,11,0.12)', border: `1px solid ${twoFAEnabled ? 'rgba(167,139,250,0.2)' : 'rgba(245,158,11,0.2)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Shield size={22} style={{ color: twoFAEnabled ? '#a78bfa' : '#f59e0b' }} />
+            <div style={{ width: 48, height: 48, borderRadius: 12, background: twoFAEnabled ? 'rgba(96,165,250,0.12)' : 'rgba(245,158,11,0.12)', border: `1px solid ${twoFAEnabled ? 'rgba(96,165,250,0.2)' : 'rgba(245,158,11,0.2)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Shield size={22} style={{ color: twoFAEnabled ? '#60a5fa' : '#f59e0b' }} />
             </div>
             <div>
               <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>Security Score</p>
-              <p style={{ fontSize: 12, color: twoFAEnabled ? '#a78bfa' : '#f59e0b' }}>{twoFAEnabled ? 'Strong — All protections active' : 'Fair — Enable 2FA to strengthen'}</p>
+              <p style={{ fontSize: 12, color: twoFAEnabled ? '#60a5fa' : '#f59e0b' }}>{twoFAEnabled ? 'Strong — All protections active' : 'Fair — Enable 2FA to strengthen'}</p>
             </div>
           </div>
-          <div style={{ fontSize: 32, fontWeight: 800, color: twoFAEnabled ? '#a78bfa' : '#f59e0b' }}>{twoFAEnabled ? '95' : '65'}<span style={{ fontSize: 14, fontWeight: 500, color: 'hsl(240 5% 50%)' }}>/100</span></div>
+          <div style={{ fontSize: 32, fontWeight: 800, color: twoFAEnabled ? '#60a5fa' : '#f59e0b' }}>{twoFAEnabled ? '95' : '65'}<span style={{ fontSize: 14, fontWeight: 500, color: 'hsl(240 5% 50%)' }}>/100</span></div>
         </div>
         {/* Score bar */}
         <div style={{ height: 6, borderRadius: 999, background: 'rgba(255,255,255,0.06)' }}>
-          <div style={{ height: '100%', width: twoFAEnabled ? '95%' : '65%', borderRadius: 999, background: twoFAEnabled ? 'linear-gradient(90deg,#a78bfa,#8b5cf6)' : 'linear-gradient(90deg,#f59e0b,#d97706)', transition: 'all 0.5s ease' }} />
+          <div style={{ height: '100%', width: twoFAEnabled ? '95%' : '65%', borderRadius: 999, background: twoFAEnabled ? 'linear-gradient(90deg,#60a5fa,#3b82f6)' : 'linear-gradient(90deg,#f59e0b,#d97706)', transition: 'all 0.5s ease' }} />
         </div>
       </div>
 
@@ -94,7 +94,7 @@ export function Security2FA() {
                 <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>Your account is less secure without it</p>
               </div>
             </div>
-            <button onClick={() => setShowSetup(true)} style={{ padding: '9px 18px', borderRadius: 9, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 7 }}>
+            <button onClick={() => setShowSetup(true)} style={{ padding: '9px 18px', borderRadius: 9, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 7 }}>
               <Smartphone size={14} /> Enable 2FA
             </button>
           </div>
@@ -103,11 +103,11 @@ export function Security2FA() {
         {twoFAEnabled && !showSetup && (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(167,139,250,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <CheckCircle2 size={16} style={{ color: '#a78bfa' }} />
+              <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(96,165,250,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <CheckCircle2 size={16} style={{ color: '#60a5fa' }} />
               </div>
               <div>
-                <p style={{ fontSize: 13, fontWeight: 600, color: '#a78bfa' }}>2FA is enabled</p>
+                <p style={{ fontSize: 13, fontWeight: 600, color: '#60a5fa' }}>2FA is enabled</p>
                 <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>Authenticator app is configured</p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export function Security2FA() {
                 <Copy size={12} /> Copy
               </button>
             </div>
-            <button onClick={() => setOtpStep('verify')} style={{ width: '100%', padding: '11px', borderRadius: 10, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => setOtpStep('verify')} style={{ width: '100%', padding: '11px', borderRadius: 10, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
               I've scanned the code →
             </button>
           </div>
@@ -150,7 +150,7 @@ export function Security2FA() {
               style={{ ...inputStyle, textAlign: 'center', fontSize: 22, fontWeight: 800, letterSpacing: 8, marginBottom: 16 }} />
             <div style={{ display: 'flex', gap: 10 }}>
               <button onClick={() => setOtpStep('qr')} style={{ flex: 1, padding: '11px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 55%)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>← Back</button>
-              <button onClick={handleVerify} style={{ flex: 2, padding: '11px', borderRadius: 10, background: otpCode.length === 6 ? 'linear-gradient(135deg,#7c3aed,#6d28d9)' : 'rgba(255,255,255,0.05)', border: 'none', color: otpCode.length === 6 ? '#fff' : 'hsl(240 5% 40%)', fontSize: 13, fontWeight: 700, cursor: otpCode.length === 6 ? 'pointer' : 'default' }}>
+              <button onClick={handleVerify} style={{ flex: 2, padding: '11px', borderRadius: 10, background: otpCode.length === 6 ? 'linear-gradient(135deg,#2563eb,#1d4ed8)' : 'rgba(255,255,255,0.05)', border: 'none', color: otpCode.length === 6 ? '#fff' : 'hsl(240 5% 40%)', fontSize: 13, fontWeight: 700, cursor: otpCode.length === 6 ? 'pointer' : 'default' }}>
                 Verify & Activate
               </button>
             </div>
@@ -159,10 +159,10 @@ export function Security2FA() {
 
         {showSetup && otpStep === 'done' && (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
-            <CheckCircle2 size={44} style={{ color: '#a78bfa', margin: '0 auto 12px' }} />
-            <p style={{ fontSize: 15, fontWeight: 700, color: '#a78bfa', marginBottom: 6 }}>2FA Successfully Enabled!</p>
+            <CheckCircle2 size={44} style={{ color: '#60a5fa', margin: '0 auto 12px' }} />
+            <p style={{ fontSize: 15, fontWeight: 700, color: '#60a5fa', marginBottom: 6 }}>2FA Successfully Enabled!</p>
             <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 20 }}>Your account is now protected with two-factor authentication.</p>
-            <button onClick={() => setShowSetup(false)} style={{ padding: '10px 28px', borderRadius: 10, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => setShowSetup(false)} style={{ padding: '10px 28px', borderRadius: 10, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
               Done
             </button>
           </div>
@@ -189,7 +189,7 @@ export function Security2FA() {
             </div>
           ))}
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 4 }}>
-            <button onClick={() => { setPwSaved(true); setTimeout(() => setPwSaved(false), 3000) }} style={{ padding: '10px 22px', borderRadius: 10, background: pwSaved ? 'rgba(167,139,250,0.15)' : 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: pwSaved ? '1px solid rgba(167,139,250,0.3)' : 'none', color: pwSaved ? '#a78bfa' : '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 7 }}>
+            <button onClick={() => { setPwSaved(true); setTimeout(() => setPwSaved(false), 3000) }} style={{ padding: '10px 22px', borderRadius: 10, background: pwSaved ? 'rgba(96,165,250,0.15)' : 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: pwSaved ? '1px solid rgba(96,165,250,0.3)' : 'none', color: pwSaved ? '#60a5fa' : '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 7 }}>
               {pwSaved ? <><CheckCircle2 size={14} /> Password Updated!</> : 'Update Password'}
             </button>
           </div>
@@ -206,10 +206,10 @@ export function Security2FA() {
           ))}
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          <button onClick={() => { navigator.clipboard?.writeText(BACKUP_CODES.join('\n')); setCopiedCodes(true); setTimeout(() => setCopiedCodes(false), 2000) }} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: copiedCodes ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${copiedCodes ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.08)'}`, color: copiedCodes ? '#a78bfa' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
+          <button onClick={() => { navigator.clipboard?.writeText(BACKUP_CODES.join('\n')); setCopiedCodes(true); setTimeout(() => setCopiedCodes(false), 2000) }} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: copiedCodes ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${copiedCodes ? 'rgba(96,165,250,0.2)' : 'rgba(255,255,255,0.08)'}`, color: copiedCodes ? '#60a5fa' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
             <Copy size={12} /> {copiedCodes ? 'Copied!' : 'Copy All'}
           </button>
-          <button style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.2)', color: '#c4b5fd', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
+          <button style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.2)', color: '#93c5fd', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
             Regenerate Codes
           </button>
         </div>
@@ -219,14 +219,14 @@ export function Security2FA() {
       {/* <Section title="Active Sessions" sub="Devices currently signed into your account">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {SESSIONS.map(s => (
-            <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 10, background: s.current ? 'rgba(167,139,250,0.04)' : 'rgba(255,255,255,0.02)', border: `1px solid ${s.current ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.06)'}`, flexWrap: 'wrap' }}>
+            <div key={s.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 10, background: s.current ? 'rgba(96,165,250,0.04)' : 'rgba(255,255,255,0.02)', border: `1px solid ${s.current ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.06)'}`, flexWrap: 'wrap' }}>
               <div style={{ width: 36, height: 36, borderRadius: 9, background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Monitor size={16} style={{ color: 'hsl(240 5% 55%)' }} />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 85%)' }}>{s.device}</p>
-                  {s.current && <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 999, background: 'rgba(167,139,250,0.12)', color: '#a78bfa' }}>This device</span>}
+                  {s.current && <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 999, background: 'rgba(96,165,250,0.12)', color: '#60a5fa' }}>This device</span>}
                 </div>
                 <p style={{ fontSize: 11, color: 'hsl(240 5% 48%)', marginTop: 2 }}>{s.location} · {s.time}</p>
               </div>

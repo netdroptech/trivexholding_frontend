@@ -34,7 +34,7 @@ const CONDITIONS = [
 function HeroSection() {
   return (
     <section className="relative w-full overflow-hidden pt-6 pb-24 sm:pb-32">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.07) 0%, transparent 70%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.07) 0%, transparent 70%)' }} />
       <Navbar />
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-20 sm:pt-24">
         <Reveal>
@@ -82,7 +82,7 @@ function LiveTickerSection() {
       <div className="max-w-6xl mx-auto">
         <Reveal className="text-center mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-2 mb-5 sm:mb-6">
-            <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
             <span className="text-sm text-foreground/70">Live Prices</span>
           </div>
           <h2 className="text-hero-heading text-2xl sm:text-5xl font-semibold">Market Snapshot</h2>
@@ -96,7 +96,7 @@ function LiveTickerSection() {
                   <p className="text-foreground font-semibold text-sm sm:text-base">{pair}</p>
                   <p className="text-hero-heading text-lg sm:text-xl font-semibold tracking-tight mt-1">{price}</p>
                 </div>
-                <span className={cn('text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full', up ? 'bg-violet-500/10 text-violet-400' : 'bg-red-500/10 text-red-400')}>{change}</span>
+                <span className={cn('text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full', up ? 'bg-blue-500/10 text-blue-400' : 'bg-red-500/10 text-red-400')}>{change}</span>
               </div>
             </Reveal>
           ))}
@@ -122,8 +122,8 @@ function AssetClassesSection() {
             <Reveal key={label} delay={i * 80}>
               <div className="liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col gap-4 hover:bg-white/[0.03] transition-colors">
                 <div className="flex items-start justify-between">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)' }}>
-                    <Icon className="w-5 h-5" style={{ color: '#a78bfa' }} strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
+                    <Icon className="w-5 h-5" style={{ color: '#60a5fa' }} strokeWidth={1.5} />
                   </div>
                   <span className="text-xs text-muted-foreground liquid-glass rounded-full px-3 py-1">{pairs}</span>
                 </div>
@@ -163,7 +163,7 @@ function CTASection() {
 
 export function MarketsPage() {
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <HeroSection />
       <ConditionsBar />

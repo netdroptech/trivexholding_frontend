@@ -16,7 +16,7 @@ interface UserResult {
 
 const TYPE_CONFIG = {
   INFO:    { label: 'Info',    icon: Info,          color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',  border: 'rgba(96,165,250,0.3)'  },
-  SUCCESS: { label: 'Success', icon: CheckCircle,   color: '#a78bfa', bg: 'rgba(167,139,250,0.1)',  border: 'rgba(167,139,250,0.3)'  },
+  SUCCESS: { label: 'Success', icon: CheckCircle,   color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',  border: 'rgba(96,165,250,0.3)'  },
   WARNING: { label: 'Warning', icon: AlertTriangle, color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.3)'  },
   ERROR:   { label: 'Error',   icon: AlertCircle,   color: '#f87171', bg: 'rgba(248,113,113,0.1)', border: 'rgba(248,113,113,0.3)' },
 } as const
@@ -159,8 +159,8 @@ export function AdminNotifications() {
       {/* Page header */}
       <div style={{ marginBottom: 28 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Bell size={15} color="#a78bfa" />
+          <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Bell size={15} color="#60a5fa" />
           </div>
           <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'hsl(40 6% 95%)', margin: 0 }}>Send Notification</h1>
         </div>
@@ -170,7 +170,7 @@ export function AdminNotifications() {
       </div>
 
       {/* Recipient mode toggle */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 45%)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Recipient</p>
 
         {/* Mode toggle */}
@@ -181,9 +181,9 @@ export function AdminNotifications() {
               onClick={() => setBroadcastMode(bcast)}
               style={{
                 flex: 1, padding: '8px 12px', borderRadius: 8, cursor: 'pointer', fontSize: 12, fontWeight: 600,
-                background: broadcastMode === bcast ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.03)',
-                border:     broadcastMode === bcast ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(255,255,255,0.08)',
-                color:      broadcastMode === bcast ? '#a78bfa' : 'hsl(240 5% 55%)',
+                background: broadcastMode === bcast ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.03)',
+                border:     broadcastMode === bcast ? '1px solid rgba(96,165,250,0.3)' : '1px solid rgba(255,255,255,0.08)',
+                color:      broadcastMode === bcast ? '#60a5fa' : 'hsl(240 5% 55%)',
                 transition: 'all 0.15s',
               }}
             >
@@ -204,12 +204,12 @@ export function AdminNotifications() {
                 onChange={e => { setQuery(e.target.value); setSelected(null) }}
                 onFocus={() => results.length > 0 && setDropOpen(true)}
               />
-              {searching && <Loader2 size={13} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', color: '#a78bfa', animation: 'spin 1s linear infinite' }} />}
+              {searching && <Loader2 size={13} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', color: '#60a5fa', animation: 'spin 1s linear infinite' }} />}
             </div>
 
             {/* Search dropdown */}
             {dropOpen && results.length > 0 && (
-              <div style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, zIndex: 50, borderRadius: 8, background: 'hsl(260 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', boxShadow: '0 12px 32px rgba(0,0,0,0.5)' }}>
+              <div style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, zIndex: 50, borderRadius: 8, background: 'hsl(222 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', boxShadow: '0 12px 32px rgba(0,0,0,0.5)' }}>
                 {results.map(u => (
                   <button
                     key={u.id}
@@ -218,14 +218,14 @@ export function AdminNotifications() {
                     onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
                     onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                   >
-                    <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <User size={12} color="#a78bfa" />
+                    <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <User size={12} color="#60a5fa" />
                     </div>
                     <div>
                       <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(40 6% 88%)', marginBottom: 1 }}>{u.firstName} {u.lastName}</p>
                       <p style={{ fontSize: 11, color: 'hsl(240 5% 48%)' }}>{u.email}</p>
                     </div>
-                    <span style={{ marginLeft: 'auto', fontSize: 10, padding: '2px 6px', borderRadius: 999, background: u.status === 'ACTIVE' ? 'rgba(167,139,250,0.1)' : 'rgba(245,158,11,0.1)', color: u.status === 'ACTIVE' ? '#a78bfa' : '#f59e0b', fontWeight: 600 }}>
+                    <span style={{ marginLeft: 'auto', fontSize: 10, padding: '2px 6px', borderRadius: 999, background: u.status === 'ACTIVE' ? 'rgba(96,165,250,0.1)' : 'rgba(245,158,11,0.1)', color: u.status === 'ACTIVE' ? '#60a5fa' : '#f59e0b', fontWeight: 600 }}>
                       {u.status}
                     </span>
                   </button>
@@ -235,12 +235,12 @@ export function AdminNotifications() {
 
             {/* Selected user chip */}
             {selected && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '8px 10px', borderRadius: 8, background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.2)' }}>
-                <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(167,139,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <User size={11} color="#a78bfa" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '8px 10px', borderRadius: 8, background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.2)' }}>
+                <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(96,165,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <User size={11} color="#60a5fa" />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <p style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', margin: 0 }}>{selected.firstName} {selected.lastName}</p>
+                  <p style={{ fontSize: 12, fontWeight: 600, color: '#60a5fa', margin: 0 }}>{selected.firstName} {selected.lastName}</p>
                   <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', margin: 0 }}>{selected.email}</p>
                 </div>
                 <button onClick={() => { setSelected(null); setQuery('') }} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 45%)', display: 'flex', padding: 2 }}>
@@ -272,8 +272,8 @@ export function AdminNotifications() {
             </div>
             <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
               {loadingBroadcast
-                ? <Loader2 size={12} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
-                : <span style={{ fontSize: 11, color: '#a78bfa', fontWeight: 600 }}>{broadcastList.length}</span>
+                ? <Loader2 size={12} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
+                : <span style={{ fontSize: 11, color: '#60a5fa', fontWeight: 600 }}>{broadcastList.length}</span>
               }
               <span style={{ fontSize: 11, color: 'hsl(240 5% 48%)' }}>users will receive this notification</span>
             </div>
@@ -282,7 +282,7 @@ export function AdminNotifications() {
       </div>
 
       {/* Notification type */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 45%)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Notification Type</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 8 }}>
           {(Object.entries(TYPE_CONFIG) as [NotifType, typeof TYPE_CONFIG[NotifType]][]).map(([key, c]) => {
@@ -308,7 +308,7 @@ export function AdminNotifications() {
       </div>
 
       {/* Content form */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 45%)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 14 }}>Message</p>
 
         <div style={{ marginBottom: 12 }}>
@@ -349,7 +349,7 @@ export function AdminNotifications() {
 
       {/* Preview */}
       {(title || message) && (
-        <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
+        <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1.25rem', marginBottom: 16 }}>
           <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 45%)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>Preview</p>
           <div style={{ display: 'flex', gap: 10, padding: '12px', borderRadius: 8, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: cfg.color, flexShrink: 0, marginTop: 5 }} />
@@ -364,9 +364,9 @@ export function AdminNotifications() {
 
       {/* Feedback */}
       {success && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 8, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 14 }}>
-          <CheckCircle size={14} color="#a78bfa" />
-          <p style={{ fontSize: 13, color: '#a78bfa', margin: 0 }}>{success}</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 8, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 14 }}>
+          <CheckCircle size={14} color="#60a5fa" />
+          <p style={{ fontSize: 13, color: '#60a5fa', margin: 0 }}>{success}</p>
         </div>
       )}
       {error && (
@@ -380,7 +380,7 @@ export function AdminNotifications() {
       <button
         onClick={handleSend}
         disabled={sending}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '0.875rem', borderRadius: 10, background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', fontSize: 14, fontWeight: 700, border: 'none', cursor: sending ? 'not-allowed' : 'pointer', opacity: sending ? 0.7 : 1, boxShadow: '0 4px 20px rgba(167,139,250,0.2)' }}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '0.875rem', borderRadius: 10, background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 14, fontWeight: 700, border: 'none', cursor: sending ? 'not-allowed' : 'pointer', opacity: sending ? 0.7 : 1, boxShadow: '0 4px 20px rgba(96,165,250,0.2)' }}
       >
         {sending
           ? <><Loader2 size={15} style={{ animation: 'spin 1s linear infinite' }} /> Sending…</>

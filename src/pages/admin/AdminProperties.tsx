@@ -34,7 +34,7 @@ interface Property {
 /* ─── constants ─── */
 const TYPES    = ['All', 'Villa', 'Penthouse', 'Apartment', 'Townhouse', 'Duplex', 'Studio', 'Loft', 'Commercial']
 const STATUSES = ['Available', 'Pending', 'Sold'] as const
-const STATUS_C: Record<string, { c: string; bg: string }> = { Available: { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)' }, AVAILABLE: { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)' }, Pending: { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)' }, PENDING: { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)' }, Sold: { c: '#f87171', bg: 'rgba(248,113,113,0.12)' }, SOLD: { c: '#f87171', bg: 'rgba(248,113,113,0.12)' } }
+const STATUS_C: Record<string, { c: string; bg: string }> = { Available: { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)' }, AVAILABLE: { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)' }, Pending: { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)' }, PENDING: { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)' }, Sold: { c: '#f87171', bg: 'rgba(248,113,113,0.12)' }, SOLD: { c: '#f87171', bg: 'rgba(248,113,113,0.12)' } }
 const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '') ?? 'http://localhost:4000'
 
 const EMPTY: Omit<Property, 'id'> = {
@@ -259,9 +259,9 @@ export function AdminProperties() {
 
   const filterBtn = (active: boolean): React.CSSProperties => ({
     padding: '5px 12px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer',
-    border: active ? '1px solid rgba(167,139,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
-    background: active ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)',
-    color: active ? '#c4b5fd' : 'hsl(240 5% 55%)',
+    border: active ? '1px solid rgba(96,165,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
+    background: active ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.03)',
+    color: active ? '#93c5fd' : 'hsl(240 5% 55%)',
   })
 
   return (
@@ -284,7 +284,7 @@ export function AdminProperties() {
             <p style={{ fontSize: 13, color: 'hsl(240 5% 50%)', marginTop: 3 }}>{props.length} properties · {props.filter(p => p.isListed).length} live on platform</p>
           )}
         </div>
-        <button onClick={openAdd} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 6px 20px rgba(124,58,237,0.35)' }}>
+        <button onClick={openAdd} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', boxShadow: '0 6px 20px rgba(37,99,235,0.35)' }}>
           <Plus size={15} /> Add Property
         </button>
       </div>
@@ -293,12 +293,12 @@ export function AdminProperties() {
       {!loading && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: 22 }}>
           {[
-            { label: 'Total Listings',     value: String(props.length),                              icon: Building2,  c: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-            { label: 'Live on Platform',   value: String(props.filter(p => p.isListed).length),        icon: Eye,        c: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
+            { label: 'Total Listings',     value: String(props.length),                              icon: Building2,  c: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+            { label: 'Live on Platform',   value: String(props.filter(p => p.isListed).length),        icon: Eye,        c: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
             { label: 'Total Value',        value: `$${parseFloat((props.reduce((s,p)=>s+p.price,0)/1e6).toFixed(2))}M`, icon: DollarSign, c: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
             { label: 'Avg ROI',            value: props.length > 0 ? `${(props.reduce((s,p)=>s+p.roi,0)/props.length).toFixed(1)}%` : '0%', icon: TrendingUp, c: '#f59e0b', bg: 'rgba(245,158,11,0.1)' },
           ].map(s => (
-            <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '15px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '15px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{ width: 38, height: 38, borderRadius: 9, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><s.icon size={17} style={{ color: s.c }} /></div>
               <div><p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>{s.label}</p><p style={{ fontSize: 20, fontWeight: 800, color: s.c }}>{s.value}</p></div>
             </div>
@@ -307,7 +307,7 @@ export function AdminProperties() {
       )}
 
       {/* Filters */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '12px 14px', marginBottom: 16 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '12px 14px', marginBottom: 16 }}>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
           <div style={{ position: 'relative', flex: 1, minWidth: 180 }}>
             <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none' }} />
@@ -325,7 +325,7 @@ export function AdminProperties() {
       </div>
 
       {/* Table */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 860 }}>
             <thead>
@@ -337,7 +337,7 @@ export function AdminProperties() {
             </thead>
             <tbody>
               {displayed.map(p => {
-                const sc = STATUS_C[p.status] ?? { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)' }
+                const sc = STATUS_C[p.status] ?? { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)' }
                 return (
                   <tr key={p.id} style={{ borderTop: '1px solid rgba(255,255,255,0.04)', transition: 'background 0.1s' }}
                     onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.025)')}
@@ -369,11 +369,11 @@ export function AdminProperties() {
 
                     {/* Type */}
                     <td style={{ padding: '11px 14px' }}>
-                      <span style={{ fontSize: 11, fontWeight: 600, padding: '3px 8px', borderRadius: 6, background: 'rgba(167,139,250,0.12)', color: '#c4b5fd' }}>{p.type}</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, padding: '3px 8px', borderRadius: 6, background: 'rgba(96,165,250,0.12)', color: '#93c5fd' }}>{p.type}</span>
                     </td>
 
                     {/* Price */}
-                    <td style={{ padding: '11px 14px', fontSize: 13, fontWeight: 700, color: '#a78bfa', whiteSpace: 'nowrap' }}>
+                    <td style={{ padding: '11px 14px', fontSize: 13, fontWeight: 700, color: '#60a5fa', whiteSpace: 'nowrap' }}>
                       ${p.price >= 1e6 ? parseFloat((p.price/1e6).toFixed(2))+'M' : (p.price/1000).toFixed(0)+'K'}
                     </td>
 
@@ -401,9 +401,9 @@ export function AdminProperties() {
                     <td style={{ padding: '11px 14px' }}>
                       <button onClick={() => toggleListed(p.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
                         {p.isListed
-                          ? <ToggleRight size={22} style={{ color: '#a78bfa' }} />
+                          ? <ToggleRight size={22} style={{ color: '#60a5fa' }} />
                           : <ToggleLeft  size={22} style={{ color: 'hsl(240 5% 38%)' }} />}
-                        <span style={{ fontSize: 10.5, fontWeight: 600, color: p.isListed ? '#a78bfa' : 'hsl(240 5% 38%)' }}>{p.isListed ? 'Live' : 'Hidden'}</span>
+                        <span style={{ fontSize: 10.5, fontWeight: 600, color: p.isListed ? '#60a5fa' : 'hsl(240 5% 38%)' }}>{p.isListed ? 'Live' : 'Hidden'}</span>
                       </button>
                     </td>
 
@@ -413,8 +413,8 @@ export function AdminProperties() {
                         <button onClick={() => openView(p)} style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }} title="View">
                           <Eye size={13} style={{ color: '#60a5fa' }} />
                         </button>
-                        <button onClick={() => openEdit(p)} style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }} title="Edit">
-                          <Pencil size={13} style={{ color: '#c4b5fd' }} />
+                        <button onClick={() => openEdit(p)} style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }} title="Edit">
+                          <Pencil size={13} style={{ color: '#93c5fd' }} />
                         </button>
                         <button onClick={() => openDelete(p)} style={{ width: 28, height: 28, borderRadius: 6, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }} title="Delete">
                           <Trash2 size={13} style={{ color: '#f87171' }} />
@@ -435,12 +435,12 @@ export function AdminProperties() {
       {/* ══════════ ADD / EDIT MODAL ══════════ */}
       {(modal === 'add' || modal === 'edit') && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.72)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '24px 16px', overflowY: 'auto' }}>
-          <div style={{ width: '100%', maxWidth: 680, background: 'hsl(260 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, overflow: 'hidden', animation: 'propDropIn 0.2s ease', marginBottom: 24 }}>
+          <div style={{ width: '100%', maxWidth: 680, background: 'hsl(222 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, overflow: 'hidden', animation: 'propDropIn 0.2s ease', marginBottom: 24 }}>
 
             {/* Modal header */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)', background: 'rgba(167,139,250,0.06)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)', background: 'rgba(96,165,250,0.06)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Building2 size={16} style={{ color: '#fff' }} />
                 </div>
                 <div>
@@ -457,15 +457,15 @@ export function AdminProperties() {
               <F label="Property Image">
                 <div
                   onClick={() => fileRef.current?.click()}
-                  style={{ height: 160, borderRadius: 12, border: '2px dashed rgba(167,139,250,0.3)', background: imgPreview ? 'transparent' : 'rgba(167,139,250,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden', position: 'relative', transition: 'border-color 0.15s' }}
-                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(167,139,250,0.6)')}
-                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(167,139,250,0.3)')}
+                  style={{ height: 160, borderRadius: 12, border: '2px dashed rgba(96,165,250,0.3)', background: imgPreview ? 'transparent' : 'rgba(96,165,250,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden', position: 'relative', transition: 'border-color 0.15s' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(96,165,250,0.6)')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(96,165,250,0.3)')}
                 >
                   {imgPreview
                     ? <img src={imgPreview} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
                     : <div style={{ textAlign: 'center' }}>
-                        <ImagePlus size={28} style={{ color: 'rgba(167,139,250,0.5)', margin: '0 auto 8px' }} />
-                        <p style={{ fontSize: 13, fontWeight: 600, color: '#a78bfa' }}>Click to upload image</p>
+                        <ImagePlus size={28} style={{ color: 'rgba(96,165,250,0.5)', margin: '0 auto 8px' }} />
+                        <p style={{ fontSize: 13, fontWeight: 600, color: '#60a5fa' }}>Click to upload image</p>
                         <p style={{ fontSize: 11, color: 'hsl(240 5% 44%)', marginTop: 3 }}>JPG, PNG, WebP — max 10MB</p>
                       </div>
                   }
@@ -487,7 +487,7 @@ export function AdminProperties() {
               {/* Gallery upload */}
               <F label="Gallery Images">
                 <div style={{ border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, padding: 12 }}>
-                  <button type="button" onClick={() => galleryRef.current?.click()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 12px', borderRadius: 8, background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)', color: '#c4b5fd', fontSize: 12, fontWeight: 600, cursor: 'pointer', width: '100%', justifyContent: 'center' }}>
+                  <button type="button" onClick={() => galleryRef.current?.click()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 12px', borderRadius: 8, background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', color: '#93c5fd', fontSize: 12, fontWeight: 600, cursor: 'pointer', width: '100%', justifyContent: 'center' }}>
                     <Plus size={14} /> Add Gallery Images
                   </button>
                   <input ref={galleryRef} type="file" multiple accept="image/*" onChange={handleGalleryFiles} style={{ display: 'none' }} />
@@ -506,7 +506,7 @@ export function AdminProperties() {
                 </F>
                 <F label="Property Type">
                   <select value={form.type} onChange={e => setForm(f => ({ ...f, type: e.target.value }))} style={{ ...inp(), appearance: 'none' }}>
-                    {TYPES.filter(t => t !== 'All').map(t => <option key={t} value={t} style={{ background: 'hsl(260 87% 6%)' }}>{t}</option>)}
+                    {TYPES.filter(t => t !== 'All').map(t => <option key={t} value={t} style={{ background: 'hsl(222 87% 6%)' }}>{t}</option>)}
                   </select>
                 </F>
               </div>
@@ -557,7 +557,7 @@ export function AdminProperties() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <F label="Availability Status">
                   <select value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value as Property['status'] }))} style={{ ...inp(), appearance: 'none' }}>
-                    {STATUSES.map(s => <option key={s} value={s} style={{ background: 'hsl(260 87% 6%)' }}>{s}</option>)}
+                    {STATUSES.map(s => <option key={s} value={s} style={{ background: 'hsl(222 87% 6%)' }}>{s}</option>)}
                   </select>
                 </F>
                 <F label="Star Rating (0–5)">
@@ -574,15 +574,15 @@ export function AdminProperties() {
               <F label="Tags">
                 <div style={{ display: 'flex', gap: 6, marginBottom: 8, flexWrap: 'wrap' }}>
                   {form.tags.map(t => (
-                    <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, padding: '3px 9px', borderRadius: 6, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.25)', color: '#c4b5fd' }}>
+                    <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, padding: '3px 9px', borderRadius: 6, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.25)', color: '#93c5fd' }}>
                       {t}
-                      <button onClick={() => removeTag(t)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#a78bfa', padding: 0, display: 'flex', lineHeight: 1 }}><X size={10} /></button>
+                      <button onClick={() => removeTag(t)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#60a5fa', padding: 0, display: 'flex', lineHeight: 1 }}><X size={10} /></button>
                     </span>
                   ))}
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <input value={tagInput} onChange={e => setTagInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addTag())} placeholder="e.g. Pool, Gated, Rooftop — press Enter" style={{ ...inp(), height: 36, flex: 1, fontSize: 12 }} />
-                  <button onClick={addTag} style={{ padding: '0 14px', borderRadius: 8, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.25)', color: '#c4b5fd', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>
+                  <button onClick={addTag} style={{ padding: '0 14px', borderRadius: 8, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.25)', color: '#93c5fd', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>
                     <Tag size={13} />
                   </button>
                 </div>
@@ -596,13 +596,13 @@ export function AdminProperties() {
                 </div>
                 <button onClick={() => setForm(f => ({ ...f, isListed: !f.isListed }))} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                   {form.isListed
-                    ? <ToggleRight size={32} style={{ color: '#a78bfa' }} />
+                    ? <ToggleRight size={32} style={{ color: '#60a5fa' }} />
                     : <ToggleLeft  size={32} style={{ color: 'hsl(240 5% 38%)' }} />}
                 </button>
               </div>
 
               {/* Save */}
-              <button onClick={handleSave} disabled={!form.title || !form.city || saving} style={{ width: '100%', height: 46, borderRadius: 11, background: saved ? 'rgba(167,139,250,0.15)' : saving ? 'rgba(124,58,237,0.6)' : (!form.title || !form.city) ? 'rgba(255,255,255,0.05)' : 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: saved ? '1px solid rgba(167,139,250,0.3)' : 'none', color: saved ? '#a78bfa' : (!form.title || !form.city) ? 'hsl(240 5% 40%)' : '#fff', fontSize: 14, fontWeight: 700, cursor: (!form.title || !form.city || saving) ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.2s', opacity: saving ? 0.8 : 1 }}>
+              <button onClick={handleSave} disabled={!form.title || !form.city || saving} style={{ width: '100%', height: 46, borderRadius: 11, background: saved ? 'rgba(96,165,250,0.15)' : saving ? 'rgba(37,99,235,0.6)' : (!form.title || !form.city) ? 'rgba(255,255,255,0.05)' : 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: saved ? '1px solid rgba(96,165,250,0.3)' : 'none', color: saved ? '#60a5fa' : (!form.title || !form.city) ? 'hsl(240 5% 40%)' : '#fff', fontSize: 14, fontWeight: 700, cursor: (!form.title || !form.city || saving) ? 'default' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, transition: 'all 0.2s', opacity: saving ? 0.8 : 1 }}>
                 {saving ? <><svg width="18" height="18" viewBox="0 0 24 24" style={{ animation: 'spin 1s linear infinite' }}><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" fill="none" strokeDasharray="31.4 31.4" strokeLinecap="round" /></svg> Saving...</> : saved ? <><CheckCircle2 size={16} /> Saved!</> : modal === 'add' ? <><Plus size={15} /> Add Property</> : <><Pencil size={14} /> Save Changes</>}
               </button>
             </div>
@@ -613,7 +613,7 @@ export function AdminProperties() {
       {/* ══════════ VIEW MODAL ══════════ */}
       {modal === 'view' && selected && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.72)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-          <div style={{ width: '100%', maxWidth: 520, background: 'hsl(260 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, overflow: 'hidden', animation: 'propDropIn 0.2s ease' }}>
+          <div style={{ width: '100%', maxWidth: 520, background: 'hsl(222 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, overflow: 'hidden', animation: 'propDropIn 0.2s ease' }}>
             {selected.imageUrl && <img src={imgSrc(selected.imageUrl)} style={{ width: '100%', height: 200, objectFit: 'cover' }} alt="" />}
             <div style={{ padding: '20px 22px 26px' }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14 }}>
@@ -625,7 +625,7 @@ export function AdminProperties() {
               </div>
               <div className="grid grid-cols-3 gap-3" style={{ marginBottom: 14 }}>
                 {[
-                  { label: 'Price', value: selected.price >= 1e6 ? `$${parseFloat((selected.price/1e6).toFixed(2))}M` : `$${(selected.price/1000).toFixed(0)}K`, c: '#a78bfa' },
+                  { label: 'Price', value: selected.price >= 1e6 ? `$${parseFloat((selected.price/1e6).toFixed(2))}M` : `$${(selected.price/1000).toFixed(0)}K`, c: '#60a5fa' },
                   { label: 'ROI',   value: `${selected.roi}%`,    c: '#f59e0b' },
                   { label: 'Yield', value: `${selected.yieldPct}%`,  c: '#60a5fa' },
                 ].map(s => (
@@ -638,11 +638,11 @@ export function AdminProperties() {
               <p style={{ fontSize: 12.5, color: 'hsl(240 5% 60%)', lineHeight: 1.7, marginBottom: 14 }}>{selected.description}</p>
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 16 }}>
                 {selected.tags.map(t => (
-                  <span key={t} style={{ fontSize: 11, fontWeight: 600, padding: '3px 9px', borderRadius: 6, background: 'rgba(167,139,250,0.12)', color: '#c4b5fd' }}>{t}</span>
+                  <span key={t} style={{ fontSize: 11, fontWeight: 600, padding: '3px 9px', borderRadius: 6, background: 'rgba(96,165,250,0.12)', color: '#93c5fd' }}>{t}</span>
                 ))}
               </div>
               <div style={{ display: 'flex', gap: 8 }}>
-                <button onClick={() => { setModal(null); setTimeout(() => openEdit(selected), 50) }} style={{ flex: 1, padding: '10px', borderRadius: 9, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                <button onClick={() => { setModal(null); setTimeout(() => openEdit(selected), 50) }} style={{ flex: 1, padding: '10px', borderRadius: 9, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                   <Pencil size={13} /> Edit Property
                 </button>
                 <button onClick={() => setModal(null)} style={{ flex: 1, padding: '10px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 55%)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>Close</button>
@@ -655,7 +655,7 @@ export function AdminProperties() {
       {/* ══════════ DELETE CONFIRM ══════════ */}
       {modal === 'delete' && selected && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.72)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-          <div style={{ width: '100%', maxWidth: 400, background: 'hsl(260 87% 5%)', border: '1px solid rgba(248,113,113,0.2)', borderRadius: 18, padding: '28px 24px', animation: 'propDropIn 0.2s ease', textAlign: 'center' }}>
+          <div style={{ width: '100%', maxWidth: 400, background: 'hsl(222 87% 5%)', border: '1px solid rgba(248,113,113,0.2)', borderRadius: 18, padding: '28px 24px', animation: 'propDropIn 0.2s ease', textAlign: 'center' }}>
             <div style={{ width: 52, height: 52, borderRadius: 13, background: 'rgba(248,113,113,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
               <Trash2 size={22} style={{ color: '#f87171' }} />
             </div>

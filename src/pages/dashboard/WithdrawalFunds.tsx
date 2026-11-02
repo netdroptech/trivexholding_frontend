@@ -23,12 +23,12 @@ function fmtDate(d: string) {
   return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 function statusColor(s: string) {
-  if (s === 'COMPLETED') return '#a78bfa'
+  if (s === 'COMPLETED') return '#60a5fa'
   if (s === 'REJECTED' || s === 'CANCELLED') return '#f87171'
   return '#f59e0b'
 }
 function statusBg(s: string) {
-  if (s === 'COMPLETED') return 'rgba(167,139,250,0.1)'
+  if (s === 'COMPLETED') return 'rgba(96,165,250,0.1)'
   if (s === 'REJECTED' || s === 'CANCELLED') return 'rgba(248,113,113,0.1)'
   return 'rgba(245,158,11,0.1)'
 }
@@ -80,7 +80,7 @@ const METHODS = [
     label: 'Debit Card',
     sub: 'Payout to your card',
     icon: '💳',
-    iconBg: 'rgba(167,139,250,0.15)',
+    iconBg: 'rgba(96,165,250,0.15)',
     processingTime: '1–2 business days',
     fee: '1.5% fee',
     minAmount: '$50',
@@ -91,7 +91,7 @@ const CRYPTO_COINS = ['Bitcoin (BTC)', 'Ethereum (ETH)', 'USDT (TRC-20)', 'USDT 
 
 
 function Card({ children, style = {} }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  return <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
+  return <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', ...style }}>{children}</div>
 }
 
 function Field({ label, placeholder, value, onChange, mono = false }: {
@@ -337,8 +337,8 @@ export function WithdrawalFunds() {
         `}</style>
         <Card style={{ padding: '2rem', maxWidth: 420, width: '100%', textAlign: 'center' }}>
           {/* Icon */}
-          <div style={{ width: 60, height: 60, borderRadius: '50%', background: 'rgba(167,139,250,0.1)', border: '2px solid rgba(167,139,250,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
-            <KeyRound size={26} style={{ color: '#a78bfa' }} />
+          <div style={{ width: 60, height: 60, borderRadius: '50%', background: 'rgba(96,165,250,0.1)', border: '2px solid rgba(96,165,250,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+            <KeyRound size={26} style={{ color: '#60a5fa' }} />
           </div>
 
           <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: 6 }}>Security Verification</h2>
@@ -384,10 +384,10 @@ export function WithdrawalFunds() {
                 style={{
                   width: 52, height: 62,
                   borderRadius: '0.75rem',
-                  background: codeError ? 'rgba(248,113,113,0.08)' : d ? 'rgba(167,139,250,0.06)' : 'rgba(255,255,255,0.04)',
+                  background: codeError ? 'rgba(248,113,113,0.08)' : d ? 'rgba(96,165,250,0.06)' : 'rgba(255,255,255,0.04)',
                   border: codeError
                     ? '2px solid rgba(248,113,113,0.5)'
-                    : d ? '2px solid rgba(167,139,250,0.4)' : '2px solid rgba(255,255,255,0.12)',
+                    : d ? '2px solid rgba(96,165,250,0.4)' : '2px solid rgba(255,255,255,0.12)',
                   color: codeError ? '#f87171' : 'hsl(40 6% 95%)',
                   fontSize: '1.5rem',
                   fontWeight: 700,
@@ -429,7 +429,7 @@ export function WithdrawalFunds() {
             <button
               onClick={handleCodeSubmit}
               disabled={submitting || !allFilled}
-              style={{ flex: 2, padding: '0.75rem', borderRadius: '0.625rem', background: !allFilled || submitting ? 'rgba(255,255,255,0.06)' : 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: !allFilled || submitting ? 'hsl(240 5% 45%)' : '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: !allFilled || submitting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+              style={{ flex: 2, padding: '0.75rem', borderRadius: '0.625rem', background: !allFilled || submitting ? 'rgba(255,255,255,0.06)' : 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: !allFilled || submitting ? 'hsl(240 5% 45%)' : '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: !allFilled || submitting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
             >
               {submitting ? <><Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} />Verifying…</> : 'Confirm Withdrawal'}
             </button>
@@ -447,8 +447,8 @@ export function WithdrawalFunds() {
     return (
       <div className="p-6 max-w-[900px] mx-auto flex items-center justify-center" style={{ minHeight: '60vh' }}>
         <div style={{ textAlign: 'center', maxWidth: 400 }}>
-          <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(167,139,250,0.15)', border: '2px solid rgba(167,139,250,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
-            <CheckCircle size={32} style={{ color: '#a78bfa' }} />
+          <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'rgba(96,165,250,0.15)', border: '2px solid rgba(96,165,250,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+            <CheckCircle size={32} style={{ color: '#60a5fa' }} />
           </div>
           <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: 8 }}>Withdrawal Submitted</h2>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
@@ -474,7 +474,7 @@ export function WithdrawalFunds() {
       {/* Balance strip */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {[
-          { label: 'Available Balance', value: fmt(balance),         color: '#a78bfa', bg: 'rgba(167,139,250,0.1)',  icon: ArrowUpRight },
+          { label: 'Available Balance', value: fmt(balance),         color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',  icon: ArrowUpRight },
           { label: 'Total Withdrawn',   value: fmt(totalWithdrawn),  color: '#60a5fa', bg: 'rgba(96,165,250,0.1)', icon: ArrowUpRight },
           { label: 'Pending',           value: fmt(pendingAmt),      color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', icon: Clock        },
         ].map(s => (
@@ -498,7 +498,7 @@ export function WithdrawalFunds() {
             <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 88%)', marginBottom: 1 }}>Insufficient balance — make a deposit first</p>
             <p style={{ fontSize: 12, color: 'hsl(240 5% 55%)' }}>You need a funded account before placing a withdrawal request.</p>
           </div>
-          <button style={{ padding: '0.45rem 1rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 700, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
+          <button style={{ padding: '0.45rem 1rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 12, fontWeight: 700, border: 'none', cursor: 'pointer', flexShrink: 0 }}>
             Deposit Now
           </button>
         </div>
@@ -508,7 +508,7 @@ export function WithdrawalFunds() {
         /* Confirmation screen */
         <Card style={{ padding: '1.75rem', maxWidth: 520 }}>
           <div className="flex items-center gap-2 mb-5">
-            <Lock size={15} style={{ color: '#a78bfa' }} />
+            <Lock size={15} style={{ color: '#60a5fa' }} />
             <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(40 6% 92%)' }}>Confirm Withdrawal</p>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', marginBottom: '1.5rem' }}>
@@ -528,7 +528,7 @@ export function WithdrawalFunds() {
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={() => setStep('form')} style={{ flex: 1, padding: '0.75rem', borderRadius: '0.625rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(40 6% 80%)', fontSize: 13, cursor: 'pointer' }}>Back</button>
-            <button onClick={handleConfirm} style={{ flex: 2, padding: '0.75rem', borderRadius: '0.625rem', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: 'pointer' }}>Continue</button>
+            <button onClick={handleConfirm} style={{ flex: 2, padding: '0.75rem', borderRadius: '0.625rem', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: 'pointer' }}>Continue</button>
           </div>
         </Card>
       ) : (
@@ -555,14 +555,14 @@ export function WithdrawalFunds() {
                   <button
                     key={m.id}
                     onClick={() => { setMethod(m.id); setFormError('') }}
-                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '0.875rem 1rem', borderRadius: '0.75rem', border: method === m.id ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(255,255,255,0.07)', background: method === m.id ? 'rgba(167,139,250,0.04)' : 'rgba(255,255,255,0.02)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '0.875rem 1rem', borderRadius: '0.75rem', border: method === m.id ? '1px solid rgba(96,165,250,0.3)' : '1px solid rgba(255,255,255,0.07)', background: method === m.id ? 'rgba(96,165,250,0.04)' : 'rgba(255,255,255,0.02)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s' }}
                   >
                     <span style={{ width: 38, height: 38, borderRadius: '0.625rem', background: m.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{m.icon}</span>
                     <div style={{ flex: 1 }}>
                       <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 92%)', marginBottom: 1 }}>{m.label}</p>
                       <p style={{ fontSize: 11, color: 'hsl(240 5% 55%)' }}>{m.sub}</p>
                     </div>
-                    <div style={{ width: 18, height: 18, borderRadius: '50%', border: method === m.id ? 'none' : '2px solid rgba(255,255,255,0.2)', background: method === m.id ? '#a78bfa' : 'transparent', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 18, height: 18, borderRadius: '50%', border: method === m.id ? 'none' : '2px solid rgba(255,255,255,0.2)', background: method === m.id ? '#60a5fa' : 'transparent', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       {method === m.id && <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#050505' }} />}
                     </div>
                   </button>
@@ -601,9 +601,9 @@ export function WithdrawalFunds() {
                       <ChevronDown size={14} style={{ color: 'hsl(240 5% 50%)', transform: coinOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.15s' }} />
                     </button>
                     {coinOpen && (
-                      <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 20, marginTop: 4, borderRadius: '0.625rem', background: 'hsl(260 60% 6%)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 20, marginTop: 4, borderRadius: '0.625rem', background: 'hsl(222 60% 6%)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
                         {CRYPTO_COINS.map(c => (
-                          <button key={c} onClick={() => { setCoin(c); setCoinOpen(false) }} style={{ display: 'block', width: '100%', padding: '0.625rem 1rem', textAlign: 'left', fontSize: 13, color: c === coin ? '#a78bfa' : 'hsl(40 6% 80%)', background: c === coin ? 'rgba(167,139,250,0.08)' : 'transparent', border: 'none', cursor: 'pointer' }}>{c}</button>
+                          <button key={c} onClick={() => { setCoin(c); setCoinOpen(false) }} style={{ display: 'block', width: '100%', padding: '0.625rem 1rem', textAlign: 'left', fontSize: 13, color: c === coin ? '#60a5fa' : 'hsl(40 6% 80%)', background: c === coin ? 'rgba(96,165,250,0.08)' : 'transparent', border: 'none', cursor: 'pointer' }}>{c}</button>
                         ))}
                       </div>
                     )}
@@ -658,7 +658,7 @@ export function WithdrawalFunds() {
                     <button
                       onClick={handleSubmit}
                       disabled={hardDisabled}
-                      style={{ width: '100%', padding: '0.875rem', borderRadius: '0.625rem', background: hardDisabled ? 'rgba(255,255,255,0.06)' : 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: hardDisabled ? 'hsl(240 5% 45%)' : '#050505', fontSize: 14, fontWeight: 700, border: hardDisabled ? '1px solid rgba(255,255,255,0.08)' : 'none', cursor: hardDisabled ? 'not-allowed' : 'pointer', boxShadow: hardDisabled ? 'none' : '0 4px 20px rgba(167,139,250,0.2)' }}
+                      style={{ width: '100%', padding: '0.875rem', borderRadius: '0.625rem', background: hardDisabled ? 'rgba(255,255,255,0.06)' : 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: hardDisabled ? 'hsl(240 5% 45%)' : '#050505', fontSize: 14, fontWeight: 700, border: hardDisabled ? '1px solid rgba(255,255,255,0.08)' : 'none', cursor: hardDisabled ? 'not-allowed' : 'pointer', boxShadow: hardDisabled ? 'none' : '0 4px 20px rgba(96,165,250,0.2)' }}
                     >
                       {label}
                     </button>
@@ -686,7 +686,7 @@ export function WithdrawalFunds() {
 
             <Card style={{ padding: '1.25rem' }}>
               <div className="flex items-center gap-2 mb-3">
-                <Shield size={14} style={{ color: '#a78bfa' }} />
+                <Shield size={14} style={{ color: '#60a5fa' }} />
                 <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(40 6% 88%)' }}>Withdrawal Policy</p>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -697,7 +697,7 @@ export function WithdrawalFunds() {
                   'Anti-money laundering checks',
                 ].map(item => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <CheckCircle size={11} style={{ color: '#a78bfa', flexShrink: 0 }} />
+                    <CheckCircle size={11} style={{ color: '#60a5fa', flexShrink: 0 }} />
                     <span style={{ fontSize: 12, color: 'hsl(240 5% 60%)' }}>{item}</span>
                   </div>
                 ))}
@@ -708,7 +708,7 @@ export function WithdrawalFunds() {
               <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(240 5% 50%)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.875rem' }}>Recent Withdrawals</p>
               {txLoading ? (
                 <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 0' }}>
-                  <Loader2 size={18} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+                  <Loader2 size={18} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
                   <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
                 </div>
               ) : withdrawals.length === 0 ? (

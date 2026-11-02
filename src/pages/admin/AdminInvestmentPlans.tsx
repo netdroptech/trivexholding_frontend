@@ -32,8 +32,8 @@ function fmt(n: number) {
 }
 
 const BADGE_STYLES: Record<string, { bg: string; color: string }> = {
-  Popular: { bg: 'rgba(167,139,250,0.15)',  color: '#a78bfa' },
-  Pro:     { bg: 'rgba(167,139,250,0.12)',  color: '#c4b5fd' },
+  Popular: { bg: 'rgba(96,165,250,0.15)',  color: '#60a5fa' },
+  Pro:     { bg: 'rgba(96,165,250,0.12)',  color: '#93c5fd' },
   Elite:   { bg: 'rgba(245,158,11,0.15)', color: '#fcd34d' },
   New:     { bg: 'rgba(96,165,250,0.15)', color: '#60a5fa' },
 }
@@ -221,8 +221,8 @@ export function AdminInvestmentPlans() {
         <div>
           <div className="flex items-center gap-3 mb-1">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{ background: 'rgba(139,92,246,0.18)', border: '1px solid rgba(139,92,246,0.3)' }}>
-              <TrendingUp size={18} style={{ color: '#a78bfa' }} />
+              style={{ background: 'rgba(59,130,246,0.18)', border: '1px solid rgba(59,130,246,0.3)' }}>
+              <TrendingUp size={18} style={{ color: '#60a5fa' }} />
             </div>
             <h1 className="text-2xl font-semibold tracking-tight">Investment Plans</h1>
           </div>
@@ -233,7 +233,7 @@ export function AdminInvestmentPlans() {
         <button
           onClick={openAdd}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-[1.03] active:scale-[0.98]"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.35)' }}
         >
           <Plus size={15} /> Add Plan
         </button>
@@ -242,7 +242,7 @@ export function AdminInvestmentPlans() {
       {/* ── Flash / Error ── */}
       {saveFlash && (
         <div className="fixed top-5 right-5 z-50 flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium"
-          style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', color: '#a78bfa' }}>
+          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', color: '#60a5fa' }}>
           <Check size={14} /> Plan saved successfully
         </div>
       )}
@@ -257,8 +257,8 @@ export function AdminInvestmentPlans() {
       {/* ── Stats ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
-          { label: 'Total Plans',  value: plans.length,                          col: '#a78bfa' },
-          { label: 'Active',       value: plans.filter(p => p.isActive).length,  col: '#a78bfa' },
+          { label: 'Total Plans',  value: plans.length,                          col: '#60a5fa' },
+          { label: 'Active',       value: plans.filter(p => p.isActive).length,  col: '#60a5fa' },
           { label: 'Inactive',     value: plans.filter(p => !p.isActive).length, col: '#f87171' },
           { label: 'Max ROI',      value: plans.length ? Math.max(...plans.map(p => p.roi)) + '%' : '—', col: '#fbbf24' },
         ].map(s => (
@@ -304,7 +304,7 @@ export function AdminInvestmentPlans() {
                       )}
                       <span className="text-[10px] font-medium px-2 py-0.5 rounded-full ml-auto"
                         style={p.isActive
-                          ? { background: 'rgba(139,92,246,0.12)', color: '#a78bfa', border: '1px solid rgba(139,92,246,0.3)' }
+                          ? { background: 'rgba(59,130,246,0.12)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.3)' }
                           : { background: 'rgba(239,68,68,0.10)', color: '#f87171', border: '1px solid rgba(239,68,68,0.25)' }}>
                         {p.isActive ? 'Active' : 'Inactive'}
                       </span>
@@ -315,7 +315,7 @@ export function AdminInvestmentPlans() {
                   </div>
                   <button onClick={() => toggleActive(p)} className="flex-shrink-0 hover:opacity-80 transition-opacity mt-0.5">
                     {p.isActive
-                      ? <ToggleRight size={24} style={{ color: '#a78bfa' }} />
+                      ? <ToggleRight size={24} style={{ color: '#60a5fa' }} />
                       : <ToggleLeft  size={24} style={{ color: 'hsl(240 5% 40%)' }} />}
                   </button>
                 </div>
@@ -336,7 +336,7 @@ export function AdminInvestmentPlans() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem 0.75rem', background: 'rgba(255,255,255,0.04)', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.07)' }}>
                   <div>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)', marginBottom: 1 }}>Min</p>
-                    <p style={{ fontSize: 13, fontWeight: 600, color: '#a78bfa' }}>{fmt(p.minDeposit)}</p>
+                    <p style={{ fontSize: 13, fontWeight: 600, color: '#60a5fa' }}>{fmt(p.minDeposit)}</p>
                   </div>
                   <div style={{ width: 1, background: 'rgba(255,255,255,0.07)' }} />
                   <div style={{ textAlign: 'right' }}>
@@ -351,7 +351,7 @@ export function AdminInvestmentPlans() {
                 <ul style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                   {p.features.slice(0, 4).map((f, fi) => (
                     <li key={fi} className="flex items-center gap-2 text-xs" style={{ color: 'hsl(240 5% 65%)' }}>
-                      <Check size={11} style={{ color: '#a78bfa', flexShrink: 0 }} /> {f}
+                      <Check size={11} style={{ color: '#60a5fa', flexShrink: 0 }} /> {f}
                     </li>
                   ))}
                   {p.features.length > 4 && (
@@ -399,15 +399,15 @@ export function AdminInvestmentPlans() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
           style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}>
           <div className="w-full max-w-lg rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto"
-            style={{ background: 'hsl(260 40% 7%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
+            style={{ background: 'hsl(222 40% 7%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
 
             <button onClick={() => setModal(null)} className="absolute top-5 right-5 p-2 rounded-xl hover:bg-white/10 transition-colors">
               <X size={16} style={{ color: 'hsl(240 5% 65%)' }} />
             </button>
 
             <div className="flex items-center gap-3 mb-7">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.18)' }}>
-                {modal === 'add' ? <Plus size={17} style={{ color: '#a78bfa' }} /> : <Pencil size={17} style={{ color: '#a78bfa' }} />}
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.18)' }}>
+                {modal === 'add' ? <Plus size={17} style={{ color: '#60a5fa' }} /> : <Pencil size={17} style={{ color: '#60a5fa' }} />}
               </div>
               <div>
                 <h2 className="text-lg font-semibold">{modal === 'add' ? 'Add New Plan' : `Edit — ${editTarget?.name}`}</h2>
@@ -453,7 +453,7 @@ export function AdminInvestmentPlans() {
                       type="number" min="0" step="0.1" placeholder="e.g. 8"
                       className="w-full pl-4 pr-10 py-3 rounded-xl text-sm outline-none"
                       style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(40 6% 95%)' }} />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold" style={{ color: '#a78bfa' }}>%</span>
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold" style={{ color: '#60a5fa' }}>%</span>
                   </div>
                 </div>
                 <div>
@@ -501,7 +501,7 @@ export function AdminInvestmentPlans() {
                   <label className="text-xs font-medium" style={{ color: 'hsl(240 5% 65%)' }}>Features</label>
                   <button type="button" onClick={addFeature}
                     className="text-xs flex items-center gap-1 px-2 py-1 rounded-lg"
-                    style={{ background: 'rgba(139,92,246,0.12)', color: '#a78bfa', border: '1px solid rgba(139,92,246,0.25)' }}>
+                    style={{ background: 'rgba(59,130,246,0.12)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.25)' }}>
                     <Plus size={11} /> Add
                   </button>
                 </div>
@@ -538,7 +538,7 @@ export function AdminInvestmentPlans() {
                   <p className="text-sm font-medium">Active</p>
                   <button type="button" onClick={() => setForm(f => ({ ...f, isActive: !f.isActive }))}>
                     {form.isActive
-                      ? <ToggleRight size={28} style={{ color: '#a78bfa' }} />
+                      ? <ToggleRight size={28} style={{ color: '#60a5fa' }} />
                       : <ToggleLeft  size={28} style={{ color: 'hsl(240 5% 45%)' }} />}
                   </button>
                 </div>
@@ -555,7 +555,7 @@ export function AdminInvestmentPlans() {
               </button>
               <button onClick={handleSave} disabled={saving}
                 className="flex-1 py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff' }}>
+                style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff' }}>
                 {saving && <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} />}
                 {modal === 'add' ? 'Create Plan' : 'Save Changes'}
               </button>
@@ -571,7 +571,7 @@ export function AdminInvestmentPlans() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
           style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)' }}>
           <div className="w-full max-w-sm rounded-3xl p-8"
-            style={{ background: 'hsl(260 40% 7%)', border: '1px solid rgba(239,68,68,0.3)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
+            style={{ background: 'hsl(222 40% 7%)', border: '1px solid rgba(239,68,68,0.3)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
             <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5"
               style={{ background: 'rgba(239,68,68,0.15)' }}>
               <Trash2 size={20} style={{ color: '#f87171' }} />

@@ -11,7 +11,7 @@ const selectStyle: React.CSSProperties = {
 
 function Section({ title, sub, children }: { title: string; sub?: string; children: React.ReactNode }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
       <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: sub ? 2 : 16 }}>{title}</p>
       {sub && <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 16 }}>{sub}</p>}
       <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 20 }} />
@@ -112,10 +112,10 @@ export function LanguageRegion() {
       <Section title="Language" sub="Choose the display language for your dashboard">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }} className="sm:grid-cols-3">
           {LANGUAGES.map(l => (
-            <button key={l.code} onClick={() => setLang(l.code)} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, cursor: 'pointer', border: lang === l.code ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(255,255,255,0.07)', background: lang === l.code ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.02)', textAlign: 'left', transition: 'all 0.15s' }}>
+            <button key={l.code} onClick={() => setLang(l.code)} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, cursor: 'pointer', border: lang === l.code ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(255,255,255,0.07)', background: lang === l.code ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.02)', textAlign: 'left', transition: 'all 0.15s' }}>
               <span style={{ fontSize: 18 }}>{l.flag}</span>
-              <span style={{ fontSize: 12, fontWeight: 600, color: lang === l.code ? '#c4b5fd' : 'hsl(40 6% 75%)' }}>{l.label}</span>
-              {lang === l.code && <CheckCircle2 size={12} style={{ color: '#a78bfa', marginLeft: 'auto' }} />}
+              <span style={{ fontSize: 12, fontWeight: 600, color: lang === l.code ? '#93c5fd' : 'hsl(40 6% 75%)' }}>{l.label}</span>
+              {lang === l.code && <CheckCircle2 size={12} style={{ color: '#60a5fa', marginLeft: 'auto' }} />}
             </button>
           ))}
         </div>
@@ -128,7 +128,7 @@ export function LanguageRegion() {
           <div style={{ position: 'relative', marginBottom: 18 }}>
             <Clock size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none', zIndex: 1 }} />
             <select value={tz} onChange={e => setTz(e.target.value)} style={{ ...selectStyle, paddingLeft: 34 }}>
-              {TIMEZONES.map(t => <option key={t} value={t} style={{ background: 'hsl(260 87% 6%)' }}>{t}</option>)}
+              {TIMEZONES.map(t => <option key={t} value={t} style={{ background: 'hsl(222 87% 6%)' }}>{t}</option>)}
             </select>
           </div>
         </div>
@@ -139,7 +139,7 @@ export function LanguageRegion() {
             <div style={{ position: 'relative' }}>
               <Calendar size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none', zIndex: 1 }} />
               <select value={dateFormat} onChange={e => setDateFormat(e.target.value)} style={{ ...selectStyle, paddingLeft: 34 }}>
-                {DATE_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(260 87% 6%)' }}>{f}</option>)}
+                {DATE_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(222 87% 6%)' }}>{f}</option>)}
               </select>
             </div>
           </div>
@@ -148,7 +148,7 @@ export function LanguageRegion() {
             <div style={{ position: 'relative' }}>
               <Clock size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none', zIndex: 1 }} />
               <select value={timeFormat} onChange={e => setTimeFormat(e.target.value)} style={{ ...selectStyle, paddingLeft: 34 }}>
-                {TIME_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(260 87% 6%)' }}>{f}</option>)}
+                {TIME_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(222 87% 6%)' }}>{f}</option>)}
               </select>
             </div>
           </div>
@@ -163,7 +163,7 @@ export function LanguageRegion() {
             <div style={{ position: 'relative' }}>
               <DollarSign size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none', zIndex: 1 }} />
               <select value={currency} onChange={e => setCurrency(e.target.value)} style={{ ...selectStyle, paddingLeft: 34 }}>
-                {CURRENCIES.map(c => <option key={c} value={c} style={{ background: 'hsl(260 87% 6%)' }}>{c}</option>)}
+                {CURRENCIES.map(c => <option key={c} value={c} style={{ background: 'hsl(222 87% 6%)' }}>{c}</option>)}
               </select>
             </div>
           </div>
@@ -172,7 +172,7 @@ export function LanguageRegion() {
             <div style={{ position: 'relative' }}>
               <Globe size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none', zIndex: 1 }} />
               <select value={numberFormat} onChange={e => setNumberFormat(e.target.value)} style={{ ...selectStyle, paddingLeft: 34 }}>
-                {NUMBER_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(260 87% 6%)' }}>{f}</option>)}
+                {NUMBER_FORMATS.map(f => <option key={f} value={f} style={{ background: 'hsl(222 87% 6%)' }}>{f}</option>)}
               </select>
             </div>
           </div>
@@ -180,8 +180,8 @@ export function LanguageRegion() {
       </Section>
 
       {/* Preview */}
-      <div style={{ background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.15)', borderRadius: 12, padding: '16px 20px', marginBottom: 24 }}>
-        <p style={{ fontSize: 12, fontWeight: 700, color: '#c4b5fd', marginBottom: 10 }}>Preview</p>
+      <div style={{ background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.15)', borderRadius: 12, padding: '16px 20px', marginBottom: 24 }}>
+        <p style={{ fontSize: 12, fontWeight: 700, color: '#93c5fd', marginBottom: 10 }}>Preview</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
             { label: 'Language', value: `${selectedLang?.flag} ${selectedLang?.label}` },
@@ -199,7 +199,7 @@ export function LanguageRegion() {
 
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
         <button onClick={() => navigate(-1)} style={{ padding: '10px 22px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 55%)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>Cancel</button>
-        <button onClick={handleSave} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: saved ? 'rgba(167,139,250,0.15)' : 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: saved ? '1px solid rgba(167,139,250,0.3)' : 'none', color: saved ? '#a78bfa' : '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s' }}>
+        <button onClick={handleSave} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: saved ? 'rgba(96,165,250,0.15)' : 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: saved ? '1px solid rgba(96,165,250,0.3)' : 'none', color: saved ? '#60a5fa' : '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s' }}>
           <Save size={14} /> {saved ? 'Preferences Saved!' : 'Save Preferences'}
         </button>
       </div>

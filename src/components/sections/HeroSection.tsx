@@ -51,8 +51,8 @@ function SocialProofBar() {
               <span
                 className="text-xs font-semibold px-1.5 py-0.5 rounded-md"
                 style={{
-                  color: up ? '#a78bfa' : '#f87171',
-                  backgroundColor: up ? 'rgba(167,139,250,0.12)' : 'rgba(248,113,113,0.12)',
+                  color: up ? '#60a5fa' : '#f87171',
+                  backgroundColor: up ? 'rgba(96,165,250,0.12)' : 'rgba(248,113,113,0.12)',
                 }}
               >
                 {change}%
@@ -87,7 +87,7 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(139,92,246,0.28) 0%, rgba(139,92,246,0.12) 35%, transparent 65%), radial-gradient(ellipse 60% 50% at 15% 30%, rgba(168,85,247,0.32) 0%, transparent 60%), radial-gradient(ellipse 60% 55% at 85% 70%, rgba(34,211,238,0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(30,15,60,0.55) 0%, rgba(20,10,45,0.65) 40%, rgba(15,8,35,0.88) 75%, hsl(260 87% 3%) 98%)',
+            'radial-gradient(ellipse 70% 55% at 50% 40%, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0.12) 35%, transparent 65%), radial-gradient(ellipse 60% 50% at 15% 30%, rgba(59,130,246,0.32) 0%, transparent 60%), radial-gradient(ellipse 60% 55% at 85% 70%, rgba(34,211,238,0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(12,24,60,0.55) 0%, rgba(8,18,45,0.65) 40%, rgba(6,14,35,0.88) 75%, hsl(222 87% 3%) 98%)',
           mixBlendMode: 'normal',
         }}
       />
@@ -96,7 +96,7 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at center, transparent 40%, rgba(88,28,135,0.35) 90%, rgba(30,10,50,0.75) 100%)',
+            'radial-gradient(ellipse at center, transparent 40%, rgba(30,58,138,0.35) 90%, rgba(10,20,50,0.75) 100%)',
         }}
       />
 

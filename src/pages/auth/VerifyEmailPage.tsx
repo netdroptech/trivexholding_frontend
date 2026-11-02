@@ -30,22 +30,22 @@ export default function VerifyEmailPage() {
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4"
-      style={{ background: 'hsl(260 87% 2%)', position: 'relative', overflow: 'hidden', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif" }}
+      style={{ background: 'hsl(222 87% 2%)', position: 'relative', overflow: 'hidden', fontFamily: "'Geist Sans','Inter',system-ui,sans-serif" }}
     >
       <PageBackground />
       {/* Glow blobs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-15%] left-[-5%] w-[500px] h-[500px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle,#7c3aed,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#2563eb,transparent 70%)', filter: 'blur(60px)' }} />
         <div className="absolute bottom-[-20%] right-[-10%] w-[450px] h-[450px] rounded-full opacity-15"
-          style={{ background: 'radial-gradient(circle,#6d28d9,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#1d4ed8,transparent 70%)', filter: 'blur(60px)' }} />
       </div>
 
       <div className="relative w-full max-w-sm">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 justify-center mb-8" style={{ textDecoration: 'none' }}>
           <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)' }}>
+            style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)' }}>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" strokeWidth="2.5">
               <circle cx="12" cy="12" r="3"/>
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
@@ -69,9 +69,9 @@ export default function VerifyEmailPage() {
             <div className="text-center py-4">
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-                style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)' }}
+                style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.25)' }}
               >
-                <Loader2 size={26} className="animate-spin" style={{ color: '#a78bfa' }} />
+                <Loader2 size={26} className="animate-spin" style={{ color: '#60a5fa' }} />
               </div>
               <h2 className="text-xl font-semibold mb-2" style={{ color: 'hsl(40 6% 95%)' }}>Verifying your email</h2>
               <p className="text-sm" style={{ color: 'hsl(240 5% 60%)' }}>
@@ -86,13 +86,13 @@ export default function VerifyEmailPage() {
               <div className="relative w-20 h-20 mx-auto mb-6">
                 <div
                   className="absolute inset-0 rounded-full"
-                  style={{ background: 'rgba(139,92,246,0.1)', animation: 'ringPulse 2s ease-in-out infinite' }}
+                  style={{ background: 'rgba(59,130,246,0.1)', animation: 'ringPulse 2s ease-in-out infinite' }}
                 />
                 <div
                   className="absolute inset-2 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)' }}
+                  style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}
                 >
-                  <CheckCircle size={28} style={{ color: '#a78bfa' }} />
+                  <CheckCircle size={28} style={{ color: '#60a5fa' }} />
                 </div>
               </div>
               <h2 className="text-xl font-semibold mb-2" style={{ color: 'hsl(40 6% 95%)' }}>
@@ -104,7 +104,7 @@ export default function VerifyEmailPage() {
               <Link
                 to="/login"
                 className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}
+                style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}
               >
                 Sign In Now
               </Link>
@@ -127,7 +127,7 @@ export default function VerifyEmailPage() {
               <Link
                 to="/register"
                 className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-                style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}
+                style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}
               >
                 Register Again
               </Link>

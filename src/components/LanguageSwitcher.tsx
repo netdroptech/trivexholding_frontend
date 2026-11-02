@@ -238,7 +238,7 @@ export function LanguageSwitcher() {
           position: 'absolute', top: 'calc(100% + 8px)', right: 0,
           width: 'min(280px, calc(100vw - 24px))',
           borderRadius: 12, zIndex: 300,
-          background: 'hsl(260 87% 5%)',
+          background: 'hsl(222 87% 5%)',
           border: '1px solid rgba(255,255,255,0.1)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
           overflow: 'hidden',
@@ -275,7 +275,7 @@ export function LanguageSwitcher() {
                 style={{
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontSize: 12, color: 'hsl(40 6% 88%)',
-                  caretColor: '#a78bfa',
+                  caretColor: '#60a5fa',
                 }}
               />
               {search && (
@@ -305,7 +305,7 @@ export function LanguageSwitcher() {
                     style={{
                       width: '100%', display: 'flex', alignItems: 'center', gap: 10,
                       padding: '8px 12px',
-                      background: isSelected ? 'rgba(167,139,250,0.1)' : 'transparent',
+                      background: isSelected ? 'rgba(96,165,250,0.1)' : 'transparent',
                       border: 'none', cursor: 'pointer', textAlign: 'left',
                       borderBottom: i < filtered.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
                       transition: 'background 0.1s',
@@ -313,10 +313,10 @@ export function LanguageSwitcher() {
                     onMouseEnter={e => { if (!isSelected) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
                     onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
                   >
-                    <span style={{ flex: 1, fontSize: 12.5, fontWeight: isSelected ? 600 : 400, color: isSelected ? '#c4b5fd' : 'hsl(40 6% 78%)' }}>
+                    <span style={{ flex: 1, fontSize: 12.5, fontWeight: isSelected ? 600 : 400, color: isSelected ? '#93c5fd' : 'hsl(40 6% 78%)' }}>
                       {lang.name}
                     </span>
-                    {isSelected && <Check size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />}
+                    {isSelected && <Check size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />}
                   </button>
                 )
               })

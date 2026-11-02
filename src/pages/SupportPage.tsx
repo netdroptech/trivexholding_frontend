@@ -32,7 +32,7 @@ function HeroSection() {
   const [query, setQuery] = useState('')
   return (
     <section className="relative w-full overflow-hidden pt-6 pb-20 sm:pb-28">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.07) 0%, transparent 70%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.07) 0%, transparent 70%)' }} />
       <Navbar />
       <div className="relative z-10 max-w-3xl mx-auto px-4 text-center pt-20 sm:pt-24">
         <Reveal>
@@ -69,8 +69,8 @@ function CategoriesSection() {
           {CATEGORIES.map(({ icon: Icon, title, desc, count }, i) => (
             <Reveal key={title} delay={i * 80}>
               <button className={cn('liquid-glass rounded-3xl p-6 sm:p-7 flex items-start gap-4 sm:gap-5 text-left w-full', 'hover:bg-white/[0.04] transition-colors')}>
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.18)' }}>
-                  <Icon className="w-5 h-5" style={{ color: '#a78bfa' }} strokeWidth={1.5} />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5" style={{ background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.18)' }}>
+                  <Icon className="w-5 h-5" style={{ color: '#60a5fa' }} strokeWidth={1.5} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2">
@@ -150,8 +150,8 @@ function ContactSection() {
           {CONTACT.map(({ icon: Icon, title, desc, action, highlight }, i) => (
             <Reveal key={title} delay={i * 100}>
               <div className={cn('liquid-glass rounded-3xl p-7 sm:p-8 flex flex-col gap-5', highlight && 'ring-1 ring-white/10')}>
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={highlight ? { background: 'var(--primary-gradient)' } : { background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.15)' }}>
-                  <Icon className="w-5 h-5" style={{ color: highlight ? '#050505' : '#a78bfa' }} strokeWidth={1.8} />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={highlight ? { background: 'var(--primary-gradient)' } : { background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.15)' }}>
+                  <Icon className="w-5 h-5" style={{ color: highlight ? '#050505' : '#60a5fa' }} strokeWidth={1.8} />
                 </div>
                 <div className="flex flex-col gap-2 flex-1">
                   <p className="text-hero-heading text-base font-semibold">{title}</p>
@@ -170,7 +170,7 @@ function ContactSection() {
 export function SupportPage() {
   const { platformName, platformEmail } = usePlatformName()
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <HeroSection />
       <CategoriesSection />

@@ -124,7 +124,7 @@ export function TradeDetail() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'hsl(260 87% 3%)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'hsl(222 87% 3%)' }}>
       <style>{`
         @media (max-width: 767px) {
           .trade-body   { flex-direction: column !important; overflow: visible !important; }
@@ -141,7 +141,7 @@ export function TradeDetail() {
       <div className="trade-header-row" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '12px 16px',
-        background: 'hsl(260 87% 4%)',
+        background: 'hsl(222 87% 4%)',
         borderBottom: '1px solid rgba(255,255,255,0.07)',
         flexShrink: 0, flexWrap: 'wrap', gap: 10,
       }}>
@@ -177,8 +177,8 @@ export function TradeDetail() {
               <span style={{
                 display: 'flex', alignItems: 'center', gap: 4,
                 fontSize: 12, fontWeight: 700, padding: '3px 8px', borderRadius: 7,
-                color: up ? '#a78bfa' : '#f87171',
-                background: up ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)',
+                color: up ? '#60a5fa' : '#f87171',
+                background: up ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)',
               }}>
                 {up ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
                 {up ? '+' : ''}{change.toFixed(2)}%
@@ -248,7 +248,7 @@ export function TradeDetail() {
         {/* ── Manual Trading Panel ── */}
         <div className="trade-panel" style={{
           width: 340, flexShrink: 0, overflowY: 'auto',
-          background: 'hsl(260 87% 4%)',
+          background: 'hsl(222 87% 4%)',
           padding: '24px 20px',
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgba(255,255,255,0.08) transparent',
@@ -258,7 +258,7 @@ export function TradeDetail() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
             <div style={{
               width: 36, height: 36, borderRadius: 10,
-              background: 'linear-gradient(135deg, #6d28d9, #6d28d9)',
+              background: 'linear-gradient(135deg, #1d4ed8, #1d4ed8)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
               <TrendingUp size={18} style={{ color: '#fff' }} />
@@ -270,12 +270,12 @@ export function TradeDetail() {
           {placed && (
             <div style={{
               display: 'flex', alignItems: 'center', gap: 8,
-              background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)',
+              background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)',
               borderRadius: 10, padding: '12px 14px', marginBottom: 16,
               animation: 'fadeIn 0.3s ease',
             }}>
-              <CheckCircle2 size={16} style={{ color: '#a78bfa', flexShrink: 0 }} />
-              <p style={{ fontSize: 13, color: '#a78bfa', fontWeight: 500 }}>
+              <CheckCircle2 size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />
+              <p style={{ fontSize: 13, color: '#60a5fa', fontWeight: 500 }}>
                 {tradeType} trade placed on {sym}!
               </p>
             </div>
@@ -294,7 +294,7 @@ export function TradeDetail() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                   fontSize: 14, fontWeight: 700, transition: 'all 0.15s',
                   background: tradeType === 'CALL'
-                    ? 'linear-gradient(135deg, #8b5cf6, #7c3aed)'
+                    ? 'linear-gradient(135deg, #3b82f6, #2563eb)'
                     : 'rgba(255,255,255,0.05)',
                   color: tradeType === 'CALL' ? '#fff' : 'hsl(240 5% 50%)',
                   borderRight: '1px solid rgba(255,255,255,0.06)',
@@ -337,9 +337,9 @@ export function TradeDetail() {
                 color: 'hsl(240 5% 55%)', fontSize: 13, cursor: 'pointer', outline: 'none',
                 appearance: 'none',
               }}>
-                <option style={{ background: 'hsl(260 87% 6%)' }} value="">Select wallet…</option>
-                <option style={{ background: 'hsl(260 87% 6%)' }} value="main">Main Account — $0.00</option>
-                <option style={{ background: 'hsl(260 87% 6%)' }} value="demo">Demo Account — $10,000.00</option>
+                <option style={{ background: 'hsl(222 87% 6%)' }} value="">Select wallet…</option>
+                <option style={{ background: 'hsl(222 87% 6%)' }} value="main">Main Account — $0.00</option>
+                <option style={{ background: 'hsl(222 87% 6%)' }} value="demo">Demo Account — $10,000.00</option>
               </select>
               <ChevronDown size={14} style={{
                 position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
@@ -386,8 +386,8 @@ export function TradeDetail() {
                   style={{
                     padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 600,
                     cursor: 'pointer', border: '1px solid rgba(255,255,255,0.09)',
-                    background: amount === String(a) ? 'rgba(167,139,250,0.2)' : 'rgba(255,255,255,0.04)',
-                    color: amount === String(a) ? '#c4b5fd' : 'hsl(240 5% 55%)',
+                    background: amount === String(a) ? 'rgba(96,165,250,0.2)' : 'rgba(255,255,255,0.04)',
+                    color: amount === String(a) ? '#93c5fd' : 'hsl(240 5% 55%)',
                     transition: 'all 0.12s',
                   }}
                 >
@@ -424,7 +424,7 @@ export function TradeDetail() {
                 }}
               >
                 {DURATIONS.map(d => (
-                  <option key={d} value={d} style={{ background: 'hsl(260 87% 6%)' }}>{d}</option>
+                  <option key={d} value={d} style={{ background: 'hsl(222 87% 6%)' }}>{d}</option>
                 ))}
               </select>
               <ChevronDown size={14} style={{
@@ -446,10 +446,10 @@ export function TradeDetail() {
               </p>
               {[
                 { label: 'Asset',     value: sym },
-                { label: 'Direction', value: tradeType, color: tradeType === 'CALL' ? '#a78bfa' : '#f87171' },
+                { label: 'Direction', value: tradeType, color: tradeType === 'CALL' ? '#60a5fa' : '#f87171' },
                 { label: 'Amount',    value: `$${parseFloat(amount).toFixed(2)}` },
                 { label: 'Duration',  value: duration },
-                { label: 'Potential Payout', value: `$${(parseFloat(amount) * 1.85).toFixed(2)}`, color: '#a78bfa' },
+                { label: 'Potential Payout', value: `$${(parseFloat(amount) * 1.85).toFixed(2)}`, color: '#60a5fa' },
               ].map(row => (
                 <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
                   <span style={{ fontSize: 12, color: 'hsl(240 5% 50%)' }}>{row.label}</span>
@@ -471,12 +471,12 @@ export function TradeDetail() {
               background: placing
                 ? 'rgba(255,255,255,0.06)'
                 : tradeType === 'CALL'
-                  ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+                  ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
                   : 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
               color: placing ? 'hsl(240 5% 45%)' : '#fff',
               boxShadow: placing ? 'none'
                 : tradeType === 'CALL'
-                  ? '0 4px 20px rgba(139,92,246,0.3)'
+                  ? '0 4px 20px rgba(59,130,246,0.3)'
                   : '0 4px 20px rgba(239,68,68,0.3)',
             }}
           >
@@ -504,7 +504,7 @@ export function TradeDetail() {
       <style>{`
         @keyframes spin    { to { transform: rotate(360deg) } }
         @keyframes fadeIn  { from { opacity:0; transform:translateY(-4px) } to { opacity:1; transform:none } }
-        @keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 6px #a78bfa} 50%{opacity:0.2;box-shadow:none} }
+        @keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 6px #60a5fa} 50%{opacity:0.2;box-shadow:none} }
       `}</style>
     </div>
   )

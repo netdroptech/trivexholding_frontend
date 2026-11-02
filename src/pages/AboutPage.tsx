@@ -33,7 +33,7 @@ function HeroSection() {
   const { platformName } = usePlatformName()
   return (
     <section className="relative w-full overflow-hidden pt-6 pb-24 sm:pb-32">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.08) 0%, transparent 70%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.08) 0%, transparent 70%)' }} />
       <Navbar />
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-20 sm:pt-24">
         <Reveal>
@@ -102,7 +102,7 @@ function MissionSection() {
                 "We built this brokerage to bridge the gap between ambition and opportunity — giving every client a fair, transparent, and powerful path to grow their wealth."
               </p>
               <div className="flex items-center gap-3 mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-border/40">
-                <div className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-sm font-semibold text-foreground/80" style={{ background: 'rgba(167,139,250,0.15)', color: '#a78bfa' }}>AC</div>
+                <div className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-sm font-semibold text-foreground/80" style={{ background: 'rgba(96,165,250,0.15)', color: '#60a5fa' }}>AC</div>
                 <div>
                   <p className="text-foreground text-sm font-medium">{platformName}</p>
                   <p className="text-muted-foreground text-xs">Global Investment Brokerage</p>
@@ -143,8 +143,8 @@ function ValuesSection() {
           {VALUES.map(({ icon: Icon, title, desc }, i) => (
             <Reveal key={title} delay={i * 80}>
               <div className={cn('liquid-glass rounded-3xl p-6 sm:p-7 flex flex-col gap-4 hover:bg-white/[0.03] transition-colors')}>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)' }}>
-                  <Icon className="w-5 h-5" style={{ color: '#a78bfa' }} strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)' }}>
+                  <Icon className="w-5 h-5" style={{ color: '#60a5fa' }} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-hero-heading text-base sm:text-lg font-semibold">{title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{desc}</p>
@@ -208,7 +208,7 @@ function TeamSection() {
                   )}
                   <div>
                     <p className="text-hero-heading text-sm sm:text-base font-semibold">{member.name}</p>
-                    <p className="text-xs sm:text-sm mt-0.5" style={{ color: '#a78bfa' }}>{member.role}</p>
+                    <p className="text-xs sm:text-sm mt-0.5" style={{ color: '#60a5fa' }}>{member.role}</p>
                   </div>
                   {member.bio && (
                     <p className="text-muted-foreground text-xs leading-relaxed">{member.bio}</p>
@@ -246,7 +246,7 @@ function CTASection() {
 
 export function AboutPage() {
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(260 87% 2%)', position: 'relative' }}>
+    <div className="min-h-screen text-foreground overflow-x-hidden" style={{ background: 'hsl(222 87% 2%)', position: 'relative' }}>
       <PageBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <HeroSection />

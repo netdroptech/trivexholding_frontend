@@ -8,7 +8,7 @@ export function BannedPage() {
     <div
       style={{
         minHeight:       '100vh',
-        background:      'hsl(260 87% 2%)',
+        background:      'hsl(222 87% 2%)',
         display:         'flex',
         flexDirection:   'column',
         alignItems:      'center',

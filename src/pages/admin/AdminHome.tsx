@@ -36,7 +36,7 @@ function StatCard({ icon: Icon, iconColor, iconBg, label, value, sub, subPositiv
   label: string; value: string; sub: string; subPositive?: boolean
 }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <p style={{ fontSize: 12, fontWeight: 600, color: 'hsl(240 5% 52%)', letterSpacing: '0.03em' }}>{label}</p>
         <div style={{ width: 34, height: 34, borderRadius: 9, background: iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -45,7 +45,7 @@ function StatCard({ icon: Icon, iconColor, iconBg, label, value, sub, subPositiv
       </div>
       <div>
         <p style={{ fontSize: 24, fontWeight: 800, color: 'hsl(40 10% 95%)', lineHeight: 1 }}>{value}</p>
-        <p style={{ fontSize: 11, marginTop: 6, display: 'flex', alignItems: 'center', gap: 4, color: subPositive === undefined ? 'hsl(240 5% 50%)' : subPositive ? '#a78bfa' : '#f87171', fontWeight: 500 }}>
+        <p style={{ fontSize: 11, marginTop: 6, display: 'flex', alignItems: 'center', gap: 4, color: subPositive === undefined ? 'hsl(240 5% 50%)' : subPositive ? '#60a5fa' : '#f87171', fontWeight: 500 }}>
           {subPositive === true  && <ArrowUp size={10} />}
           {subPositive === false && <ArrowDown size={10} />}
           {sub}
@@ -82,25 +82,25 @@ export function AdminHome() {
     `$${n >= 1_000_000 ? parseFloat((n / 1_000_000).toFixed(2)) + 'M' : n >= 1000 ? parseFloat((n / 1000).toFixed(1)) + 'K' : n.toLocaleString()}`
 
   const STATUS_COLORS: Record<string, { c: string; bg: string; label: string }> = {
-    COMPLETED:  { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  label: 'Completed' },
+    COMPLETED:  { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Completed' },
     PENDING:    { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  label: 'Pending' },
     PROCESSING: { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Processing' },
     REJECTED:   { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Rejected' },
   }
 
   const TYPE_META: Record<string, { c: string; label: string }> = {
-    DEPOSIT:    { c: '#a78bfa', label: 'Deposit' },
+    DEPOSIT:    { c: '#60a5fa', label: 'Deposit' },
     WITHDRAWAL: { c: '#f87171', label: 'Withdrawal' },
     TRADE_WIN:  { c: '#60a5fa', label: 'Trade Win' },
     TRADE_LOSS: { c: '#f87171', label: 'Trade Loss' },
     BONUS:      { c: '#f59e0b', label: 'Bonus' },
-    REFERRAL:   { c: '#a78bfa', label: 'Referral' },
+    REFERRAL:   { c: '#60a5fa', label: 'Referral' },
   }
 
   // ── Loading skeleton ──
   if (loading) return (
     <div style={{ padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-      <div style={{ width: 36, height: 36, border: '3px solid rgba(167,139,250,0.3)', borderTopColor: '#a78bfa', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+      <div style={{ width: 36, height: 36, border: '3px solid rgba(96,165,250,0.3)', borderTopColor: '#60a5fa', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
       <p style={{ color: 'hsl(240 5% 50%)', fontSize: 13 }}>Loading dashboard…</p>
       <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
     </div>
@@ -156,28 +156,28 @@ export function AdminHome() {
 
       {/* Stats row 1 */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: 24 }}>
-        <StatCard icon={Users}           iconColor="#a78bfa" iconBg="rgba(167,139,250,0.12)" label="Total Users"       value={String(stats.totalUsers)}           sub={`${stats.activeUsers} active`} />
-        <StatCard icon={DollarSign}      iconColor="#a78bfa" iconBg="rgba(167,139,250,0.12)"  label="Total AUM"         value={fmtUSD(stats.totalDeposited ?? 0)}  sub="Total deposited" />
+        <StatCard icon={Users}           iconColor="#60a5fa" iconBg="rgba(96,165,250,0.12)" label="Total Users"       value={String(stats.totalUsers)}           sub={`${stats.activeUsers} active`} />
+        <StatCard icon={DollarSign}      iconColor="#60a5fa" iconBg="rgba(96,165,250,0.12)"  label="Total AUM"         value={fmtUSD(stats.totalDeposited ?? 0)}  sub="Total deposited" />
         <StatCard icon={ArrowDownCircle} iconColor="#60a5fa" iconBg="rgba(96,165,250,0.12)"  label="Total Deposits"    value={fmtUSD(stats.totalDeposited ?? 0)}  sub="Completed deposits" subPositive />
         <StatCard icon={ArrowUpCircle}   iconColor="#f87171" iconBg="rgba(248,113,113,0.12)" label="Total Withdrawals" value={fmtUSD(stats.totalWithdrawn ?? 0)}  sub="Completed withdrawals" subPositive={false} />
       </div>
 
       {/* Stats row 2 */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: 28 }}>
-        <StatCard icon={Activity}    iconColor="#a78bfa" iconBg="rgba(167,139,250,0.12)"  label="Active Users"       value={String(stats.activeUsers)}           sub="KYC approved" />
+        <StatCard icon={Activity}    iconColor="#60a5fa" iconBg="rgba(96,165,250,0.12)"  label="Active Users"       value={String(stats.activeUsers)}           sub="KYC approved" />
         <StatCard icon={ShieldCheck} iconColor="#f59e0b" iconBg="rgba(245,158,11,0.12)" label="KYC Pending"        value={String(stats.pendingKYC)}            sub="Need review" />
         <StatCard icon={Clock}       iconColor="#fb923c" iconBg="rgba(251,146,60,0.12)" label="Pending Withdrawals" value={String(stats.pendingWithdrawals)}   sub="Require approval" />
-        <StatCard icon={TrendingUp}  iconColor="#a78bfa" iconBg="rgba(167,139,250,0.12)" label="Net Revenue"       value={fmtUSD(netRevenue)}                  sub="Deposits minus withdrawals" subPositive={netRevenue >= 0} />
+        <StatCard icon={TrendingUp}  iconColor="#60a5fa" iconBg="rgba(96,165,250,0.12)" label="Net Revenue"       value={fmtUSD(netRevenue)}                  sub="Deposits minus withdrawals" subPositive={netRevenue >= 0} />
       </div>
 
       {/* Two-column layout */}
       <div className="grid lg:grid-cols-3 gap-6">
 
         {/* Recent Transactions */}
-        <div style={{ gridColumn: 'span 2', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+        <div style={{ gridColumn: 'span 2', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>Recent Transactions</p>
-            <button onClick={() => navigate('/admin/transactions')} style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>View all <ChevronRight size={13} /></button>
+            <button onClick={() => navigate('/admin/transactions')} style={{ fontSize: 12, fontWeight: 600, color: '#60a5fa', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>View all <ChevronRight size={13} /></button>
           </div>
 
           {stats.recentTransactions.length === 0 ? (
@@ -211,7 +211,7 @@ export function AdminHome() {
                         <td style={{ padding: '10px 14px' }}>
                           <span style={{ fontSize: 11, fontWeight: 700, color: tm.c, background: `${tm.c}18`, padding: '3px 8px', borderRadius: 6 }}>{tm.label}</span>
                         </td>
-                        <td style={{ padding: '10px 14px', fontSize: 12, fontWeight: 700, color: isOut ? '#f87171' : '#a78bfa', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '10px 14px', fontSize: 12, fontWeight: 700, color: isOut ? '#f87171' : '#60a5fa', whiteSpace: 'nowrap' }}>
                           {isOut ? '−' : '+'} ${Number(tx.amount).toLocaleString()}
                         </td>
                         <td style={{ padding: '10px 14px', fontSize: 11, color: 'hsl(240 5% 48%)', whiteSpace: 'nowrap' }}>
@@ -231,10 +231,10 @@ export function AdminHome() {
 
         {/* Right panel: quick stats */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '16px' }}>
+          <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '16px' }}>
             <p style={{ fontSize: 13, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: 16 }}>User Breakdown</p>
             {[
-              { label: 'Active',    count: stats.activeUsers,                              total: stats.totalUsers || 1, color: '#a78bfa' },
+              { label: 'Active',    count: stats.activeUsers,                              total: stats.totalUsers || 1, color: '#60a5fa' },
               { label: 'KYC Pending', count: stats.pendingKYC,                            total: stats.totalUsers || 1, color: '#f59e0b' },
               { label: 'Withdrawals Pending', count: stats.pendingWithdrawals,             total: Math.max(stats.pendingWithdrawals, 1), color: '#f87171' },
             ].map(row => (
@@ -251,13 +251,13 @@ export function AdminHome() {
           </div>
 
           {/* Quick links */}
-          <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '14px 16px' }}>
+          <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '14px 16px' }}>
             <p style={{ fontSize: 13, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: 12 }}>Quick Actions</p>
             {[
-              { label: 'Manage Users',       path: '/admin/users',        color: '#a78bfa' },
+              { label: 'Manage Users',       path: '/admin/users',        color: '#60a5fa' },
               { label: 'Review KYC',         path: '/admin/kyc',          color: '#f59e0b' },
               { label: 'All Transactions',   path: '/admin/transactions', color: '#60a5fa' },
-              { label: 'Manage Wallets',     path: '/admin/wallets',      color: '#a78bfa' },
+              { label: 'Manage Wallets',     path: '/admin/wallets',      color: '#60a5fa' },
             ].map(item => (
               <button key={item.path} onClick={() => navigate(item.path)}
                 style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '9px 10px', borderRadius: 8, background: 'none', border: 'none', cursor: 'pointer', marginBottom: 2, textAlign: 'left' }}

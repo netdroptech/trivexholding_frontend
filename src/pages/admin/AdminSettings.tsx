@@ -93,7 +93,7 @@ export function AdminSettings() {
     if (score <= 1) return { label: 'Weak',   color: '#f87171', width: '25%' }
     if (score <= 2) return { label: 'Fair',   color: '#f59e0b', width: '50%' }
     if (score <= 3) return { label: 'Good',   color: '#60a5fa', width: '75%' }
-    return                  { label: 'Strong', color: '#a78bfa', width: '100%' }
+    return                  { label: 'Strong', color: '#60a5fa', width: '100%' }
   }
 
   const strength = getStrength(newPw)
@@ -147,15 +147,15 @@ export function AdminSettings() {
 
       {/* ── Contact Info Card ── */}
       <div style={{
-        background: 'hsl(260 60% 5%)',
+        background: 'hsl(222 60% 5%)',
         border: '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14, overflow: 'hidden',
         maxWidth: 560, marginBottom: 28,
       }}>
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ width: 34, height: 34, borderRadius: '0.55rem', background: 'rgba(167,139,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <MapPin size={16} style={{ color: '#a78bfa' }} />
+          <div style={{ width: 34, height: 34, borderRadius: '0.55rem', background: 'rgba(96,165,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <MapPin size={16} style={{ color: '#60a5fa' }} />
           </div>
           <div>
             <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 92%)' }}>Platform Contact Info</p>
@@ -185,7 +185,7 @@ export function AdminSettings() {
                   border: '1px solid rgba(255,255,255,0.1)',
                   color: 'hsl(40 6% 90%)', outline: 'none', fontFamily: 'inherit',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = 'rgba(167,139,250,0.4)'}
+                onFocus={e => e.currentTarget.style.borderColor = 'rgba(96,165,250,0.4)'}
                 onBlur={e  => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
               />
             </div>
@@ -211,7 +211,7 @@ export function AdminSettings() {
                   border: '1px solid rgba(255,255,255,0.1)',
                   color: 'hsl(40 6% 90%)', outline: 'none', fontFamily: 'inherit',
                 }}
-                onFocus={e => e.currentTarget.style.borderColor = 'rgba(167,139,250,0.4)'}
+                onFocus={e => e.currentTarget.style.borderColor = 'rgba(96,165,250,0.4)'}
                 onBlur={e  => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
               />
             </div>
@@ -219,9 +219,9 @@ export function AdminSettings() {
 
           {/* Feedback */}
           {contactSuccess && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.25)' }}>
-              <CheckCircle2 size={14} style={{ color: '#a78bfa', flexShrink: 0 }} />
-              <span style={{ fontSize: 13, color: '#a78bfa' }}>{contactSuccess}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderRadius: 9, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.25)' }}>
+              <CheckCircle2 size={14} style={{ color: '#60a5fa', flexShrink: 0 }} />
+              <span style={{ fontSize: 13, color: '#60a5fa' }}>{contactSuccess}</span>
             </div>
           )}
           {contactError && (
@@ -238,14 +238,14 @@ export function AdminSettings() {
             style={{
               width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
               padding: '0.7rem 1rem', borderRadius: 9,
-              background: contactSaving ? 'rgba(167,139,250,0.15)' : 'rgba(167,139,250,0.18)',
-              border: '1px solid rgba(167,139,250,0.35)',
-              color: '#c4b5fd', fontSize: 13, fontWeight: 700,
+              background: contactSaving ? 'rgba(96,165,250,0.15)' : 'rgba(96,165,250,0.18)',
+              border: '1px solid rgba(96,165,250,0.35)',
+              color: '#93c5fd', fontSize: 13, fontWeight: 700,
               cursor: contactSaving ? 'not-allowed' : 'pointer',
               transition: 'background 0.15s',
             }}
-            onMouseEnter={e => { if (!contactSaving) e.currentTarget.style.background = 'rgba(167,139,250,0.28)' }}
-            onMouseLeave={e => { if (!contactSaving) e.currentTarget.style.background = 'rgba(167,139,250,0.18)' }}
+            onMouseEnter={e => { if (!contactSaving) e.currentTarget.style.background = 'rgba(96,165,250,0.28)' }}
+            onMouseLeave={e => { if (!contactSaving) e.currentTarget.style.background = 'rgba(96,165,250,0.18)' }}
           >
             {contactSaving
               ? <><Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> Saving…</>
@@ -257,7 +257,7 @@ export function AdminSettings() {
 
       {/* ── Account Verification Toggle Card ── */}
       <div style={{
-        background: 'hsl(260 60% 5%)',
+        background: 'hsl(222 60% 5%)',
         border: '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14, overflow: 'hidden',
         maxWidth: 560, marginBottom: 28,
@@ -338,7 +338,7 @@ export function AdminSettings() {
 
       {/* ── Change Password Card ── */}
       <div style={{
-        background: 'hsl(260 60% 5%)',
+        background: 'hsl(222 60% 5%)',
         border: '1px solid rgba(255,255,255,0.07)',
         borderRadius: 14, overflow: 'hidden',
         maxWidth: 560,
@@ -417,10 +417,10 @@ export function AdminSettings() {
             <div style={{
               display: 'flex', alignItems: 'center', gap: 8,
               padding: '10px 14px', borderRadius: 9, marginTop: 16,
-              background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.25)',
+              background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.25)',
             }}>
-              <CheckCircle2 size={14} style={{ color: '#a78bfa', flexShrink: 0 }} />
-              <span style={{ fontSize: 13, color: '#a78bfa' }}>{successMsg}</span>
+              <CheckCircle2 size={14} style={{ color: '#60a5fa', flexShrink: 0 }} />
+              <span style={{ fontSize: 13, color: '#60a5fa' }}>{successMsg}</span>
             </div>
           )}
           {errorMsg && (

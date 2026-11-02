@@ -31,7 +31,7 @@ export function RegisterPage() {
         <div style={{
           position: 'absolute', top: '-15%', left: '50%', transform: 'translateX(-50%)',
           width: '700px', height: '400px',
-          background: 'radial-gradient(ellipse, hsl(262 95% 76% / 0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, hsl(222 95% 76% / 0.12) 0%, transparent 70%)',
           filter: 'blur(40px)',
         }} />
         <div style={{
@@ -91,11 +91,11 @@ export function RegisterPage() {
             >
               {/* crosshair SVG */}
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <circle cx="11" cy="11" r="4" stroke="hsl(262 95% 76%)" strokeWidth="1.5"/>
-                <line x1="11" y1="1" x2="11" y2="6" stroke="hsl(262 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
-                <line x1="11" y1="16" x2="11" y2="21" stroke="hsl(262 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
-                <line x1="1" y1="11" x2="6" y2="11" stroke="hsl(262 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
-                <line x1="16" y1="11" x2="21" y2="11" stroke="hsl(262 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="11" cy="11" r="4" stroke="hsl(222 95% 76%)" strokeWidth="1.5"/>
+                <line x1="11" y1="1" x2="11" y2="6" stroke="hsl(222 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="11" y1="16" x2="11" y2="21" stroke="hsl(222 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="1" y1="11" x2="6" y2="11" stroke="hsl(222 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
+                <line x1="16" y1="11" x2="21" y2="11" stroke="hsl(222 95% 76%)" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </div>
           </div>
@@ -222,12 +222,12 @@ export function RegisterPage() {
                   style={{
                     width: 18, height: 18, borderRadius: 5,
                     background: form.accepted
-                      ? 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)'
+                      ? 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)'
                       : 'rgba(255,255,255,0.05)',
                     border: form.accepted ? 'none' : '1.5px solid rgba(255,255,255,0.15)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'all 0.18s ease',
-                    boxShadow: form.accepted ? '0 0 10px rgba(167,139,250,0.3)' : 'none',
+                    boxShadow: form.accepted ? '0 0 10px rgba(96,165,250,0.3)' : 'none',
                   }}
                 >
                   {form.accepted && (
@@ -257,7 +257,7 @@ export function RegisterPage() {
                 width: '100%',
                 padding: '0.75rem',
                 borderRadius: '0.875rem',
-                background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                 color: 'hsl(0 0% 5%)',
                 fontWeight: 600,
                 fontSize: '0.9375rem',
@@ -265,7 +265,7 @@ export function RegisterPage() {
                 cursor: 'pointer',
                 letterSpacing: '0.01em',
                 transition: 'opacity 0.18s ease, transform 0.18s ease',
-                boxShadow: '0 4px 24px rgba(167,139,250,0.22)',
+                boxShadow: '0 4px 24px rgba(96,165,250,0.22)',
               }}
               onMouseEnter={e => { e.currentTarget.style.opacity = '0.88'; e.currentTarget.style.transform = 'translateY(-1px)' }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
@@ -316,8 +316,8 @@ const inputStyle: React.CSSProperties = {
 
 const inputFocusStyle: React.CSSProperties = {
   ...inputStyle,
-  borderColor: 'rgba(167,139,250,0.45)',
-  boxShadow: '0 0 0 3px rgba(167,139,250,0.08)',
+  borderColor: 'rgba(96,165,250,0.45)',
+  boxShadow: '0 0 0 3px rgba(96,165,250,0.08)',
 }
 
 /* ── Social button ── */

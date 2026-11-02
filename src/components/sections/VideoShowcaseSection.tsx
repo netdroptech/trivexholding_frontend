@@ -24,7 +24,7 @@ export function VideoShowcaseSection() {
             <span
               className="rounded-full px-2 py-0.5 text-xs font-medium"
               style={{
-                background: 'hsl(262 95% 76%)',
+                background: 'hsl(222 95% 76%)',
                 color: 'hsl(0 0% 5%)',
                 fontSize: 11,
               }}
@@ -104,7 +104,7 @@ export function VideoShowcaseSection() {
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              color: isMuted ? 'rgba(255,255,255,0.6)' : '#a78bfa',
+              color: isMuted ? 'rgba(255,255,255,0.6)' : '#60a5fa',
               transition: 'all 0.2s',
             }}
           >

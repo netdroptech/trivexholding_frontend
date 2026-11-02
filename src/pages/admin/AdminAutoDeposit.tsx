@@ -250,11 +250,11 @@ function RuleForm({
                         onClick={() => { setUserId(u.id); setDropOpen(false); setUserSearch('') }}
                         style={{
                           padding: '9px 12px', cursor: 'pointer',
-                          background: userId === u.id ? 'rgba(167,139,250,0.08)' : 'transparent',
-                          borderLeft: userId === u.id ? '2px solid #a78bfa' : '2px solid transparent',
+                          background: userId === u.id ? 'rgba(96,165,250,0.08)' : 'transparent',
+                          borderLeft: userId === u.id ? '2px solid #60a5fa' : '2px solid transparent',
                         }}
                         onMouseEnter={e => { if (userId !== u.id) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
-                        onMouseLeave={e => { if (userId !== u.id) e.currentTarget.style.background = userId === u.id ? 'rgba(167,139,250,0.08)' : 'transparent' }}
+                        onMouseLeave={e => { if (userId !== u.id) e.currentTarget.style.background = userId === u.id ? 'rgba(96,165,250,0.08)' : 'transparent' }}
                       >
                         <p style={{ margin: 0, fontSize: 12, fontWeight: 600, color: 'hsl(40 6% 90%)' }}>{u.fullName}</p>
                         <p style={{ margin: 0, fontSize: 11, color: 'hsl(240 5% 55%)', marginTop: 1 }}>{u.email} · Balance: {fmt(u.balance)}</p>
@@ -267,7 +267,7 @@ function RuleForm({
           </div>
         )}
         {selectedUser && !initial?.userId && (
-          <p style={{ fontSize: 11, color: '#a78bfa', marginTop: 4 }}>
+          <p style={{ fontSize: 11, color: '#60a5fa', marginTop: 4 }}>
             Current balance: {fmt(selectedUser.balance)}
           </p>
         )}
@@ -277,7 +277,7 @@ function RuleForm({
       <div>
         <label style={labelStyle}>Deposit Amount (USD)</label>
         <div style={{ position: 'relative' }}>
-          <span style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#a78bfa', fontWeight: 700, fontSize: 13 }}>$</span>
+          <span style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#60a5fa', fontWeight: 700, fontSize: 13 }}>$</span>
           <input
             required
             type="number"
@@ -304,12 +304,12 @@ function RuleForm({
                 padding: '7px 0',
                 borderRadius: 8,
                 border: interval.minutes === i.minutes
-                  ? '1px solid rgba(167,139,250,0.6)'
+                  ? '1px solid rgba(96,165,250,0.6)'
                   : '1px solid rgba(255,255,255,0.1)',
                 background: interval.minutes === i.minutes
-                  ? 'rgba(167,139,250,0.12)'
+                  ? 'rgba(96,165,250,0.12)'
                   : 'rgba(255,255,255,0.03)',
-                color: interval.minutes === i.minutes ? '#a78bfa' : 'hsl(240 5% 60%)',
+                color: interval.minutes === i.minutes ? '#60a5fa' : 'hsl(240 5% 60%)',
                 fontSize: 11.5,
                 fontWeight: interval.minutes === i.minutes ? 700 : 400,
                 cursor: 'pointer',
@@ -321,7 +321,7 @@ function RuleForm({
           ))}
         </div>
         <p style={{ fontSize: 11, color: 'hsl(240 5% 45%)', marginTop: 6 }}>
-          Selected: <span style={{ color: '#a78bfa' }}>{interval.label}</span>
+          Selected: <span style={{ color: '#60a5fa' }}>{interval.label}</span>
           {amount && ` — ${fmt(Number(amount))} every ${interval.label.toLowerCase()}`}
         </p>
       </div>
@@ -364,7 +364,7 @@ function RuleForm({
         <button
           type="submit"
           disabled={saving}
-          style={{ flex: 2, padding: '10px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}
+          style={{ flex: 2, padding: '10px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}
         >
           {saving ? 'Saving…' : initial?.id ? 'Save Changes' : 'Create Rule'}
         </button>
@@ -468,7 +468,7 @@ export function AdminAutoDeposit() {
           </button>
           <button
             onClick={() => setAddOpen(true)}
-            style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}
           >
             <Plus size={14} /> New Rule
           </button>
@@ -479,11 +479,11 @@ export function AdminAutoDeposit() {
       {stats && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 14, marginBottom: '1.75rem' }}>
           {[
-            { icon: <Zap size={14} />,        label: 'Active Rules',        value: stats.activeRules,                        color: '#a78bfa' },
+            { icon: <Zap size={14} />,        label: 'Active Rules',        value: stats.activeRules,                        color: '#60a5fa' },
             { icon: <Pause size={14} />,       label: 'Paused Rules',        value: stats.pausedRules,                        color: '#f59e0b' },
             { icon: <DollarSign size={14} />,  label: 'Per Cycle (Total)',   value: fmt(stats.totalAmountPerCycle),            color: '#60a5fa' },
-            { icon: <RefreshCw size={14} />,   label: 'Total Runs',          value: Number(stats.totalRunsAll).toLocaleString(), color: '#c084fc' },
-            { icon: <DollarSign size={14} />,  label: 'Total Deposited',     value: fmt(stats.totalDeposited),                color: '#a78bfa' },
+            { icon: <RefreshCw size={14} />,   label: 'Total Runs',          value: Number(stats.totalRunsAll).toLocaleString(), color: '#60a5fa' },
+            { icon: <DollarSign size={14} />,  label: 'Total Deposited',     value: fmt(stats.totalDeposited),                color: '#60a5fa' },
           ].map(s => (
             <div key={s.label} style={{ ...card, padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 32, height: 32, borderRadius: 9, background: `${s.color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: s.color, flexShrink: 0 }}>
@@ -536,7 +536,7 @@ export function AdminAutoDeposit() {
 
                     {/* Amount */}
                     <td style={{ padding: '13px 10px' }}>
-                      <span style={{ fontWeight: 800, color: '#a78bfa', fontSize: 14 }}>{fmt(rule.amount)}</span>
+                      <span style={{ fontWeight: 800, color: '#60a5fa', fontSize: 14 }}>{fmt(rule.amount)}</span>
                     </td>
 
                     {/* Interval */}
@@ -569,8 +569,8 @@ export function AdminAutoDeposit() {
                     <td style={{ padding: '13px 10px' }}>
                       <span style={{
                         fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 20,
-                        background: rule.isActive ? 'rgba(167,139,250,0.15)' : 'rgba(245,158,11,0.15)',
-                        color: rule.isActive ? '#a78bfa' : '#f59e0b',
+                        background: rule.isActive ? 'rgba(96,165,250,0.15)' : 'rgba(245,158,11,0.15)',
+                        color: rule.isActive ? '#60a5fa' : '#f59e0b',
                       }}>
                         {rule.isActive ? 'Active' : 'Paused'}
                       </span>
@@ -582,7 +582,7 @@ export function AdminAutoDeposit() {
                         <button
                           title={rule.isActive ? 'Pause' : 'Resume'}
                           onClick={() => handleToggle(rule)}
-                          style={{ width: 28, height: 28, borderRadius: 7, border: `1px solid ${rule.isActive ? 'rgba(245,158,11,0.3)' : 'rgba(167,139,250,0.3)'}`, background: rule.isActive ? 'rgba(245,158,11,0.1)' : 'rgba(167,139,250,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: rule.isActive ? '#f59e0b' : '#a78bfa' }}
+                          style={{ width: 28, height: 28, borderRadius: 7, border: `1px solid ${rule.isActive ? 'rgba(245,158,11,0.3)' : 'rgba(96,165,250,0.3)'}`, background: rule.isActive ? 'rgba(245,158,11,0.1)' : 'rgba(96,165,250,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: rule.isActive ? '#f59e0b' : '#60a5fa' }}
                         >
                           {rule.isActive ? <Pause size={12} /> : <Play size={12} />}
                         </button>

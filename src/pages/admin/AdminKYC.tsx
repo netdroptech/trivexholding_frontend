@@ -33,14 +33,14 @@ interface KYCRecord {
 // ─── Status styles ────────────────────────────────────────────────────────────
 
 const STATUS_META: Record<string, { c: string; bg: string; border: string; label: string; icon: React.ElementType }> = {
-  APPROVED:      { c: '#a78bfa', bg: 'rgba(167,139,250,0.1)',   border: 'rgba(167,139,250,0.2)',   label: 'Approved',       icon: CheckCircle2 },
+  APPROVED:      { c: '#60a5fa', bg: 'rgba(96,165,250,0.1)',   border: 'rgba(96,165,250,0.2)',   label: 'Approved',       icon: CheckCircle2 },
   PENDING:       { c: '#f59e0b', bg: 'rgba(245,158,11,0.1)',   border: 'rgba(245,158,11,0.2)',   label: 'Pending Review', icon: Clock },
   REJECTED:      { c: '#f87171', bg: 'rgba(248,113,113,0.1)',  border: 'rgba(248,113,113,0.2)',  label: 'Rejected',       icon: X },
   NOT_SUBMITTED: { c: '#94a3b8', bg: 'rgba(148,163,184,0.08)', border: 'rgba(148,163,184,0.15)', label: 'Not Submitted',  icon: AlertTriangle },
 }
 
 function avatarColor(email: string) {
-  const cols = ['#a78bfa','#60a5fa','#a78bfa','#f59e0b','#f87171','#a78bfa']
+  const cols = ['#60a5fa','#60a5fa','#60a5fa','#f59e0b','#f87171','#60a5fa']
   let h = 0
   for (const c of email) h = (h * 31 + c.charCodeAt(0)) & 0xffff
   return cols[h % cols.length]
@@ -132,8 +132,8 @@ export function AdminKYC() {
 
       {/* Action message */}
       {actionMsg && (
-        <div style={{ marginBottom: 16, padding: '12px 16px', borderRadius: 10, background: actionMsg.type === 'success' ? 'rgba(167,139,250,0.08)' : 'rgba(248,113,113,0.08)', border: `1px solid ${actionMsg.type === 'success' ? 'rgba(167,139,250,0.2)' : 'rgba(248,113,113,0.2)'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p style={{ color: actionMsg.type === 'success' ? '#a78bfa' : '#f87171', fontSize: 13 }}>{actionMsg.text}</p>
+        <div style={{ marginBottom: 16, padding: '12px 16px', borderRadius: 10, background: actionMsg.type === 'success' ? 'rgba(96,165,250,0.08)' : 'rgba(248,113,113,0.08)', border: `1px solid ${actionMsg.type === 'success' ? 'rgba(96,165,250,0.2)' : 'rgba(248,113,113,0.2)'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p style={{ color: actionMsg.type === 'success' ? '#60a5fa' : '#f87171', fontSize: 13 }}>{actionMsg.text}</p>
           <button onClick={() => setActionMsg(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 50%)', fontSize: 16 }}>×</button>
         </div>
       )}
@@ -142,11 +142,11 @@ export function AdminKYC() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" style={{ marginBottom: 22 }}>
         {[
           { label: 'Pending Review', value: String(pending),             c: '#f59e0b', bg: 'rgba(245,158,11,0.1)',   icon: Clock },
-          { label: 'Approved',       value: String(approved),            c: '#a78bfa', bg: 'rgba(167,139,250,0.1)',   icon: CheckCircle2 },
+          { label: 'Approved',       value: String(approved),            c: '#60a5fa', bg: 'rgba(96,165,250,0.1)',   icon: CheckCircle2 },
           { label: 'Rejected',       value: String(rejected),            c: '#f87171', bg: 'rgba(248,113,113,0.1)',  icon: X },
-          { label: 'Total Records',  value: String(records.length),      c: '#a78bfa', bg: 'rgba(167,139,250,0.1)',  icon: ShieldCheck },
+          { label: 'Total Records',  value: String(records.length),      c: '#60a5fa', bg: 'rgba(96,165,250,0.1)',  icon: ShieldCheck },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{ width: 38, height: 38, borderRadius: 9, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <s.icon size={17} style={{ color: s.c }} />
             </div>
@@ -159,9 +159,9 @@ export function AdminKYC() {
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: 2, marginBottom: 16, background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 4, width: 'fit-content' }}>
+      <div style={{ display: 'flex', gap: 2, marginBottom: 16, background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 4, width: 'fit-content' }}>
         {[{ k: 'PENDING', label: `Pending (${pending})` }, { k: 'ALL', label: `All (${records.length})` }].map(t => (
-          <button key={t.k} onClick={() => { setTab(t.k as any); setSelected(null) }} style={{ padding: '7px 16px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: tab === t.k ? 'rgba(167,139,250,0.2)' : 'transparent', color: tab === t.k ? '#c4b5fd' : 'hsl(240 5% 52%)', transition: 'all 0.13s' }}>
+          <button key={t.k} onClick={() => { setTab(t.k as any); setSelected(null) }} style={{ padding: '7px 16px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: tab === t.k ? 'rgba(96,165,250,0.2)' : 'transparent', color: tab === t.k ? '#93c5fd' : 'hsl(240 5% 52%)', transition: 'all 0.13s' }}>
             {t.label}
           </button>
         ))}
@@ -176,14 +176,14 @@ export function AdminKYC() {
       <div className="grid lg:grid-cols-5 gap-6">
         {/* List */}
         <div style={{ gridColumn: 'span 2' }}>
-          <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+          <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
             <div style={{ padding: '13px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
               <p style={{ fontSize: 13, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>{tab === 'PENDING' ? 'Awaiting Review' : 'All KYC Records'}</p>
             </div>
             <div style={{ maxHeight: 560, overflowY: 'auto', scrollbarWidth: 'none' }}>
               {loading ? (
                 <div style={{ padding: '40px 20px', textAlign: 'center' }}>
-                  <div style={{ width: 24, height: 24, border: '2px solid rgba(167,139,250,0.3)', borderTopColor: '#a78bfa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto' }} />
+                  <div style={{ width: 24, height: 24, border: '2px solid rgba(96,165,250,0.3)', borderTopColor: '#60a5fa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto' }} />
                   <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
                 </div>
               ) : displayList.length === 0 ? (
@@ -195,7 +195,7 @@ export function AdminKYC() {
                 return (
                   <button key={r.id}
                     onClick={() => setSelected(selected === r.id ? null : r.id)}
-                    style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: selected === r.id ? 'rgba(167,139,250,0.1)' : 'transparent', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.04)', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s' }}
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: selected === r.id ? 'rgba(96,165,250,0.1)' : 'transparent', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.04)', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s' }}
                     onMouseEnter={e => { if (selected !== r.id) e.currentTarget.style.background = 'rgba(255,255,255,0.03)' }}
                     onMouseLeave={e => { if (selected !== r.id) e.currentTarget.style.background = 'transparent' }}
                   >
@@ -215,13 +215,13 @@ export function AdminKYC() {
         {/* Detail panel */}
         <div style={{ gridColumn: 'span 3' }}>
           {!selectedRecord ? (
-            <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '60px 20px', textAlign: 'center' }}>
-              <ShieldCheck size={44} style={{ color: 'rgba(167,139,250,0.4)', margin: '0 auto 14px' }} />
+            <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '60px 20px', textAlign: 'center' }}>
+              <ShieldCheck size={44} style={{ color: 'rgba(96,165,250,0.4)', margin: '0 auto 14px' }} />
               <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(240 5% 50%)' }}>Select a user</p>
               <p style={{ fontSize: 12, color: 'hsl(240 5% 40%)', marginTop: 5 }}>Click any user on the left to review their KYC submission</p>
             </div>
           ) : (
-            <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+            <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
               {/* Header */}
               <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 14 }}>
                 {(() => {
@@ -237,7 +237,7 @@ export function AdminKYC() {
                     </>
                   )
                 })()}
-                <button onClick={() => navigate(`/admin/users/${selectedRecord.user.id}`)} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, padding: '6px 11px', borderRadius: 7, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.25)', color: '#c4b5fd', cursor: 'pointer', flexShrink: 0 }}>
+                <button onClick={() => navigate(`/admin/users/${selectedRecord.user.id}`)} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, padding: '6px 11px', borderRadius: 7, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.25)', color: '#93c5fd', cursor: 'pointer', flexShrink: 0 }}>
                   Full Profile <ChevronRight size={11} />
                 </button>
               </div>
@@ -259,7 +259,7 @@ export function AdminKYC() {
                         <a href={`${BASE_URL}${doc.url}`} target="_blank" rel="noopener noreferrer">
                           <img src={`${BASE_URL}${doc.url}`} alt={doc.label} style={{ width: '100%', height: 90, objectFit: 'cover', display: 'block' }} />
                           <div style={{ padding: '6px 12px', display: 'flex', justifyContent: 'flex-end' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontWeight: 600, color: '#a78bfa' }}><Eye size={11} /> View</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontWeight: 600, color: '#60a5fa' }}><Eye size={11} /> View</span>
                           </div>
                         </a>
                       ) : (
@@ -298,7 +298,7 @@ export function AdminKYC() {
                       <textarea value={rejectNote} onChange={e => setRejectNote(e.target.value)} rows={2} placeholder="Reason sent to the user if rejected..." style={{ width: '100%', padding: '9px 12px', borderRadius: 9, fontSize: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', color: 'hsl(40 6% 88%)', outline: 'none', boxSizing: 'border-box', resize: 'none', lineHeight: 1.5 }} />
                     </div>
                     <div style={{ display: 'flex', gap: 10 }}>
-                      <button onClick={() => doApprove(selectedRecord.id)} disabled={actionLoading} style={{ flex: 1, padding: '11px', borderRadius: 10, background: actionLoading ? 'rgba(255,255,255,0.05)' : 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: actionLoading ? 'hsl(240 5% 40%)' : '#a78bfa', fontSize: 13, fontWeight: 700, cursor: actionLoading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                      <button onClick={() => doApprove(selectedRecord.id)} disabled={actionLoading} style={{ flex: 1, padding: '11px', borderRadius: 10, background: actionLoading ? 'rgba(255,255,255,0.05)' : 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.25)', color: actionLoading ? 'hsl(240 5% 40%)' : '#60a5fa', fontSize: 13, fontWeight: 700, cursor: actionLoading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
                         <CheckCircle2 size={15} /> {actionLoading ? 'Processing…' : 'Approve KYC'}
                       </button>
                       <button onClick={() => doReject(selectedRecord.id)} disabled={actionLoading} style={{ flex: 1, padding: '11px', borderRadius: 10, background: actionLoading ? 'rgba(255,255,255,0.05)' : 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.25)', color: actionLoading ? 'hsl(240 5% 40%)' : '#f87171', fontSize: 13, fontWeight: 700, cursor: actionLoading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
@@ -309,9 +309,9 @@ export function AdminKYC() {
                 )}
 
                 {selectedRecord.status === 'APPROVED' && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.06)', border: '1px solid rgba(167,139,250,0.15)' }}>
-                    <CheckCircle2 size={18} style={{ color: '#a78bfa' }} />
-                    <p style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa' }}>This user is fully verified. All identity checks passed.</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.06)', border: '1px solid rgba(96,165,250,0.15)' }}>
+                    <CheckCircle2 size={18} style={{ color: '#60a5fa' }} />
+                    <p style={{ fontSize: 12, fontWeight: 600, color: '#60a5fa' }}>This user is fully verified. All identity checks passed.</p>
                   </div>
                 )}
 

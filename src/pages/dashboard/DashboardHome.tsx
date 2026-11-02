@@ -65,7 +65,7 @@ const TX_TYPE_LABEL: Record<Transaction['type'], string> = {
 const TX_STATUS_COLOR: Record<Transaction['status'], string> = {
   PENDING:    '#f59e0b',
   PROCESSING: '#60a5fa',
-  COMPLETED:  '#a78bfa',
+  COMPLETED:  '#60a5fa',
   REJECTED:   '#f87171',
   CANCELLED:  'hsl(240 5% 50%)',
 }
@@ -86,7 +86,7 @@ function Card({ children, className = '', style = {} }: {
     <div
       className={className}
       style={{
-        background: 'hsl(260 60% 5%)',
+        background: 'hsl(222 60% 5%)',
         border: '1px solid rgba(255,255,255,0.07)',
         borderRadius: '0.875rem',
         ...style,
@@ -249,7 +249,7 @@ export function DashboardHome() {
         }
         /* ── Taskk-style card (dot grid + purple glow) ── */
         .taskk-card {
-          background: linear-gradient(180deg, rgba(20,18,32,0.9) 0%, rgba(12,10,22,0.95) 100%) !important;
+          background: linear-gradient(180deg, rgba(16,20,32,0.9) 0%, rgba(9,12,22,0.95) 100%) !important;
           border: 1px solid rgba(255,255,255,0.06) !important;
           border-radius: 18px !important;
         }
@@ -270,7 +270,7 @@ export function DashboardHome() {
           right: 0;
           bottom: -35%;
           height: 110%;
-          background: radial-gradient(ellipse 55% 50% at 50% 60%, rgba(139,92,246,0.55) 0%, rgba(139,92,246,0.20) 38%, transparent 70%);
+          background: radial-gradient(ellipse 55% 50% at 50% 60%, rgba(59,130,246,0.55) 0%, rgba(59,130,246,0.20) 38%, transparent 70%);
           filter: blur(14px);
           pointer-events: none;
           transform-origin: center bottom;
@@ -280,9 +280,9 @@ export function DashboardHome() {
         /* Stronger animated glow — Account Balance (main amount) card */
         .taskk-card__glow--lg {
           background:
-            radial-gradient(ellipse 48% 55% at 25% 72%, rgba(139,92,246,0.85) 0%, rgba(139,92,246,0.25) 35%, transparent 68%),
+            radial-gradient(ellipse 48% 55% at 25% 72%, rgba(59,130,246,0.85) 0%, rgba(59,130,246,0.25) 35%, transparent 68%),
             radial-gradient(ellipse 46% 52% at 75% 78%, rgba(34,211,238,0.65) 0%, rgba(34,211,238,0.20) 36%, transparent 68%),
-            radial-gradient(ellipse 42% 48% at 50% 88%, rgba(168,85,247,0.72) 0%, rgba(168,85,247,0.25) 36%, transparent 65%);
+            radial-gradient(ellipse 42% 48% at 50% 88%, rgba(59,130,246,0.72) 0%, rgba(59,130,246,0.25) 36%, transparent 65%);
           filter: blur(18px);
           animation: taskkGlowDriftLg 9s ease-in-out infinite;
         }
@@ -331,10 +331,10 @@ export function DashboardHome() {
             style={{
               display: 'flex', alignItems: 'center', gap: '0.5rem',
               padding: '0.5rem 1.125rem', borderRadius: '0.6rem',
-              background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+              background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
               color: '#050505', fontSize: 13, fontWeight: 600,
               border: 'none', cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(167,139,250,0.2)',
+              boxShadow: '0 4px 20px rgba(96,165,250,0.2)',
               transition: 'opacity 0.15s ease',
             }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
@@ -357,10 +357,10 @@ export function DashboardHome() {
           <div className="flex items-center gap-2 mb-4">
             <div style={{
               width: 32, height: 32, borderRadius: '0.5rem',
-              background: 'rgba(167,139,250,0.15)',
+              background: 'rgba(96,165,250,0.15)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <Wallet size={15} style={{ color: '#c4b5fd' }} />
+              <Wallet size={15} style={{ color: '#93c5fd' }} />
             </div>
             <div>
               <p style={{ fontSize: 15, fontWeight: 600, color: 'hsl(40 6% 92%)' }}>Account Balance</p>
@@ -392,8 +392,8 @@ export function DashboardHome() {
           <div className="flex items-center gap-1.5 mb-3">
             {kycStatus === 'APPROVED' ? (
               <>
-                <CheckCircle2 size={13} style={{ color: '#a78bfa' }} />
-                <span style={{ fontSize: 13, color: '#a78bfa', fontWeight: 500 }}>Verified</span>
+                <CheckCircle2 size={13} style={{ color: '#60a5fa' }} />
+                <span style={{ fontSize: 13, color: '#60a5fa', fontWeight: 500 }}>Verified</span>
               </>
             ) : (
               <>
@@ -495,7 +495,7 @@ export function DashboardHome() {
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div className="flex items-center justify-between mb-3">
               <p style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 88%)' }}>Signal Strength</p>
-              <p style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa' }}>{signalStrength}%</p>
+              <p style={{ fontSize: 13, fontWeight: 700, color: '#60a5fa' }}>{signalStrength}%</p>
             </div>
             <div style={{ display: 'flex', gap: 4 }}>
               {Array.from({ length: 12 }).map((_, i) => {
@@ -509,10 +509,10 @@ export function DashboardHome() {
                       height: 22,
                       borderRadius: 3,
                       background: lit
-                        ? 'linear-gradient(180deg, #c4b5fd 0%, #8b5cf6 50%, #6d28d9 100%)'
+                        ? 'linear-gradient(180deg, #93c5fd 0%, #3b82f6 50%, #1d4ed8 100%)'
                         : 'rgba(255,255,255,0.05)',
-                      border: lit ? '1px solid rgba(167,139,250,0.5)' : '1px solid rgba(255,255,255,0.04)',
-                      boxShadow: lit ? '0 0 8px rgba(139,92,246,0.45)' : 'none',
+                      border: lit ? '1px solid rgba(96,165,250,0.5)' : '1px solid rgba(255,255,255,0.04)',
+                      boxShadow: lit ? '0 0 8px rgba(59,130,246,0.45)' : 'none',
                       transition: 'background 0.4s ease, box-shadow 0.4s ease',
                     }}
                   />
@@ -533,10 +533,10 @@ export function DashboardHome() {
             <div className="flex items-center gap-4">
               <div style={{
                 width: 42, height: 42, borderRadius: '0.75rem', flexShrink: 0,
-                background: 'rgba(167,139,250,0.15)',
+                background: 'rgba(96,165,250,0.15)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <Shield size={20} style={{ color: '#a78bfa' }} />
+                <Shield size={20} style={{ color: '#60a5fa' }} />
               </div>
               <div>
                 <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(40 6% 92%)', marginBottom: 2 }}>
@@ -555,10 +555,10 @@ export function DashboardHome() {
                 style={{
                   display: 'flex', alignItems: 'center', gap: '0.375rem',
                   padding: '0.5rem 1rem', borderRadius: '0.6rem',
-                  background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                   color: '#050505', fontSize: 13, fontWeight: 600,
                   border: 'none', cursor: 'pointer', flexShrink: 0,
-                  boxShadow: '0 4px 16px rgba(167,139,250,0.2)',
+                  boxShadow: '0 4px 16px rgba(96,165,250,0.2)',
                   transition: 'opacity 0.15s ease',
                 }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
@@ -575,17 +575,17 @@ export function DashboardHome() {
       {/* ── Connect Wallet banner / status card ── */}
       {walletLoading ? null : walletVerified ? (
         /* ── STATE 3: Verified ── */
-        <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(262 30% 6%)', border: '1px solid rgba(167,139,250,0.3)', marginBottom: '1rem' }}>
+        <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(222 30% 6%)', border: '1px solid rgba(96,165,250,0.3)', marginBottom: '1rem' }}>
           <div className="flex items-center gap-4">
             <div style={{
               width: 42, height: 42, borderRadius: '0.75rem', flexShrink: 0,
-              background: 'rgba(167,139,250,0.2)',
+              background: 'rgba(96,165,250,0.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <CheckCircle2 size={20} style={{ color: '#a78bfa' }} />
+              <CheckCircle2 size={20} style={{ color: '#60a5fa' }} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ fontSize: 14, fontWeight: 600, color: '#a78bfa', marginBottom: 2 }}>
+              <p style={{ fontSize: 14, fontWeight: 600, color: '#60a5fa', marginBottom: 2 }}>
                 Wallet Connected Successfully
               </p>
               <p style={{ fontSize: 12, color: 'hsl(240 5% 55%)', wordBreak: 'break-all' }}>
@@ -620,15 +620,15 @@ export function DashboardHome() {
         </Card>
       ) : !walletBannerDismissed ? (
         /* ── STATE 1: Not connected ── */
-        <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(260 40% 8%)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: '1rem' }}>
+        <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(222 40% 8%)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: '1rem' }}>
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div style={{
                 width: 42, height: 42, borderRadius: '0.75rem', flexShrink: 0,
-                background: 'linear-gradient(135deg, rgba(167,139,250,0.3) 0%, rgba(139,92,246,0.3) 100%)',
+                background: 'linear-gradient(135deg, rgba(96,165,250,0.3) 0%, rgba(59,130,246,0.3) 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <WalletCards size={18} style={{ color: '#c4b5fd' }} />
+                <WalletCards size={18} style={{ color: '#93c5fd' }} />
               </div>
               <div>
                 <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(40 6% 92%)', marginBottom: 2 }}>
@@ -646,10 +646,10 @@ export function DashboardHome() {
                 style={{
                   display: 'flex', alignItems: 'center', gap: '0.375rem',
                   padding: '0.5rem 1rem', borderRadius: '0.6rem',
-                  background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                   color: '#050505', fontSize: 13, fontWeight: 600,
                   border: 'none', cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(167,139,250,0.2)',
+                  boxShadow: '0 4px 16px rgba(96,165,250,0.2)',
                   transition: 'opacity 0.15s ease',
                 }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
@@ -687,7 +687,7 @@ export function DashboardHome() {
           onClick={e => { if (e.target === e.currentTarget) setShowWalletModal(false) }}
         >
           <div style={{
-            background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.1)',
+            background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: '1rem', padding: '1.75rem', width: '100%', maxWidth: 440,
           }}>
             {/* Header */}
@@ -695,10 +695,10 @@ export function DashboardHome() {
               <div className="flex items-center gap-3">
                 <div style={{
                   width: 36, height: 36, borderRadius: '0.625rem',
-                  background: 'rgba(167,139,250,0.15)',
+                  background: 'rgba(96,165,250,0.15)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <WalletCards size={16} style={{ color: '#c4b5fd' }} />
+                  <WalletCards size={16} style={{ color: '#93c5fd' }} />
                 </div>
                 <p style={{ fontSize: 15, fontWeight: 600, color: 'hsl(40 6% 92%)' }}>12-Word Recovery Phrase</p>
               </div>
@@ -736,7 +736,7 @@ export function DashboardHome() {
                 transition: 'border-color 0.15s ease',
                 resize: 'none', lineHeight: 1.6,
               }}
-              onFocus={e => e.currentTarget.style.borderColor = 'rgba(167,139,250,0.5)'}
+              onFocus={e => e.currentTarget.style.borderColor = 'rgba(96,165,250,0.5)'}
               onBlur={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
               autoFocus
             />
@@ -764,7 +764,7 @@ export function DashboardHome() {
                   flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.375rem',
                   padding: '0.65rem', borderRadius: '0.625rem',
                   background: walletSaving || !walletInput.trim()
-                    ? 'rgba(167,139,250,0.4)' : 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                    ? 'rgba(96,165,250,0.4)' : 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                   color: '#050505', fontSize: 13, fontWeight: 600, border: 'none',
                   cursor: walletSaving || !walletInput.trim() ? 'not-allowed' : 'pointer',
                   transition: 'opacity 0.15s ease',
@@ -788,7 +788,7 @@ export function DashboardHome() {
           if (plan === 'BASIC') {
             // No custom plan selected
             return (
-              <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(260 40% 7%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <Card style={{ padding: '1.25rem 1.5rem', background: 'hsl(222 40% 7%)', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div className="flex items-center gap-4">
                     <div style={{
@@ -818,10 +818,10 @@ export function DashboardHome() {
                     style={{
                       display: 'flex', alignItems: 'center', gap: '0.375rem', flexShrink: 0,
                       padding: '0.5rem 1.125rem', borderRadius: '0.6rem',
-                      background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)',
+                      background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)',
                       color: '#050505', fontSize: 13, fontWeight: 600,
                       border: 'none', cursor: 'pointer',
-                      boxShadow: '0 4px 16px rgba(167,139,250,0.18)',
+                      boxShadow: '0 4px 16px rgba(96,165,250,0.18)',
                       transition: 'opacity 0.15s ease',
                     }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
@@ -927,7 +927,7 @@ export function DashboardHome() {
               >
                 <RefreshCw size={13} style={txLoading ? { animation: 'spin 1s linear infinite' } : {}} />
               </button>
-              <button style={{ fontSize: 12, color: '#a78bfa', background: 'none', border: 'none', cursor: 'pointer' }}>
+              <button style={{ fontSize: 12, color: '#60a5fa', background: 'none', border: 'none', cursor: 'pointer' }}>
                 View all
               </button>
             </div>
@@ -975,14 +975,14 @@ export function DashboardHome() {
                   <div className="flex items-center gap-3">
                     <div style={{
                       width: 36, height: 36, borderRadius: '0.625rem', flexShrink: 0,
-                      background: tx.type === 'DEPOSIT'    ? 'rgba(167,139,250,0.12)'  :
+                      background: tx.type === 'DEPOSIT'    ? 'rgba(96,165,250,0.12)'  :
                                   tx.type === 'WITHDRAWAL' ? 'rgba(248,113,113,0.12)' :
                                   tx.type === 'PROFIT'     ? 'rgba(96,165,250,0.12)'  :
                                   tx.type === 'BONUS'      ? 'rgba(251,191,36,0.12)'  :
                                   'rgba(255,255,255,0.06)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
-                      {tx.type === 'DEPOSIT'    && <Download    size={15} style={{ color: '#a78bfa' }} />}
+                      {tx.type === 'DEPOSIT'    && <Download    size={15} style={{ color: '#60a5fa' }} />}
                       {tx.type === 'WITHDRAWAL' && <ArrowUpRight size={15} style={{ color: '#f87171' }} />}
                       {tx.type === 'PROFIT'     && <TrendingUp  size={15} style={{ color: '#60a5fa' }} />}
                       {tx.type === 'BONUS'      && <Gift        size={15} style={{ color: '#fbbf24' }} />}
@@ -1010,7 +1010,7 @@ export function DashboardHome() {
                   <p style={{
                     fontSize: 14, fontWeight: 600, flexShrink: 0,
                     color: tx.type === 'WITHDRAWAL' ? '#f87171' :
-                           tx.type === 'DEPOSIT'    ? '#a78bfa'  :
+                           tx.type === 'DEPOSIT'    ? '#60a5fa'  :
                            tx.type === 'PROFIT'     ? '#60a5fa'  :
                            tx.type === 'BONUS'      ? '#fbbf24'  :
                            'hsl(40 6% 85%)',

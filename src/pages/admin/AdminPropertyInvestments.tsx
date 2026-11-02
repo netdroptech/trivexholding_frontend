@@ -46,7 +46,7 @@ const labelStyle: React.CSSProperties = {
 }
 
 const STATUS_COLORS: Record<string, { color: string; bg: string }> = {
-  Active:    { color: '#a78bfa', bg: 'rgba(167,139,250,0.12)'  },
+  Active:    { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)'  },
   Completed: { color: '#60a5fa', bg: 'rgba(96,165,250,0.12)'  },
   Pending:   { color: '#f59e0b', bg: 'rgba(245,158,11,0.12)'  },
   Cancelled: { color: '#f87171', bg: 'rgba(248,113,113,0.12)' },
@@ -181,7 +181,7 @@ export function AdminPropertyInvestments() {
       <div className="flex flex-wrap items-start justify-between gap-3 mb-5">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <Building2 size={20} style={{ color: '#a78bfa' }} />
+            <Building2 size={20} style={{ color: '#60a5fa' }} />
             <h1 style={{ fontSize: '1.375rem', fontWeight: 700, color: 'hsl(40 6% 95%)' }}>Property Investments</h1>
           </div>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)' }}>Add and manage user property investment history</p>
@@ -192,7 +192,7 @@ export function AdminPropertyInvestments() {
             <RefreshCw size={13} style={{ animation: loading ? 'spin 0.8s linear infinite' : 'none' }} />
           </button>
           <button onClick={openAdd}
-            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(167,139,250,0.18)' }}>
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 600, cursor: 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', border: 'none', boxShadow: '0 4px 16px rgba(96,165,250,0.18)' }}>
             <Plus size={14} /> Add Investment
           </button>
         </div>
@@ -201,11 +201,11 @@ export function AdminPropertyInvestments() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
         {[
-          { label: 'Active Investments', value: loading ? '...' : String(activeCount),          icon: Building2,   color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-          { label: 'Total Invested',     value: loading ? '...' : `$${fmtMoney(totalInvested)}`, icon: DollarSign,  color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-          { label: 'Total Returns',      value: loading ? '...' : `$${fmtMoney(totalReturns)}`,  icon: TrendingUp,  color: totalReturns >= 0 ? '#a78bfa' : '#f87171', bg: 'rgba(167,139,250,0.1)' },
+          { label: 'Active Investments', value: loading ? '...' : String(activeCount),          icon: Building2,   color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+          { label: 'Total Invested',     value: loading ? '...' : `$${fmtMoney(totalInvested)}`, icon: DollarSign,  color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+          { label: 'Total Returns',      value: loading ? '...' : `$${fmtMoney(totalReturns)}`,  icon: TrendingUp,  color: totalReturns >= 0 ? '#60a5fa' : '#f87171', bg: 'rgba(96,165,250,0.1)' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
             <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <s.icon size={16} style={{ color: s.color }} />
             </div>
@@ -224,16 +224,16 @@ export function AdminPropertyInvestments() {
       {/* Table */}
       {loading ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {[0,1,2,3].map(i => <div key={i} style={{ height: 56, borderRadius: '0.75rem', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
+          {[0,1,2,3].map(i => <div key={i} style={{ height: 56, borderRadius: '0.75rem', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)' }}><Skeleton w="100%" h="100%" /></div>)}
         </div>
       ) : investments.length === 0 ? (
-        <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+        <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
           <Building2 size={36} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
           <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 42%)' }}>No property investments yet</p>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 32%)', marginTop: 4 }}>Click "Add Investment" to create the first entry.</p>
         </div>
       ) : (
-        <div style={{ overflowX: 'auto', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+        <div style={{ overflowX: 'auto', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -261,10 +261,10 @@ export function AdminPropertyInvestments() {
                     <td style={{ padding: '0.75rem 0.875rem', color: 'hsl(40 6% 85%)', fontWeight: 600, whiteSpace: 'nowrap' }}>${fmtMoney(inv.amountInvested)}</td>
                     <td style={{ padding: '0.75rem 0.875rem', color: 'hsl(40 6% 85%)', whiteSpace: 'nowrap' }}>${fmtMoney(inv.currentValue)}</td>
                     <td style={{ padding: '0.75rem 0.875rem' }}>
-                      <span style={{ color: inv.roi >= 0 ? '#a78bfa' : '#f87171', fontWeight: 700 }}>{inv.roi >= 0 ? '+' : ''}{inv.roi}%</span>
+                      <span style={{ color: inv.roi >= 0 ? '#60a5fa' : '#f87171', fontWeight: 700 }}>{inv.roi >= 0 ? '+' : ''}{inv.roi}%</span>
                     </td>
                     <td style={{ padding: '0.75rem 0.875rem' }}>
-                      <span style={{ color: inv.returns >= 0 ? '#a78bfa' : '#f87171', fontWeight: 700 }}>
+                      <span style={{ color: inv.returns >= 0 ? '#60a5fa' : '#f87171', fontWeight: 700 }}>
                         {inv.returns >= 0 ? '+' : ''}${fmtMoney(inv.returns)}
                       </span>
                     </td>
@@ -275,7 +275,7 @@ export function AdminPropertyInvestments() {
                     <td style={{ padding: '0.75rem 0.875rem' }}>
                       <div style={{ display: 'flex', gap: 4 }}>
                         <button onClick={() => openEdit(inv)}
-                          style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', cursor: 'pointer', color: '#c4b5fd' }}>
+                          style={{ padding: '4px 8px', borderRadius: '0.4rem', background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', cursor: 'pointer', color: '#93c5fd' }}>
                           <Pencil size={12} />
                         </button>
                         <button onClick={() => openDel(inv)}
@@ -297,7 +297,7 @@ export function AdminPropertyInvestments() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 600, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 600, width: '100%', animation: 'fadeIn 0.18s ease', boxShadow: '0 24px 64px rgba(0,0,0,0.6)', position: 'relative', maxHeight: '90vh', overflowY: 'auto' }}>
 
             <button onClick={() => setModal(null)}
               style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 50%)', padding: 4 }}>
@@ -351,7 +351,7 @@ export function AdminPropertyInvestments() {
                     {userDropOpen && (
                       <div style={{
                         position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, zIndex: 999,
-                        background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.12)',
+                        background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.12)',
                         borderRadius: '0.5rem', boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
                         overflow: 'hidden',
                       }}>
@@ -397,8 +397,8 @@ export function AdminPropertyInvestments() {
                                 onClick={() => { setForm(f => ({ ...f, userId: u.id })); setUserDropOpen(false); setUserSearch('') }}
                                 style={{
                                   padding: '8px 12px', cursor: 'pointer',
-                                  background: form.userId === u.id ? 'rgba(167,139,250,0.08)' : 'transparent',
-                                  borderLeft: form.userId === u.id ? '2px solid #a78bfa' : '2px solid transparent',
+                                  background: form.userId === u.id ? 'rgba(96,165,250,0.08)' : 'transparent',
+                                  borderLeft: form.userId === u.id ? '2px solid #60a5fa' : '2px solid transparent',
                                   transition: 'background 0.1s',
                                 }}
                                 onMouseEnter={e => { if (form.userId !== u.id) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
@@ -492,7 +492,7 @@ export function AdminPropertyInvestments() {
                 Cancel
               </button>
               <button onClick={handleSubmit} disabled={saving}
-                style={{ flex: 2, padding: '0.65rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
+                style={{ flex: 2, padding: '0.65rem', borderRadius: '0.6rem', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', border: 'none' }}>
                 {saving ? 'Saving...' : modal === 'add' ? 'Add Investment' : 'Update Investment'}
               </button>
             </div>
@@ -505,12 +505,12 @@ export function AdminPropertyInvestments() {
         <div onClick={() => setModal(null)}
           style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div onClick={e => e.stopPropagation()}
-            style={{ background: 'hsl(260 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
+            style={{ background: 'hsl(222 60% 6%)', border: '1px solid rgba(248,113,113,0.25)', borderRadius: '1.125rem', padding: '2rem', maxWidth: 380, width: '100%', animation: 'fadeIn 0.18s ease' }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, color: 'hsl(40 6% 95%)', marginBottom: 8 }}>Delete Investment?</h3>
             <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', lineHeight: 1.6, marginBottom: '0.5rem' }}>
               This will permanently remove the investment record for <strong style={{ color: 'hsl(40 6% 88%)' }}>{selected.userName}</strong>:
             </p>
-            <p style={{ fontSize: 13, color: '#c4b5fd', fontWeight: 600, marginBottom: '1.5rem' }}>{selected.propertyTitle}</p>
+            <p style={{ fontSize: 13, color: '#93c5fd', fontWeight: 600, marginBottom: '1.5rem' }}>{selected.propertyTitle}</p>
             {formError && <p style={{ fontSize: 12, color: '#f87171', marginBottom: 12 }}>{formError}</p>}
             <div style={{ display: 'flex', gap: 10 }}>
               <button onClick={() => setModal(null)}

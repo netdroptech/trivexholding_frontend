@@ -18,7 +18,7 @@ export function NotFound404() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'hsl(260 87% 2%)',
+      background: 'hsl(222 87% 2%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -35,7 +35,7 @@ export function NotFound404() {
           left: `${p.x}%`, top: `${p.y}%`,
           width: p.size, height: p.size,
           borderRadius: '50%',
-          background: i % 3 === 0 ? '#7c3aed' : i % 3 === 1 ? '#6d28d9' : '#a78bfa',
+          background: i % 3 === 0 ? '#2563eb' : i % 3 === 1 ? '#1d4ed8' : '#60a5fa',
           opacity: p.opacity,
           animation: `nfFloat ${p.speed}s linear infinite`,
           animationDelay: `${-Math.random() * p.speed}s`,
@@ -44,8 +44,8 @@ export function NotFound404() {
       ))}
 
       {/* Glow blobs */}
-      <div style={{ position: 'absolute', top: '-15%', left: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-15%', right: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '-15%', left: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-15%', right: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       {/* Grid texture */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
@@ -82,7 +82,7 @@ export function NotFound404() {
         </p>
 
         {/* Heading */}
-        <h1 style={{ fontSize: 26, fontWeight: 800, color: '#f5f3ff', margin: '0 0 12px', letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontSize: 26, fontWeight: 800, color: '#eff6ff', margin: '0 0 12px', letterSpacing: '-0.02em' }}>
           This page doesn't exist
         </h1>
 
@@ -100,10 +100,10 @@ export function NotFound404() {
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '13px 28px', borderRadius: 12,
-            background: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+            background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
             border: 'none', color: '#fff',
             fontSize: 14, fontWeight: 700, cursor: 'pointer',
-            boxShadow: '0 8px 24px rgba(124,58,237,0.35)',
+            boxShadow: '0 8px 24px rgba(37,99,235,0.35)',
             transition: 'opacity 0.15s',
           }}
           onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}

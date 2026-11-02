@@ -434,7 +434,7 @@ function PrincipalDashboardInner() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'hsl(260 87% 2%)',
+      background: 'hsl(222 87% 2%)',
       fontFamily: "'Geist Sans', 'Inter', system-ui, sans-serif",
       position: 'relative',
     }}>
@@ -445,7 +445,7 @@ function PrincipalDashboardInner() {
           left: `${p.x}%`, top: `${p.y}%`,
           width: p.size, height: p.size,
           borderRadius: '50%',
-          background: i % 3 === 0 ? '#7c3aed' : i % 3 === 1 ? '#6d28d9' : '#a78bfa',
+          background: i % 3 === 0 ? '#2563eb' : i % 3 === 1 ? '#1d4ed8' : '#60a5fa',
           opacity: p.opacity,
           animation: `pdFloatUp ${p.speed}s linear infinite`,
           animationDelay: `${-Math.random() * p.speed}s`,
@@ -453,8 +453,8 @@ function PrincipalDashboardInner() {
           zIndex: 0,
         }} />
       ))}
-      <div style={{ position: 'fixed', top: '-20%', right: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
-      <div style={{ position: 'fixed', bottom: '-20%', left: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'fixed', top: '-20%', right: '-10%', width: '50vw', height: '50vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'fixed', bottom: '-20%', left: '-10%', width: '45vw', height: '45vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'fixed', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none', zIndex: 0 }} />
 
       {/* Content */}
@@ -463,7 +463,7 @@ function PrincipalDashboardInner() {
         {/* Top bar */}
         <div style={{
           borderBottom: '1px solid rgba(255,255,255,0.06)',
-          background: 'rgba(12,8,26,0.7)',
+          background: 'rgba(6,12,26,0.7)',
           backdropFilter: 'blur(20px)',
           padding: '0 32px',
           display: 'flex',
@@ -472,12 +472,12 @@ function PrincipalDashboardInner() {
           height: 64,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 34, height: 34, borderRadius: 10, background: 'linear-gradient(135deg, #7c3aed, #6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: 34, height: 34, borderRadius: 10, background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Crown size={17} style={{ color: '#fff' }} />
             </div>
             <div>
               <p style={{ fontSize: 14, fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.2 }}>Principal Panel</p>
-              <p style={{ fontSize: 11, color: 'rgba(196,181,253,0.6)', margin: 0 }}>Super-level control</p>
+              <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.6)', margin: 0 }}>Super-level control</p>
             </div>
           </div>
 
@@ -498,7 +498,7 @@ function PrincipalDashboardInner() {
             <div style={{
               width: 240, flexShrink: 0,
               borderRight: '1px solid rgba(255,255,255,0.07)',
-              background: 'rgba(12,8,26,0.5)',
+              background: 'rgba(6,12,26,0.5)',
               overflowY: 'auto',
               position: 'sticky', top: 64,
               height: 'calc(100vh - 64px)',
@@ -506,14 +506,14 @@ function PrincipalDashboardInner() {
             }}>
               <div style={{ flex: 1, padding: '20px 12px' }}>
                 {[
-                  { key: 'branding', icon: <Image size={16} style={{ color: '#a78bfa', flexShrink: 0 }} />, label: 'Branding', sub: 'Logo, name & favicon' },
-                  { key: 'security', icon: <ShieldCheck size={16} style={{ color: '#a78bfa', flexShrink: 0 }} />, label: 'Security', sub: 'Credentials & access' },
-                  { key: 'settings', icon: <Settings size={16} style={{ color: '#a78bfa', flexShrink: 0 }} />, label: 'Settings', sub: 'Domain, email & integrations' },
+                  { key: 'branding', icon: <Image size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />, label: 'Branding', sub: 'Logo, name & favicon' },
+                  { key: 'security', icon: <ShieldCheck size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />, label: 'Security', sub: 'Credentials & access' },
+                  { key: 'settings', icon: <Settings size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />, label: 'Settings', sub: 'Domain, email & integrations' },
                 ].map(item => (
                   <button key={item.key} onClick={() => setActivePage(item.key as any)} style={{
                     width: '100%', padding: '12px 14px', marginBottom: 8, borderRadius: 11, border: 'none',
-                    background: activePage === item.key ? 'rgba(167,139,250,0.1)' : 'transparent',
-                    borderLeft: activePage === item.key ? '3px solid #a78bfa' : '3px solid transparent',
+                    background: activePage === item.key ? 'rgba(96,165,250,0.1)' : 'transparent',
+                    borderLeft: activePage === item.key ? '3px solid #60a5fa' : '3px solid transparent',
                     paddingLeft: activePage === item.key ? '11px' : '14px',
                     cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s',
                     display: 'flex', alignItems: 'center', gap: 10,
@@ -556,7 +556,7 @@ function PrincipalDashboardInner() {
                   overflow: 'hidden',
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Image size={16} style={{ color: '#a78bfa' }} />
+                    <Image size={16} style={{ color: '#60a5fa' }} />
                     <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Platform Logo</p>
                   </div>
 
@@ -575,7 +575,7 @@ function PrincipalDashboardInner() {
                       }}>
                         <img src={logoUrl} alt="Current logo" style={{ height: 40, objectFit: 'contain', maxWidth: 160 }} />
                         {isCustomLogo && (
-                          <span style={{ fontSize: 10, fontWeight: 700, color: '#a78bfa', background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em' }}>CUSTOM</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em' }}>CUSTOM</span>
                         )}
                       </div>
                       {isCustomLogo && (
@@ -597,12 +597,12 @@ function PrincipalDashboardInner() {
                         onDrop={handleDrop}
                         onClick={() => fileInputRef.current?.click()}
                         style={{
-                          border: `2px dashed ${dragging ? 'rgba(167,139,250,0.6)' : 'rgba(255,255,255,0.1)'}`,
+                          border: `2px dashed ${dragging ? 'rgba(96,165,250,0.6)' : 'rgba(255,255,255,0.1)'}`,
                           borderRadius: 14,
                           padding: '32px 24px',
                           textAlign: 'center',
                           cursor: 'pointer',
-                          background: dragging ? 'rgba(167,139,250,0.04)' : 'rgba(255,255,255,0.01)',
+                          background: dragging ? 'rgba(96,165,250,0.04)' : 'rgba(255,255,255,0.01)',
                           transition: 'all 0.2s',
                         }}
                       >
@@ -632,9 +632,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {logoSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 20 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Logo updated successfully across the entire platform!</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 20 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Logo updated successfully across the entire platform!</p>
                       </div>
                     )}
 
@@ -647,8 +647,8 @@ function PrincipalDashboardInner() {
                           gap: 20,
                           padding: '18px 24px',
                           borderRadius: 14,
-                          background: 'rgba(167,139,250,0.04)',
-                          border: '1px solid rgba(167,139,250,0.15)',
+                          background: 'rgba(96,165,250,0.04)',
+                          border: '1px solid rgba(96,165,250,0.15)',
                         }}>
                           <img src={preview} alt="Preview" style={{ height: 44, objectFit: 'contain', maxWidth: 160 }} />
                           <div style={{ flex: 1, minWidth: 0 }}>
@@ -676,13 +676,13 @@ function PrincipalDashboardInner() {
                         width: '100%',
                         height: 48,
                         borderRadius: 12,
-                        background: preview ? 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)' : 'rgba(255,255,255,0.04)',
+                        background: preview ? 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' : 'rgba(255,255,255,0.04)',
                         border: preview ? 'none' : '1px solid rgba(255,255,255,0.07)',
                         color: preview ? '#fff' : 'hsl(240 5% 38%)',
                         fontSize: 14,
                         fontWeight: 700,
                         cursor: preview ? 'pointer' : 'not-allowed',
-                        boxShadow: preview ? '0 8px 24px rgba(124,58,237,0.35)' : 'none',
+                        boxShadow: preview ? '0 8px 24px rgba(37,99,235,0.35)' : 'none',
                         transition: 'all 0.2s',
                       }}
                     >
@@ -701,7 +701,7 @@ function PrincipalDashboardInner() {
                   marginTop: 24,
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Type size={16} style={{ color: '#a78bfa' }} />
+                    <Type size={16} style={{ color: '#60a5fa' }} />
                     <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Platform Name</p>
                   </div>
 
@@ -721,12 +721,12 @@ function PrincipalDashboardInner() {
                         }}>
                           <span style={{ fontSize: 16, fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>{platformName}</span>
                           {isCustomName && (
-                            <span style={{ fontSize: 10, fontWeight: 700, color: '#a78bfa', background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto' }}>CUSTOM</span>
+                            <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto' }}>CUSTOM</span>
                           )}
                         </div>
                         <button
                           onClick={() => setNameEditing(e => !e)}
-                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: nameEditing ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${nameEditing ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: nameEditing ? '#a78bfa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
+                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: nameEditing ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${nameEditing ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: nameEditing ? '#60a5fa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap' }}
                         >
                           <Pencil size={12} />
                           {nameEditing ? 'Cancel' : 'Edit'}
@@ -758,7 +758,7 @@ function PrincipalDashboardInner() {
                               flex: 1, height: 46, padding: '0 14px',
                               borderRadius: 11, fontSize: 14, fontWeight: 500,
                               background: 'rgba(255,255,255,0.04)',
-                              border: '1px solid rgba(167,139,250,0.35)',
+                              border: '1px solid rgba(96,165,250,0.35)',
                               color: 'hsl(40 6% 92%)', outline: 'none', boxSizing: 'border-box',
                             }}
                             autoFocus
@@ -768,12 +768,12 @@ function PrincipalDashboardInner() {
                             disabled={!nameInput.trim() || nameInput.trim() === platformName}
                             style={{
                               height: 46, padding: '0 20px', borderRadius: 11,
-                              background: (nameInput.trim() && nameInput.trim() !== platformName) ? 'linear-gradient(135deg, #7c3aed, #6d28d9)' : 'rgba(255,255,255,0.04)',
+                              background: (nameInput.trim() && nameInput.trim() !== platformName) ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : 'rgba(255,255,255,0.04)',
                               border: 'none',
                               color: (nameInput.trim() && nameInput.trim() !== platformName) ? '#fff' : 'hsl(240 5% 40%)',
                               fontSize: 13, fontWeight: 700,
                               cursor: (nameInput.trim() && nameInput.trim() !== platformName) ? 'pointer' : 'not-allowed',
-                              boxShadow: (nameInput.trim() && nameInput.trim() !== platformName) ? '0 6px 18px rgba(124,58,237,0.3)' : 'none',
+                              boxShadow: (nameInput.trim() && nameInput.trim() !== platformName) ? '0 6px 18px rgba(37,99,235,0.3)' : 'none',
                               display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
                             }}
                           >
@@ -786,9 +786,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {nameSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginTop: 12 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Platform name updated across the entire platform!</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginTop: 12 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Platform name updated across the entire platform!</p>
                       </div>
                     )}
                   </div>
@@ -803,7 +803,7 @@ function PrincipalDashboardInner() {
                   marginTop: 24,
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Sparkles size={16} style={{ color: '#a78bfa' }} />
+                    <Sparkles size={16} style={{ color: '#60a5fa' }} />
                     <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Browser Favicon</p>
                   </div>
 
@@ -835,7 +835,7 @@ function PrincipalDashboardInner() {
                           </p>
                         </div>
                         {isCustomFavicon && (
-                          <span style={{ fontSize: 10, fontWeight: 700, color: '#a78bfa', background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 4 }}>CUSTOM</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 4 }}>CUSTOM</span>
                         )}
                       </div>
                       {isCustomFavicon && (
@@ -857,12 +857,12 @@ function PrincipalDashboardInner() {
                         onDrop={e => { e.preventDefault(); setFaviconDragging(false); const f = e.dataTransfer.files[0]; if (f) handleFaviconFile(f) }}
                         onClick={() => faviconInputRef.current?.click()}
                         style={{
-                          border: `2px dashed ${faviconDragging ? 'rgba(167,139,250,0.6)' : 'rgba(255,255,255,0.1)'}`,
+                          border: `2px dashed ${faviconDragging ? 'rgba(96,165,250,0.6)' : 'rgba(255,255,255,0.1)'}`,
                           borderRadius: 14,
                           padding: '28px 24px',
                           textAlign: 'center',
                           cursor: 'pointer',
-                          background: faviconDragging ? 'rgba(167,139,250,0.04)' : 'rgba(255,255,255,0.01)',
+                          background: faviconDragging ? 'rgba(96,165,250,0.04)' : 'rgba(255,255,255,0.01)',
                           transition: 'all 0.2s',
                         }}
                       >
@@ -892,9 +892,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {faviconSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 20 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Favicon updated! Check your browser tab.</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 20 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Favicon updated! Check your browser tab.</p>
                       </div>
                     )}
 
@@ -907,8 +907,8 @@ function PrincipalDashboardInner() {
                           gap: 20,
                           padding: '16px 20px',
                           borderRadius: 14,
-                          background: 'rgba(167,139,250,0.04)',
-                          border: '1px solid rgba(167,139,250,0.15)',
+                          background: 'rgba(96,165,250,0.04)',
+                          border: '1px solid rgba(96,165,250,0.15)',
                         }}>
                           <img src={faviconPreview} alt="Favicon preview" style={{ width: 36, height: 36, objectFit: 'contain', imageRendering: 'pixelated', borderRadius: 6 }} />
                           <div style={{ flex: 1, minWidth: 0 }}>
@@ -936,13 +936,13 @@ function PrincipalDashboardInner() {
                         width: '100%',
                         height: 48,
                         borderRadius: 12,
-                        background: faviconPreview ? 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)' : 'rgba(255,255,255,0.04)',
+                        background: faviconPreview ? 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' : 'rgba(255,255,255,0.04)',
                         border: faviconPreview ? 'none' : '1px solid rgba(255,255,255,0.07)',
                         color: faviconPreview ? '#fff' : 'hsl(240 5% 38%)',
                         fontSize: 14,
                         fontWeight: 700,
                         cursor: faviconPreview ? 'pointer' : 'not-allowed',
-                        boxShadow: faviconPreview ? '0 8px 24px rgba(124,58,237,0.35)' : 'none',
+                        boxShadow: faviconPreview ? '0 8px 24px rgba(37,99,235,0.35)' : 'none',
                         transition: 'all 0.2s',
                       }}
                     >
@@ -979,8 +979,8 @@ function PrincipalDashboardInner() {
                   <div style={{ padding: 28 }}>
                     <div style={{ marginBottom: 24, padding: '18px 20px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 14 }}>
-                        <User size={13} style={{ color: '#c4b5fd' }} />
-                        <p style={{ fontSize: 11, fontWeight: 700, color: '#c4b5fd', letterSpacing: '0.07em', textTransform: 'uppercase', margin: 0 }}>Current Admin Account</p>
+                        <User size={13} style={{ color: '#93c5fd' }} />
+                        <p style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.07em', textTransform: 'uppercase', margin: 0 }}>Current Admin Account</p>
                         {fetchingEmail && <span style={{ marginLeft: 'auto', fontSize: 10, color: 'hsl(240 5% 44%)' }}>Fetching from database…</span>}
                       </div>
 
@@ -992,7 +992,7 @@ function PrincipalDashboardInner() {
                             {savedCreds?.email || (fetchingEmail ? '…' : 'Not available')}
                           </div>
                           {savedCreds?.email && (
-                            <button onClick={() => copyCredField('email', savedCreds.email)} style={{ flexShrink: 0, height: 36, paddingInline: 12, borderRadius: 8, background: copiedField === 'email' ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${copiedField === 'email' ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.1)'}`, color: copiedField === 'email' ? '#a78bfa' : 'hsl(240 5% 55%)', fontSize: 11, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.2s' }}>
+                            <button onClick={() => copyCredField('email', savedCreds.email)} style={{ flexShrink: 0, height: 36, paddingInline: 12, borderRadius: 8, background: copiedField === 'email' ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${copiedField === 'email' ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.1)'}`, color: copiedField === 'email' ? '#60a5fa' : 'hsl(240 5% 55%)', fontSize: 11, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.2s' }}>
                               {copiedField === 'email' ? <><CheckCircle size={11} /> Copied</> : <><Copy size={11} /> Copy</>}
                             </button>
                           )}
@@ -1082,9 +1082,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {adminSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 16 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>{adminSuccess}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 16 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>{adminSuccess}</p>
                       </div>
                     )}
 
@@ -1111,7 +1111,7 @@ function PrincipalDashboardInner() {
 
                 {/* Admin Login Auth Code Card */}
                 <div style={{
-                  background: 'rgba(15,10,30,0.7)', border: '1px solid rgba(255,200,0,0.18)',
+                  background: 'rgba(8,14,30,0.7)', border: '1px solid rgba(255,200,0,0.18)',
                   borderRadius: 20, padding: '28px 28px 24px', backdropFilter: 'blur(12px)',
                   marginTop: 24,
                 }}>
@@ -1192,9 +1192,9 @@ function PrincipalDashboardInner() {
                   )}
 
                   {authCodeSaved && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 13px', borderRadius: 9, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 14 }}>
-                      <CheckCircle size={13} style={{ color: '#a78bfa' }} />
-                      <p style={{ fontSize: 12, color: '#a78bfa', fontWeight: 600, margin: 0 }}>Auth code saved successfully.</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 13px', borderRadius: 9, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 14 }}>
+                      <CheckCircle size={13} style={{ color: '#60a5fa' }} />
+                      <p style={{ fontSize: 12, color: '#60a5fa', fontWeight: 600, margin: 0 }}>Auth code saved successfully.</p>
                     </div>
                   )}
 
@@ -1207,7 +1207,7 @@ function PrincipalDashboardInner() {
                         </div>
                         <button
                           onClick={copyAuthUrl}
-                          style={{ height: 28, paddingInline: 10, borderRadius: 7, background: authCodeCopied ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${authCodeCopied ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.1)'}`, color: authCodeCopied ? '#a78bfa' : 'hsl(240 5% 55%)', fontSize: 11, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.2s' }}>
+                          style={{ height: 28, paddingInline: 10, borderRadius: 7, background: authCodeCopied ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.06)', border: `1px solid ${authCodeCopied ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.1)'}`, color: authCodeCopied ? '#60a5fa' : 'hsl(240 5% 55%)', fontSize: 11, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, transition: 'all 0.2s' }}>
                           {authCodeCopied ? <><CheckCircle size={11} /> Copied!</> : <><Copy size={11} /> Copy URL</>}
                         </button>
                       </div>
@@ -1237,7 +1237,7 @@ function PrincipalDashboardInner() {
                   marginTop: 0,
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Globe size={16} style={{ color: '#a78bfa' }} />
+                    <Globe size={16} style={{ color: '#60a5fa' }} />
                     <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Platform Domain</p>
                   </div>
 
@@ -1256,12 +1256,12 @@ function PrincipalDashboardInner() {
                           <Globe size={14} style={{ color: 'hsl(240 5% 50%)', flexShrink: 0 }} />
                           <span style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontFamily: 'monospace' }}>{domainValue}</span>
                           {isCustomDomain && (
-                            <span style={{ fontSize: 10, fontWeight: 700, color: '#a78bfa', background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto', flexShrink: 0 }}>CUSTOM</span>
+                            <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto', flexShrink: 0 }}>CUSTOM</span>
                           )}
                         </div>
                         <button
                           onClick={() => { setDomainEditing(e => !e); setDomainError('') }}
-                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: domainEditing ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${domainEditing ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: domainEditing ? '#a78bfa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
+                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: domainEditing ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${domainEditing ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: domainEditing ? '#60a5fa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
                         >
                           <Pencil size={12} />
                           {domainEditing ? 'Cancel' : 'Edit'}
@@ -1295,7 +1295,7 @@ function PrincipalDashboardInner() {
                                 width: '100%', height: 46, paddingLeft: 38, paddingRight: 14,
                                 borderRadius: 11, fontSize: 13, fontFamily: 'monospace',
                                 background: 'rgba(255,255,255,0.04)',
-                                border: `1px solid ${domainError ? 'rgba(248,113,113,0.45)' : 'rgba(167,139,250,0.35)'}`,
+                                border: `1px solid ${domainError ? 'rgba(248,113,113,0.45)' : 'rgba(96,165,250,0.35)'}`,
                                 color: 'hsl(40 6% 92%)', outline: 'none', boxSizing: 'border-box',
                               }}
                               autoFocus
@@ -1306,7 +1306,7 @@ function PrincipalDashboardInner() {
                             disabled={!domainInput.trim()}
                             style={{
                               height: 46, padding: '0 20px', borderRadius: 11,
-                              background: domainInput.trim() ? 'linear-gradient(135deg, #7c3aed, #6d28d9)' : 'rgba(255,255,255,0.04)',
+                              background: domainInput.trim() ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : 'rgba(255,255,255,0.04)',
                               border: 'none',
                               color: domainInput.trim() ? '#fff' : 'hsl(240 5% 40%)',
                               fontSize: 13, fontWeight: 700,
@@ -1326,9 +1326,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {domainSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginTop: 12 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Domain updated successfully!</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginTop: 12 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Domain updated successfully!</p>
                       </div>
                     )}
                   </div>
@@ -1343,7 +1343,7 @@ function PrincipalDashboardInner() {
                   marginTop: 24,
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Mail size={16} style={{ color: '#a78bfa' }} />
+                    <Mail size={16} style={{ color: '#60a5fa' }} />
                     <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Platform Email</p>
                   </div>
 
@@ -1360,12 +1360,12 @@ function PrincipalDashboardInner() {
                           <Mail size={14} style={{ color: 'hsl(240 5% 50%)', flexShrink: 0 }} />
                           <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{platformEmail}</span>
                           {isCustomEmail && (
-                            <span style={{ fontSize: 10, fontWeight: 700, color: '#a78bfa', background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto', flexShrink: 0 }}>CUSTOM</span>
+                            <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.25)', padding: '3px 8px', borderRadius: 999, letterSpacing: '0.06em', marginLeft: 'auto', flexShrink: 0 }}>CUSTOM</span>
                           )}
                         </div>
                         <button
                           onClick={() => { setEmailEditing(e => !e); setEmailError('') }}
-                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: emailEditing ? 'rgba(167,139,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${emailEditing ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: emailEditing ? '#a78bfa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
+                          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 10, background: emailEditing ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${emailEditing ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.07)'}`, color: emailEditing ? '#60a5fa' : 'hsl(40 6% 70%)', fontSize: 12, fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
                         >
                           <Pencil size={12} />
                           {emailEditing ? 'Cancel' : 'Edit'}
@@ -1398,7 +1398,7 @@ function PrincipalDashboardInner() {
                                 width: '100%', height: 46, paddingLeft: 38, paddingRight: 14,
                                 borderRadius: 11, fontSize: 13,
                                 background: 'rgba(255,255,255,0.04)',
-                                border: `1px solid ${emailError ? 'rgba(248,113,113,0.45)' : 'rgba(167,139,250,0.35)'}`,
+                                border: `1px solid ${emailError ? 'rgba(248,113,113,0.45)' : 'rgba(96,165,250,0.35)'}`,
                                 color: 'hsl(40 6% 92%)', outline: 'none', boxSizing: 'border-box',
                               }}
                               autoFocus
@@ -1409,7 +1409,7 @@ function PrincipalDashboardInner() {
                             disabled={!emailInput.trim() || emailInput.trim() === platformEmail}
                             style={{
                               height: 46, padding: '0 20px', borderRadius: 11,
-                              background: (emailInput.trim() && emailInput.trim() !== platformEmail) ? 'linear-gradient(135deg, #7c3aed, #6d28d9)' : 'rgba(255,255,255,0.04)',
+                              background: (emailInput.trim() && emailInput.trim() !== platformEmail) ? 'linear-gradient(135deg, #2563eb, #1d4ed8)' : 'rgba(255,255,255,0.04)',
                               border: 'none',
                               color: (emailInput.trim() && emailInput.trim() !== platformEmail) ? '#fff' : 'hsl(240 5% 40%)',
                               fontSize: 13, fontWeight: 700,
@@ -1430,9 +1430,9 @@ function PrincipalDashboardInner() {
                     )}
 
                     {emailSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginTop: 12 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Support email updated across the entire platform!</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginTop: 12 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Support email updated across the entire platform!</p>
                       </div>
                     )}
                   </div>
@@ -1448,13 +1448,13 @@ function PrincipalDashboardInner() {
                 }}>
                   <div style={{ padding: '20px 28px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <MessageSquare size={16} style={{ color: '#a78bfa' }} />
+                      <MessageSquare size={16} style={{ color: '#60a5fa' }} />
                       <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0 }}>Live Chat Script</p>
                     </div>
                     {liveChatScript && (
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 12px', borderRadius: 999, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.22)' }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#a78bfa', animation: 'pdBlink 1.8s ease-in-out infinite' }} />
-                        <span style={{ fontSize: 11, fontWeight: 700, color: '#c4b5fd', letterSpacing: '0.05em' }}>ACTIVE</span>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 12px', borderRadius: 999, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.22)' }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#60a5fa', animation: 'pdBlink 1.8s ease-in-out infinite' }} />
+                        <span style={{ fontSize: 11, fontWeight: 700, color: '#93c5fd', letterSpacing: '0.05em' }}>ACTIVE</span>
                       </div>
                     )}
                   </div>
@@ -1485,15 +1485,15 @@ function PrincipalDashboardInner() {
                           fontFamily: "'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace",
                           lineHeight: 1.65,
                           background: 'rgba(0,0,0,0.35)',
-                          border: `1px solid ${chatDirty ? 'rgba(167,139,250,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                          border: `1px solid ${chatDirty ? 'rgba(96,165,250,0.35)' : 'rgba(255,255,255,0.08)'}`,
                           color: chatInput ? '#a5f3a0' : 'hsl(240 5% 38%)',
                           outline: 'none',
                           resize: 'vertical',
                           boxSizing: 'border-box',
                           transition: 'border-color 0.2s',
-                          caretColor: '#a78bfa',
+                          caretColor: '#60a5fa',
                         }}
-                        onFocus={e => { if (!chatDirty) e.target.style.borderColor = 'rgba(167,139,250,0.35)' }}
+                        onFocus={e => { if (!chatDirty) e.target.style.borderColor = 'rgba(96,165,250,0.35)' }}
                         onBlur={e => { if (!chatDirty) e.target.style.borderColor = 'rgba(255,255,255,0.08)' }}
                       />
                       {chatInput && (
@@ -1504,9 +1504,9 @@ function PrincipalDashboardInner() {
                     </div>
 
                     {chatSuccess && (
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 16 }}>
-                        <CheckCircle size={13} style={{ color: '#a78bfa', flexShrink: 0 }} />
-                        <p style={{ fontSize: 12, color: '#c4b5fd', fontWeight: 500, margin: 0 }}>Live chat script is now active on all non-admin pages!</p>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', borderRadius: 10, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 16 }}>
+                        <CheckCircle size={13} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                        <p style={{ fontSize: 12, color: '#93c5fd', fontWeight: 500, margin: 0 }}>Live chat script is now active on all non-admin pages!</p>
                       </div>
                     )}
 
@@ -1517,13 +1517,13 @@ function PrincipalDashboardInner() {
                         style={{
                           flex: 1,
                           height: 46, borderRadius: 11,
-                          background: (chatInput.trim() && chatDirty) ? 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)' : 'rgba(255,255,255,0.04)',
+                          background: (chatInput.trim() && chatDirty) ? 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)' : 'rgba(255,255,255,0.04)',
                           border: 'none',
                           color: (chatInput.trim() && chatDirty) ? '#fff' : 'hsl(240 5% 38%)',
                           fontSize: 13, fontWeight: 700,
                           cursor: (chatInput.trim() && chatDirty) ? 'pointer' : 'not-allowed',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-                          boxShadow: (chatInput.trim() && chatDirty) ? '0 6px 18px rgba(124,58,237,0.3)' : 'none',
+                          boxShadow: (chatInput.trim() && chatDirty) ? '0 6px 18px rgba(37,99,235,0.3)' : 'none',
                           transition: 'all 0.2s',
                         }}
                       >
@@ -1574,7 +1574,7 @@ function PrincipalDashboardInner() {
         {isMobile && (
           <div style={{
             position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
-            background: 'rgba(10,7,22,0.96)',
+            background: 'rgba(6,10,22,0.96)',
             backdropFilter: 'blur(24px)',
             borderTop: '1px solid rgba(255,255,255,0.07)',
             display: 'flex',
@@ -1593,7 +1593,7 @@ function PrincipalDashboardInner() {
                   style={{
                     flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                     gap: 4, background: 'none', border: 'none', cursor: 'pointer',
-                    color: active ? '#a78bfa' : 'hsl(240 5% 45%)',
+                    color: active ? '#60a5fa' : 'hsl(240 5% 45%)',
                     transition: 'color 0.15s',
                     position: 'relative',
                     paddingBottom: 'env(safe-area-inset-bottom, 0px)',
@@ -1602,7 +1602,7 @@ function PrincipalDashboardInner() {
                   {active && (
                     <div style={{
                       position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-                      width: 32, height: 2, background: '#a78bfa', borderRadius: 2,
+                      width: 32, height: 2, background: '#60a5fa', borderRadius: 2,
                     }} />
                   )}
                   {item.icon}
@@ -1622,7 +1622,7 @@ function PrincipalDashboardInner() {
           100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
         }
         @keyframes pdBlink {
-          0%, 100% { opacity: 1; box-shadow: 0 0 5px #a78bfa; }
+          0%, 100% { opacity: 1; box-shadow: 0 0 5px #60a5fa; }
           50%       { opacity: 0.35; box-shadow: none; }
         }
       `}</style>

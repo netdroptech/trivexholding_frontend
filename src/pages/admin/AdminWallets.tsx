@@ -38,7 +38,7 @@ const NETWORKS = [
   { name: 'Tron',          icon: 'T', color: '#e50914', chains: ['TRC-20', 'TRC-10'] },
   { name: 'Polygon',       icon: '◈', color: '#8247e5', chains: ['ERC-20'] },
   { name: 'Avalanche',     icon: 'A', color: '#e84142', chains: ['ERC-20'] },
-  { name: 'Bank Transfer', icon: '$', color: '#8b5cf6', chains: ['SWIFT / WIRE', 'ACH', 'SEPA', 'Local'] },
+  { name: 'Bank Transfer', icon: '$', color: '#3b82f6', chains: ['SWIFT / WIRE', 'ACH', 'SEPA', 'Local'] },
   { name: 'PayPal',        icon: 'P', color: '#003087', chains: ['PayPal'] },
   { name: 'Custom',        icon: '?', color: '#94a3b8', chains: ['Other'] },
 ]
@@ -63,7 +63,7 @@ function CopyBtn({ text }: { text: string }) {
       title="Copy address"
       className="p-1.5 rounded-lg hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
     >
-      {done ? <Check size={14} className="text-violet-400" /> : <Copy size={14} />}
+      {done ? <Check size={14} className="text-blue-400" /> : <Copy size={14} />}
     </button>
   )
 }
@@ -251,8 +251,8 @@ export function AdminWallets() {
       <div className="flex items-start justify-between gap-4 mb-8 flex-wrap">
         <div>
           <div className="flex items-center gap-3 mb-1">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.18)', border: '1px solid rgba(139,92,246,0.3)' }}>
-              <Wallet size={18} style={{ color: '#a78bfa' }} />
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.18)', border: '1px solid rgba(59,130,246,0.3)' }}>
+              <Wallet size={18} style={{ color: '#60a5fa' }} />
             </div>
             <h1 className="text-2xl font-semibold tracking-tight">Update Wallet</h1>
           </div>
@@ -263,7 +263,7 @@ export function AdminWallets() {
         <button
           onClick={openAdd}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all hover:scale-[1.03] active:scale-[0.98]"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.35)' }}
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.35)' }}
         >
           <Plus size={15} />
           Add Wallet
@@ -273,7 +273,7 @@ export function AdminWallets() {
       {/* ── Withdrawal Method Toggles ── */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-1.5 h-5 rounded-full" style={{ background: 'linear-gradient(to bottom,#a78bfa,#8b5cf6)' }} />
+          <div className="w-1.5 h-5 rounded-full" style={{ background: 'linear-gradient(to bottom,#60a5fa,#3b82f6)' }} />
           <h2 className="text-base font-semibold" style={{ color: 'hsl(40 6% 90%)' }}>Withdrawal Methods</h2>
           <span className="text-xs px-2 py-0.5 rounded-full ml-1" style={{ background: 'rgba(255,255,255,0.05)', color: 'hsl(240 5% 55%)', border: '1px solid rgba(255,255,255,0.08)' }}>
             Controls which methods users can withdraw with
@@ -302,13 +302,13 @@ export function AdminWallets() {
                 key={m.key}
                 className="rounded-2xl p-5 flex items-start gap-4 transition-all"
                 style={{
-                  background: m.enabled ? 'rgba(167,139,250,0.04)' : 'rgba(248,113,113,0.04)',
-                  border: `1px solid ${m.enabled ? 'rgba(167,139,250,0.2)' : 'rgba(248,113,113,0.2)'}`,
+                  background: m.enabled ? 'rgba(96,165,250,0.04)' : 'rgba(248,113,113,0.04)',
+                  border: `1px solid ${m.enabled ? 'rgba(96,165,250,0.2)' : 'rgba(248,113,113,0.2)'}`,
                 }}
               >
                 {/* Icon */}
                 <div className="text-2xl w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: m.enabled ? 'rgba(167,139,250,0.1)' : 'rgba(248,113,113,0.1)' }}>
+                  style={{ background: m.enabled ? 'rgba(96,165,250,0.1)' : 'rgba(248,113,113,0.1)' }}>
                   {m.icon}
                 </div>
 
@@ -318,8 +318,8 @@ export function AdminWallets() {
                     <span className="text-sm font-semibold" style={{ color: 'hsl(40 6% 92%)' }}>{m.label}</span>
                     <span className="text-xs px-2 py-0.5 rounded-full font-semibold"
                       style={{
-                        background: m.enabled ? 'rgba(167,139,250,0.12)' : 'rgba(248,113,113,0.12)',
-                        color:      m.enabled ? '#a78bfa' : '#f87171',
+                        background: m.enabled ? 'rgba(96,165,250,0.12)' : 'rgba(248,113,113,0.12)',
+                        color:      m.enabled ? '#60a5fa' : '#f87171',
                       }}>
                       {m.enabled ? 'Enabled' : 'Disabled'}
                     </span>
@@ -336,9 +336,9 @@ export function AdminWallets() {
                   style={{ background: 'none', border: 'none', cursor: isToggling ? 'not-allowed' : 'pointer', opacity: isToggling ? 0.6 : 1 }}
                 >
                   {isToggling
-                    ? <Loader2 size={28} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+                    ? <Loader2 size={28} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
                     : m.enabled
-                      ? <ToggleRight size={34} style={{ color: '#a78bfa' }} />
+                      ? <ToggleRight size={34} style={{ color: '#60a5fa' }} />
                       : <ToggleLeft  size={34} style={{ color: '#f87171' }} />
                   }
                 </button>
@@ -351,7 +351,7 @@ export function AdminWallets() {
       {/* ── Save flash ── */}
       {saveFlash && (
         <div className="fixed top-5 right-5 z-50 flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium"
-          style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)', color: '#a78bfa' }}>
+          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', color: '#60a5fa' }}>
           <Check size={14} /> Wallet saved successfully
         </div>
       )}
@@ -368,8 +368,8 @@ export function AdminWallets() {
       {/* ── Stats strip ── */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
-          { label: 'Total Wallets', value: stats.total,    icon: <Wallet size={16} />,     col: '#a78bfa' },
-          { label: 'Active',        value: stats.active,   icon: <ShieldCheck size={16} />, col: '#a78bfa' },
+          { label: 'Total Wallets', value: stats.total,    icon: <Wallet size={16} />,     col: '#60a5fa' },
+          { label: 'Active',        value: stats.active,   icon: <ShieldCheck size={16} />, col: '#60a5fa' },
           { label: 'Inactive',      value: stats.inactive, icon: <AlertCircle size={16} />, col: '#f87171' },
           { label: 'Networks',      value: stats.networks, icon: <Globe size={16} />,       col: '#38bdf8' },
         ].map(s => (
@@ -398,7 +398,7 @@ export function AdminWallets() {
             onClick={() => setFilterActive(f)}
             className="px-4 py-1.5 rounded-full text-xs font-medium capitalize transition-all"
             style={filterActive === f
-              ? { background: 'rgba(139,92,246,0.2)', border: '1px solid rgba(139,92,246,0.5)', color: '#c4b5fd' }
+              ? { background: 'rgba(59,130,246,0.2)', border: '1px solid rgba(59,130,246,0.5)', color: '#93c5fd' }
               : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 65%)' }}
           >
             {f}
@@ -447,15 +447,15 @@ export function AdminWallets() {
       {(modal === 'add' || modal === 'edit') && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}>
           <div className="w-full max-w-lg rounded-3xl p-8 relative max-h-[90vh] overflow-y-auto"
-            style={{ background: 'hsl(260 40% 7%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
+            style={{ background: 'hsl(222 40% 7%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
 
             <button onClick={() => setModal(null)} className="absolute top-5 right-5 p-2 rounded-xl hover:bg-white/10 transition-colors">
               <X size={16} style={{ color: 'hsl(240 5% 65%)' }} />
             </button>
 
             <div className="flex items-center gap-3 mb-7">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.18)' }}>
-                {modal === 'add' ? <Plus size={17} style={{ color: '#a78bfa' }} /> : <Pencil size={17} style={{ color: '#a78bfa' }} />}
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.18)' }}>
+                {modal === 'add' ? <Plus size={17} style={{ color: '#60a5fa' }} /> : <Pencil size={17} style={{ color: '#60a5fa' }} />}
               </div>
               <div>
                 <h2 className="text-lg font-semibold">{modal === 'add' ? 'Add New Wallet' : 'Edit Wallet'}</h2>
@@ -498,7 +498,7 @@ export function AdminWallets() {
 
                   {networkOpen && (
                     <div className="absolute top-full left-0 right-0 mt-2 rounded-2xl overflow-hidden z-10 max-h-64 overflow-y-auto"
-                      style={{ background: 'hsl(260 40% 5%)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)' }}>
+                      style={{ background: 'hsl(222 40% 5%)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)' }}>
                       {NETWORKS.map(net => (
                         <button key={net.name} type="button" onClick={() => selectNetwork(net)}
                           className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-white/5 transition-colors text-left">
@@ -586,7 +586,7 @@ export function AdminWallets() {
                 </div>
                 <button type="button" onClick={() => setForm(f => ({ ...f, isActive: !f.isActive }))}>
                   {form.isActive
-                    ? <ToggleRight size={30} style={{ color: '#a78bfa' }} />
+                    ? <ToggleRight size={30} style={{ color: '#60a5fa' }} />
                     : <ToggleLeft  size={30} style={{ color: 'hsl(240 5% 45%)' }} />}
                 </button>
               </div>
@@ -600,7 +600,7 @@ export function AdminWallets() {
               </button>
               <button onClick={handleSave} disabled={saving}
                 className="flex-1 py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff' }}>
+                style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff' }}>
                 {saving && <Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} />}
                 {modal === 'add' ? 'Add Wallet' : 'Save Changes'}
               </button>
@@ -615,7 +615,7 @@ export function AdminWallets() {
       {modal === 'delete' && deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)' }}>
           <div className="w-full max-w-sm rounded-3xl p-8"
-            style={{ background: 'hsl(260 40% 7%)', border: '1px solid rgba(239,68,68,0.3)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
+            style={{ background: 'hsl(222 40% 7%)', border: '1px solid rgba(239,68,68,0.3)', boxShadow: '0 30px 80px rgba(0,0,0,0.6)' }}>
             <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-5"
               style={{ background: 'rgba(239,68,68,0.15)' }}>
               <Trash2 size={20} style={{ color: '#f87171' }} />
@@ -675,7 +675,7 @@ function WalletCard({ wallet: w, revealed, onReveal, onToggle, onEdit, onDelete 
             <span className="font-semibold text-sm truncate">{w.label}</span>
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium"
               style={w.isActive
-                ? { background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.3)', color: '#a78bfa' }
+                ? { background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.3)', color: '#60a5fa' }
                 : { background: 'rgba(239,68,68,0.10)', border: '1px solid rgba(239,68,68,0.25)', color: '#f87171' }}>
               {w.isActive ? 'Active' : 'Inactive'}
             </span>
@@ -693,7 +693,7 @@ function WalletCard({ wallet: w, revealed, onReveal, onToggle, onEdit, onDelete 
         {/* Toggle active */}
         <button onClick={onToggle} className="flex-shrink-0 transition-colors hover:opacity-80">
           {w.isActive
-            ? <ToggleRight size={24} style={{ color: '#a78bfa' }} />
+            ? <ToggleRight size={24} style={{ color: '#60a5fa' }} />
             : <ToggleLeft  size={24} style={{ color: 'hsl(240 5% 40%)' }} />}
         </button>
       </div>

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 interface FAQ { q: string; a: string }
 
 const CHANNELS = [
-  { icon: MessageCircle, label: 'Live Chat',     sub: 'Average reply: 2 min',  color: '#a78bfa', bg: 'rgba(167,139,250,0.1)',   cta: 'Start Chat',    available: true  },
+  { icon: MessageCircle, label: 'Live Chat',     sub: 'Average reply: 2 min',  color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',   cta: 'Start Chat',    available: true  },
   { icon: Mail,          label: 'Email Support', sub: 'Reply within 24 hours', color: '#60a5fa', bg: 'rgba(96,165,250,0.1)',   cta: 'Send Email',    available: true  },
   { icon: Phone,         label: 'Phone Support', sub: 'Mon–Fri 9am – 6pm WAT', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)',  cta: 'Call Now',      available: false },
 ]
@@ -40,8 +40,8 @@ export function HelpSupport() {
     {
       category: 'Security & Account',
       icon: Shield,
-      color: '#a78bfa',
-      bg: 'rgba(167,139,250,0.1)',
+      color: '#60a5fa',
+      bg: 'rgba(96,165,250,0.1)',
       items: [
         { q: 'How do I enable two-factor authentication?', a: 'Go to Settings → Security & 2FA. Click "Enable 2FA", scan the QR code with an authenticator app like Google Authenticator, then enter the 6-digit code to verify.' },
         { q: 'I forgot my password. What should I do?', a: 'On the login page, click "Forgot Password?" and enter your email. You\'ll receive a secure reset link valid for 30 minutes.' },
@@ -96,7 +96,7 @@ export function HelpSupport() {
       {/* Support Channels */}
       <div className="grid sm:grid-cols-3 gap-4" style={{ marginBottom: 24 }}>
         {CHANNELS.map(ch => (
-          <div key={ch.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '18px 16px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
+          <div key={ch.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '18px 16px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
             <div style={{ width: 38, height: 38, borderRadius: 10, background: ch.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <ch.icon size={18} style={{ color: ch.color }} />
             </div>
@@ -112,7 +112,7 @@ export function HelpSupport() {
       </div>
 
       {/* FAQ Search */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: 4 }}>Frequently Asked Questions</p>
         <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 16 }}>Browse answers to common questions</p>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 16 }} />
@@ -126,7 +126,7 @@ export function HelpSupport() {
         {/* Category Filter */}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
           {categories.map(c => (
-            <button key={c} onClick={() => setCategory(c)} style={{ padding: '5px 12px', borderRadius: 999, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: category === c ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: category === c ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)', color: category === c ? '#c4b5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
+            <button key={c} onClick={() => setCategory(c)} style={{ padding: '5px 12px', borderRadius: 999, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: category === c ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: category === c ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.03)', color: category === c ? '#93c5fd' : 'hsl(240 5% 55%)', transition: 'all 0.15s' }}>
               {c}
             </button>
           ))}
@@ -146,7 +146,7 @@ export function HelpSupport() {
                 const key = item.q
                 const isOpen = openFaq === key
                 return (
-                  <div key={key} style={{ borderRadius: 10, overflow: 'hidden', marginBottom: 6, border: isOpen ? '1px solid rgba(167,139,250,0.2)' : '1px solid rgba(255,255,255,0.06)', background: isOpen ? 'rgba(167,139,250,0.04)' : 'rgba(255,255,255,0.02)' }}>
+                  <div key={key} style={{ borderRadius: 10, overflow: 'hidden', marginBottom: 6, border: isOpen ? '1px solid rgba(96,165,250,0.2)' : '1px solid rgba(255,255,255,0.06)', background: isOpen ? 'rgba(96,165,250,0.04)' : 'rgba(255,255,255,0.02)' }}>
                     <button onClick={() => setOpenFaq(isOpen ? null : key)} style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '13px 16px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: 10 }}>
                       <span style={{ fontSize: 13, fontWeight: 600, color: 'hsl(40 6% 88%)', flex: 1 }}>{item.q}</span>
                       <ChevronDown size={14} style={{ color: 'hsl(240 5% 50%)', flexShrink: 0, transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
@@ -168,15 +168,15 @@ export function HelpSupport() {
       </div>
 
       {/* Quick Links */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: 4 }}>Resources</p>
         <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 16 }}>Useful links and documentation</p>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 16 }} />
         <div className="grid sm:grid-cols-2 gap-3">
           {[
             { icon: FileText, label: 'User Guide',          sub: 'Full platform documentation',  color: '#60a5fa' },
-            { icon: BookOpen, label: 'Trading Academy',     sub: 'Beginner to advanced courses',  color: '#a78bfa' },
-            { icon: Shield,   label: 'Security Centre',     sub: 'Best practices & safety tips',  color: '#a78bfa' },
+            { icon: BookOpen, label: 'Trading Academy',     sub: 'Beginner to advanced courses',  color: '#60a5fa' },
+            { icon: Shield,   label: 'Security Centre',     sub: 'Best practices & safety tips',  color: '#60a5fa' },
             { icon: FileText, label: 'API Documentation',   sub: 'For developers and integrations', color: '#f59e0b' },
           ].map(r => (
             <button key={r.label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s' }}>
@@ -194,15 +194,15 @@ export function HelpSupport() {
       </div>
 
       {/* Contact Form */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)', marginBottom: 4 }}>Contact Support</p>
         <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)', marginBottom: 16 }}>Couldn't find your answer? We'll get back to you within 24 hours.</p>
         <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 20 }} />
 
         {sent ? (
           <div style={{ textAlign: 'center', padding: '20px 0' }}>
-            <CheckCircle2 size={40} style={{ color: '#a78bfa', margin: '0 auto 12px' }} />
-            <p style={{ fontSize: 15, fontWeight: 700, color: '#a78bfa', marginBottom: 6 }}>Message Sent!</p>
+            <CheckCircle2 size={40} style={{ color: '#60a5fa', margin: '0 auto 12px' }} />
+            <p style={{ fontSize: 15, fontWeight: 700, color: '#60a5fa', marginBottom: 6 }}>Message Sent!</p>
             <p style={{ fontSize: 12, color: 'hsl(240 5% 52%)' }}>Our support team will respond within 24 hours.</p>
           </div>
         ) : (
@@ -216,7 +216,7 @@ export function HelpSupport() {
               <textarea value={message} onChange={e => setMessage(e.target.value)} rows={5} placeholder="Describe your issue in detail..." style={{ ...inputStyle, height: 'auto', paddingTop: 12, paddingBottom: 12, resize: 'vertical', lineHeight: 1.6 }} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button onClick={handleSend} disabled={!subject || !message} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: subject && message ? 'linear-gradient(135deg,#7c3aed,#6d28d9)' : 'rgba(255,255,255,0.05)', border: 'none', color: subject && message ? '#fff' : 'hsl(240 5% 40%)', fontSize: 13, fontWeight: 700, cursor: subject && message ? 'pointer' : 'default', transition: 'all 0.2s' }}>
+              <button onClick={handleSend} disabled={!subject || !message} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 22px', borderRadius: 10, background: subject && message ? 'linear-gradient(135deg,#2563eb,#1d4ed8)' : 'rgba(255,255,255,0.05)', border: 'none', color: subject && message ? '#fff' : 'hsl(240 5% 40%)', fontSize: 13, fontWeight: 700, cursor: subject && message ? 'pointer' : 'default', transition: 'all 0.2s' }}>
                 <Send size={13} /> Send Message
               </button>
             </div>

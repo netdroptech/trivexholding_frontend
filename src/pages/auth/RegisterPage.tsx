@@ -95,7 +95,7 @@ export default function RegisterPage() {
       { label: 'Weak',   color: '#ef4444' },
       { label: 'Fair',   color: '#f97316' },
       { label: 'Good',   color: '#eab308' },
-      { label: 'Strong', color: '#8b5cf6' },
+      { label: 'Strong', color: '#3b82f6' },
     ]
     return { score, ...map[score] }
   }
@@ -138,8 +138,8 @@ export default function RegisterPage() {
     <AuthShell>
       <div className="text-center py-8">
         <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-          style={{ background: 'rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.3)' }}>
-          <Check size={28} style={{ color: '#a78bfa' }} />
+          style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>
+          <Check size={28} style={{ color: '#60a5fa' }} />
         </div>
         <h2 className="text-2xl font-semibold mb-2" style={{ color: 'hsl(40 6% 95%)' }}>Account Created!</h2>
         <p className="text-sm mb-6" style={{ color: 'hsl(240 5% 65%)' }}>
@@ -156,7 +156,7 @@ export default function RegisterPage() {
         </p>
         <button onClick={() => navigate('/login')}
           className="w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-          style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 20px rgba(139,92,246,0.3)' }}>
+          style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 20px rgba(59,130,246,0.3)' }}>
           Go to Login
         </button>
       </div>
@@ -174,21 +174,21 @@ export default function RegisterPage() {
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all"
                 style={
                   i < step
-                    ? { background: 'rgba(139,92,246,0.2)',  border: '1.5px solid #a78bfa', color: '#a78bfa' }
+                    ? { background: 'rgba(59,130,246,0.2)',  border: '1.5px solid #60a5fa', color: '#60a5fa' }
                     : i === step
-                    ? { background: 'rgba(139,92,246,0.15)', border: '1.5px solid #8b5cf6', color: '#c4b5fd' }
+                    ? { background: 'rgba(59,130,246,0.15)', border: '1.5px solid #3b82f6', color: '#93c5fd' }
                     : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(240 5% 45%)' }
                 }>
                 {i < step ? <Check size={13} /> : i + 1}
               </div>
               <span className="text-[10px] mt-1 font-medium"
-                style={{ color: i === step ? '#c4b5fd' : 'hsl(240 5% 45%)' }}>
+                style={{ color: i === step ? '#93c5fd' : 'hsl(240 5% 45%)' }}>
                 {s.label}
               </span>
             </div>
             {i < STEPS.length - 1 && (
               <div className="flex-1 h-px mx-2 mt-[-12px]"
-                style={{ background: i < step ? 'rgba(139,92,246,0.4)' : 'rgba(255,255,255,0.08)' }} />
+                style={{ background: i < step ? 'rgba(59,130,246,0.4)' : 'rgba(255,255,255,0.08)' }} />
             )}
           </div>
         ))}
@@ -302,15 +302,15 @@ export default function RegisterPage() {
               onClick={() => set('agree', !form.agree)}
               className="w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 transition-all cursor-pointer"
               style={form.agree
-                ? { background: 'rgba(139,92,246,0.2)', border: '1.5px solid #8b5cf6' }
+                ? { background: 'rgba(59,130,246,0.2)', border: '1.5px solid #3b82f6' }
                 : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.15)' }}>
-              {form.agree && <Check size={11} style={{ color: '#a78bfa' }} />}
+              {form.agree && <Check size={11} style={{ color: '#60a5fa' }} />}
             </div>
             <span className="text-xs leading-relaxed" style={{ color: 'hsl(240 5% 60%)' }}>
               I agree to the{' '}
-              <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#a78bfa' }}>Terms of Service</Link>
+              <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#60a5fa' }}>Terms of Service</Link>
               {' '}and{' '}
-              <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#a78bfa' }}>Privacy Policy</Link>.
+              <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline" style={{ color: '#60a5fa' }}>Privacy Policy</Link>.
               I confirm I am 18 years or older.
             </span>
           </label>
@@ -329,13 +329,13 @@ export default function RegisterPage() {
         {step < 2 ? (
           <button onClick={next}
             className="flex items-center gap-1.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 16px rgba(139,92,246,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 16px rgba(59,130,246,0.25)' }}>
             Continue <ChevronRight size={15} />
           </button>
         ) : (
           <button onClick={handleSubmit} disabled={loading}
             className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90 disabled:opacity-60"
-            style={{ background: 'linear-gradient(135deg,#8b5cf6,#7c3aed)', color: '#fff', boxShadow: '0 4px 16px rgba(139,92,246,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: '#fff', boxShadow: '0 4px 16px rgba(59,130,246,0.25)' }}>
             {loading
               ? <><Loader2 size={15} className="animate-spin"/> Creating account…</>
               : <><Check size={15}/> Create Account</>}
@@ -345,7 +345,7 @@ export default function RegisterPage() {
 
       <p className="text-center text-xs mt-6" style={{ color: 'hsl(240 5% 50%)' }}>
         Already have an account?{' '}
-        <Link to="/login" className="font-medium" style={{ color: '#a78bfa' }}>Sign in</Link>
+        <Link to="/login" className="font-medium" style={{ color: '#60a5fa' }}>Sign in</Link>
       </p>
     </AuthShell>
   )
@@ -357,15 +357,15 @@ function AuthShell({ children }: { children: React.ReactNode }) {
   const { logoUrl } = useLogo()
   const { platformName } = usePlatformName()
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(260 87% 2%)', position: 'relative', overflow: 'hidden' }}>
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'hsl(222 87% 2%)', position: 'relative', overflow: 'hidden' }}>
       <PageBackground />
 
       {/* Glow blobs — green */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full opacity-20"
-          style={{ background: 'radial-gradient(circle,#7c3aed,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#2563eb,transparent 70%)', filter: 'blur(60px)' }} />
         <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full opacity-15"
-          style={{ background: 'radial-gradient(circle,#6d28d9,transparent 70%)', filter: 'blur(60px)' }} />
+          style={{ background: 'radial-gradient(circle,#1d4ed8,transparent 70%)', filter: 'blur(60px)' }} />
       </div>
 
       <div className="relative w-full max-w-md">

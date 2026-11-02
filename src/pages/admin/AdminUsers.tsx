@@ -25,21 +25,21 @@ interface RealUser {
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const STATUS_STYLES: Record<string, { c: string; bg: string; label: string }> = {
-  ACTIVE:    { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  label: 'Active' },
+  ACTIVE:    { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Active' },
   PENDING:   { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  label: 'Pending' },
   SUSPENDED: { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Suspended' },
   BANNED:    { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Banned' },
 }
 
 const KYC_STYLES: Record<string, { c: string; bg: string; label: string }> = {
-  APPROVED:      { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',   label: 'Approved' },
+  APPROVED:      { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',   label: 'Approved' },
   PENDING:       { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',   label: 'Pending' },
   REJECTED:      { c: '#f87171', bg: 'rgba(248,113,113,0.12)',  label: 'Rejected' },
   NOT_SUBMITTED: { c: '#94a3b8', bg: 'rgba(148,163,184,0.1)',   label: 'None' },
 }
 
 const PLAN_COLORS: Record<string, string> = {
-  ELITE: '#f59e0b', PREMIUM: '#a78bfa', STANDARD: '#60a5fa', FREE: '#94a3b8',
+  ELITE: '#f59e0b', PREMIUM: '#60a5fa', STANDARD: '#60a5fa', FREE: '#94a3b8',
 }
 
 function formatLastSeen(dateStr: string) {
@@ -59,7 +59,7 @@ function initials(u: RealUser) {
 }
 
 function avatarColor(email: string) {
-  const colors = ['#a78bfa','#60a5fa','#a78bfa','#f59e0b','#f87171','#a78bfa']
+  const colors = ['#60a5fa','#60a5fa','#60a5fa','#f59e0b','#f87171','#60a5fa']
   let h = 0
   for (const c of email) h = (h * 31 + c.charCodeAt(0)) & 0xffff
   return colors[h % colors.length]
@@ -69,9 +69,9 @@ type SortKey = 'name' | 'balance' | 'totalDeposits' | 'createdAt'
 
 const filterBtnStyle = (active: boolean): React.CSSProperties => ({
   padding: '6px 12px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer',
-  border: active ? '1px solid rgba(167,139,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
-  background: active ? 'rgba(167,139,250,0.15)' : 'rgba(255,255,255,0.03)',
-  color: active ? '#c4b5fd' : 'hsl(240 5% 55%)',
+  border: active ? '1px solid rgba(96,165,250,0.35)' : '1px solid rgba(255,255,255,0.08)',
+  background: active ? 'rgba(96,165,250,0.15)' : 'rgba(255,255,255,0.03)',
+  color: active ? '#93c5fd' : 'hsl(240 5% 55%)',
   transition: 'all 0.13s',
 })
 
@@ -134,7 +134,7 @@ export function AdminUsers() {
   const totalPages = Math.ceil(total / PER_PAGE)
 
   const SortIcon = ({ k }: { k: SortKey }) => sortKey === k
-    ? (sortAsc ? <ChevronUp size={11} style={{ color: '#a78bfa' }} /> : <ChevronDown size={11} style={{ color: '#a78bfa' }} />)
+    ? (sortAsc ? <ChevronUp size={11} style={{ color: '#60a5fa' }} /> : <ChevronDown size={11} style={{ color: '#60a5fa' }} />)
     : <ChevronDown size={11} style={{ opacity: 0.2 }} />
 
   return (
@@ -152,7 +152,7 @@ export function AdminUsers() {
       </div>
 
       {/* Filters */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '14px 16px', marginBottom: 16 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, padding: '14px 16px', marginBottom: 16 }}>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ position: 'relative', flex: 1, minWidth: 180 }}>
             <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'hsl(240 5% 42%)', pointerEvents: 'none' }} />
@@ -182,10 +182,10 @@ export function AdminUsers() {
       )}
 
       {/* Table */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
         {loading ? (
           <div style={{ padding: '60px 20px', textAlign: 'center' }}>
-            <div style={{ width: 28, height: 28, border: '3px solid rgba(167,139,250,0.3)', borderTopColor: '#a78bfa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 12px' }} />
+            <div style={{ width: 28, height: 28, border: '3px solid rgba(96,165,250,0.3)', borderTopColor: '#60a5fa', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 12px' }} />
             <p style={{ color: 'hsl(240 5% 50%)', fontSize: 13 }}>Loading users…</p>
             <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
           </div>
@@ -247,7 +247,7 @@ export function AdminUsers() {
                       <td style={{ padding: '11px 14px' }}>
                         <span style={{ fontSize: 11, fontWeight: 700, color: PLAN_COLORS[u.plan] || '#94a3b8' }}>{u.plan}</span>
                       </td>
-                      <td style={{ padding: '11px 14px', fontSize: 12.5, fontWeight: 700, color: '#a78bfa', whiteSpace: 'nowrap' }}>${Number(u.balance).toLocaleString()}</td>
+                      <td style={{ padding: '11px 14px', fontSize: 12.5, fontWeight: 700, color: '#60a5fa', whiteSpace: 'nowrap' }}>${Number(u.balance).toLocaleString()}</td>
                       <td style={{ padding: '11px 14px', fontSize: 12, color: 'hsl(240 5% 60%)', whiteSpace: 'nowrap' }}>${Number(u.totalDeposits).toLocaleString()}</td>
                       <td style={{ padding: '11px 14px', fontSize: 11, color: 'hsl(240 5% 48%)', whiteSpace: 'nowrap' }}>{new Date(u.createdAt).toLocaleDateString()}</td>
                       <td style={{ padding: '11px 14px', fontSize: 11, color: u.lastLoginAt ? 'hsl(240 5% 55%)' : 'hsl(240 5% 35%)', whiteSpace: 'nowrap' }}>
@@ -255,7 +255,7 @@ export function AdminUsers() {
                       </td>
                       <td style={{ padding: '11px 14px' }}>
                         <button onClick={e => { e.stopPropagation(); navigate(`/admin/users/${u.id}`) }}
-                          style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 10px', borderRadius: 7, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.25)', color: '#c4b5fd', fontSize: 11, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                          style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 10px', borderRadius: 7, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.25)', color: '#93c5fd', fontSize: 11, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
                           Manage <ChevronRight size={11} />
                         </button>
                       </td>
@@ -282,7 +282,7 @@ export function AdminUsers() {
             </p>
             <div style={{ display: 'flex', gap: 6 }}>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-                <button key={p} onClick={() => setPage(p)} style={{ width: 30, height: 30, borderRadius: 7, border: page === p ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: page === p ? 'rgba(167,139,250,0.18)' : 'rgba(255,255,255,0.03)', color: page === p ? '#c4b5fd' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
+                <button key={p} onClick={() => setPage(p)} style={{ width: 30, height: 30, borderRadius: 7, border: page === p ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(255,255,255,0.08)', background: page === p ? 'rgba(96,165,250,0.18)' : 'rgba(255,255,255,0.03)', color: page === p ? '#93c5fd' : 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
                   {p}
                 </button>
               ))}

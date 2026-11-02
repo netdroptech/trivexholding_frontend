@@ -47,19 +47,19 @@ interface Tx {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const STATUS_STYLES: Record<string, { c: string; bg: string; border: string; label: string; dot: string }> = {
-  ACTIVE:    { c: '#a78bfa', bg: 'rgba(167,139,250,0.1)',   border: 'rgba(167,139,250,0.3)',   label: 'Active',    dot: '#a78bfa' },
+  ACTIVE:    { c: '#60a5fa', bg: 'rgba(96,165,250,0.1)',   border: 'rgba(96,165,250,0.3)',   label: 'Active',    dot: '#60a5fa' },
   PENDING:   { c: '#f59e0b', bg: 'rgba(245,158,11,0.1)',   border: 'rgba(245,158,11,0.3)',   label: 'Pending',   dot: '#f59e0b' },
   SUSPENDED: { c: '#fb923c', bg: 'rgba(251,146,60,0.1)',   border: 'rgba(251,146,60,0.3)',   label: 'Suspended', dot: '#fb923c' },
   BANNED:    { c: '#f87171', bg: 'rgba(248,113,113,0.1)',  border: 'rgba(248,113,113,0.3)',  label: 'Banned',    dot: '#f87171' },
 }
 const KYC_STYLES: Record<string, { c: string; bg: string; label: string }> = {
-  APPROVED:      { c: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  label: 'Approved'      },
+  APPROVED:      { c: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  label: 'Approved'      },
   PENDING:       { c: '#f59e0b', bg: 'rgba(245,158,11,0.12)',  label: 'Pending'       },
   REJECTED:      { c: '#f87171', bg: 'rgba(248,113,113,0.12)', label: 'Rejected'      },
   NOT_SUBMITTED: { c: '#94a3b8', bg: 'rgba(148,163,184,0.1)',  label: 'Not Submitted' },
 }
 const TX_TYPE: Record<string, { c: string; label: string }> = {
-  DEPOSIT:    { c: '#a78bfa', label: 'Deposit'    },
+  DEPOSIT:    { c: '#60a5fa', label: 'Deposit'    },
   WITHDRAWAL: { c: '#f87171', label: 'Withdrawal' },
   PROFIT:     { c: '#60a5fa', label: 'Profit'     },
   BONUS:      { c: '#f59e0b', label: 'Bonus'      },
@@ -68,7 +68,7 @@ const TX_TYPE: Record<string, { c: string; label: string }> = {
 function fmt(n: number) { return `$${Number(n).toLocaleString('en-US', { minimumFractionDigits: 2 })}` }
 function fmtDate(d?: string) { return d ? new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—' }
 function avatarColor(email: string) {
-  const cols = ['#a78bfa','#60a5fa','#a78bfa','#f59e0b','#f87171','#a78bfa']
+  const cols = ['#60a5fa','#60a5fa','#60a5fa','#f59e0b','#f87171','#60a5fa']
   let h = 0; for (const c of email) h = (h * 31 + c.charCodeAt(0)) & 0xffff
   return cols[h % cols.length]
 }
@@ -78,7 +78,7 @@ function avatarColor(email: string) {
 function Modal({ title, children, onClose }: { title: string; children: React.ReactNode; onClose: () => void }) {
   return (
     <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, background: 'rgba(0,0,0,0.75)' }}>
-      <div onClick={e => e.stopPropagation()} style={{ width: '100%', maxWidth: 460, background: 'hsl(260 87% 5%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, overflow: 'hidden' }}>
+      <div onClick={e => e.stopPropagation()} style={{ width: '100%', maxWidth: 460, background: 'hsl(222 87% 5%)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 18, overflow: 'hidden' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <p style={{ fontSize: 15, fontWeight: 700, color: 'hsl(40 10% 95%)' }}>{title}</p>
           <button onClick={onClose} style={{ background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 7, width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'hsl(240 5% 55%)' }}>
@@ -294,7 +294,7 @@ export function AdminUserDetail() {
   // ── Render ─────────────────────────────────────────────────────────────────
   if (loading) return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60vh' }}>
-      <Loader2 size={28} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+      <Loader2 size={28} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
     </div>
   )
@@ -341,13 +341,13 @@ export function AdminUserDetail() {
                         flex: 1, padding: '8px 12px', borderRadius: 8, cursor: 'pointer',
                         fontSize: 13, fontWeight: 600, transition: 'all 0.15s',
                         background: balanceOp === op
-                          ? op === 'add' ? 'rgba(167,139,250,0.15)' : 'rgba(248,113,113,0.15)'
+                          ? op === 'add' ? 'rgba(96,165,250,0.15)' : 'rgba(248,113,113,0.15)'
                           : 'rgba(255,255,255,0.04)',
                         border: balanceOp === op
-                          ? op === 'add' ? '1px solid rgba(167,139,250,0.4)' : '1px solid rgba(248,113,113,0.4)'
+                          ? op === 'add' ? '1px solid rgba(96,165,250,0.4)' : '1px solid rgba(248,113,113,0.4)'
                           : '1px solid rgba(255,255,255,0.08)',
                         color: balanceOp === op
-                          ? op === 'add' ? '#a78bfa' : '#f87171'
+                          ? op === 'add' ? '#60a5fa' : '#f87171'
                           : 'hsl(240 5% 55%)',
                       }}
                     >
@@ -368,13 +368,13 @@ export function AdminUserDetail() {
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'hsl(240 5% 55%)', marginTop: 4 }}>
                     <span>{balanceOp === 'add' ? 'Adding' : 'Subtracting'}</span>
-                    <span style={{ color: balanceOp === 'add' ? '#a78bfa' : '#f87171' }}>
+                    <span style={{ color: balanceOp === 'add' ? '#60a5fa' : '#f87171' }}>
                       {balanceOp === 'add' ? '+' : '−'}${Number(modalAmt).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                     </span>
                   </div>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: 8, paddingTop: 8, display: 'flex', justifyContent: 'space-between', fontSize: 13, fontWeight: 600 }}>
                     <span style={{ color: 'hsl(40 6% 80%)' }}>New balance</span>
-                    <span style={{ color: '#a78bfa' }}>
+                    <span style={{ color: '#60a5fa' }}>
                       ${Math.max(0, balanceOp === 'add' ? user.balance + Number(modalAmt) : user.balance - Number(modalAmt)).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                     </span>
                   </div>
@@ -395,7 +395,7 @@ export function AdminUserDetail() {
           {actMsg && <p style={{ fontSize: 12, color: '#f87171', marginTop: 10 }}>{actMsg}</p>}
           <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
             <button onClick={() => setModal(null)} style={{ flex: 1, padding: '9px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(240 5% 55%)', fontSize: 13, cursor: 'pointer' }}>Cancel</button>
-            <button onClick={runAction} disabled={acting} style={{ flex: 2, padding: '9px', borderRadius: 8, background: 'rgba(167,139,250,0.18)', border: '1px solid rgba(167,139,250,0.3)', color: '#a78bfa', fontSize: 13, fontWeight: 700, cursor: acting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+            <button onClick={runAction} disabled={acting} style={{ flex: 2, padding: '9px', borderRadius: 8, background: 'rgba(96,165,250,0.18)', border: '1px solid rgba(96,165,250,0.3)', color: '#60a5fa', fontSize: 13, fontWeight: 700, cursor: acting ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
               {acting ? <><Loader2 size={14} style={{ animation: 'spin 1s linear infinite' }} /> Working…</> : 'Confirm'}
             </button>
           </div>
@@ -489,22 +489,22 @@ export function AdminUserDetail() {
             ))}
         </div>
       </div>
-      <style>{`@keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 8px #a78bfa} 50%{opacity:0.3;box-shadow:none} }`}</style>
+      <style>{`@keyframes liveBlink { 0%,100%{opacity:1;box-shadow:0 0 8px #60a5fa} 50%{opacity:0.3;box-shadow:none} }`}</style>
 
       {/* Save / action messages */}
-      {saveMsg && <div style={{ marginBottom: 14, padding: '10px 14px', borderRadius: 9, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', fontSize: 13, color: '#a78bfa' }}>{saveMsg}</div>}
+      {saveMsg && <div style={{ marginBottom: 14, padding: '10px 14px', borderRadius: 9, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', fontSize: 13, color: '#60a5fa' }}>{saveMsg}</div>}
       {saveErr && <div style={{ marginBottom: 14, padding: '10px 14px', borderRadius: 9, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.2)', fontSize: 13, color: '#f87171' }}>{saveErr}</div>}
       {actMsg  && <div style={{ marginBottom: 14, padding: '10px 14px', borderRadius: 9, background: 'rgba(248,113,113,0.08)', border: '1px solid rgba(248,113,113,0.2)', fontSize: 13, color: '#f87171' }}>{actMsg}</div>}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16, marginBottom: 20 }}>
         {/* Balance card */}
         {[
-          { label: 'Balance',          value: fmt(user.balance),          c: '#a78bfa' },
+          { label: 'Balance',          value: fmt(user.balance),          c: '#60a5fa' },
           { label: 'Total Deposited',  value: fmt(user.totalDeposits),    c: '#60a5fa' },
           { label: 'Total Withdrawn',  value: fmt(user.totalWithdrawals), c: '#f87171' },
           { label: 'Total Profit',     value: fmt(user.totalProfit),      c: '#f59e0b' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '14px 18px' }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '14px 18px' }}>
             <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)', marginBottom: 5 }}>{s.label}</p>
             <p style={{ fontSize: 22, fontWeight: 800, color: s.c }}>{s.value}</p>
           </div>
@@ -512,11 +512,11 @@ export function AdminUserDetail() {
       </div>
 
       {/* Quick actions */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '14px 18px', marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 13, padding: '14px 18px', marginBottom: 20 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'hsl(240 5% 45%)', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 12 }}>Quick Actions</p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[
-            { label: '+ Deposit',      icon: DollarSign,  action: 'deposit'  as const, col: '#a78bfa', bg: 'rgba(167,139,250,0.12)',  border: 'rgba(167,139,250,0.25)'  },
+            { label: '+ Deposit',      icon: DollarSign,  action: 'deposit'  as const, col: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  border: 'rgba(96,165,250,0.25)'  },
             { label: '− Withdraw',     icon: DollarSign,  action: 'withdraw' as const, col: '#f87171', bg: 'rgba(248,113,113,0.12)', border: 'rgba(248,113,113,0.25)' },
             { label: '+ Profit',       icon: DollarSign,  action: 'profit'   as const, col: '#4ade80', bg: 'rgba(74,222,128,0.12)',  border: 'rgba(74,222,128,0.25)'  },
             { label: 'Set Balance',    icon: DollarSign,  action: 'balance'  as const, col: '#60a5fa', bg: 'rgba(96,165,250,0.12)',  border: 'rgba(96,165,250,0.25)'  },
@@ -531,19 +531,19 @@ export function AdminUserDetail() {
       </div>
 
       {/* ── CLIENT PASSWORD SECTION ── */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <Eye size={15} style={{ color: '#818cf8' }} />
+          <Eye size={15} style={{ color: '#60a5fa' }} />
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 90%)' }}>Client Password</p>
           <span style={{ marginLeft: 'auto', fontSize: 11, color: 'hsl(240 5% 45%)' }}>View the client's login password</span>
         </div>
         <div style={{ padding: '18px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', minHeight: 42 }}>
-            <KeyRound size={14} style={{ color: '#818cf8', flexShrink: 0 }} />
+            <KeyRound size={14} style={{ color: '#60a5fa', flexShrink: 0 }} />
             {passLoading ? (
-              <Loader2 size={13} style={{ color: '#818cf8', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={13} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
             ) : userPassword ? (
-              <span style={{ fontSize: '1rem', fontWeight: 700, letterSpacing: passVisible ? '0.05em' : '0.2em', color: passVisible ? '#818cf8' : 'hsl(240 5% 40%)', fontFamily: 'monospace', transition: 'color 0.15s' }}>
+              <span style={{ fontSize: '1rem', fontWeight: 700, letterSpacing: passVisible ? '0.05em' : '0.2em', color: passVisible ? '#60a5fa' : 'hsl(240 5% 40%)', fontFamily: 'monospace', transition: 'color 0.15s' }}>
                 {passVisible ? userPassword : '• • • • • • • •'}
               </span>
             ) : (
@@ -552,7 +552,7 @@ export function AdminUserDetail() {
           </div>
           {userPassword && (
             <button onClick={() => setPassVisible(v => !v)}
-              style={{ padding: '8px 10px', borderRadius: 8, background: 'rgba(129,140,248,0.1)', border: '1px solid rgba(129,140,248,0.2)', color: '#818cf8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+              style={{ padding: '8px 10px', borderRadius: 8, background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', color: '#60a5fa', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
               {passVisible ? <EyeOff size={14} /> : <Eye size={14} />}
             </button>
           )}
@@ -566,14 +566,14 @@ export function AdminUserDetail() {
               } catch { setUserPassword('(not available)') }
               finally { setPassLoading(false) }
             }}
-            style={{ padding: '8px 14px', borderRadius: 8, background: 'rgba(129,140,248,0.15)', border: '1px solid rgba(129,140,248,0.3)', color: '#818cf8', fontSize: 12, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
+            style={{ padding: '8px 14px', borderRadius: 8, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', color: '#60a5fa', fontSize: 12, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>
             {passLoading ? 'Loading…' : userPassword ? 'Refresh' : 'View Password'}
           </button>
         </div>
       </div>
 
       {/* ── WITHDRAWAL CODE SECTION ── */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <KeyRound size={15} style={{ color: '#f59e0b' }} />
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 90%)' }}>Withdrawal Security Code</p>
@@ -587,7 +587,7 @@ export function AdminUserDetail() {
               <KeyRound size={14} style={{ color: '#f59e0b', flexShrink: 0 }} />
               <span style={{ fontSize: 13, color: 'hsl(240 5% 50%)' }}>Current code:</span>
               {codeLoading ? (
-                <Loader2 size={13} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+                <Loader2 size={13} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
               ) : withdrawalCode ? (
                 <span style={{ fontSize: '1.1rem', fontWeight: 800, letterSpacing: '0.2em', color: codeVisible ? '#f59e0b' : 'hsl(240 5% 40%)', fontFamily: 'monospace', transition: 'color 0.15s' }}>
                   {codeVisible ? withdrawalCode : '• • • • •'}
@@ -609,9 +609,9 @@ export function AdminUserDetail() {
 
           {/* Success / error messages */}
           {codeMsg && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 12 }}>
-              <Check size={13} style={{ color: '#a78bfa' }} />
-              <span style={{ fontSize: 12, color: '#a78bfa' }}>{codeMsg}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 12 }}>
+              <Check size={13} style={{ color: '#60a5fa' }} />
+              <span style={{ fontSize: 12, color: '#60a5fa' }}>{codeMsg}</span>
             </div>
           )}
           {codeErr && (
@@ -650,7 +650,7 @@ export function AdminUserDetail() {
               <button
                 onClick={() => saveWithdrawalCode(false)}
                 disabled={codeSaving || customCode.length !== 5}
-                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: customCode.length === 5 ? 'rgba(167,139,250,0.12)' : 'rgba(255,255,255,0.04)', border: `1px solid ${customCode.length === 5 ? 'rgba(167,139,250,0.3)' : 'rgba(255,255,255,0.08)'}`, color: customCode.length === 5 ? '#a78bfa' : 'hsl(240 5% 40%)', fontSize: 12, fontWeight: 700, cursor: codeSaving || customCode.length !== 5 ? 'not-allowed' : 'pointer' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: customCode.length === 5 ? 'rgba(96,165,250,0.12)' : 'rgba(255,255,255,0.04)', border: `1px solid ${customCode.length === 5 ? 'rgba(96,165,250,0.3)' : 'rgba(255,255,255,0.08)'}`, color: customCode.length === 5 ? '#60a5fa' : 'hsl(240 5% 40%)', fontSize: 12, fontWeight: 700, cursor: codeSaving || customCode.length !== 5 ? 'not-allowed' : 'pointer' }}
               >
                 {codeSaving ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} /> : <Save size={12} />}
                 Set Code
@@ -661,7 +661,7 @@ export function AdminUserDetail() {
       </div>
 
       {/* ── CONNECTED WALLET SECTION ── */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <WalletCards size={15} style={{ color: '#60a5fa' }} />
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 90%)' }}>Connected Wallet</p>
@@ -670,7 +670,7 @@ export function AdminUserDetail() {
         <div style={{ padding: '18px 20px' }}>
           {walletLoading ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Loader2 size={14} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+              <Loader2 size={14} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
               <span style={{ fontSize: 13, color: 'hsl(240 5% 50%)' }}>Loading…</span>
             </div>
           ) : !walletAddress ? (
@@ -681,19 +681,19 @@ export function AdminUserDetail() {
           ) : (
             <>
               {/* Wallet address row */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: `1px solid ${walletVerified ? 'rgba(167,139,250,0.2)' : 'rgba(245,158,11,0.2)'}`, marginBottom: 14 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: `1px solid ${walletVerified ? 'rgba(96,165,250,0.2)' : 'rgba(245,158,11,0.2)'}`, marginBottom: 14 }}>
                 <div style={{
                   width: 32, height: 32, borderRadius: '0.5rem', flexShrink: 0,
-                  background: walletVerified ? 'rgba(167,139,250,0.12)' : 'rgba(245,158,11,0.12)',
+                  background: walletVerified ? 'rgba(96,165,250,0.12)' : 'rgba(245,158,11,0.12)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   {walletVerified
-                    ? <CheckCircle2 size={15} style={{ color: '#a78bfa' }} />
+                    ? <CheckCircle2 size={15} style={{ color: '#60a5fa' }} />
                     : <Clock size={15} style={{ color: '#f59e0b' }} />
                   }
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontSize: 11, color: walletVerified ? '#a78bfa' : '#f59e0b', fontWeight: 600, marginBottom: 2 }}>
+                  <p style={{ fontSize: 11, color: walletVerified ? '#60a5fa' : '#f59e0b', fontWeight: 600, marginBottom: 2 }}>
                     {walletVerified ? 'CONNECTED' : 'PENDING VERIFICATION'}
                   </p>
                   <p style={{ fontSize: 13, color: 'hsl(40 6% 82%)', wordBreak: 'break-all', fontFamily: 'monospace' }}>
@@ -704,9 +704,9 @@ export function AdminUserDetail() {
 
               {/* Success / error messages */}
               {walletMsg && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', marginBottom: 12 }}>
-                  <Check size={13} style={{ color: '#a78bfa' }} />
-                  <span style={{ fontSize: 12, color: '#a78bfa' }}>{walletMsg}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 8, background: 'rgba(96,165,250,0.08)', border: '1px solid rgba(96,165,250,0.2)', marginBottom: 12 }}>
+                  <Check size={13} style={{ color: '#60a5fa' }} />
+                  <span style={{ fontSize: 12, color: '#60a5fa' }}>{walletMsg}</span>
                 </div>
               )}
               {walletErr && (
@@ -722,7 +722,7 @@ export function AdminUserDetail() {
                   <button
                     onClick={() => doWalletVerify(true)}
                     disabled={walletActing}
-                    style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.3)', color: '#a78bfa', fontSize: 12, fontWeight: 700, cursor: walletActing ? 'not-allowed' : 'pointer', opacity: walletActing ? 0.6 : 1 }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.3)', color: '#60a5fa', fontSize: 12, fontWeight: 700, cursor: walletActing ? 'not-allowed' : 'pointer', opacity: walletActing ? 0.6 : 1 }}
                   >
                     {walletActing ? <Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} /> : <CheckCircle2 size={12} />}
                     Mark Wallet Connected
@@ -745,16 +745,16 @@ export function AdminUserDetail() {
       </div>
 
       {/* ── EDIT SECTION ── */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', marginBottom: 20 }}>
         {/* Edit header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <User size={15} style={{ color: '#a78bfa' }} />
+            <User size={15} style={{ color: '#60a5fa' }} />
             <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 90%)' }}>User Information</p>
           </div>
           {!editing ? (
             <button onClick={() => { setEditing(true); setSaveErr('') }}
-              style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 13px', borderRadius: 8, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: '#a78bfa', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 13px', borderRadius: 8, background: 'rgba(96,165,250,0.12)', border: '1px solid rgba(96,165,250,0.25)', color: '#60a5fa', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
               Edit
             </button>
           ) : (
@@ -764,7 +764,7 @@ export function AdminUserDetail() {
                 Cancel
               </button>
               <button onClick={saveEdits} disabled={saving}
-                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 13px', borderRadius: 8, background: 'rgba(167,139,250,0.18)', border: '1px solid rgba(167,139,250,0.3)', color: '#a78bfa', fontSize: 12, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer' }}>
+                style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 13px', borderRadius: 8, background: 'rgba(96,165,250,0.18)', border: '1px solid rgba(96,165,250,0.3)', color: '#60a5fa', fontSize: 12, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer' }}>
                 {saving ? <><Loader2 size={12} style={{ animation: 'spin 1s linear infinite' }} /> Saving…</> : <><Save size={12} /> Save Changes</>}
               </button>
             </div>
@@ -853,7 +853,7 @@ export function AdminUserDetail() {
             <Field label="Balance (USD)">
               {editing
                 ? <input style={inp} type="number" min="0" step="any" value={form.balance ?? user.balance} onChange={e => setForm(f => ({ ...f, balance: Number(e.target.value) }))} />
-                : <p style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', padding: '8px 0' }}>{fmt(user.balance)}</p>}
+                : <p style={{ fontSize: 13, fontWeight: 700, color: '#60a5fa', padding: '8px 0' }}>{fmt(user.balance)}</p>}
             </Field>
             <Field label="Total Deposits">
               {editing
@@ -895,11 +895,11 @@ export function AdminUserDetail() {
                     value={form.signalStrength ?? user.signalStrength ?? 0}
                     onChange={e => setForm(f => ({ ...f, signalStrength: Math.max(0, Math.min(100, Math.round(Number(e.target.value)))) }))} />
                 : <div style={{ padding: '8px 0' }}>
-                    <p style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa', marginBottom: 6 }}>{user.signalStrength ?? 0}%</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: '#60a5fa', marginBottom: 6 }}>{user.signalStrength ?? 0}%</p>
                     <div style={{ display: 'flex', gap: 3 }}>
                       {Array.from({ length: 10 }).map((_, i) => {
                         const lit = i < Math.round((user.signalStrength ?? 0) / 10)
-                        return <div key={i} style={{ flex: 1, height: 8, borderRadius: 2, background: lit ? 'linear-gradient(180deg, #a78bfa, #7c3aed)' : 'rgba(255,255,255,0.06)' }} />
+                        return <div key={i} style={{ flex: 1, height: 8, borderRadius: 2, background: lit ? 'linear-gradient(180deg, #60a5fa, #2563eb)' : 'rgba(255,255,255,0.06)' }} />
                       })}
                     </div>
                   </div>}
@@ -911,7 +911,7 @@ export function AdminUserDetail() {
       </div>
 
       {/* ── TRANSACTION HISTORY ── */}
-      <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
+      <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden' }}>
         <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 6% 90%)' }}>Transaction History</p>
         </div>
@@ -936,13 +936,13 @@ export function AdminUserDetail() {
                       <td style={{ padding: '10px 16px' }}>
                         <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: `${tt.c}15`, color: tt.c }}>{tt.label}</span>
                       </td>
-                      <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 700, color: isOut ? '#f87171' : '#a78bfa', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '10px 16px', fontSize: 13, fontWeight: 700, color: isOut ? '#f87171' : '#60a5fa', whiteSpace: 'nowrap' }}>
                         {isOut ? '−' : '+'}{fmt(tx.amount)}
                       </td>
                       <td style={{ padding: '10px 16px' }}>
                         <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 5,
-                          background: tx.status === 'COMPLETED' ? 'rgba(167,139,250,0.12)' : tx.status === 'PENDING' ? 'rgba(245,158,11,0.12)' : 'rgba(248,113,113,0.12)',
-                          color:      tx.status === 'COMPLETED' ? '#a78bfa'               : tx.status === 'PENDING' ? '#f59e0b'               : '#f87171' }}>
+                          background: tx.status === 'COMPLETED' ? 'rgba(96,165,250,0.12)' : tx.status === 'PENDING' ? 'rgba(245,158,11,0.12)' : 'rgba(248,113,113,0.12)',
+                          color:      tx.status === 'COMPLETED' ? '#60a5fa'               : tx.status === 'PENDING' ? '#f59e0b'               : '#f87171' }}>
                           {tx.status}
                         </span>
                       </td>

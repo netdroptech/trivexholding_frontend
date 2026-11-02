@@ -21,7 +21,7 @@ export class ErrorBoundary extends React.Component<{ children: React.ReactNode }
       return (
         <div style={{
           minHeight: '100vh',
-          background: 'hsl(260 87% 3%)',
+          background: 'hsl(222 87% 3%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

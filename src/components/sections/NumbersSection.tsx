@@ -12,7 +12,7 @@ export function NumbersSection() {
       <video ref={videoRef} className="absolute inset-0 w-full h-full object-cover" muted loop playsInline autoPlay />
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, hsl(260 87% 3%) 0%, hsl(260 87% 3% / 0.85) 15%, hsl(260 87% 3% / 0.4) 40%, hsl(260 87% 3% / 0.15) 60%, hsl(260 87% 3% / 0.3) 100%)' }}
+        style={{ background: 'linear-gradient(to top, hsl(222 87% 3%) 0%, hsl(222 87% 3% / 0.85) 15%, hsl(222 87% 3% / 0.4) 40%, hsl(222 87% 3% / 0.15) 60%, hsl(222 87% 3% / 0.3) 100%)' }}
       />
 
       <div className="relative z-10 py-24 sm:py-32 px-4">

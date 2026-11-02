@@ -61,7 +61,7 @@ function Avatar({ member, size = 48 }: { member: TeamMember; size?: number }) {
   return (
     <div style={{
       width: size, height: size, borderRadius: size / 4, flexShrink: 0,
-      background: 'linear-gradient(135deg,#7c3aed,#6d28d9)',
+      background: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       fontSize: size * 0.3, fontWeight: 800, color: '#fff',
     }}>
@@ -208,7 +208,7 @@ function MemberForm({
         <button type="button" onClick={onClose} style={{ flex: 1, padding: '10px', borderRadius: 9, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', color: 'hsl(240 5% 60%)', fontSize: 13, cursor: 'pointer' }}>
           Cancel
         </button>
-        <button type="submit" disabled={saving} style={{ flex: 2, padding: '10px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}>
+        <button type="submit" disabled={saving} style={{ flex: 2, padding: '10px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}>
           {saving ? 'Saving…' : initial ? 'Save Changes' : 'Add Member'}
         </button>
       </div>
@@ -312,7 +312,7 @@ export function AdminTeam() {
           <button onClick={load} title="Refresh" style={{ width: 36, height: 36, borderRadius: 9, border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'hsl(240 5% 55%)' }}>
             <RefreshCw size={14} />
           </button>
-          <button onClick={() => setAddOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
+          <button onClick={() => setAddOpen(true)} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '8px 16px', borderRadius: 9, border: 'none', background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', color: '#fff', fontSize: 13, fontWeight: 700, cursor: 'pointer' }}>
             <Plus size={14} /> Add Member
           </button>
         </div>
@@ -321,7 +321,7 @@ export function AdminTeam() {
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 14, marginBottom: '1.75rem' }}>
         <div style={{ ...card, padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: 'rgba(167,139,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#a78bfa' }}>
+          <div style={{ width: 32, height: 32, borderRadius: 9, background: 'rgba(96,165,250,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa' }}>
             <Users size={14} />
           </div>
           <div>
@@ -360,7 +360,7 @@ export function AdminTeam() {
                 <Avatar member={member} size={52} />
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 92%)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{member.name}</p>
-                  <p style={{ fontSize: 12, color: '#a78bfa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{member.role}</p>
+                  <p style={{ fontSize: 12, color: '#60a5fa', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{member.role}</p>
                   <p style={{ fontSize: 10.5, color: 'hsl(240 5% 42%)', marginTop: 3 }}>Order: {member.sortOrder}</p>
                 </div>
               </div>
@@ -413,7 +413,7 @@ export function AdminTeam() {
             <Avatar member={delTarget} size={52} />
             <div>
               <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 92%)' }}>{delTarget.name}</p>
-              <p style={{ fontSize: 12, color: '#a78bfa' }}>{delTarget.role}</p>
+              <p style={{ fontSize: 12, color: '#60a5fa' }}>{delTarget.role}</p>
             </div>
           </div>
           <p style={{ fontSize: 13, color: 'hsl(40 6% 70%)', marginBottom: 20 }}>

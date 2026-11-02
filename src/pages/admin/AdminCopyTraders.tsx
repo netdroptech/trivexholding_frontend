@@ -35,11 +35,11 @@ const STRATEGIES = [
 ]
 const RISK_LEVELS = ['Low', 'Medium', 'High']
 const RISK_COLORS: Record<string, string> = {
-  Low: '#a78bfa', Medium: '#f59e0b', High: '#f87171',
+  Low: '#60a5fa', Medium: '#f59e0b', High: '#f87171',
 }
 const AVATAR_COLORS = [
-  '#8b5cf6','#ec4899','#f59e0b','#8b5cf6','#3b82f6',
-  '#7c3aed','#f97316','#06b6d4','#ef4444','#a3e635',
+  '#3b82f6','#ec4899','#f59e0b','#3b82f6','#3b82f6',
+  '#2563eb','#f97316','#06b6d4','#ef4444','#a3e635',
 ]
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -256,7 +256,7 @@ export function AdminCopyTraders() {
           <button onClick={fetchTraders} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 0.875rem', borderRadius: '0.6rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(40 6% 75%)', fontSize: 13, cursor: 'pointer' }}>
             <RefreshCw size={13} style={{ animation: loading ? 'spin 0.8s linear infinite' : 'none' }} />
           </button>
-          <button onClick={openAdd} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem', borderRadius: '0.6rem', background: 'linear-gradient(135deg,#a78bfa,#22d3ee)', color: '#050505', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>
+          <button onClick={openAdd} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.5rem 1rem', borderRadius: '0.6rem', background: 'linear-gradient(135deg,#60a5fa,#22d3ee)', color: '#050505', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>
             <Plus size={14} /> Add Trader
           </button>
         </div>
@@ -273,11 +273,11 @@ export function AdminCopyTraders() {
       {/* Stats strip */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {[
-          { label: 'Total Traders',  value: loading ? '…' : String(traders.length), icon: Copy,      color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-          { label: 'Active Traders', value: loading ? '…' : String(active),         icon: Users,     color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
-          { label: 'Avg. Win Rate',  value: loading ? '…' : `${avgWin}%`,           icon: TrendingUp,color: '#a78bfa', bg: 'rgba(167,139,250,0.1)' },
+          { label: 'Total Traders',  value: loading ? '…' : String(traders.length), icon: Copy,      color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+          { label: 'Active Traders', value: loading ? '…' : String(active),         icon: Users,     color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
+          { label: 'Avg. Win Rate',  value: loading ? '…' : `${avgWin}%`,           icon: TrendingUp,color: '#60a5fa', bg: 'rgba(96,165,250,0.1)' },
         ].map(s => (
-          <div key={s.label} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
+          <div key={s.label} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem' }}>
             <div style={{ width: 36, height: 36, borderRadius: '0.6rem', background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <s.icon size={16} style={{ color: s.color }} />
             </div>
@@ -293,7 +293,7 @@ export function AdminCopyTraders() {
       {loading ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[0,1,2].map(i => (
-            <div key={i} style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem' }}>
+            <div key={i} style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem', padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                 <Skeleton w={48} h={48} />
                 <div style={{ flex: 1 }}><Skeleton w="70%" h={13} /><div style={{ marginTop: 6 }}><Skeleton w="40%" h={11} /></div></div>
@@ -303,18 +303,18 @@ export function AdminCopyTraders() {
           ))}
         </div>
       ) : traders.length === 0 ? (
-        <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
+        <div style={{ padding: '60px 20px', textAlign: 'center', background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '0.875rem' }}>
           <Copy size={32} style={{ color: 'rgba(255,255,255,0.1)', margin: '0 auto 12px' }} />
           <p style={{ fontSize: 14, fontWeight: 600, color: 'hsl(240 5% 45%)', marginBottom: 6 }}>No copy traders yet</p>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 35%)', marginBottom: 16 }}>Add your first trader — they'll appear on the user dashboard immediately.</p>
-          <button onClick={openAdd} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0.5rem 1.25rem', borderRadius: '0.6rem', background: 'rgba(167,139,250,0.15)', color: '#a78bfa', border: '1px solid rgba(167,139,250,0.25)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
+          <button onClick={openAdd} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0.5rem 1.25rem', borderRadius: '0.6rem', background: 'rgba(96,165,250,0.15)', color: '#60a5fa', border: '1px solid rgba(96,165,250,0.25)', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}>
             <Plus size={13} /> Add First Trader
           </button>
         </div>
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {traders.map(t => (
-            <div key={t.id} style={{ background: 'hsl(260 60% 5%)', border: `1px solid ${t.isActive ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.04)'}`, borderRadius: '0.875rem', padding: '1.25rem', opacity: t.isActive ? 1 : 0.55, transition: 'opacity 0.2s' }}>
+            <div key={t.id} style={{ background: 'hsl(222 60% 5%)', border: `1px solid ${t.isActive ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.04)'}`, borderRadius: '0.875rem', padding: '1.25rem', opacity: t.isActive ? 1 : 0.55, transition: 'opacity 0.2s' }}>
               {/* Top row: avatar + name + toggle */}
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -328,7 +328,7 @@ export function AdminCopyTraders() {
                   </div>
                 </div>
                 {/* Toggle */}
-                <button onClick={() => handleToggle(t)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: t.isActive ? '#a78bfa' : 'hsl(240 5% 40%)', padding: 0, flexShrink: 0 }}>
+                <button onClick={() => handleToggle(t)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: t.isActive ? '#60a5fa' : 'hsl(240 5% 40%)', padding: 0, flexShrink: 0 }}>
                   {t.isActive ? <ToggleRight size={26} /> : <ToggleLeft size={26} />}
                 </button>
               </div>
@@ -341,7 +341,7 @@ export function AdminCopyTraders() {
                   { label: 'Total Ret.', value: `+${t.totalReturn}%` },
                 ].map(s => (
                   <div key={s.label} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 8, padding: '6px 4px', textAlign: 'center' }}>
-                    <p style={{ fontSize: 13, fontWeight: 700, color: '#a78bfa' }}>{s.value}</p>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: '#60a5fa' }}>{s.value}</p>
                     <p style={{ fontSize: 10, color: 'hsl(240 5% 50%)' }}>{s.label}</p>
                   </div>
                 ))}
@@ -349,7 +349,7 @@ export function AdminCopyTraders() {
 
               {/* Risk + Strategy */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 999, color: RISK_COLORS[t.riskLevel] ?? '#a78bfa', background: `${RISK_COLORS[t.riskLevel] ?? '#a78bfa'}18` }}>{t.riskLevel} Risk</span>
+                <span style={{ fontSize: 10, fontWeight: 600, padding: '2px 7px', borderRadius: 999, color: RISK_COLORS[t.riskLevel] ?? '#60a5fa', background: `${RISK_COLORS[t.riskLevel] ?? '#60a5fa'}18` }}>{t.riskLevel} Risk</span>
                 <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 999, background: 'rgba(255,255,255,0.06)', color: 'hsl(240 5% 60%)' }}>{t.strategy}</span>
                 {(Array.isArray(t.tags) ? t.tags : []).slice(0,2).map(tag => (
                   <span key={tag} style={{ fontSize: 10, padding: '2px 7px', borderRadius: 999, background: 'rgba(255,255,255,0.04)', color: 'hsl(240 5% 55%)' }}>{tag}</span>
@@ -380,7 +380,7 @@ export function AdminCopyTraders() {
       {(modalMode === 'add' || modalMode === 'edit') && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)' }} onClick={closeModal} />
-          <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 560, maxHeight: '90vh', overflowY: 'auto', background: 'hsl(260 87% 4%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '1.5rem', scrollbarWidth: 'none' }}>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 560, maxHeight: '90vh', overflowY: 'auto', background: 'hsl(222 87% 4%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '1.5rem', scrollbarWidth: 'none' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
               <h2 style={{ fontSize: 16, fontWeight: 700, color: 'hsl(40 6% 95%)' }}>{modalMode === 'add' ? 'Add Trader' : 'Edit Trader'}</h2>
               <button onClick={closeModal} style={{ background: 'none', border: 'none', color: 'hsl(240 5% 55%)', cursor: 'pointer', padding: 4 }}><X size={18} /></button>
@@ -396,7 +396,7 @@ export function AdminCopyTraders() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.25rem' }}>
               <div
                 onClick={() => fileInputRef.current?.click()}
-                style={{ width: 90, height: 90, borderRadius: '50%', cursor: 'pointer', overflow: 'hidden', border: '2px dashed rgba(167,139,250,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.04)', position: 'relative' }}
+                style={{ width: 90, height: 90, borderRadius: '50%', cursor: 'pointer', overflow: 'hidden', border: '2px dashed rgba(96,165,250,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.04)', position: 'relative' }}
               >
                 {photoPreview ? (
                   <img src={photoPreview} alt="preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -482,7 +482,7 @@ export function AdminCopyTraders() {
             {/* Modal actions */}
             <div style={{ display: 'flex', gap: 10, marginTop: '1.5rem' }}>
               <button onClick={closeModal} style={{ flex: 1, padding: '0.6rem', borderRadius: 10, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'hsl(40 6% 78%)', fontSize: 13, cursor: 'pointer' }}>Cancel</button>
-              <button onClick={handleSave} disabled={saving} style={{ flex: 1, padding: '0.6rem', borderRadius: 10, background: saving ? 'rgba(167,139,250,0.3)' : 'linear-gradient(135deg,#a78bfa,#22d3ee)', color: '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: saving ? 'not-allowed' : 'pointer' }}>
+              <button onClick={handleSave} disabled={saving} style={{ flex: 1, padding: '0.6rem', borderRadius: 10, background: saving ? 'rgba(96,165,250,0.3)' : 'linear-gradient(135deg,#60a5fa,#22d3ee)', color: '#050505', fontSize: 13, fontWeight: 700, border: 'none', cursor: saving ? 'not-allowed' : 'pointer' }}>
                 {saving ? 'Saving…' : modalMode === 'add' ? 'Add Trader' : 'Save Changes'}
               </button>
             </div>
@@ -494,7 +494,7 @@ export function AdminCopyTraders() {
       {modalMode === 'delete' && deleteTarget && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 500, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)' }} onClick={closeModal} />
-          <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 400, background: 'hsl(260 87% 4%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '1.5rem' }}>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 400, background: 'hsl(222 87% 4%)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, padding: '1.5rem' }}>
             <h2 style={{ fontSize: 16, fontWeight: 700, color: '#f87171', marginBottom: 8 }}>Delete Trader</h2>
             <p style={{ fontSize: 13, color: 'hsl(240 5% 60%)', marginBottom: 20 }}>
               Remove <strong style={{ color: 'hsl(40 6% 90%)' }}>{deleteTarget.name}</strong> from the platform? Users will no longer see them.

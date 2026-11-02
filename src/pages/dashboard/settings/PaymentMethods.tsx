@@ -16,7 +16,7 @@ const NETWORK_COLORS: Record<string, string> = {
   BTC: '#f7931a', ETH: '#627eea', USDT: '#26a17b', USDC: '#2775ca', BNB: '#f3ba2f',
   SOL: '#9945ff', LTC: '#345d9d', TRX: '#ef0027', XRP: '#23292f', DOGE: '#c2a633',
 }
-const colorFor = (network: string) => NETWORK_COLORS[network.split(' ')[0]] ?? '#a78bfa'
+const colorFor = (network: string) => NETWORK_COLORS[network.split(' ')[0]] ?? '#60a5fa'
 
 const inputStyle: React.CSSProperties = {
   width: '100%', height: 42, padding: '0 14px',
@@ -28,7 +28,7 @@ const inputStyle: React.CSSProperties = {
 
 function Section({ title, sub, action, children }: { title: string; sub?: string; action?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div style={{ background: 'hsl(260 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+    <div style={{ background: 'hsl(222 60% 5%)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: 24, marginBottom: 20 }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 6, gap: 12 }}>
         <div>
           <p style={{ fontSize: 14, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>{title}</p>
@@ -49,7 +49,7 @@ function Label({ children }: { children: React.ReactNode }) {
 function KycBanner({ status }: { status?: string }) {
   const navigate = useNavigate()
   const map: Record<string, { title: string; text: string; color: string; icon: React.ElementType; action?: string }> = {
-    APPROVED:      { title: 'Identity Verified',        text: 'Your identity has been verified.',                                  color: '#a78bfa', icon: CheckCircle2 },
+    APPROVED:      { title: 'Identity Verified',        text: 'Your identity has been verified.',                                  color: '#60a5fa', icon: CheckCircle2 },
     PENDING:       { title: 'Verification Under Review', text: 'Your documents have been submitted and are being reviewed.',       color: '#f59e0b', icon: Clock },
     REJECTED:      { title: 'Verification Rejected',     text: 'Your verification was not approved. Please resubmit your documents.', color: '#f87171', icon: AlertCircle, action: 'Resubmit' },
     NOT_SUBMITTED: { title: 'Identity Not Verified',     text: 'Verify your identity to unlock all account features.',             color: '#f59e0b', icon: AlertCircle, action: 'Verify now' },
@@ -149,7 +149,7 @@ export function PaymentMethods() {
         title="Crypto Wallets"
         sub="Save the wallet addresses you want to use for withdrawals"
         action={!adding && (
-          <button onClick={() => setAdding(true)} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '7px 14px', borderRadius: 8, background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)', color: '#c4b5fd', cursor: 'pointer', flexShrink: 0 }}>
+          <button onClick={() => setAdding(true)} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '7px 14px', borderRadius: 8, background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.3)', color: '#93c5fd', cursor: 'pointer', flexShrink: 0 }}>
             <Plus size={13} /> Add Wallet
           </button>
         )}
@@ -165,8 +165,8 @@ export function PaymentMethods() {
               <div>
                 <Label>Network</Label>
                 <select value={network} onChange={e => { setNetwork(e.target.value); setFormError('') }} style={{ ...inputStyle, appearance: 'none' }}>
-                  <option value="" style={{ background: 'hsl(260 87% 6%)' }}></option>
-                  {NETWORKS.map(n => <option key={n} value={n} style={{ background: 'hsl(260 87% 6%)' }}>{n}</option>)}
+                  <option value="" style={{ background: 'hsl(222 87% 6%)' }}></option>
+                  {NETWORKS.map(n => <option key={n} value={n} style={{ background: 'hsl(222 87% 6%)' }}>{n}</option>)}
                 </select>
               </div>
               <div>
@@ -182,7 +182,7 @@ export function PaymentMethods() {
             {formError && <p style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>{formError}</p>}
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
               <button onClick={closeForm} style={{ padding: '8px 16px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'hsl(240 5% 55%)', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>Cancel</button>
-              <button onClick={handleAdd} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 8, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', border: 'none', color: '#fff', fontSize: 12, fontWeight: 700, cursor: saving ? 'default' : 'pointer', opacity: saving ? 0.7 : 1 }}>
+              <button onClick={handleAdd} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 8, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', border: 'none', color: '#fff', fontSize: 12, fontWeight: 700, cursor: saving ? 'default' : 'pointer', opacity: saving ? 0.7 : 1 }}>
                 {saving && <Loader2 size={13} className="animate-spin" />} {saving ? 'Saving…' : 'Save Wallet'}
               </button>
             </div>

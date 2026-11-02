@@ -112,7 +112,7 @@ export function AdminLayout() {
   return (
     <div style={{
       display: 'flex', minHeight: '100vh',
-      background: 'hsl(260 87% 3%)',
+      background: 'hsl(222 87% 3%)',
       color: 'hsl(40 6% 90%)',
       overflow: 'hidden',
       fontFamily: "'Geist Sans','Inter',system-ui,sans-serif",
@@ -131,7 +131,7 @@ export function AdminLayout() {
       <aside style={{
         width: sidebarW,
         flexShrink: 0,
-        background: 'hsl(260 87% 2%)',
+        background: 'hsl(222 87% 2%)',
         borderRight: '1px solid rgba(255,255,255,0.06)',
         display: 'flex',
         flexDirection: 'column',
@@ -161,12 +161,12 @@ export function AdminLayout() {
           {/* Logo (hide text when collapsed) */}
           {!collapsed && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, overflow: 'hidden' }}>
-              <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 34, height: 34, borderRadius: 9, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <ShieldCheck size={17} style={{ color: '#fff' }} />
               </div>
               <div style={{ overflow: 'hidden' }}>
                 <p style={{ fontSize: 14, fontWeight: 800, color: '#fff', lineHeight: 1.1, whiteSpace: 'nowrap' }}>{platformName} Admin</p>
-                <p style={{ fontSize: 10, color: '#a78bfa', fontWeight: 600, whiteSpace: 'nowrap' }}>Control Panel</p>
+                <p style={{ fontSize: 10, color: '#60a5fa', fontWeight: 600, whiteSpace: 'nowrap' }}>Control Panel</p>
               </div>
             </div>
           )}
@@ -177,10 +177,10 @@ export function AdminLayout() {
             className="hidden md:flex"
             style={{
               width: 30, height: 30, borderRadius: 8, flexShrink: 0,
-              background: 'rgba(167,139,250,0.1)',
-              border: '1px solid rgba(167,139,250,0.2)',
+              background: 'rgba(96,165,250,0.1)',
+              border: '1px solid rgba(96,165,250,0.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', color: '#a78bfa',
+              cursor: 'pointer', color: '#60a5fa',
               transition: 'background 0.15s',
             }}
             title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -199,11 +199,11 @@ export function AdminLayout() {
 
         {/* Admin badge (hidden when collapsed) */}
         {!collapsed && (
-          <div style={{ margin: '10px 12px', padding: '10px 12px', borderRadius: 10, background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.2)', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff', flexShrink: 0 }}>{adminInitials}</div>
+          <div style={{ margin: '10px 12px', padding: '10px 12px', borderRadius: 10, background: 'rgba(96,165,250,0.1)', border: '1px solid rgba(96,165,250,0.2)', display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff', flexShrink: 0 }}>{adminInitials}</div>
             <div style={{ minWidth: 0 }}>
               <p style={{ fontSize: 12, fontWeight: 700, color: 'hsl(40 10% 94%)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{adminName}</p>
-              <p style={{ fontSize: 10, color: '#a78bfa', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{adminEmail}</p>
+              <p style={{ fontSize: 10, color: '#60a5fa', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{adminEmail}</p>
             </div>
           </div>
         )}
@@ -211,7 +211,7 @@ export function AdminLayout() {
         {/* Collapsed avatar */}
         {collapsed && (
           <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0', flexShrink: 0 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff' }}>{adminInitials}</div>
+            <div style={{ width: 36, height: 36, borderRadius: 9, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff' }}>{adminInitials}</div>
           </div>
         )}
 
@@ -242,8 +242,8 @@ export function AdminLayout() {
                     borderRadius: 8,
                     textDecoration: 'none',
                     fontSize: 12.5, fontWeight: 500,
-                    background: isActive ? 'rgba(167,139,250,0.18)' : 'transparent',
-                    color: isActive ? '#c4b5fd' : 'hsl(240 5% 58%)',
+                    background: isActive ? 'rgba(96,165,250,0.18)' : 'transparent',
+                    color: isActive ? '#93c5fd' : 'hsl(240 5% 58%)',
                     transition: 'all 0.13s',
                     position: 'relative',
                   })}
@@ -255,7 +255,7 @@ export function AdminLayout() {
                         <>
                           <span style={{ flex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
                           {'count' in item && item.count !== undefined && item.count > 0 && (
-                            <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999, background: (item as any).color ? `${(item as any).color}20` : 'rgba(167,139,250,0.2)', color: (item as any).color || '#a78bfa', flexShrink: 0 }}>
+                            <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 999, background: (item as any).color ? `${(item as any).color}20` : 'rgba(96,165,250,0.2)', color: (item as any).color || '#60a5fa', flexShrink: 0 }}>
                               {item.count}
                             </span>
                           )}
@@ -263,7 +263,7 @@ export function AdminLayout() {
                       )}
                       {/* Collapsed badge dot */}
                       {collapsed && 'count' in item && item.count !== undefined && item.count > 0 && (
-                        <span style={{ position: 'absolute', top: 6, right: 6, width: 7, height: 7, borderRadius: '50%', background: (item as any).color || '#a78bfa', border: '1.5px solid hsl(260 87% 2%)' }} />
+                        <span style={{ position: 'absolute', top: 6, right: 6, width: 7, height: 7, borderRadius: '50%', background: (item as any).color || '#60a5fa', border: '1.5px solid hsl(222 87% 2%)' }} />
                       )}
                     </>
                   )}
@@ -304,7 +304,7 @@ export function AdminLayout() {
         className="admin-main"
       >
         {/* Top bar */}
-        <header style={{ height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px 0 12px', borderBottom: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, background: 'hsl(260 87% 2.5%)' }}>
+        <header style={{ height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px 0 12px', borderBottom: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, background: 'hsl(222 87% 2.5%)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {/* Mobile hamburger */}
             <button onClick={() => setMobileOpen(true)} className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'hsl(240 5% 55%)', padding: 4, display: 'flex', alignItems: 'center' }}>
@@ -312,7 +312,7 @@ export function AdminLayout() {
             </button>
             {/* Breadcrumb */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 11, color: '#a78bfa', fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: 'rgba(167,139,250,0.12)' }}>ADMIN</span>
+              <span style={{ fontSize: 11, color: '#60a5fa', fontWeight: 700, padding: '3px 8px', borderRadius: 6, background: 'rgba(96,165,250,0.12)' }}>ADMIN</span>
               <span style={{ fontSize: 11, color: 'hsl(240 5% 40%)' }}>/</span>
               <span style={{ fontSize: 12, color: 'hsl(40 6% 75%)', fontWeight: 500 }}>Control Panel</span>
             </div>
@@ -320,19 +320,19 @@ export function AdminLayout() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {/* Live pill */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 10px', borderRadius: 20, background: 'rgba(167,139,250,0.07)', border: '1px solid rgba(167,139,250,0.15)' }} className="hidden sm:flex">
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#a78bfa', display: 'inline-block', animation: 'adminPulse 1.5s ease-in-out infinite' }} />
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#a78bfa' }}>LIVE</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 10px', borderRadius: 20, background: 'rgba(96,165,250,0.07)', border: '1px solid rgba(96,165,250,0.15)' }} className="hidden sm:flex">
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#60a5fa', display: 'inline-block', animation: 'adminPulse 1.5s ease-in-out infinite' }} />
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#60a5fa' }}>LIVE</span>
             </div>
 
             {/* Notifications */}
             <div ref={notifRef} style={{ position: 'relative' }}>
               <button onClick={() => setNotifOpen(v => !v)} style={{ position: 'relative', width: 34, height: 34, borderRadius: 8, background: notifOpen ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'hsl(240 5% 60%)' }}>
                 <Bell size={15} />
-                {pendingCount > 0 && <span style={{ position: 'absolute', top: 4, right: 4, width: 8, height: 8, borderRadius: '50%', background: '#ef4444', border: '1.5px solid hsl(260 87% 2.5%)' }} />}
+                {pendingCount > 0 && <span style={{ position: 'absolute', top: 4, right: 4, width: 8, height: 8, borderRadius: '50%', background: '#ef4444', border: '1.5px solid hsl(222 87% 2.5%)' }} />}
               </button>
               {notifOpen && (
-                <div style={{ position: 'absolute', top: 'calc(100% + 8px)', right: 0, width: 'min(320px, calc(100vw - 24px))', borderRadius: 12, background: 'hsl(260 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', zIndex: 200, overflow: 'hidden', animation: 'adminDropIn 0.15s ease' }}>
+                <div style={{ position: 'absolute', top: 'calc(100% + 8px)', right: 0, width: 'min(320px, calc(100vw - 24px))', borderRadius: 12, background: 'hsl(222 87% 5%)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', zIndex: 200, overflow: 'hidden', animation: 'adminDropIn 0.15s ease' }}>
                   {/* Header */}
                   <div style={{ padding: '12px 14px 10px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <p style={{ fontSize: 13, fontWeight: 700, color: 'hsl(40 10% 94%)' }}>Admin Alerts</p>
@@ -347,7 +347,7 @@ export function AdminLayout() {
                   <div style={{ maxHeight: 300, overflowY: 'auto', scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.06) transparent' }}>
                     {actLoading ? (
                       <div style={{ display: 'flex', justifyContent: 'center', padding: '20px 0' }}>
-                        <Loader2 size={16} style={{ color: '#a78bfa', animation: 'spin 1s linear infinite' }} />
+                        <Loader2 size={16} style={{ color: '#60a5fa', animation: 'spin 1s linear infinite' }} />
                       </div>
                     ) : activity.length === 0 ? (
                       <p style={{ fontSize: 12, color: 'hsl(240 5% 45%)', textAlign: 'center', padding: '20px 14px' }}>
@@ -384,7 +384,7 @@ export function AdminLayout() {
                     </button>
                     <button
                       onClick={() => { navigate('/admin/notifications'); setNotifOpen(false) }}
-                      style={{ flex: 1, padding: '7px', borderRadius: 7, border: '1px solid rgba(167,139,250,0.2)', background: 'rgba(167,139,250,0.06)', fontSize: 11, fontWeight: 600, color: '#a78bfa', cursor: 'pointer' }}
+                      style={{ flex: 1, padding: '7px', borderRadius: 7, border: '1px solid rgba(96,165,250,0.2)', background: 'rgba(96,165,250,0.06)', fontSize: 11, fontWeight: 600, color: '#60a5fa', cursor: 'pointer' }}
                     >
                       Send Alert
                     </button>
@@ -394,7 +394,7 @@ export function AdminLayout() {
             </div>
 
             {/* Admin avatar */}
-            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#7c3aed,#6d28d9)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff', cursor: 'pointer', flexShrink: 0 }}>{adminInitials}</div>
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#2563eb,#1d4ed8)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#fff', cursor: 'pointer', flexShrink: 0 }}>{adminInitials}</div>
           </div>
         </header>
 
