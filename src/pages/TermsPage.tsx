@@ -10,19 +10,19 @@ export function TermsPage() {
   const sections = [
     {
       title: '1. Acceptance of Terms',
-      body: `By accessing or using the Velnex Capital platform ("Service"), you agree to be bound by these Terms & Conditions ("Terms"). If you do not agree to all of these Terms, you may not access or use the Service. These Terms apply to all visitors, users, and others who access or use the Service.`,
+      body: `By accessing or using the Trivex Holding platform ("Service"), you agree to be bound by these Terms & Conditions ("Terms"). If you do not agree to all of these Terms, you may not access or use the Service. These Terms apply to all visitors, users, and others who access or use the Service.`,
     },
     {
       title: '2. Eligibility',
-      body: `You must be at least 18 years of age to use the Service. By using the Service you represent and warrant that you are of legal age to form a binding contract with Velnex Capital and that you meet all eligibility requirements outlined herein. The Service is not available to persons who have previously been prohibited from using it.`,
+      body: `You must be at least 18 years of age to use the Service. By using the Service you represent and warrant that you are of legal age to form a binding contract with Trivex Holding and that you meet all eligibility requirements outlined herein. The Service is not available to persons who have previously been prohibited from using it.`,
     },
     {
       title: '3. Account Registration',
-      body: `To access certain features of the Service you must register for an account. You agree to provide accurate, current, and complete information during registration and to update that information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for any activities or actions under your account. Velnex Capital will not be liable for any loss or damage arising from your failure to comply with this obligation.`,
+      body: `To access certain features of the Service you must register for an account. You agree to provide accurate, current, and complete information during registration and to update that information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for any activities or actions under your account. Trivex Holding will not be liable for any loss or damage arising from your failure to comply with this obligation.`,
     },
     {
       title: '4. Trading & Financial Services',
-      body: `Velnex Capital provides tools and analytics to assist with trading decisions. All trading involves significant risk of loss. Past performance is not indicative of future results. You acknowledge that you are solely responsible for your trading decisions and that Velnex Capital does not provide investment advice, portfolio management, or financial advisory services. Nothing on the platform constitutes a recommendation to buy, sell, or hold any financial instrument.`,
+      body: `Trivex Holding provides tools and analytics to assist with trading decisions. All trading involves significant risk of loss. Past performance is not indicative of future results. You acknowledge that you are solely responsible for your trading decisions and that Trivex Holding does not provide investment advice, portfolio management, or financial advisory services. Nothing on the platform constitutes a recommendation to buy, sell, or hold any financial instrument.`,
     },
     {
       title: '5. Prohibited Conduct',
@@ -30,23 +30,23 @@ export function TermsPage() {
     },
     {
       title: '6. Intellectual Property',
-      body: `The Service and its original content, features, and functionality are and will remain the exclusive property of Velnex Capital and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Velnex Capital. You may not reproduce, distribute, or create derivative works from any content on the Service without express written permission.`,
+      body: `The Service and its original content, features, and functionality are and will remain the exclusive property of Trivex Holding and its licensors. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Trivex Holding. You may not reproduce, distribute, or create derivative works from any content on the Service without express written permission.`,
     },
     {
       title: '7. Fees & Payments',
-      body: `Certain features of the Service are offered on a subscription basis. You agree to pay all applicable fees as described on the Service at the time of purchase. Velnex Capital reserves the right to change its pricing at any time upon reasonable notice. All fees are non-refundable except as expressly stated in our Refund Policy. If you dispute any charge you must notify us within 30 days of the charge date.`,
+      body: `Certain features of the Service are offered on a subscription basis. You agree to pay all applicable fees as described on the Service at the time of purchase. Trivex Holding reserves the right to change its pricing at any time upon reasonable notice. All fees are non-refundable except as expressly stated in our Refund Policy. If you dispute any charge you must notify us within 30 days of the charge date.`,
     },
     {
       title: '8. Disclaimer of Warranties',
-      body: `The Service is provided on an "AS IS" and "AS AVAILABLE" basis without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. Velnex Capital does not warrant that the Service will be uninterrupted, error-free, or free of viruses or other harmful components.`,
+      body: `The Service is provided on an "AS IS" and "AS AVAILABLE" basis without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. Trivex Holding does not warrant that the Service will be uninterrupted, error-free, or free of viruses or other harmful components.`,
     },
     {
       title: '9. Limitation of Liability',
-      body: `To the maximum extent permitted by applicable law, Velnex Capital and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation loss of profits, data, goodwill, or other intangible losses, resulting from your access to or use of (or inability to access or use) the Service.`,
+      body: `To the maximum extent permitted by applicable law, Trivex Holding and its affiliates, officers, employees, agents, partners, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation loss of profits, data, goodwill, or other intangible losses, resulting from your access to or use of (or inability to access or use) the Service.`,
     },
     {
       title: '10. Indemnification',
-      body: `You agree to defend, indemnify, and hold harmless Velnex Capital and its licensors, service providers, employees, contractors, agents, officers, and directors from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable legal fees) arising out of or relating to your violation of these Terms or your use of the Service.`,
+      body: `You agree to defend, indemnify, and hold harmless Trivex Holding and its licensors, service providers, employees, contractors, agents, officers, and directors from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable legal fees) arising out of or relating to your violation of these Terms or your use of the Service.`,
     },
     {
       title: '11. Governing Law & Dispute Resolution',
@@ -54,7 +54,7 @@ export function TermsPage() {
     },
     {
       title: '12. Changes to Terms',
-      body: `Velnex Capital reserves the right to modify or replace these Terms at any time at its sole discretion. We will provide notice of significant changes by updating the "Last Updated" date at the top of this page. Your continued use of the Service after any changes constitutes your acceptance of the new Terms. If you do not agree to the revised Terms, you must stop using the Service.`,
+      body: `Trivex Holding reserves the right to modify or replace these Terms at any time at its sole discretion. We will provide notice of significant changes by updating the "Last Updated" date at the top of this page. Your continued use of the Service after any changes constitutes your acceptance of the new Terms. If you do not agree to the revised Terms, you must stop using the Service.`,
     },
     {
       title: '13. Contact Us',
@@ -83,7 +83,7 @@ export function TermsPage() {
               Terms &amp; Conditions
             </h1>
             <p className="text-hero-sub text-lg max-w-2xl mx-auto opacity-80">
-              Please read these terms carefully before using the Velnex Capital platform. Last updated: 1 April 2026.
+              Please read these terms carefully before using the Trivex Holding platform. Last updated: 1 April 2026.
             </p>
           </Reveal>
         </section>

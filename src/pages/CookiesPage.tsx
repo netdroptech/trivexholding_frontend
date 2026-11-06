@@ -45,7 +45,7 @@ export function CookiesPage() {
     },
     {
       title: '2. How We Use Cookies',
-      body: `Velnex Capital uses cookies and similar technologies (such as web beacons, pixels, and local storage) to: keep you signed in to your account; remember your preferences and settings; understand how you use the Service; measure the effectiveness of our features; deliver personalised content; and improve overall platform performance and security.`,
+      body: `Trivex Holding uses cookies and similar technologies (such as web beacons, pixels, and local storage) to: keep you signed in to your account; remember your preferences and settings; understand how you use the Service; measure the effectiveness of our features; deliver personalised content; and improve overall platform performance and security.`,
     },
     {
       title: '3. Third-Party Cookies',
