@@ -20,6 +20,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist-v15',
+    chunkSizeWarningLimit: 2000,
     emptyOutDir: false,
     commonjsOptions: {
       include: [/node_modules/],

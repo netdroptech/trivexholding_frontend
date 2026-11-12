@@ -1,30 +1,25 @@
 import { useState } from 'react'
 import { TrendingUp, TrendingDown, Search, Star } from 'lucide-react'
+import { useLiveMarkets, fmtPrice, fmtCompact, type CoinDef } from '@/hooks/useLiveMarkets'
 
-const MARKETS = [
-  { name: 'Bitcoin',   symbol: 'BTC/USDT', price: 83552.00, change: +2.34, vol: '$28.4B', cap: '$1.64T',  data: [78000,79200,81000,80400,82100,83552], color: '#f59e0b', starred: true  },
-  { name: 'Ethereum',  symbol: 'ETH/USDT', price: 3118.50,  change: +1.12, vol: '$12.1B', cap: '$374B',   data: [3050,3070,3090,3060,3100,3118],     color: '#60a5fa', starred: true  },
-  { name: 'Solana',    symbol: 'SOL/USDT', price: 185.22,   change: -0.88, vol: '$3.2B',  cap: '$85B',    data: [192,190,188,186,185,185],           color: '#60a5fa', starred: false },
-  { name: 'BNB',       symbol: 'BNB/USDT', price: 586.40,   change: +0.45, vol: '$1.8B',  cap: '$88B',    data: [578,580,582,580,584,586],           color: '#fbbf24', starred: false },
-  { name: 'XRP',       symbol: 'XRP/USDT', price: 0.618,    change: -1.22, vol: '$2.1B',  cap: '$67B',    data: [0.64,0.63,0.62,0.61,0.62,0.618],   color: '#60a5fa', starred: false },
-  { name: 'Cardano',   symbol: 'ADA/USDT', price: 0.412,    change: +3.10, vol: '$0.9B',  cap: '$14B',    data: [0.39,0.39,0.40,0.41,0.41,0.412],   color: '#60a5fa', starred: false },
-  { name: 'Dogecoin',  symbol: 'DOGE/USDT',price: 0.1742,   change: +5.22, vol: '$1.4B',  cap: '$25B',    data: [0.164,0.166,0.168,0.170,0.172,0.1742],color: '#fde68a',starred: false },
-  { name: 'Avalanche', symbol: 'AVAX/USDT',price: 38.42,    change: -2.14, vol: '$0.6B',  cap: '$16B',    data: [40,39.5,39,38.8,38.5,38.42],       color: '#fb923c', starred: false },
-  { name: 'Polkadot',  symbol: 'DOT/USDT', price: 7.84,     change: +0.92, vol: '$0.4B',  cap: '$11B',    data: [7.6,7.65,7.7,7.72,7.8,7.84],      color: '#38bdf8', starred: false },
-  { name: 'Chainlink', symbol: 'LINK/USDT',price: 14.22,    change: +1.88, vol: '$0.7B',  cap: '$9B',     data: [13.8,13.9,14.0,14.1,14.15,14.22], color: '#38bdf8', starred: false },
-]
-
-const OVERVIEW = [
-  { label: 'Total Market Cap', value: '$2.61T',      change: '+1.8%',  up: true  },
-  { label: 'BTC Dominance',    value: '62.8%',        change: '+0.3%',  up: true  },
-  { label: '24h Volume',       value: '$94.2B',       change: '-5.2%',  up: false },
-  { label: 'Fear & Greed',     value: '72 — Greed',   change: 'Bullish', up: true },
+const COINS: CoinDef[] = [
+  { id: 'bitcoin',       binance: 'BTCUSDT',  name: 'Bitcoin',   symbol: 'BTC/USDT',  color: '#f59e0b' },
+  { id: 'ethereum',      binance: 'ETHUSDT',  name: 'Ethereum',  symbol: 'ETH/USDT',  color: '#60a5fa' },
+  { id: 'solana',        binance: 'SOLUSDT',  name: 'Solana',    symbol: 'SOL/USDT',  color: '#60a5fa' },
+  { id: 'binancecoin',   binance: 'BNBUSDT',  name: 'BNB',       symbol: 'BNB/USDT',  color: '#fbbf24' },
+  { id: 'ripple',        binance: 'XRPUSDT',  name: 'XRP',       symbol: 'XRP/USDT',  color: '#60a5fa' },
+  { id: 'cardano',       binance: 'ADAUSDT',  name: 'Cardano',   symbol: 'ADA/USDT',  color: '#60a5fa' },
+  { id: 'dogecoin',      binance: 'DOGEUSDT', name: 'Dogecoin',  symbol: 'DOGE/USDT', color: '#fde68a' },
+  { id: 'avalanche-2',   binance: 'AVAXUSDT', name: 'Avalanche', symbol: 'AVAX/USDT', color: '#fb923c' },
+  { id: 'polkadot',      binance: 'DOTUSDT',  name: 'Polkadot',  symbol: 'DOT/USDT',  color: '#38bdf8' },
+  { id: 'chainlink',     binance: 'LINKUSDT', name: 'Chainlink', symbol: 'LINK/USDT', color: '#38bdf8' },
 ]
 
 const TABS = ['All', 'Favourites', 'Top Gainers', 'Top Losers']
 
 /** Pure SVG sparkline — zero dependencies */
 function Sparkline({ data, color }: { data: number[]; color: string }) {
+  if (data.length < 2) return <div style={{ width: 80, height: 32 }} />
   const min = Math.min(...data)
   const max = Math.max(...data)
   const range = max - min || 1
@@ -49,11 +44,23 @@ export function LiveMarkets() {
   const [tab, setTab] = useState('All')
   const [search, setSearch] = useState('')
   const [starred, setStarred] = useState<string[]>(['BTC/USDT', 'ETH/USDT'])
+  const { coins, overview, status, updatedAt } = useLiveMarkets(COINS)
 
-  const filtered = MARKETS.filter(m => {
+  const fg = overview.fearGreed
+  const OVERVIEW = [
+    { label: 'Total Market Cap', value: fmtCompact(overview.totalMarketCap),
+      change: overview.marketCapChange == null ? '—' : `${overview.marketCapChange >= 0 ? '+' : ''}${overview.marketCapChange.toFixed(2)}%`,
+      up: (overview.marketCapChange ?? 0) >= 0 },
+    { label: 'BTC Dominance', value: overview.btcDominance == null ? '—' : `${overview.btcDominance.toFixed(1)}%`, change: 'of total cap', up: true },
+    { label: '24h Volume', value: fmtCompact(overview.totalVolume), change: 'all markets', up: true },
+    { label: 'Fear & Greed', value: fg ? `${fg.value} — ${fg.label}` : '—', change: fg ? (fg.value >= 50 ? 'Bullish' : 'Bearish') : '—', up: fg ? fg.value >= 50 : true },
+  ]
+
+  const filtered = coins.filter(m => {
+    const ch = m.change ?? 0
     if (tab === 'Favourites' && !starred.includes(m.symbol)) return false
-    if (tab === 'Top Gainers' && m.change <= 0) return false
-    if (tab === 'Top Losers'  && m.change >= 0) return false
+    if (tab === 'Top Gainers' && ch <= 0) return false
+    if (tab === 'Top Losers'  && ch >= 0) return false
     if (search && !m.name.toLowerCase().includes(search.toLowerCase()) && !m.symbol.toLowerCase().includes(search.toLowerCase())) return false
     return true
   })
@@ -64,9 +71,16 @@ export function LiveMarkets() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h1 style={{ fontSize: '1.375rem', fontWeight: 700, color: 'hsl(40 6% 95%)' }}>Live Markets</h1>
-            <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 999, background: 'rgba(96,165,250,0.15)', color: '#60a5fa', letterSpacing: '0.05em' }}>● LIVE</span>
+            <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 7px', borderRadius: 999, letterSpacing: '0.05em',
+              background: status === 'error' ? 'rgba(248,113,113,0.15)' : 'rgba(96,165,250,0.15)',
+              color: status === 'error' ? '#f87171' : status === 'live' ? '#60a5fa' : 'hsl(240 5% 60%)' }}>
+              {status === 'live' ? '● LIVE' : status === 'polling' ? '● DELAYED' : status === 'loading' ? '○ CONNECTING' : '● OFFLINE'}
+            </span>
           </div>
-          <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)' }}>Real-time cryptocurrency prices and market data</p>
+          <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)' }}>
+            Real-time cryptocurrency prices and market data
+            {updatedAt && <span style={{ color: 'hsl(240 5% 42%)' }}> · updated {updatedAt.toLocaleTimeString()}</span>}
+          </p>
         </div>
       </div>
 
@@ -120,28 +134,31 @@ export function LiveMarkets() {
                   <td style={{ padding: '0.75rem 0.5rem', color: 'hsl(240 5% 45%)', fontSize: 12 }}>{i + 1}</td>
                   <td style={{ padding: '0.75rem 1rem' }}>
                     <div className="flex items-center gap-2.5">
+                      {m.image ? <img src={m.image} alt={m.name} width={30} height={30} style={{ borderRadius: '50%', flexShrink: 0 }} /> :
                       <div style={{ width: 30, height: 30, borderRadius: '50%', background: `${m.color}22`, border: `1px solid ${m.color}44`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 800, color: m.color, flexShrink: 0 }}>
                         {m.symbol.slice(0, 3)}
-                      </div>
+                      </div>}
                       <div>
                         <p style={{ fontWeight: 600, color: 'hsl(40 6% 92%)', fontSize: 13 }}>{m.name}</p>
                         <p style={{ fontSize: 11, color: 'hsl(240 5% 50%)' }}>{m.symbol}</p>
                       </div>
                     </div>
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 700, color: 'hsl(40 6% 92%)', whiteSpace: 'nowrap' }}>
-                    ${m.price >= 1 ? m.price.toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : m.price.toFixed(4)}
+                  <td style={{ padding: '0.75rem 1rem', fontWeight: 700, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums', transition: 'color 0.3s',
+                    color: m.flash === 'up' ? '#60a5fa' : m.flash === 'down' ? '#f87171' : 'hsl(40 6% 92%)' }}>
+                    {fmtPrice(m.price)}
                   </td>
                   <td style={{ padding: '0.75rem 1rem' }}>
+                    {m.change == null ? <span style={{ color: 'hsl(240 5% 50%)' }}>—</span> :
                     <span style={{ display: 'flex', alignItems: 'center', gap: 3, color: m.change >= 0 ? '#60a5fa' : '#f87171', fontWeight: 600 }}>
                       {m.change >= 0 ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
                       {m.change >= 0 ? '+' : ''}{m.change.toFixed(2)}%
-                    </span>
+                    </span>}
                   </td>
-                  <td style={{ padding: '0.75rem 1rem', color: 'hsl(240 5% 65%)' }}>{m.vol}</td>
-                  <td style={{ padding: '0.75rem 1rem', color: 'hsl(240 5% 65%)' }}>{m.cap}</td>
+                  <td style={{ padding: '0.75rem 1rem', color: 'hsl(240 5% 65%)' }}>{fmtCompact(m.volume)}</td>
+                  <td style={{ padding: '0.75rem 1rem', color: 'hsl(240 5% 65%)' }}>{fmtCompact(m.marketCap)}</td>
                   <td style={{ padding: '0.75rem 1rem' }}>
-                    <Sparkline data={m.data} color={m.change >= 0 ? '#60a5fa' : '#f87171'} />
+                    <Sparkline data={m.sparkline} color={m.sparkline.length > 1 && m.sparkline[m.sparkline.length - 1] >= m.sparkline[0] ? '#60a5fa' : '#f87171'} />
                   </td>
                   <td style={{ padding: '0.75rem 1rem' }}>
                     <button style={{ padding: '0.3rem 0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%)', color: '#050505', fontSize: 11, fontWeight: 700, border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>

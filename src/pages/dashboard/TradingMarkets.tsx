@@ -1,95 +1,29 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TrendingUp, TrendingDown, ChevronRight, RefreshCw, Search, Star, BarChart2, Wifi, WifiOff } from 'lucide-react'
+import { TrendingUp, TrendingDown, ChevronRight, Search, Star, BarChart2, Wifi, WifiOff } from 'lucide-react'
 
-// ── Static metadata (colors, names, pairs) ────────────────────────────────
-const PAIR_META: Record<string, { pair: string; name: string; color: string }> = {
-  BTCUSDT:   { pair: 'BTC/USDT',   name: 'Bitcoin',       color: '#f7931a' },
-  ETHUSDT:   { pair: 'ETH/USDT',   name: 'Ethereum',      color: '#627eea' },
-  BNBUSDT:   { pair: 'BNB/USDT',   name: 'BNB',           color: '#f3ba2f' },
-  ADAUSDT:   { pair: 'ADA/USDT',   name: 'Cardano',       color: '#4a9eff' },
-  XRPUSDT:   { pair: 'XRP/USDT',   name: 'XRP',           color: '#00aae4' },
-  SOLUSDT:   { pair: 'SOL/USDT',   name: 'Solana',        color: '#9945ff' },
-  DOTUSDT:   { pair: 'DOT/USDT',   name: 'Polkadot',      color: '#e6007a' },
-  DOGEUSDT:  { pair: 'DOGE/USDT',  name: 'Dogecoin',      color: '#c2a633' },
-  AVAXUSDT:  { pair: 'AVAX/USDT',  name: 'Avalanche',     color: '#e84142' },
-  MATICUSDT: { pair: 'MATIC/USDT', name: 'Polygon',       color: '#8247e5' },
-  LINKUSDT:  { pair: 'LINK/USDT',  name: 'Chainlink',     color: '#375bd2' },
-  LTCUSDT:   { pair: 'LTC/USDT',   name: 'Litecoin',      color: '#bfbbbb' },
-  UNIUSDT:   { pair: 'UNI/USDT',   name: 'Uniswap',       color: '#ff007a' },
-  ATOMUSDT:  { pair: 'ATOM/USDT',  name: 'Cosmos',        color: '#6f7390' },
-  NEARUSDT:  { pair: 'NEAR/USDT',  name: 'NEAR Protocol', color: '#00ec97' },
-  APTUSDT:   { pair: 'APT/USDT',   name: 'Aptos',         color: '#00bcd4' },
-}
-
-const SYMBOLS = Object.keys(PAIR_META)
-
-// ── Seed / fallback data ──────────────────────────────────────────────────
-const SEED: PairData[] = [
-  { symbol: 'BTCUSDT',   price: 83241.52,  change: 1.23,  volume: 1_812_344_201 },
-  { symbol: 'ETHUSDT',   price: 1581.40,   change: -0.87, volume:   643_120_998 },
-  { symbol: 'BNBUSDT',   price: 584.30,    change: 0.42,  volume:    71_204_881 },
-  { symbol: 'ADAUSDT',   price: 0.6312,    change: 2.11,  volume:    39_441_203 },
-  { symbol: 'XRPUSDT',   price: 2.0814,    change: 1.75,  volume:   210_987_345 },
-  { symbol: 'SOLUSDT',   price: 121.44,    change: 3.02,  volume:   319_887_123 },
-  { symbol: 'DOTUSDT',   price: 3.812,     change: -0.55, volume:    11_320_441 },
-  { symbol: 'DOGEUSDT',  price: 0.1572,    change: 2.88,  volume:    82_334_219 },
-  { symbol: 'AVAXUSDT',  price: 18.76,     change: 4.12,  volume:    34_219_887 },
-  { symbol: 'MATICUSDT', price: 0.2214,    change: -1.04, volume:   142_887_334 },
-  { symbol: 'LINKUSDT',  price: 12.44,     change: 2.97,  volume:    29_112_441 },
-  { symbol: 'LTCUSDT',   price: 78.33,     change: 0.88,  volume:    22_448_110 },
-  { symbol: 'UNIUSDT',   price: 5.712,     change: 1.44,  volume:    31_990_221 },
-  { symbol: 'ATOMUSDT',  price: 4.219,     change: -0.62, volume:    17_334_005 },
-  { symbol: 'NEARUSDT',  price: 2.448,     change: 6.11,  volume:    44_221_987 },
-  { symbol: 'APTUSDT',   price: 4.987,     change: 3.22,  volume:    26_448_991 },
-]
-
-interface PairData {
-  symbol:  string
-  price:   number
-  change:  number
-  volume:  number
-}
-
-// ── Binance 24hr ticker fetch ────────────────────────────────────────────
-const BINANCE_URL =
-  `https://api.binance.com/api/v3/ticker/24hr?symbols=${encodeURIComponent(JSON.stringify(SYMBOLS))}`
-
-async function fetchLivePrices(): Promise<PairData[]> {
-  const res = await fetch(BINANCE_URL)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const data = await res.json()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return (data as any[]).map((t) => ({
-    symbol: t.symbol as string,
-    price:  parseFloat(t.lastPrice),
-    change: parseFloat(t.priceChangePercent),
-    volume: parseFloat(t.quoteVolume),   // quoteVolume = USDT volume
-  }))
-}
+import { useLiveMarkets } from '@/hooks/useLiveMarkets'
+import { TRADE_MARKETS } from '@/lib/markets'
 
 // ── Formatters ────────────────────────────────────────────────────────────
-function fmtPrice(p: number) {
-  if (p >= 10000) return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-  if (p >= 100)   return p.toFixed(2)
+function fmtPrice(p: number | null) {
+  if (p == null) return '—'
+  if (p >= 1000)  return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  if (p >= 10)    return p.toFixed(2)
   if (p >= 1)     return p.toFixed(4)
   return p.toFixed(4)
 }
 
 function fmtVolume(v: number) {
+  if (!v) return '—'
   if (v >= 1_000_000_000) return `$${(v / 1_000_000_000).toFixed(3)}B`
   if (v >= 1_000_000)     return `$${(v / 1_000_000).toFixed(3)}M`
   return `$${v.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}`
 }
 
-function fmtCountdown(s: number) {
-  const m = Math.floor(s / 60).toString().padStart(2, '0')
-  const sec = (s % 60).toString().padStart(2, '0')
-  return `${m}:${sec}`
-}
-
 // ── Sub-components ────────────────────────────────────────────────────────
-function CoinIcon({ symbol, color }: { symbol: string; color: string }) {
+function CoinIcon({ symbol, color, image }: { symbol: string; color: string; image?: string }) {
+  if (image) return <img src={image} alt={symbol} width={38} height={38} style={{ borderRadius: '50%', flexShrink: 0 }} />
   const letter = symbol.replace('USDT', '').charAt(0)
   return (
     <div style={{
@@ -104,10 +38,11 @@ function CoinIcon({ symbol, color }: { symbol: string; color: string }) {
   )
 }
 
-function Sparkline({ up }: { up: boolean }) {
-  const pts = up
-    ? '0,14 8,12 16,13 24,9 32,10 40,6 48,7 56,4 64,5 72,2 80,3'
-    : '0,4 8,5 16,4 24,8 32,6 40,9 48,8 56,11 64,10 72,13 80,14'
+function Sparkline({ data }: { data: number[] }) {
+  if (data.length < 2) return <div style={{ width: 80, height: 18 }} />
+  const min = Math.min(...data), max = Math.max(...data), range = max - min || 1
+  const pts = data.map((v, i) => `${((i / (data.length - 1)) * 80).toFixed(1)},${(16 - ((v - min) / range) * 14).toFixed(1)}`).join(' ')
+  const up = data[data.length - 1] >= data[0]
   return (
     <svg width={80} height={18} viewBox="0 0 80 18" fill="none">
       <polyline
@@ -131,74 +66,24 @@ const FLASH_CSS = `
 `
 
 // ── Main component ─────────────────────────────────────────────────────────
-const REFRESH_SECS = 120 // 2 minutes
-
 export function TradingMarkets() {
   const navigate = useNavigate()
-  const [pairs, setPairs]         = useState<PairData[]>(SEED)
-  const [lastRefresh, setLastRefresh] = useState<Date | null>(null)
-  const [countdown, setCountdown] = useState(REFRESH_SECS)
-  const [loading, setLoading]     = useState(false)
-  const [online, setOnline]       = useState(true)
+  const { coins, status, updatedAt } = useLiveMarkets(TRADE_MARKETS)
+  const online = status !== 'error'
   const [search, setSearch]       = useState('')
   const [watchlist, setWatchlist] = useState<string[]>(['BTCUSDT', 'ETHUSDT'])
   const [tab, setTab]             = useState<'all' | 'watchlist'>('all')
   const [activePair, setActivePair] = useState<string | null>(null)
-  const flashRef = useRef<Record<string, string>>({})
-  const prevPrices = useRef<Record<string, number>>({})
-
-  const doFetch = useCallback(async (manual = false) => {
-    if (manual) setLoading(true)
-    try {
-      const live = await fetchLivePrices()
-
-      // compute flash classes based on price movement
-      const flashes: Record<string, string> = {}
-      live.forEach(p => {
-        const prev = prevPrices.current[p.symbol]
-        if (prev !== undefined) {
-          if (p.price > prev) flashes[p.symbol] = 'flash-green'
-          else if (p.price < prev) flashes[p.symbol] = 'flash-red'
-        }
-        prevPrices.current[p.symbol] = p.price
-      })
-      flashRef.current = flashes
-
-      setPairs(live)
-      setLastRefresh(new Date())
-      setOnline(true)
-      setCountdown(REFRESH_SECS)
-
-      // Clear flash classes after animation
-      setTimeout(() => { flashRef.current = {} }, 800)
-    } catch {
-      setOnline(false)
-    } finally {
-      setLoading(false)
-    }
-  }, [])
-
-  // Initial fetch on mount
-  useEffect(() => { doFetch() }, [doFetch])
-
-  // Countdown + auto-refresh every 2 mins
-  useEffect(() => {
-    const tick = setInterval(() => {
-      setCountdown(c => {
-        if (c <= 1) {
-          doFetch()
-          return REFRESH_SECS
-        }
-        return c - 1
-      })
-    }, 1000)
-    return () => clearInterval(tick)
-  }, [doFetch])
 
   // Merge live data with static metadata for rendering
-  const display = pairs
-    .filter(p => PAIR_META[p.symbol])
-    .map(p => ({ ...PAIR_META[p.symbol], ...p }))
+  const display = coins.map(c => ({
+    ...c,
+    symbol: c.binance,
+    pair: c.symbol,
+    change: c.change ?? 0,
+    volume: c.volume ?? 0,
+    hasData: c.price != null,
+  }))
 
   const filtered = display.filter(p =>
     (tab === 'watchlist' ? watchlist.includes(p.symbol) : true) &&
@@ -207,12 +92,11 @@ export function TradingMarkets() {
       p.name.toLowerCase().includes(search.toLowerCase()))
   )
 
-  const topGainer = [...display].sort((a, b) => b.change - a.change)[0]
-  const topLoser  = [...display].sort((a, b) => a.change - b.change)[0]
+  const withData  = display.filter(p => p.hasData)
+  const topGainer = [...withData].sort((a, b) => b.change - a.change)[0]
+  const topLoser  = [...withData].sort((a, b) => a.change - b.change)[0]
   const totalVol  = display.reduce((s, p) => s + p.volume, 0)
 
-  // Progress bar fill
-  const progress = ((REFRESH_SECS - countdown) / REFRESH_SECS) * 100
 
   return (
     <div className="p-4 md:p-8 max-w-[1400px] mx-auto overflow-x-hidden">
@@ -232,7 +116,7 @@ export function TradingMarkets() {
                 width: 5, height: 5, borderRadius: '50%', background: '#60a5fa',
                 animation: 'liveBlink 1.2s ease-in-out infinite', display: 'inline-block',
               }} />
-              LIVE PRICES
+              {status === 'live' ? 'LIVE PRICES' : status === 'loading' ? 'CONNECTING…' : 'PRICES (1-MIN DELAY)'}
             </span>
             {!online && (
               <span style={{
@@ -240,7 +124,7 @@ export function TradingMarkets() {
                 background: 'rgba(248,113,113,0.1)', padding: '3px 10px', borderRadius: 999,
                 display: 'flex', alignItems: 'center', gap: 4,
               }}>
-                <WifiOff size={11} /> Offline — showing cached
+                <WifiOff size={11} /> Price feed unavailable — retrying
               </span>
             )}
           </div>
@@ -249,48 +133,10 @@ export function TradingMarkets() {
             letterSpacing: '-0.02em', lineHeight: 1.2,
           }}>Trade</h1>
           <p style={{ fontSize: 13, color: 'hsl(240 5% 55%)', marginTop: 4 }}>
-            Binance spot markets — prices refresh automatically every 2 minutes.
+            Binance spot markets — prices stream in real time.
           </p>
         </div>
 
-        {/* Refresh button + countdown */}
-        <div style={{ flexShrink: 0 }}>
-          <button
-            onClick={() => doFetch(true)}
-            disabled={loading}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 7,
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 10, padding: '8px 14px', cursor: loading ? 'default' : 'pointer',
-              color: loading ? 'hsl(240 5% 35%)' : 'hsl(240 5% 60%)',
-              fontSize: 12, fontWeight: 500, transition: 'all 0.15s',
-              marginBottom: 8,
-            }}
-          >
-            <RefreshCw
-              size={13}
-              style={{
-                color: online ? '#60a5fa' : '#f87171',
-                animation: loading ? 'spin 0.8s linear infinite' : 'none',
-              }}
-            />
-            {loading ? 'Fetching…' : `Auto-refresh in ${fmtCountdown(countdown)}`}
-          </button>
-
-          {/* Progress bar */}
-          <div style={{
-            height: 3, borderRadius: 4,
-            background: 'rgba(255,255,255,0.06)', overflow: 'hidden',
-          }}>
-            <div style={{
-              height: '100%', borderRadius: 4,
-              width: `${progress}%`,
-              background: 'linear-gradient(90deg, #60a5fa, #22d3ee)',
-              transition: 'width 1s linear',
-            }} />
-          </div>
-        </div>
       </div>
 
       {/* ── Stats Row ── */}
@@ -320,7 +166,7 @@ export function TradingMarkets() {
       </div>
 
       {/* ── Last refresh + connection status ── */}
-      {lastRefresh && (
+      {updatedAt && (
         <div style={{
           display: 'flex', alignItems: 'center', gap: 6,
           marginBottom: 16, fontSize: 12, color: 'hsl(240 5% 45%)',
@@ -328,7 +174,7 @@ export function TradingMarkets() {
           {online
             ? <Wifi size={12} style={{ color: '#60a5fa' }} />
             : <WifiOff size={12} style={{ color: '#f87171' }} />}
-          Prices last fetched from Binance at {lastRefresh.toLocaleTimeString()}
+          {status === 'live' ? 'Streaming live from Binance' : 'Refreshing every 60s'} · last update {updatedAt.toLocaleTimeString()}
         </div>
       )}
 
@@ -378,7 +224,7 @@ export function TradingMarkets() {
       </div>
 
       {/* ── Loading skeleton or cards ── */}
-      {loading && pairs === SEED ? (
+      {status === 'loading' && withData.length === 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {Array.from({ length: 16 }).map((_, i) => (
             <div key={i} style={{
@@ -395,7 +241,7 @@ export function TradingMarkets() {
             const up        = pair.change >= 0
             const isActive  = activePair === pair.symbol
             const isWatched = watchlist.includes(pair.symbol)
-            const flashClass = flashRef.current[pair.symbol] ?? ''
+            const flashClass = pair.flash === 'up' ? 'flash-green' : pair.flash === 'down' ? 'flash-red' : ''
 
             return (
               <div
@@ -436,7 +282,7 @@ export function TradingMarkets() {
                 {/* Header */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2.5">
-                    <CoinIcon symbol={pair.symbol} color={pair.color} />
+                    <CoinIcon symbol={pair.symbol} color={pair.color} image={pair.image} />
                     <div>
                       <p style={{ fontSize: 13.5, fontWeight: 700, color: 'hsl(40 10% 94%)', lineHeight: 1.2 }}>
                         {pair.symbol}
@@ -477,10 +323,10 @@ export function TradingMarkets() {
                       fontSize: 17, fontWeight: 800, color: 'hsl(40 6% 94%)',
                       letterSpacing: '-0.015em', lineHeight: 1,
                     }}>
-                      ${fmtPrice(pair.price)}
+                      {pair.hasData ? `$${fmtPrice(pair.price)}` : '—'}
                     </p>
                   </div>
-                  <Sparkline up={up} />
+                  <Sparkline data={pair.sparkline} />
                 </div>
 
                 {/* 24h Change */}
@@ -492,7 +338,7 @@ export function TradingMarkets() {
                     color: up ? '#60a5fa' : '#f87171',
                   }}>
                     {up ? <TrendingUp size={13} /> : <TrendingDown size={13} />}
-                    {up ? '+' : ''}{pair.change.toFixed(2)}%
+                    {pair.hasData ? `${up ? '+' : ''}${pair.change.toFixed(2)}%` : '—'}
                   </span>
                 </div>
 
@@ -553,7 +399,7 @@ export function TradingMarkets() {
         marginTop: 40, fontSize: 11, color: 'hsl(240 5% 40%)',
         lineHeight: 1.7, textAlign: 'center',
       }}>
-        Live prices sourced from Binance public API. Cryptocurrency trading involves substantial risk of loss.
+        Live prices sourced from Binance and CoinGecko public market data. Cryptocurrency trading involves substantial risk of loss.
         Past performance does not guarantee future results.
       </p>
     </div>

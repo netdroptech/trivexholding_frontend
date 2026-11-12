@@ -1,41 +1,16 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import {
   TrendingUp, TrendingDown, ArrowLeft, ChevronDown,
   Wallet, Clock, DollarSign, AlertCircle, CheckCircle2,
 } from 'lucide-react'
 
-// ── Same metadata as TradingMarkets ───────────────────────────────────────
-const PAIR_META: Record<string, { pair: string; name: string; color: string }> = {
-  BTCUSDT:   { pair: 'BTC/USDT',   name: 'Bitcoin',       color: '#f7931a' },
-  ETHUSDT:   { pair: 'ETH/USDT',   name: 'Ethereum',      color: '#627eea' },
-  BNBUSDT:   { pair: 'BNB/USDT',   name: 'BNB',           color: '#f3ba2f' },
-  ADAUSDT:   { pair: 'ADA/USDT',   name: 'Cardano',       color: '#4a9eff' },
-  XRPUSDT:   { pair: 'XRP/USDT',   name: 'XRP',           color: '#00aae4' },
-  SOLUSDT:   { pair: 'SOL/USDT',   name: 'Solana',        color: '#9945ff' },
-  DOTUSDT:   { pair: 'DOT/USDT',   name: 'Polkadot',      color: '#e6007a' },
-  DOGEUSDT:  { pair: 'DOGE/USDT',  name: 'Dogecoin',      color: '#c2a633' },
-  AVAXUSDT:  { pair: 'AVAX/USDT',  name: 'Avalanche',     color: '#e84142' },
-  MATICUSDT: { pair: 'MATIC/USDT', name: 'Polygon',       color: '#8247e5' },
-  LINKUSDT:  { pair: 'LINK/USDT',  name: 'Chainlink',     color: '#375bd2' },
-  LTCUSDT:   { pair: 'LTC/USDT',   name: 'Litecoin',      color: '#bfbbbb' },
-  UNIUSDT:   { pair: 'UNI/USDT',   name: 'Uniswap',       color: '#ff007a' },
-  ATOMUSDT:  { pair: 'ATOM/USDT',  name: 'Cosmos',        color: '#6f7390' },
-  NEARUSDT:  { pair: 'NEAR/USDT',  name: 'NEAR Protocol', color: '#00ec97' },
-  APTUSDT:   { pair: 'APT/USDT',   name: 'Aptos',         color: '#00bcd4' },
-}
-
-interface TickerData {
-  lastPrice:          string
-  priceChangePercent: string
-  highPrice:          string
-  lowPrice:           string
-  quoteVolume:        string
-}
+import { useBinanceTicker } from '@/hooks/useLiveMarkets'
+import { MARKET_BY_PAIR, RENAMED_PAIRS } from '@/lib/markets'
 
 function fmtPrice(p: number) {
-  if (p >= 10000) return p.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })
-  if (p >= 100)   return p.toFixed(4)
+  if (p >= 1000)  return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  if (p >= 10)    return p.toFixed(2)
   if (p >= 1)     return p.toFixed(4)
   return p.toFixed(4)
 }
@@ -67,10 +42,11 @@ const QUICK_AMOUNTS = [10, 25, 50, 100, 250, 500]
 export function TradeDetail() {
   const { symbol = 'BTCUSDT' } = useParams<{ symbol: string }>()
   const navigate = useNavigate()
-  const sym = symbol.toUpperCase()
-  const meta = PAIR_META[sym] ?? { pair: sym, name: sym, color: '#7c7c7c' }
+  const sym = RENAMED_PAIRS[symbol.toUpperCase()] ?? symbol.toUpperCase()
+  const m = MARKET_BY_PAIR[sym]
+  const meta = m ? { pair: m.symbol, name: m.name, color: m.color } : { pair: sym, name: sym, color: '#7c7c7c' }
 
-  const [ticker, setTicker]     = useState<TickerData | null>(null)
+  const { ticker } = useBinanceTicker(sym)
   const [tradeType, setTradeType] = useState<'CALL' | 'PUT'>('CALL')
   const [amount, setAmount]     = useState('')
   const [duration, setDuration] = useState('1 minute')
@@ -79,25 +55,11 @@ export function TradeDetail() {
   const [error, setError]       = useState('')
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  // Fetch live ticker
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const res  = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${sym}`)
-        const data = await res.json()
-        setTicker(data)
-      } catch { /* keep null */ }
-    }
-    load()
-    const id = setInterval(load, 10_000)   // refresh price header every 10s
-    return () => clearInterval(id)
-  }, [sym])
-
-  const price  = ticker ? parseFloat(ticker.lastPrice) : 0
-  const change = ticker ? parseFloat(ticker.priceChangePercent) : 0
-  const high   = ticker ? parseFloat(ticker.highPrice)  : 0
-  const low    = ticker ? parseFloat(ticker.lowPrice)   : 0
-  const vol    = ticker ? parseFloat(ticker.quoteVolume): 0
+  const price  = ticker?.price  ?? 0
+  const change = ticker?.change ?? 0
+  const high   = ticker?.high   ?? 0
+  const low    = ticker?.low    ?? 0
+  const vol    = ticker?.volume ?? 0
   const up     = change >= 0
 
   // TradingView widget URL
